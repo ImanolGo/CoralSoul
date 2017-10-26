@@ -71,6 +71,7 @@ void AppManager::setupManagers()
     m_visualEffectsManager.setup();
     m_layoutManager.setup();
     m_keyboardManager.setup();
+    m_modelManager.setup();
     m_guiManager.setup();
 }
 
@@ -81,6 +82,7 @@ void AppManager::update()
     
     m_visualEffectsManager.update();
     m_viewManager.update();
+    m_modelManager.update();
     m_guiManager.update();
     m_layoutManager.update();
 }
@@ -98,6 +100,7 @@ void AppManager::draw()
     //ofBackgroundGradient( ofColor(80), ofColor(55), OF_GRADIENT_CIRCULAR );
     ofBackground(55,55,55);
     m_viewManager.draw();
+    m_modelManager.draw();
     m_layoutManager.draw();
     m_guiManager.draw();
     //m_noiseManager.draw();

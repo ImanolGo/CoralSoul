@@ -16,7 +16,7 @@
 
 const string GuiManager::GUI_SETTINGS_FILE_NAME = "xmls/GuiSettings.xml";
 const string GuiManager::GUI_SETTINGS_NAME = "GUI";
-const int GuiManager::GUI_WIDTH = 500;
+const int GuiManager::GUI_WIDTH = 300;
 
 
 GuiManager::GuiManager(): Manager(), m_showGui(true)

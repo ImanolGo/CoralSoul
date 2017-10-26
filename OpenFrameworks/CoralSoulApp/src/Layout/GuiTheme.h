@@ -25,12 +25,12 @@ public:
     
     GuiTheme()
     {
-        layout.width = 500;
-        layout.height = 50;
-        layout.labelWidth = 140;
+        layout.width = 300;
+        layout.height = 30;
+        layout.labelWidth = 100;
         layout.upperCaseLabels = false;
         //font.file =  AssetPath + "fonts/open-sans/OpenSans-Semibold.ttf";
-        font.size = 11;
+        font.size = 10;
 
         color.matrix.normal.button = hex(0x6E6E6E);
         color.matrix.hover.button = hex(0x9C9DA1);

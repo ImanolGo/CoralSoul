@@ -3,7 +3,7 @@
 
   <of_settings>
 
-      <window title="EqualizerApp" x="70" y="70" width="960" height="600" fullscreen="0" showCursor="1"/>
+      <window title="CoralSoulApp" x="0" y="0" width="1920" height="1200" fullscreen="0" showCursor="1"/>
 
 
       <debug showCursor="1" setVerbose="1"/> 

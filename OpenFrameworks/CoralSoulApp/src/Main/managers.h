@@ -17,4 +17,5 @@
 #include "LayoutManager.h"
 #include "KeyboardManager.h"
 #include "GuiManager.h"
+#include "ModelManager.h"
 

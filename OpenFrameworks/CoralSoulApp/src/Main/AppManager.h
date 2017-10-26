@@ -61,6 +61,9 @@ public:
     //! Returns the GUI manager
     GuiManager&   getGuiManager() { return m_guiManager; }
     
+    //! Returns the 3D model manager
+    ModelManager&  getModelManager() { return m_modelManager; }
+    
     
     //==========================================================================
     
@@ -101,6 +104,7 @@ private:
     LayoutManager            m_layoutManager;            ///< Manages the layout
     KeyboardManager          m_keyboardManager;          ///< Manages the keyboard
     GuiManager               m_guiManager;               ///< Manages the graphical user interface
+    ModelManager             m_modelManager;             ///< Manages the 3D models
    
     bool                     m_debugMode;
     bool                     m_initialized;
