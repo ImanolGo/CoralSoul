@@ -41,12 +41,18 @@ public:
 
 private:
 
-
+    void loadModel();
+    
+    void updateModel();
+    
+    void drawModel();
     
 
 private:
 
-
+    ofxAssimpModelLoader m_model;
+    ofMesh               m_mesh;
+    ofLight              m_light;
 };
 
 //==========================================================================

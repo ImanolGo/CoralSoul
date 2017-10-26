@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0466B9E6A55078A9F39B1B4B /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4F639B12AA5C1013177E49 /* svgtiny_gradient.cpp */; };
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
+		08A6DC641FA22145000EE501 /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A27BBEB0864387DC5A4E04 /* libassimp.a */; };
+		08A6DC651FA2215B000EE501 /* assimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515E42FA7C7C2EE2728289ED /* assimp.a */; };
 		0CA2172BAC469641FE919A4C /* matrix4x4.inl in Sources */ = {isa = PBXBuildFile; fileRef = DC2141581B040129447CBBC3 /* matrix4x4.inl */; };
 		17ABCDA3ABD15884407805F3 /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF113D8759702F3F439518D2 /* ofxAssimpTexture.cpp */; };
 		18FA42C471CF66795EF9EB97 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3766129862C931409F5C3D4 /* ofxTCPClient.cpp */; };
@@ -314,6 +316,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08A6DC651FA2215B000EE501 /* assimp.a in Frameworks */,
+				08A6DC641FA22145000EE501 /* libassimp.a in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +351,13 @@
 				EB75C7B6954151E468CA1A81 /* src */,
 			);
 			name = ofxAssimpModelLoader;
+			sourceTree = "<group>";
+		};
+		08A6DC631FA22145000EE501 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0A1167E038C4B2E39E80CC07 /* formulas */ = {
@@ -937,6 +948,7 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
 				E4B69B5B0A3A1756003C02F2 /* CoralSoulAppDebug.app */,
+				08A6DC631FA22145000EE501 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1365,7 +1377,11 @@
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/src/Addons/ofxAssimpModelLoader/libs/assimp/lib/emscripten",
+					"$(PROJECT_DIR)/src/Addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1426,7 +1442,11 @@
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/src/Addons/ofxAssimpModelLoader/libs/assimp/lib/emscripten",
+					"$(PROJECT_DIR)/src/Addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
