@@ -41,6 +41,8 @@ public:
     
     const ResourcesPathMap& getSvgResourcesPath() const {return m_svgResourcesPath;}
     
+    const ResourcesPathMap& getVideoResourcesPath() const {return m_videoResourcesPath;}
+    
     ofColor getColor(const string& colorName);
     
     float getAppWidth() const {return m_appWidth;}
@@ -82,15 +84,19 @@ private:
     //! Loads all the svg images settings
     void loadSvgSettings();
     
+    //! Loads all the video  settings
+    void loadVideoSettings();
+    
     
 private:
     
     typedef             map< string, ofPtr<ofColor> >    ColorMap;               ///< Defines a map of colors attached to a name
     
     
-    ofXml		            m_xmlSettings;          ///< instance of the xml parser
+    ofXml		            m_xml;                  ///< instance of the xml parser
     ResourcesPathMap        m_texturesPath;         ///< stores the texture paths
     ResourcesPathMap        m_svgResourcesPath;     ///< stores the resources paths
+    ResourcesPathMap        m_videoResourcesPath;   ///< stores the video paths
     ColorMap                m_colors;               ///< stores all the application's colors
     float                   m_appWidth;             ///< stores the applications width
     float                   m_appHeight;            ///< stores the applications height

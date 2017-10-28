@@ -64,6 +64,9 @@ public:
     //! Returns the 3D model manager
     ModelManager&  getModelManager() { return m_modelManager; }
     
+    //! Returns the scenes manager manager
+    SceneManager&  getSceneManager() { return m_sceneManager; }
+    
     
     //==========================================================================
     
@@ -105,6 +108,7 @@ private:
     KeyboardManager          m_keyboardManager;          ///< Manages the keyboard
     GuiManager               m_guiManager;               ///< Manages the graphical user interface
     ModelManager             m_modelManager;             ///< Manages the 3D models
+    SceneManager             m_sceneManager;             ///< Manages all the scenes
    
     bool                     m_debugMode;
     bool                     m_initialized;

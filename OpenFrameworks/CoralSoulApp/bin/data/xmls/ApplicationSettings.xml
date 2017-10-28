@@ -18,6 +18,12 @@
 
   </textures>
 
+  <videos>
+
+    <video name="TEST_VIDEO" path="videos/video loop test 001 - YouTube.mp4.mp4"/>
+  
+  </videos>
+
   <colors>
 
 	<color name="CenterBackgroundColor" r="85" g="78" b="68" a="255"/>

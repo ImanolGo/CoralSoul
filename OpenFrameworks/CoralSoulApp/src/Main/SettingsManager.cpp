@@ -49,13 +49,14 @@ void SettingsManager::loadAllSettings()
     this->setNetworkProperties();
     this->loadTextureSettings();
     this->loadSvgSettings();
+    this->loadVideoSettings();
     this->loadColors();
 }
 
 bool SettingsManager::loadSettingsFile()
 {
     
-    if(!m_xmlSettings.load(APPLICATION_SETTINGS_FILE_NAME)){
+    if(!m_xml.load(APPLICATION_SETTINGS_FILE_NAME)){
         ofLogNotice() <<"SettingsManager::loadSettingsFile-> unable to load file: " << APPLICATION_SETTINGS_FILE_NAME ;
         return false;
     }
@@ -66,13 +67,13 @@ bool SettingsManager::loadSettingsFile()
 
 void SettingsManager::setDebugProperties()
 {
-    m_xmlSettings.setTo("//");
+    m_xml.setTo("//");
     
     string ofPath = "//of_settings/debug";
-    if(m_xmlSettings.exists(ofPath)) {
-        m_xmlSettings.setTo(ofPath);
+    if(m_xml.exists(ofPath)) {
+        m_xml.setTo(ofPath);
         typedef   std::map<string, string>   AttributesMap;
-        AttributesMap attributes = m_xmlSettings.getAttributes();
+        AttributesMap attributes = m_xml.getAttributes();
         
         bool showCursor = ofToBool(attributes["showCursor"]);
         if(showCursor){
@@ -100,13 +101,13 @@ void SettingsManager::setDebugProperties()
 
 void SettingsManager::setWindowProperties()
 {
-    m_xmlSettings.setTo("//");
+    m_xml.setTo("//");
     
     string windowPath = "//of_settings/window";
-    if(m_xmlSettings.exists(windowPath)) {
-        m_xmlSettings.setTo(windowPath);
+    if(m_xml.exists(windowPath)) {
+        m_xml.setTo(windowPath);
         typedef   std::map<string, string>   AttributesMap;
-        AttributesMap attributes = m_xmlSettings.getAttributes();
+        AttributesMap attributes = m_xml.getAttributes();
         string title = attributes["title"];
         m_appWidth = ofToInt(attributes["width"]);
         m_appHeight= ofToInt(attributes["height"]);
@@ -132,13 +133,13 @@ void SettingsManager::setWindowProperties()
 }
 void SettingsManager::setNetworkProperties()
 {
-    m_xmlSettings.setTo("//");
+    m_xml.setTo("//");
     
     string networkPath = "//of_settings/network";
-    if(m_xmlSettings.exists(networkPath)) {
-        m_xmlSettings.setTo(networkPath);
+    if(m_xml.exists(networkPath)) {
+        m_xml.setTo(networkPath);
         typedef   std::map<string, string>   AttributesMap;
-        AttributesMap attributes = m_xmlSettings.getAttributes();
+        AttributesMap attributes = m_xml.getAttributes();
         
         m_portUdpReceive  = ofToInt(attributes["portUdpReceive"]);
         m_portUdpSend  = ofToInt(attributes["portUdpSend"]);
@@ -155,19 +156,19 @@ void SettingsManager::setNetworkProperties()
 
 void SettingsManager::loadColors()
 {
-    m_xmlSettings.setTo("//");
+    m_xml.setTo("//");
     
     string colorsSettingsPath = "//colors";
-    if(m_xmlSettings.exists(colorsSettingsPath)) {
+    if(m_xml.exists(colorsSettingsPath)) {
         
         typedef   std::map<string, string>   AttributesMap;
         AttributesMap attributes;
         
         colorsSettingsPath = "//colors/color[0]";
-        m_xmlSettings.setTo(colorsSettingsPath);
+        m_xml.setTo(colorsSettingsPath);
         do {
             
-            attributes = m_xmlSettings.getAttributes();
+            attributes = m_xml.getAttributes();
             
             int r = ofToInt(attributes["r"]);
             int g = ofToInt(attributes["g"]);
@@ -181,7 +182,7 @@ void SettingsManager::loadColors()
             ofLogNotice() <<"SettingsManager::loadColors->  color = " << attributes["name"] <<", r = " << r
             <<", g = "<< g << ", b = " << b << ", a = " << a ;
         }
-        while(m_xmlSettings.setToSibling()); // go to the next node
+        while(m_xml.setToSibling()); // go to the next node
         
         
         ofLogNotice() <<"SettingsManager::loadColors->  successfully loaded the applications colors" ;
@@ -193,25 +194,25 @@ void SettingsManager::loadColors()
 
 void SettingsManager::loadTextureSettings()
 {
-    m_xmlSettings.setTo("//");
+    m_xml.setTo("//");
     
     string resourcesPath = "//textures";
-    if(m_xmlSettings.exists(resourcesPath)) {
+    if(m_xml.exists(resourcesPath)) {
         
         typedef   std::map<string, string>   AttributesMap;
         AttributesMap attributes;
         
         resourcesPath = "//textures/texture[0]";
-        m_xmlSettings.setTo(resourcesPath);
+        m_xml.setTo(resourcesPath);
         do {
             
-            attributes = m_xmlSettings.getAttributes();
+            attributes = m_xml.getAttributes();
             m_texturesPath[attributes["name"]] = attributes["path"];
             
             ofLogNotice() <<"SettingsManager::loadTextureSettings->  texture = " << attributes["name"]
             <<", path = "<< attributes["path"] ;
         }
-        while(m_xmlSettings.setToSibling()); // go to the next texture
+        while(m_xml.setToSibling()); // go to the next texture
         
         
         ofLogNotice() <<"SettingsManager::loadTextureSettings->  successfully loaded the resource settings" ;
@@ -234,25 +235,25 @@ ofColor SettingsManager::getColor(const string& colorName)
 
 void SettingsManager::loadSvgSettings()
 {
-    m_xmlSettings.setTo("//");
+    m_xml.setTo("//");
     
     string svgPath = "//svgs";
-    if(m_xmlSettings.exists(svgPath)) {
+    if(m_xml.exists(svgPath)) {
         
         typedef   std::map<string, string>   AttributesMap;
         AttributesMap attributes;
         
         svgPath = "//svgs/svg[0]";
-        m_xmlSettings.setTo(svgPath);
+        m_xml.setTo(svgPath);
         do {
             
-            attributes = m_xmlSettings.getAttributes();
+            attributes = m_xml.getAttributes();
             m_svgResourcesPath[attributes["name"]] = attributes["path"];
             
             ofLogNotice() <<"SettingsManager::loadSvgSettings->  svg = " << attributes["name"]
             <<", path = "<< attributes["path"] ;
         }
-        while(m_xmlSettings.setToSibling()); // go to the next svg
+        while(m_xml.setToSibling()); // go to the next svg
         
         
         ofLogNotice() <<"SettingsManager::loadSvgSettings->  successfully loaded the resource settings" ;
@@ -262,6 +263,36 @@ void SettingsManager::loadSvgSettings()
     ofLogNotice() <<"SettingsManager::loadSvgSettings->  path not found: " << svgPath ;
 }
 
+
+void SettingsManager::loadVideoSettings()
+{
+    m_xml.setTo("//");
+    
+    string path = "//videos";
+    if(m_xml.exists(path)) {
+        
+        typedef   std::map<string, string>   AttributesMap;
+        AttributesMap attributes;
+        
+        path = "//videos/video[0]";
+        m_xml.setTo(path);
+        do {
+            
+            attributes = m_xml.getAttributes();
+            m_videoResourcesPath[attributes["name"]] = attributes["path"];
+            
+            ofLogNotice() <<"SettingsManager::loadVideoSettings->  video = " << attributes["name"]
+            <<", path = "<< attributes["path"] ;
+        }
+        while(m_xml.setToSibling()); // go to the next svg
+        
+        
+        ofLogNotice() <<"SettingsManager::loadSvgSettings->  successfully loaded the resource settings" ;
+        return;
+    }
+    
+    ofLogNotice() <<"SettingsManager::loadSvgSettings->  path not found: " << path ;
+}
 
 
 

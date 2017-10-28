@@ -46,7 +46,7 @@ void ModelManager::setup()
 void ModelManager::loadModel()
 {
     //load the model - the 3ds and the texture file need to be in the same folder
-    m_model.loadModel("images/model/WallSimplified2.obj");
+    m_model.loadModel("images/model/ROCA_MODELO_VFX_38000_centred.obj");
     
     //you can create as many rotations as you want
     //choose which axis you want it to effect
