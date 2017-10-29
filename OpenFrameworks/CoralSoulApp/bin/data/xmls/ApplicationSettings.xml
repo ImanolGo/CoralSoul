@@ -20,7 +20,7 @@
 
   <videos>
 
-    <video name="TEST_VIDEO" path="videos/video loop test 001 - YouTube.mp4.mp4"/>
+    <video name="TEST_VIDEO" path="videos/video_test.mp4"/>
   
   </videos>
 

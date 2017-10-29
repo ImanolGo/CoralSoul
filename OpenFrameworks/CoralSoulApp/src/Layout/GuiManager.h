@@ -83,6 +83,8 @@ private:
     
     void drawRectangle();
     
+    void drawGui();
+    
     void setupGuiEvents();
 
 private:

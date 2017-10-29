@@ -21,7 +21,7 @@ void BlankScene::update() {
 }
 
 void BlankScene::draw() {
-    ofBackground(0,0,0);
+    ofBackground(255,0,0);
     
 }
 

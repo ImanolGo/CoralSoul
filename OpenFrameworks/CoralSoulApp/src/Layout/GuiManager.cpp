@@ -16,7 +16,7 @@
 
 const string GuiManager::GUI_SETTINGS_FILE_NAME = "xmls/GuiSettings.xml";
 const string GuiManager::GUI_SETTINGS_NAME = "GUI";
-const int GuiManager::GUI_WIDTH = 300;
+const int GuiManager::GUI_WIDTH = 350;
 
 
 GuiManager::GuiManager(): Manager(), m_showGui(true)
@@ -63,11 +63,8 @@ void GuiManager::setupGuiParameters()
     int margin =  LayoutManager::MARGIN;
     m_gui.setAutoDraw(false);
     auto pos = m_gui.getPosition();
-    m_gui.setPosition(pos.x + margin, pos.y + 2*margin);
-   // m_gui.addHeader(GUI_SETTINGS_NAME, true);
-    
-    // add some components //
-    //m_gui.addLabel("PrimaveraSound GUI");
+    m_gui.setPosition(pos.x + margin, pos.y + margin);
+    m_gui.addHeader(GUI_SETTINGS_NAME, false);
     
     m_gui.addFRM();
     
@@ -108,15 +105,16 @@ void GuiManager::draw()
         return;
     
     this->drawRectangle();
-    
-    ofEnableSmoothing();
-    ofEnableAlphaBlending();
-        m_gui.draw();
-    ofDisableAlphaBlending();
-    ofDisableSmoothing();
-    
+    this->drawGui();
 }
 
+
+void GuiManager::drawGui()
+{
+    ofEnableAlphaBlending();
+    m_gui.draw();
+    ofDisableAlphaBlending();
+}
 
 void GuiManager::setupGuiEvents()
 {
@@ -149,9 +147,10 @@ void GuiManager::toggleGui()
 
 void GuiManager::drawRectangle()
 {
+    int margin =  LayoutManager::MARGIN;
     ofPushStyle();
-    ofSetColor(ofColor::black);
-    ofDrawRectangle( m_gui.getPosition().x - 20, 0, GUI_WIDTH + 60, ofGetHeight());
+    ofSetColor(15);
+    ofDrawRectangle( m_gui.getPosition().x - margin, 0, m_gui.getWidth() + 2*margin, ofGetHeight());
     ofPopStyle();
 }
 

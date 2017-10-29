@@ -32,16 +32,20 @@ void VideoScene::setupVideo()
     
     if(videoPaths.find(getName())!=videoPaths.end())
     {
-        ofDisableDataPath();
+//        ofDisableDataPath();
+//        string path = videoPaths.at(getName());
+//        path = "../../../" + path; //To make it realtive to PrimaveraSoundProto.app
+//        ofDirectory dir(path);
+//        m_videoPlayer.load(dir.getAbsolutePath());
+//        m_videoPlayer.setLoopState(OF_LOOP_NORMAL);
+//        m_videoPlayer.play();
+//
+//        ofEnableDataPath();
+        
         string path = videoPaths.at(getName());
-        path = "../../../" + path; //To make it realtive to PrimaveraSoundProto.app
-        ofDirectory dir(path);
-        m_videoPlayer.load(dir.getAbsolutePath());
+        m_videoPlayer.load(path);
         m_videoPlayer.setLoopState(OF_LOOP_NORMAL);
         m_videoPlayer.play();
-        
-        ofEnableDataPath();
-        
     }
     else{
         ofLogNotice() << getName() + "::setupVideo-> Cannot find " << getName();
