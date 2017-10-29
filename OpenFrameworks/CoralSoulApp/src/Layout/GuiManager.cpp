@@ -41,6 +41,7 @@ void GuiManager::setup()
 
 
     this->setupGuiParameters();
+    this->setupScenesGui();
     this->setupGuiEvents();
     this->loadGuiValues();
 
@@ -71,8 +72,27 @@ void GuiManager::setupGuiParameters()
     m_gui.addFRM();
     
     m_gui.addBreak();
+}
 
-
+void GuiManager::setupScenesGui()
+{
+    auto sceneManager = &AppManager::getInstance().getSceneManager();
+    vector<string> opts;
+    
+    for(int i = 0; i < sceneManager->getNumberScenes(); i++)
+    {
+        opts.push_back(sceneManager->getSceneName(i));
+    }
+    
+    string label = "SCENES";
+    
+    m_gui.addDropdown(label, opts);
+    auto menu = m_gui.getDropdown(label);
+    //menu->expand(); //let's have it open by default
+    menu->setStripeColor(ofColor::pink);
+    for (int i=0; i<menu->size(); i++) menu->getChildAt(i)->setStripeColor(ofColor::pink);
+    m_gui.addBreak();
+    
 }
 
 
@@ -141,6 +161,12 @@ void GuiManager::onDropdownEvent(ofxDatGuiDropdownEvent e)
 {
     cout << "onDropdownEvent: " << e.target->getName() << " Selected" << endl;
     
+    if(e.target->getName() == "SCENES")
+    {
+        AppManager::getInstance().getSceneManager().changeScene(e.child);
+        //m_gui.getDropdown(e.target->getName())->expand();
+        m_gui.getDropdown(e.target->getName())->setLabel("SCENES:" + e.target->getLabel());
+    }
 }
 
 void GuiManager::onColorPickerEvent(ofxDatGuiColorPickerEvent e)

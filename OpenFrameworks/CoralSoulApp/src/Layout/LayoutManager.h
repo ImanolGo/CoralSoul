@@ -29,6 +29,8 @@ public:
     
     static const int MARGIN;
     static const int FRAME_MARGIN;
+    static const string LAYOUT_FONT;
+    static const string LAYOUT_FONT_LIGHT;
 
     //! Constructor
     LayoutManager();
@@ -45,9 +47,15 @@ public:
     //! Draw the layout
     void draw();
     
+    void onFullScreenChange(bool value);
+    
     void windowResized(int w, int h);
     
     const ofRectangle& getWindowRect() {return m_windowRect;}
+    
+    void setFullScreen();
+    
+    const ofFbo& getCurrentFbo(){return m_fbo;}
 
 private:
 
@@ -71,19 +79,27 @@ private:
     
     void setupFbo();
     
-    void updateColor();
+    void updateFbos();
     
-    void resetWindowRect();
+    void updateOutputFbo();
     
-    void resetWindowFrame();
+    void update3dFbo();
     
-    void setupWindowFrame();
+    void drawFbos();
     
-    void drawFbo();
+    void drawOutputFbo();
     
-    void drawRectangles();
+    void draw3dFbo();
     
-
+    void drawText();
+    
+    void resetWindowRects();
+    
+    void resetWindowFrames();
+    
+    void resetWindowTitles();
+    
+    void setupWindowFrames();
 private:
 
 
@@ -97,7 +113,11 @@ private:
     
     ofRectangle         m_windowRect;
     RectangleVisual     m_windowFrame;
+    RectangleVisual     m_3dWindowFrame;
+    ofRectangle         m_3dWindowRect;
+    
     ofFbo               m_fbo;
+    ofFbo               m_3dfbo;
     ofColor             m_color;
 
 };

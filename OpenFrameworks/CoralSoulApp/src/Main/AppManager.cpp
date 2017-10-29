@@ -60,6 +60,7 @@ void AppManager::setupOF()
     //ofSetFrameRate(25);
     ofSetVerticalSync(true);
     ofSetEscapeQuitsApp(true);
+    ofSetBackgroundAuto(true);
 }
 
 
@@ -101,9 +102,9 @@ void AppManager::draw()
 
     //ofBackgroundGradient( ofColor(80), ofColor(55), OF_GRADIENT_CIRCULAR );
     ofBackground(55,55,55);
-    m_viewManager.draw();
-    m_modelManager.draw();
-   // m_layoutManager.draw();
+   // m_viewManager.draw();
+    //m_modelManager.draw();
+    m_layoutManager.draw();
     m_guiManager.draw();
     //m_noiseManager.draw();
     

@@ -79,6 +79,8 @@ private:
     
     void setupLayoutGui();
     
+    void setupScenesGui();
+    
     void drawRectangle();
     
     void setupGuiEvents();
