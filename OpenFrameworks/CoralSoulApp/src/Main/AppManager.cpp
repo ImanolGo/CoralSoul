@@ -61,6 +61,7 @@ void AppManager::setupOF()
     ofSetVerticalSync(true);
     ofSetEscapeQuitsApp(true);
     ofSetBackgroundAuto(true);
+    ofDisableArbTex();
 }
 
 

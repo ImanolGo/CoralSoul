@@ -42,6 +42,7 @@ void GuiManager::setup()
 
     this->setupGuiParameters();
     this->setupScenesGui();
+    this->setupCameraGui();
     this->setupGuiEvents();
     this->loadGuiValues();
 
@@ -92,6 +93,42 @@ void GuiManager::setupScenesGui()
     
 }
 
+void GuiManager::setupCameraGui()
+{
+    auto modelManager = &AppManager::getInstance().getModelManager();
+    
+    m_cameraDistance.set("Distance", 600, 0.0, 1000.0);
+    m_cameraDistance.addListener(modelManager, &ModelManager::onCameraDistanceChange);
+    m_parameters.add(m_cameraDistance);
+    
+    m_cameraX.set("X", 0, -1000.0, 1000.0);
+    m_cameraX.addListener(modelManager, &ModelManager::onCameraXChange);
+    m_parameters.add(m_cameraX);
+    
+    m_cameraY.set("Y", 0, -1000.0, 1000.0);
+    m_cameraY.addListener(modelManager, &ModelManager::onCameraYChange);
+    m_parameters.add(m_cameraY);
+    
+    m_cameraZ.set("Z", 0, -1000.0, 1000.0);
+    m_cameraZ.addListener(modelManager, &ModelManager::onCameraZChange);
+    m_parameters.add(m_cameraZ);
+    
+    m_cameraFov.set("FOV", 60, 0, 180);
+    m_cameraFov.addListener(modelManager, &ModelManager::onCameraFovChange);
+    m_parameters.add(m_cameraFov);
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("CAMERA", ofColor::blue);
+    folder->addSlider(m_cameraDistance);
+    folder->addSlider(m_cameraX);
+    folder->addSlider(m_cameraY);
+    folder->addSlider(m_cameraZ);
+    folder->addSlider(m_cameraFov);
+    //folder->expand();
+    
+    m_gui.addBreak();
+    
+ 
+}
 
 void GuiManager::update()
 {

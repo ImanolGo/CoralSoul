@@ -21,8 +21,8 @@ void BlankScene::update() {
 }
 
 void BlankScene::draw() {
-    ofBackground(255,0,0);
-    
+    //ofBackground(255,0,0);
+    ofBackgroundGradient( ofColor(255,0,0), ofColor(0,255,0), OF_GRADIENT_CIRCULAR );
 }
 
 void BlankScene::willFadeIn() {

@@ -37,15 +37,39 @@ public:
     
     //! Draw the layout
     void draw();
+    
+    const ofFbo & getMask() const {return m_fboMask;}
+    
+    void onCameraDistanceChange(float& value);
+    
+    void onCameraXChange(float& value);
+    
+    void onCameraYChange(float& value);
+    
+    void onCameraZChange(float& value);
+    
+    void onCameraFovChange(float& value);
 
 
 private:
 
+    void setupCamera();
+    
+    void setupFbos();
+    
     void loadModel();
     
     void updateModel();
     
+    void updateFbos();
+    
     void drawModel();
+    
+    void drawMask();
+    
+    void bindTexture();
+    
+    void unbindTexture();
     
 
 private:
@@ -53,6 +77,10 @@ private:
     ofxAssimpModelLoader m_model;
     ofMesh               m_mesh;
     ofLight              m_light;
+    ofEasyCam            m_cam;
+    ofFbo                m_fboMask;
+
+    ofImage img;
 };
 
 //==========================================================================

@@ -81,6 +81,8 @@ private:
     
     void setupScenesGui();
     
+    void setupCameraGui();
+    
     void drawRectangle();
     
     void drawGui();
@@ -96,6 +98,12 @@ private:
     
 
     ofParameterGroup      m_parameters;
+    
+    ofParameter<float>      m_cameraDistance;
+    ofParameter<float>      m_cameraX;
+    ofParameter<float>      m_cameraY;
+    ofParameter<float>      m_cameraZ;
+    ofParameter<float>      m_cameraFov;
 
    
     bool        m_showGui;  //It defines the whether the gui should be shown or not

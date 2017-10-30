@@ -38,6 +38,5 @@ public:
 
     //! Called when exit
     void willExit();
-
 };
 
