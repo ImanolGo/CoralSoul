@@ -79,6 +79,8 @@ private:
     ofLight              m_light;
     ofEasyCam            m_cam;
     ofFbo                m_fboMask;
+    ofFbo                m_fboModel;
+    ofFbo                m_fboWireFrame;
 
     ofImage img;
 };

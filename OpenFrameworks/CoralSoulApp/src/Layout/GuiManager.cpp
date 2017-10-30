@@ -109,7 +109,7 @@ void GuiManager::setupCameraGui()
     m_cameraY.addListener(modelManager, &ModelManager::onCameraYChange);
     m_parameters.add(m_cameraY);
     
-    m_cameraZ.set("Z", 0, -1000.0, 1000.0);
+    m_cameraZ.set("Z", 600, 0, 3000.0);
     m_cameraZ.addListener(modelManager, &ModelManager::onCameraZChange);
     m_parameters.add(m_cameraZ);
     
@@ -118,11 +118,11 @@ void GuiManager::setupCameraGui()
     m_parameters.add(m_cameraFov);
     
     ofxDatGuiFolder* folder = m_gui.addFolder("CAMERA", ofColor::blue);
-    folder->addSlider(m_cameraDistance);
+    //folder->addSlider(m_cameraDistance);
     folder->addSlider(m_cameraX);
     folder->addSlider(m_cameraY);
     folder->addSlider(m_cameraZ);
-    folder->addSlider(m_cameraFov);
+    //folder->addSlider(m_cameraFov);
     //folder->expand();
     
     m_gui.addBreak();

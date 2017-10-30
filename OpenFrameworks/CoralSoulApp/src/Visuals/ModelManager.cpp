@@ -51,15 +51,21 @@ void ModelManager::setupFbos()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-    
     m_fboMask.allocate(width, height);
     m_fboMask.begin(); ofClear(0); m_fboMask.end();
+    
+    m_fboModel.allocate(width, height);
+    m_fboModel.begin(); ofClear(0); m_fboModel.end();
+    
+    m_fboWireFrame.allocate(width, height);
+    m_fboWireFrame.begin(); ofClear(0); m_fboWireFrame.end();
 }
 
 void ModelManager::setupCamera()
 {
-    m_cam.setDistance(600);
+    //m_cam.setDistance(600);
     m_cam.disableMouseInput();
+    m_cam.setTarget(ofVec3f(0));
 }
 
 void ModelManager::loadModel()
@@ -202,6 +208,7 @@ void ModelManager::onCameraXChange(float& value)
     auto pos = m_cam.getPosition();
     pos.x = value;
     m_cam.setPosition(pos);
+     m_cam.setTarget(ofVec3f(0));
 }
 
 
@@ -210,6 +217,7 @@ void ModelManager::onCameraYChange(float& value)
     auto pos = m_cam.getPosition();
     pos.y = value;
     m_cam.setPosition(pos);
+     m_cam.setTarget(ofVec3f(0));
 }
 
 
@@ -218,6 +226,7 @@ void ModelManager::onCameraZChange(float& value)
     auto pos = m_cam.getPosition();
     pos.z = value;
     m_cam.setPosition(pos);
+     m_cam.setTarget(ofVec3f(0));
 }
 void ModelManager::onCameraFovChange(float& value)
 {
