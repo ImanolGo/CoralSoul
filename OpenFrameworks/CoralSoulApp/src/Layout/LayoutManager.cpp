@@ -61,6 +61,9 @@ void LayoutManager::setup()
 
 void LayoutManager::setupBlur()
 {
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
+    m_blur.setup(width, height);
 }
 
 void LayoutManager::setupMask()
@@ -70,7 +73,7 @@ void LayoutManager::setupMask()
     
     ofEnableArbTex();
     m_mask.allocate(width, height, ofxMask::LUMINANCE);
-    ofDisableArbTex();
+    //ofDisableArbTex();
 }
 
 
@@ -162,7 +165,10 @@ void LayoutManager::update()
 void LayoutManager::updateMask()
 {
     m_mask.beginMask();
-        AppManager::getInstance().getModelManager().getMask().draw(0,0);
+        m_blur.begin();
+            AppManager::getInstance().getModelManager().getMask().draw(0,0);
+        m_blur.end();
+        m_blur.draw();
     m_mask.endMask();
     
     m_mask.begin();
@@ -187,6 +193,7 @@ void LayoutManager::updateOutputFbo()
     
        // AppManager::getInstance().getSceneManager().draw();
         m_mask.draw();
+       // m_blur.draw();
     
     ofPopStyle();
     m_fbo.end();
@@ -203,6 +210,7 @@ void LayoutManager::update3dFbo()
         if(m_previewMode == MASK){
             //AppManager::getInstance().getModelManager().getMask().draw(0,0);
             m_mask.drawMasker();
+            //m_blur.draw();
         }
         else if(m_previewMode == MODEL){
             AppManager::getInstance().getModelManager().getModel().draw(0,0);
