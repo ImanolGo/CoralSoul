@@ -71,7 +71,7 @@ void LayoutManager::setupMask()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-    ofEnableArbTex();
+   // ofEnableArbTex();
     m_mask.allocate(width, height, ofxMask::LUMINANCE);
     //ofDisableArbTex();
 }

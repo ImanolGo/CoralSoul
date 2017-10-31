@@ -19,4 +19,5 @@
 #include "GuiManager.h"
 #include "ModelManager.h"
 #include "SceneManager.h"
+#include "ApiManager.h"
 

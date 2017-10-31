@@ -67,6 +67,9 @@ public:
     //! Returns the scenes manager manager
     SceneManager&  getSceneManager() { return m_sceneManager; }
     
+    //! Returns the api manager manager
+    ApiManager&  getApiManager() { return m_apiManager; }
+    
     
     //==========================================================================
     
@@ -109,6 +112,7 @@ private:
     GuiManager               m_guiManager;               ///< Manages the graphical user interface
     ModelManager             m_modelManager;             ///< Manages the 3D models
     SceneManager             m_sceneManager;             ///< Manages all the scenes
+    ApiManager               m_apiManager;               ///< Manages all the apis
    
     bool                     m_debugMode;
     bool                     m_initialized;
