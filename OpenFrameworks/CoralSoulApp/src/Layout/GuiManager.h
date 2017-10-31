@@ -93,7 +93,6 @@ private:
 
 private:
     
-    // Fluid GUI
     ofxDatGui			m_gui;
 
     ofParameter<float>	m_guiFPS;
@@ -106,6 +105,8 @@ private:
     ofParameter<float>      m_cameraY;
     ofParameter<float>      m_cameraZ;
     ofParameter<float>      m_cameraFov;
+    
+    ofParameter<float>      m_layourBlurScale;
 
    
     bool        m_showGui;  //It defines the whether the gui should be shown or not

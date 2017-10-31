@@ -69,6 +69,8 @@ public:
     const ofFbo& getCurrentFbo(){return m_fbo;}
     
     void onSetPreviewMode(int mode) {m_previewMode = mode;}
+    
+    void onBlurScaleChange(float& value);
 
 private:
 

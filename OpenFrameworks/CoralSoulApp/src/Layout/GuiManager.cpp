@@ -43,6 +43,7 @@ void GuiManager::setup()
     this->setupGuiParameters();
     this->setupScenesGui();
     this->setupPreviewGui();
+    this->setupLayoutGui();
     this->setupCameraGui();
     this->setupGuiEvents();
     this->loadGuiValues();
@@ -87,7 +88,7 @@ void GuiManager::setupScenesGui()
     
     m_gui.addDropdown(label, opts);
     auto menu = m_gui.getDropdown(label);
-    //menu->expand(); //let's have it open by default
+    menu->expand(); //let's have it open by default
     menu->setStripeColor(ofColor::pink);
     for (int i=0; i<menu->size(); i++) menu->getChildAt(i)->setStripeColor(ofColor::pink);
     m_gui.addBreak();
@@ -105,12 +106,25 @@ void GuiManager::setupPreviewGui()
     
     m_gui.addDropdown(label, opts);
     auto menu = m_gui.getDropdown(label);
-    //menu->expand(); //let's have it open by default
+    menu->expand(); //let's have it open by default
     menu->setStripeColor(ofColor::yellow);
     for (int i=0; i<menu->size(); i++) menu->getChildAt(i)->setStripeColor(ofColor::yellow);
     m_gui.addBreak();
 }
 
+void GuiManager::setupLayoutGui()
+{
+    auto layoutManager = &AppManager::getInstance().getLayoutManager();
+    
+    m_layourBlurScale.set("Blur", 1.0, 0.0, 2.0);
+    m_layourBlurScale.addListener(layoutManager, &LayoutManager::onBlurScaleChange);
+    m_parameters.add(m_layourBlurScale);
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("LAYOUT", ofColor::purple);
+    folder->addSlider(m_layourBlurScale);
+    folder->expand();
+    m_gui.addBreak();
+}
 
 void GuiManager::setupCameraGui()
 {
@@ -142,11 +156,9 @@ void GuiManager::setupCameraGui()
     folder->addSlider(m_cameraY);
     folder->addSlider(m_cameraZ);
     //folder->addSlider(m_cameraFov);
-    //folder->expand();
+    folder->expand();
     
     m_gui.addBreak();
-    
- 
 }
 
 void GuiManager::update()
@@ -219,14 +231,14 @@ void GuiManager::onDropdownEvent(ofxDatGuiDropdownEvent e)
     if(e.target->getName() == "SCENES")
     {
         AppManager::getInstance().getSceneManager().changeScene(e.child);
-        //m_gui.getDropdown(e.target->getName())->expand();
+        m_gui.getDropdown(e.target->getName())->expand();
         m_gui.getDropdown(e.target->getName())->setLabel("SCENES:" + e.target->getLabel());
     }
     
     else if(e.target->getName() == "PREVIEW")
     {
         AppManager::getInstance().getLayoutManager().onSetPreviewMode(e.child);
-        //m_gui.getDropdown(e.target->getName())->expand();
+        m_gui.getDropdown(e.target->getName())->expand();
         m_gui.getDropdown(e.target->getName())->setLabel("PREVIEW:" + e.target->getLabel());
     }
 }

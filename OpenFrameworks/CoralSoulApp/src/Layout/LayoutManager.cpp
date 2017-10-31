@@ -367,4 +367,8 @@ void LayoutManager::setFullScreen()
     ofSetWindowShape(ofGetScreenWidth(),ofGetScreenHeight());
 }
 
+void LayoutManager::onBlurScaleChange(float& value)
+{
+     m_blur.setScale(ofClamp(value, 0, 10));
+}
 
