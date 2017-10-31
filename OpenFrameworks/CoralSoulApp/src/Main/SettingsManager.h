@@ -7,10 +7,20 @@
  */
 
 
-
 #pragma once
 
 #include "Manager.h"
+
+struct weather_settings
+{
+    float lat{0.0};
+    float lon{0.0};
+    float request_time{2.0};
+    string city{"berlin"};
+    string key{""};
+    string units{"metric"};
+};
+
 
 //========================== class SettingsManager ==============================
 //============================================================================
@@ -57,6 +67,8 @@ public:
     
     int getUdpPortSend() const {return m_portUdpSend;}
     
+    weather_settings getWeatherSettings() const {return m_weatherSettings;}
+    
     
 private:
     
@@ -72,6 +84,9 @@ private:
     //! Sets all the network properties
     void setNetworkProperties();
     
+    //! Sets all the weather properties
+    void setWeatherProperties();
+    
     //! Sets all the window properties
     void setWindowProperties();
     
@@ -86,7 +101,6 @@ private:
     
     //! Loads all the video  settings
     void loadVideoSettings();
-    
     
 private:
     
@@ -104,6 +118,7 @@ private:
     int                     m_portUdpSend;          ///< stores the UDP port to send UDP messages to
     string                  m_ipAddress;             ///< stores the Ip Address used for the Network communications
     string                  m_syphonName;           ///<stores the name of the syphon pipe name
+    weather_settings        m_weatherSettings;      ///<stores the weather api's settings
     
 };
 

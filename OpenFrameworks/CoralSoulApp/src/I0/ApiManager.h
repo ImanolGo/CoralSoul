@@ -10,7 +10,21 @@
 
 #include "ofMain.h"
 #include "Manager.h"
+#include "ofxSimpleTimer.h"
 
+
+struct weather_conditions
+{
+    float temp{0.0};
+    float humidity{0.0};
+    float windSpeed{0.0};
+    float windDirection{0.0};
+    float sunrise{0.0};
+    float sunset{0.0};
+    float clouds{0.0};
+    string  precipitationMode{"no"};
+    float  precipitationValue{0.0};
+};
 
 //========================== class ApiManager =======================================
 //===================================================================================
@@ -37,14 +51,30 @@ public:
     //! updates the manager
     void update();
     
+    void urlResponse(ofHttpResponse & response);
+    
+    void weatherTimerCompleteHandler( int &args ) ;
     
 private:
     
-   
-
-
- private:
+    void setupApis();
     
+    void setupWeatherApi();
+    
+    void setupTimers();
+    
+    void updateTimers();
+    
+    void parseWeather(string xml);
+    
+    float parseTime(string timeString);
+    
+
+private:
+    
+    ofxSimpleTimer          m_weatherTimer;
+    string                  m_weatherUrl;
+    weather_conditions      m_weatherConditions;
 
 };
 
