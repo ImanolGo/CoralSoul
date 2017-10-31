@@ -24,6 +24,7 @@ struct weather_conditions
     float clouds{0.0};
     string  precipitationMode{"no"};
     float  precipitationValue{0.0};
+    string city{""};
 };
 
 //========================== class ApiManager =======================================

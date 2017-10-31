@@ -10,6 +10,7 @@
 
 #include "Manager.h"
 #include "ofxDatGui.h"
+#include "ApiManager.h"
 
 //========================== class GuiManager ==============================
 //============================================================================
@@ -72,6 +73,7 @@ public:
     
     void onMatrixEvent(ofxDatGuiMatrixEvent e);
     
+    void onWeatherChange(const weather_conditions& value);
     
 private:
     
@@ -84,6 +86,8 @@ private:
     void setupPreviewGui();
     
     void setupCameraGui();
+    
+    void setupWeatherGui();
     
     void drawRectangle();
     
@@ -107,7 +111,14 @@ private:
     ofParameter<float>      m_cameraFov;
     
     ofParameter<float>      m_layourBlurScale;
-
+    
+    ofParameter<float>      m_weatherTemperature;
+    ofParameter<float>      m_weatherHumidity;
+    ofParameter<float>      m_weatherWindSpeed;
+    ofParameter<float>      m_weatherWindDirection;
+    ofParameter<float>      m_weatherPrecipitation;
+    
+    ofxDatGuiLabel*        m_cityLabel;
    
     bool        m_showGui;  //It defines the whether the gui should be shown or not
 };

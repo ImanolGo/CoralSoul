@@ -19,7 +19,7 @@ const string GuiManager::GUI_SETTINGS_NAME = "GUI";
 const int GuiManager::GUI_WIDTH = 350;
 
 
-GuiManager::GuiManager(): Manager(), m_showGui(true)
+GuiManager::GuiManager(): Manager(), m_showGui(true), m_cityLabel(NULL)
 {
 	//Intentionally left empty
 }
@@ -44,6 +44,7 @@ void GuiManager::setup()
     this->setupScenesGui();
     this->setupPreviewGui();
     this->setupLayoutGui();
+    this->setupWeatherGui();
     this->setupCameraGui();
     this->setupGuiEvents();
     this->loadGuiValues();
@@ -150,7 +151,7 @@ void GuiManager::setupCameraGui()
     m_cameraFov.addListener(modelManager, &ModelManager::onCameraFovChange);
     m_parameters.add(m_cameraFov);
     
-    ofxDatGuiFolder* folder = m_gui.addFolder("CAMERA", ofColor::blue);
+    ofxDatGuiFolder* folder = m_gui.addFolder("CAMERA", ofColor::yellow);
     //folder->addSlider(m_cameraDistance);
     folder->addSlider(m_cameraX);
     folder->addSlider(m_cameraY);
@@ -160,6 +161,45 @@ void GuiManager::setupCameraGui()
     
     m_gui.addBreak();
 }
+
+void GuiManager::setupWeatherGui()
+{
+ 
+    auto apiManager = &AppManager::getInstance().getApiManager();
+    
+    m_weatherTemperature.set("Temp.", 0.0, -20.0, 50.0);
+    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_parameters.add(m_weatherTemperature);
+    
+    m_weatherHumidity.set("Humidity", 0.0, 0.0, 100.0);
+    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_parameters.add(m_weatherHumidity);
+    
+    m_weatherWindSpeed.set("Wind Speed", 0.0, 0.0, 100.0);
+    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_parameters.add(m_weatherWindSpeed);
+    
+    m_weatherWindDirection.set("Wind Dir", 0.0, 0.0, 360.0);
+    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_parameters.add(m_weatherWindDirection);
+    
+    m_weatherPrecipitation.set("Prec.", 0.0, 0.0, 360.0);
+    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_parameters.add(m_weatherPrecipitation);
+ 
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("WEATHER", ofColor::blue);
+    m_cityLabel = folder->addLabel("CITY: ");
+    folder->addSlider(m_weatherTemperature);
+    folder->addSlider(m_weatherHumidity);
+    folder->addSlider(m_weatherWindSpeed);
+    folder->addSlider(m_weatherWindDirection);
+    folder->addSlider(m_weatherPrecipitation);
+    folder->expand();
+    
+    m_gui.addBreak();
+}
+
 
 void GuiManager::update()
 {
@@ -276,3 +316,15 @@ void GuiManager::onMatrixEvent(ofxDatGuiMatrixEvent e)
     cout << "onMatrixEvent " << e.child << " : " << e.enabled << endl;
 }
 
+void GuiManager::onWeatherChange(const weather_conditions& value)
+{
+    m_weatherTemperature = value.temp;
+    m_weatherHumidity = value.humidity;
+    m_weatherWindSpeed = value.windSpeed;
+    m_weatherWindDirection = value.windDirection;
+    m_weatherPrecipitation = value.precipitationValue;
+    
+    if(m_cityLabel!=NULL){
+        m_cityLabel->setLabel("CITY: " +  value.city);
+    }
+}

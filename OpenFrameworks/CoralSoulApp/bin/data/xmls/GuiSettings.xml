@@ -1,8 +1,13 @@
 <group>
 	<Blur>0.92</Blur>
+	<Temp_>22.51</Temp_>
+	<Humidity>73</Humidity>
+	<Wind_Speed>2.6</Wind_Speed>
+	<Wind_Dir>110</Wind_Dir>
+	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
-	<X>-33.71</X>
-	<Y>78.65</Y>
-	<Z>657.3</Z>
+	<X>0</X>
+	<Y>0</Y>
+	<Z>640.45</Z>
 	<FOV>54.61</FOV>
 </group>

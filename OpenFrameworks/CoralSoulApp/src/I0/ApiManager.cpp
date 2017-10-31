@@ -90,6 +90,7 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         if(response.request.name == "weather")
         {
             this->parseWeather(response.data);
+            AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
         }
     }
 }
@@ -140,7 +141,12 @@ void ApiManager::parseWeather(string xml)
     m_weatherConditions.sunrise = this->parseTime(attributes["rise"]);
     m_weatherConditions.sunset = this->parseTime(attributes["set"]);
     
-    ofLogNotice() <<"ApiManager::parseWeather << parseWeather ->  temp = " <<  m_weatherConditions.temp
+    path = "//current/city";
+    weatherXml.setTo(path);
+    attributes = weatherXml.getAttributes();
+    m_weatherConditions.city = attributes["name"];
+    
+    ofLogNotice() <<"ApiManager::parseWeather << parseWeather -> city = " << m_weatherConditions.city <<", temp = " <<  m_weatherConditions.temp
     << ", humidity = " << m_weatherConditions.humidity
     << ", wind speed = " << m_weatherConditions.windSpeed << ", wind direction = " << m_weatherConditions.windDirection
     << ", clouds = " << m_weatherConditions.clouds
@@ -180,6 +186,7 @@ float ApiManager::parseTime(string timeString)
     
     return time;
 }
+
 
 
 
