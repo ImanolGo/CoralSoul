@@ -81,6 +81,8 @@ private:
     
     void setupScenesGui();
     
+    void setupPreviewGui();
+    
     void setupCameraGui();
     
     void drawRectangle();

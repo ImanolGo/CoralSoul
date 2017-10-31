@@ -15,6 +15,9 @@
 #include "SvgVisual.h"
 #include "ImageVisual.h"
 #include "RectangleVisual.h"
+#include "ofxMask.h"
+#include "ofxBlur.h"
+
 
 //========================== class LayoutManager ==============================
 //============================================================================
@@ -25,6 +28,14 @@
 
 class LayoutManager: public Manager
 {
+    
+    enum PreviewMode{
+        MASK,
+        MODEL,
+        WIREFRAME
+    };
+
+    
 public:
     
     static const int MARGIN;
@@ -56,6 +67,8 @@ public:
     void setFullScreen();
     
     const ofFbo& getCurrentFbo(){return m_fbo;}
+    
+    void onSetPreviewMode(int mode) {m_previewMode = mode;}
 
 private:
 
@@ -76,6 +89,9 @@ private:
     //! Add all visuals as overlays
     void addVisuals();
 
+    void setupMask();
+    
+    void setupBlur();
     
     void setupFbo();
     
@@ -84,6 +100,8 @@ private:
     void updateOutputFbo();
     
     void update3dFbo();
+    
+    void updateMask();
     
     void drawFbos();
     
@@ -119,6 +137,11 @@ private:
     ofFbo               m_fbo;
     ofFbo               m_3dfbo;
     ofColor             m_color;
+    
+    ofxMask             m_mask;
+    
+    int                 m_previewMode;
+    ofxBlur             m_blur;
 
 };
 

@@ -56,6 +56,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new VideoScene("TEST_VIDEO"));
     m_mySceneManager.addScene(scene);
     
+    //Create Image Scene
+    scene = ofPtr<ofxScene> (new ImageScene("RAINBOW"));
+    m_mySceneManager.addScene(scene);
+    
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();

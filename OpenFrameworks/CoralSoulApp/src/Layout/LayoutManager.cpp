@@ -23,7 +23,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager()
+LayoutManager::LayoutManager(): Manager(), m_previewMode(0)
 {
 	//Intentionally left empty
 }
@@ -49,6 +49,8 @@ void LayoutManager::setup()
     this->createSvgVisuals();
     this->createImageVisuals();
     
+    this->setupBlur();
+    this->setupMask();
     this->setupFbo();
     this->setupWindowFrames();
 
@@ -56,6 +58,20 @@ void LayoutManager::setup()
 
 }
 
+
+void LayoutManager::setupBlur()
+{
+}
+
+void LayoutManager::setupMask()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    ofEnableArbTex();
+    m_mask.allocate(width, height, ofxMask::LUMINANCE);
+    ofDisableArbTex();
+}
 
 
 void LayoutManager::setupFbo()
@@ -140,6 +156,19 @@ void LayoutManager::resetWindowFrames()
 void LayoutManager::update()
 {
     this->updateFbos();
+    this->updateMask();
+}
+
+void LayoutManager::updateMask()
+{
+    m_mask.beginMask();
+        AppManager::getInstance().getModelManager().getMask().draw(0,0);
+    m_mask.endMask();
+    
+    m_mask.begin();
+         AppManager::getInstance().getSceneManager().draw();
+        //ofDrawRectangle(100,100,500,500);
+    m_mask.end();
 }
 
 void LayoutManager::updateFbos()
@@ -156,11 +185,13 @@ void LayoutManager::updateOutputFbo()
     ofPushStyle();
     ofClear(0, 0, 0);
     
-        AppManager::getInstance().getSceneManager().draw();
+       // AppManager::getInstance().getSceneManager().draw();
+        m_mask.draw();
     
     ofPopStyle();
     m_fbo.end();
     ofDisableAlphaBlending();
+    
 }
 
 void LayoutManager::update3dFbo()
@@ -168,8 +199,18 @@ void LayoutManager::update3dFbo()
     ofEnableAlphaBlending();
     m_3dfbo.begin();
     ofClear(0, 0, 0);
-        ofBackgroundGradient(ofColor::gray, ofColor::black);
-        AppManager::getInstance().getModelManager().draw();
+        //ofBackgroundGradient(ofColor::gray, ofColor::black);
+        if(m_previewMode == MASK){
+            //AppManager::getInstance().getModelManager().getMask().draw(0,0);
+            m_mask.drawMasker();
+        }
+        else if(m_previewMode == MODEL){
+            AppManager::getInstance().getModelManager().getModel().draw(0,0);
+        }
+        else if(m_previewMode == WIREFRAME){
+            AppManager::getInstance().getModelManager().getWireframe().draw(0,0);
+        }
+    
     m_3dfbo.end();
     ofDisableAlphaBlending();
     
@@ -269,6 +310,7 @@ void LayoutManager::draw()
     
     this->drawFbos();
     this->drawText();
+    
 }
 
 

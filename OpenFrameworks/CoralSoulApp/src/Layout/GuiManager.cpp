@@ -42,6 +42,7 @@ void GuiManager::setup()
 
     this->setupGuiParameters();
     this->setupScenesGui();
+    this->setupPreviewGui();
     this->setupCameraGui();
     this->setupGuiEvents();
     this->loadGuiValues();
@@ -92,6 +93,24 @@ void GuiManager::setupScenesGui()
     m_gui.addBreak();
     
 }
+
+void GuiManager::setupPreviewGui()
+{
+    vector<string> opts;
+    opts.push_back("MASK");
+    opts.push_back("MODEL");
+    opts.push_back("WIREFRAME");
+    
+    string label = "PREVIEW";
+    
+    m_gui.addDropdown(label, opts);
+    auto menu = m_gui.getDropdown(label);
+    //menu->expand(); //let's have it open by default
+    menu->setStripeColor(ofColor::yellow);
+    for (int i=0; i<menu->size(); i++) menu->getChildAt(i)->setStripeColor(ofColor::yellow);
+    m_gui.addBreak();
+}
+
 
 void GuiManager::setupCameraGui()
 {
@@ -202,6 +221,13 @@ void GuiManager::onDropdownEvent(ofxDatGuiDropdownEvent e)
         AppManager::getInstance().getSceneManager().changeScene(e.child);
         //m_gui.getDropdown(e.target->getName())->expand();
         m_gui.getDropdown(e.target->getName())->setLabel("SCENES:" + e.target->getLabel());
+    }
+    
+    else if(e.target->getName() == "PREVIEW")
+    {
+        AppManager::getInstance().getLayoutManager().onSetPreviewMode(e.child);
+        //m_gui.getDropdown(e.target->getName())->expand();
+        m_gui.getDropdown(e.target->getName())->setLabel("PREVIEW:" + e.target->getLabel());
     }
 }
 

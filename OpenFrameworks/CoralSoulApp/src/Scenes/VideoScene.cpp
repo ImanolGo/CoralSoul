@@ -42,10 +42,13 @@ void VideoScene::setupVideo()
 //
 //        ofEnableDataPath();
         
+       
+       
         string path = videoPaths.at(getName());
         m_videoPlayer.load(path);
         m_videoPlayer.setLoopState(OF_LOOP_NORMAL);
         m_videoPlayer.play();
+        
     }
     else{
         ofLogNotice() << getName() + "::setupVideo-> Cannot find " << getName();

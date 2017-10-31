@@ -40,6 +40,10 @@ public:
     
     const ofFbo & getMask() const {return m_fboMask;}
     
+    const ofFbo & getModel() const {return m_fboModel;}
+    
+    const ofFbo & getWireframe() const {return m_fboWireframe;}
+    
     void onCameraDistanceChange(float& value);
     
     void onCameraXChange(float& value);
@@ -67,6 +71,8 @@ private:
     
     void drawMask();
     
+    void drawWireframe();
+    
     void bindTexture();
     
     void unbindTexture();
@@ -80,7 +86,7 @@ private:
     ofEasyCam            m_cam;
     ofFbo                m_fboMask;
     ofFbo                m_fboModel;
-    ofFbo                m_fboWireFrame;
+    ofFbo                m_fboWireframe;
 
     ofImage img;
 };

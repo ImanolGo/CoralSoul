@@ -57,8 +57,8 @@ void ModelManager::setupFbos()
     m_fboModel.allocate(width, height);
     m_fboModel.begin(); ofClear(0); m_fboModel.end();
     
-    m_fboWireFrame.allocate(width, height);
-    m_fboWireFrame.begin(); ofClear(0); m_fboWireFrame.end();
+    m_fboWireframe.allocate(width, height);
+    m_fboWireframe.begin(); ofClear(0); m_fboWireframe.end();
 }
 
 void ModelManager::setupCamera()
@@ -103,12 +103,28 @@ void ModelManager::updateFbos()
             m_model.drawFaces();
         m_cam.end();
     m_fboMask.end();
+    
+    m_fboWireframe.begin();
+    ofClear(0, 0, 0);
+    m_cam.begin();
+        m_model.drawWireframe();
+    m_cam.end();
+    m_fboWireframe.end();
+    
+    m_fboModel.begin();
+        ofClear(0, 0, 0);
+        m_cam.begin();
+        this->drawModel();
+        m_cam.end();
+    m_fboModel.end();
 }
 
 void ModelManager::draw()
 {
   //this->drawModel();
-  this->drawMask();
+  //this->drawMask();
+  //m_fboModel.draw(0,0);
+  m_fboWireframe.draw(0,0);
 }
 
 void ModelManager::drawMask()
@@ -118,52 +134,76 @@ void ModelManager::drawMask()
 
 void ModelManager::drawModel()
 {
-    ofDisableArbTex();
-
-    ofSetColor(255);
     ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
 
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 
+    ofEnableDepthTest();
+    #ifndef TARGET_PROGRAMMABLE_GL
+        glShadeModel(GL_SMOOTH); //some model / light stuff
+    #endif
+    m_light.enable();
+    ofEnableSeparateSpecularLight();
+    
+#ifndef TARGET_PROGRAMMABLE_GL
+    glEnable(GL_NORMALIZE);
+#endif
+
+    //img.bind();
+    
+    ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
+    
+    ofMultMatrix(m_model.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
+    
+    ofMaterial & material = meshHelper.material;
+    m_mesh.drawFaces();
+    
+    //m_model.drawFaces();
+
+    //img.unbind();
+
+    ofDisableDepthTest();
+    m_light.disable();
+    ofDisableLighting();
+    ofDisableSeparateSpecularLight();
+}
+
+void ModelManager::drawWireframe()
+{
+    ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
+    
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
     ofEnableDepthTest();
 #ifndef TARGET_PROGRAMMABLE_GL
     glShadeModel(GL_SMOOTH); //some model / light stuff
 #endif
     m_light.enable();
     ofEnableSeparateSpecularLight();
-
+    
 #ifndef TARGET_PROGRAMMABLE_GL
     glEnable(GL_NORMALIZE);
 #endif
-    ofPushMatrix();
-    ofTranslate(m_model.getPosition().x+100, m_model.getPosition().y, 0);
-    ofRotate(-ofGetMouseX(), 0, 1, 0);
-    ofTranslate(-m_model.getPosition().x, -m_model.getPosition().y, 0);
-
+    
+    //img.bind();
+    
     ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
-
-    //ofMultMatrix(m_model.getModelMatrix());
-    //ofMultMatrix(meshHelper.matrix);
-
-    //ofMaterial & material = meshHelper.material;
-   // ofDisableArbTex();
-    img.bind();
-    //bindTexture();
-    //material.begin();
-    //m_mesh.drawWireframe();
-    //m_mesh.drawFaces();
-    m_model.drawFaces();
-    //material.end();
-
-     //unbindTexture();
-    img.unbind();
-    ofPopMatrix();
-
+    
+    ofMultMatrix(m_model.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
+    
+    ofMaterial & material = meshHelper.material;
+    m_mesh.drawWireframe();
+    
+    //m_model.drawFaces();
+    
+    //img.unbind();
+    
     ofDisableDepthTest();
     m_light.disable();
     ofDisableLighting();
     ofDisableSeparateSpecularLight();
-   
 }
 
 
