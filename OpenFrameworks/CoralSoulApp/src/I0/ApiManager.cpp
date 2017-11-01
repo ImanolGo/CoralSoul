@@ -68,6 +68,8 @@ void ApiManager::setupWeatherApi()
     m_weatherUrl+="&mode=xml";
     
     ofLogNotice() <<"ApiManager::setupWeatherApi << weather url = " <<  m_weatherUrl;
+    
+    ofLoadURLAsync(m_weatherUrl, "weather");
 }
 
 
@@ -157,7 +159,7 @@ void ApiManager::parseWeather(string xml)
 
 void ApiManager::weatherTimerCompleteHandler( int &args )
 {
-    ofLogNotice() <<"ApiManager::weatherTimerCompleteHandler";
+    //ofLogNotice() <<"ApiManager::weatherTimerCompleteHandler";
     m_weatherTimer.start(false);
     ofLoadURLAsync(m_weatherUrl, "weather");
 }
