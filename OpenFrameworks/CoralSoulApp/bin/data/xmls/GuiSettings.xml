@@ -1,9 +1,12 @@
 <group>
 	<Blur>0.92</Blur>
-	<Temp_>22.01</Temp_>
-	<Humidity>72</Humidity>
-	<Wind_Speed>0.5</Wind_Speed>
-	<Wind_Dir>0</Wind_Dir>
+	<LightX>-68.76</LightX>
+	<LightY>-180</LightY>
+	<LightZ>20.22</LightZ>
+	<Temp_>18.52</Temp_>
+	<Humidity>82</Humidity>
+	<Wind_Speed>2.6</Wind_Speed>
+	<Wind_Dir>310</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
 	<X>0</X>

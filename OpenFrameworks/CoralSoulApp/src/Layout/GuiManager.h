@@ -87,6 +87,8 @@ private:
     
     void setupCameraGui();
     
+    void setupLightGui();
+    
     void setupWeatherGui();
     
     void drawRectangle();
@@ -117,6 +119,10 @@ private:
     ofParameter<float>      m_weatherWindSpeed;
     ofParameter<float>      m_weatherWindDirection;
     ofParameter<float>      m_weatherPrecipitation;
+    
+    ofParameter<float>      m_lightX;
+    ofParameter<float>      m_lightY;
+    ofParameter<float>      m_lightZ;
     
     ofxDatGuiLabel*        m_cityLabel;
    

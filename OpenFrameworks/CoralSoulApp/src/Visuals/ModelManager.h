@@ -54,10 +54,19 @@ public:
     
     void onCameraFovChange(float& value);
 
-
+    void onLightXChange(float& value);
+    
+    void onLightYChange(float& value);
+    
+    void onLightZChange(float& value);
+    
+    void onLightColorChange(ofColor& color);
+    
 private:
 
     void setupCamera();
+    
+    void setupLight();
     
     void setupFbos();
     
@@ -77,6 +86,7 @@ private:
     
     void unbindTexture();
     
+    void setLightOri(ofLight &light, ofVec3f rot);
 
 private:
 
@@ -87,6 +97,8 @@ private:
     ofFbo                m_fboMask;
     ofFbo                m_fboModel;
     ofFbo                m_fboWireframe;
+    
+    ofVec3f             m_light_rot;
 
     ofImage img;
 };

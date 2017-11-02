@@ -39,6 +39,7 @@ void ModelManager::setup()
     ofLogNotice() <<"ModelManager::initialized";
 
     this->setupCamera();
+    this->setupLight();
 	this->loadModel();
     this->setupFbos();
     
@@ -66,6 +67,16 @@ void ModelManager::setupCamera()
     //m_cam.setDistance(600);
     m_cam.disableMouseInput();
     m_cam.setTarget(ofVec3f(0));
+}
+
+void ModelManager::setupLight()
+{
+    m_light.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
+    m_light.setSpecularColor(ofColor(255.0f, 255.0f, 255.0f));
+    
+    m_light.setDirectional();
+    m_light_rot = ofVec3f(0, -90, 0);
+    this->setLightOri(m_light, m_light_rot);
 }
 
 void ModelManager::loadModel()
@@ -238,6 +249,16 @@ void ModelManager::unbindTexture() {
 }
 
 
+void ModelManager::setLightOri(ofLight &light, ofVec3f rot)
+{
+    ofVec3f xax(1, 0, 0);
+    ofVec3f yax(0, 1, 0);
+    ofVec3f zax(0, 0, 1);
+    ofQuaternion q;
+    q.makeRotate(rot.x, xax, rot.y, yax, rot.z, zax);
+    light.setOrientation(q);
+}
+
 void ModelManager::onCameraDistanceChange(float& value)
 {
     m_cam.setDistance(value);
@@ -271,5 +292,30 @@ void ModelManager::onCameraZChange(float& value)
 void ModelManager::onCameraFovChange(float& value)
 {
     m_cam.setFov(value);
+}
+
+
+void ModelManager::onLightXChange(float& value)
+{
+    m_light_rot.x = value;
+    setLightOri(m_light, m_light_rot);
+}
+
+void ModelManager::onLightYChange(float& value)
+{
+    m_light_rot.y = value;
+    setLightOri(m_light, m_light_rot);
+}
+
+void ModelManager::onLightZChange(float& value)
+{
+    m_light_rot.z = value;
+    setLightOri(m_light, m_light_rot);
+}
+
+void ModelManager::onLightColorChange(ofColor& color)
+{
+    m_light.setDiffuseColor(color);
+    m_light.setSpecularColor(color);
 }
 

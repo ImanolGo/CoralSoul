@@ -44,6 +44,7 @@ void GuiManager::setup()
     this->setupScenesGui();
     this->setupPreviewGui();
     this->setupLayoutGui();
+    this->setupLightGui();
     this->setupWeatherGui();
     this->setupCameraGui();
     this->setupGuiEvents();
@@ -126,6 +127,33 @@ void GuiManager::setupLayoutGui()
     folder->expand();
     m_gui.addBreak();
 }
+
+void GuiManager::setupLightGui()
+{
+    auto modelManager = &AppManager::getInstance().getModelManager();
+    
+    m_lightX.set("LightX", 0.0, -180.0, 180.0);
+    m_lightX.addListener(modelManager, &ModelManager::onLightXChange);
+    m_parameters.add(m_lightX);
+    
+    m_lightY.set("LightY", 0.0, -180.0, 180.0);
+    m_lightY.addListener(modelManager, &ModelManager::onLightYChange);
+    m_parameters.add(m_lightY);
+    
+    m_lightZ.set("LightZ", 0.0, -180.0, 180.0);
+    m_lightZ.addListener(modelManager, &ModelManager::onLightZChange);
+    m_parameters.add(m_lightZ);
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("LIGHT", ofColor::white);
+    folder->addSlider(m_lightX);
+    folder->addSlider(m_lightY);
+    folder->addSlider(m_lightZ);
+    folder->addColorPicker("LIGHT");
+    folder->expand();
+    m_gui.addBreak();
+
+}
+
 
 void GuiManager::setupCameraGui()
 {
@@ -287,6 +315,11 @@ void GuiManager::onColorPickerEvent(ofxDatGuiColorPickerEvent e)
 {
     cout << "onColorPickerEvent: " << e.target->getName() << " Selected" << endl;
     
+    if(e.target->getName() == "LIGHT")
+    {
+        //cout << "the picker was set to: " << e.color << endl;
+        AppManager::getInstance().getModelManager().onLightColorChange(e.color);
+    }
     
 }
 
