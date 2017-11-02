@@ -53,6 +53,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.db
 
 # Windows shortcuts
 *.lnk

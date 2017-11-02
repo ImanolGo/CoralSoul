@@ -57,7 +57,7 @@ public:
     
     void onSetAudioMode(bool& value);
     
-    int getWidth() {return GUI_WIDTH;}
+    int getWidth() {return m_gui.getWidth();}
     
     int getHeight() {return m_gui.getHeight();}
     

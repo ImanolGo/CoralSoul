@@ -61,11 +61,11 @@ public:
     
     string getIpAddress() const {return m_ipAddress;}
     
-    string getSyphonName() const {return m_syphonName;}
+    string getSpoutName() const {return m_spoutName;}
     
-    int getUdpPortReceive() const {return m_portUdpReceive;}
+    int getOscPortReceive() const {return m_portOscReceive;}
     
-    int getUdpPortSend() const {return m_portUdpSend;}
+    int getOscPortSend() const {return m_portOscSend;}
     
     weather_settings getWeatherSettings() const {return m_weatherSettings;}
     
@@ -114,10 +114,10 @@ private:
     ColorMap                m_colors;               ///< stores all the application's colors
     float                   m_appWidth;             ///< stores the applications width
     float                   m_appHeight;            ///< stores the applications height
-    int                     m_portUdpReceive;       ///< stores the UDP port to receive UDP messages from
-    int                     m_portUdpSend;          ///< stores the UDP port to send UDP messages to
+    int                     m_portOscReceive;       ///< stores the  port to receive OSC messages from
+    int                     m_portOscSend;          ///< stores the  port to send OSC messages to
     string                  m_ipAddress;             ///< stores the Ip Address used for the Network communications
-    string                  m_syphonName;           ///<stores the name of the syphon pipe name
+    string                  m_spoutName;			///<stores the name of the spout pipe name
     weather_settings        m_weatherSettings;      ///<stores the weather api's settings
     
 };

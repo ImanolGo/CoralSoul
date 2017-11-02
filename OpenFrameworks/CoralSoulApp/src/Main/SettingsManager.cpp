@@ -118,7 +118,7 @@ void SettingsManager::setWindowProperties()
         bool fullscreen = ofToBool(attributes["fullscreen"]);
         
         ofSetFullscreen(fullscreen);
-        ofSetWindowShape(m_appWidth,m_appHeight);
+        ofSetWindowShape(ofGetScreenWidth(),ofGetScreenHeight());
         if(!fullscreen){
             ofSetWindowPosition(x,y);
         }
@@ -168,10 +168,10 @@ void SettingsManager::setNetworkProperties()
         typedef   std::map<string, string>   AttributesMap;
         AttributesMap attributes = m_xml.getAttributes();
         
-        m_portUdpReceive  = ofToInt(attributes["portUdpReceive"]);
-        m_portUdpSend  = ofToInt(attributes["portUdpSend"]);
+        m_portOscReceive  = ofToInt(attributes["portOscReceive"]);
+        m_portOscSend  = ofToInt(attributes["portOscSend"]);
         m_ipAddress  = ofToString(attributes["ipAddress"]);
-        m_syphonName = ofToString(attributes["syphon"]);
+        m_spoutName = ofToString(attributes["spout"]);
         
         
         ofLogNotice() <<"SettingsManager::setNetworkProperties->  successfully loaded the network settings" ;
