@@ -93,8 +93,10 @@ void LayoutManager::setupFbo()
 
 void LayoutManager::setupSpout()
 {
-	string spoutName = AppManager::getInstance().getSettingsManager().getSpoutName();
-	m_spoutSender.init(spoutName);
+    #if defined(TARGET_WIN32)
+        string spoutName = AppManager::getInstance().getSettingsManager().getSpoutName();
+        m_spoutSender.init(spoutName);
+    #endif
 }
 
 void LayoutManager::resetWindowRects()
@@ -190,7 +192,9 @@ void LayoutManager::updateFbos()
 
 void LayoutManager::updateSpout()
 {
-	m_spoutSender.send(m_fbo.getTexture());
+    #if defined(TARGET_WIN32)
+        m_spoutSender.send(m_fbo.getTexture());
+    #endif
 }
 
 void LayoutManager::updateOutputFbo()

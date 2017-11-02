@@ -17,7 +17,12 @@
 #include "RectangleVisual.h"
 #include "ofxMask.h"
 #include "ofxBlur.h"
+
+#if defined(TARGET_WIN32)
 #include "ofxSpout.h"
+#endif
+
+
 
 
 //========================== class LayoutManager ==============================
@@ -150,9 +155,10 @@ private:
     int                 m_previewMode;
     ofxBlur             m_blur;
 	
-	ofxSpout::Sender	m_spoutSender;
-
-
+    
+    #if defined(TARGET_WIN32)
+        ofxSpout::Sender    m_spoutSender;
+    #endif
 };
 
 //==========================================================================

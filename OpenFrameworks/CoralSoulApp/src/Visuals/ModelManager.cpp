@@ -73,8 +73,10 @@ void ModelManager::setupLight()
 {
     m_light.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
     m_light.setSpecularColor(ofColor(255.0f, 255.0f, 255.0f));
+    m_light.setAmbientColor(ofColor(0));
     
     m_light.setDirectional();
+    m_light.setAttenuation();
     m_light_rot = ofVec3f(0, -90, 0);
     this->setLightOri(m_light, m_light_rot);
 }
@@ -145,6 +147,10 @@ void ModelManager::drawMask()
 
 void ModelManager::drawModel()
 {
+    
+    // turn on smooth lighting //
+    ofSetSmoothLighting(true);
+    
     ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
 
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -164,13 +170,13 @@ void ModelManager::drawModel()
     
     ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
     
-    ofMultMatrix(m_model.getModelMatrix());
-    ofMultMatrix(meshHelper.matrix);
+    //ofMultMatrix(m_model.getModelMatrix());
+    //ofMultMatrix(meshHelper.matrix);
     
     ofMaterial & material = meshHelper.material;
-    m_mesh.drawFaces();
+    //m_mesh.drawFaces();
     
-    //m_model.drawFaces();
+    m_model.drawFaces();
 
     //img.unbind();
 
