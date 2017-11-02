@@ -52,13 +52,12 @@ void LayoutManager::setup()
     this->setupBlur();
     this->setupMask();
     this->setupFbo();
+	this->setupSpout();
     this->setupWindowFrames();
 
     //this->addVisuals();
 
 }
-
-
 void LayoutManager::setupBlur()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
@@ -92,6 +91,11 @@ void LayoutManager::setupFbo()
     m_3dfbo.begin(); ofClear(0); m_3dfbo.end();
 }
 
+void LayoutManager::setupSpout()
+{
+	string spoutName = AppManager::getInstance().getSettingsManager().getSpoutName();
+	m_spoutSender.init(spoutName);
+}
 
 void LayoutManager::resetWindowRects()
 {
@@ -160,6 +164,7 @@ void LayoutManager::update()
 {
     this->updateFbos();
     this->updateMask();
+	this->updateSpout();
 }
 
 void LayoutManager::updateMask()
@@ -183,6 +188,10 @@ void LayoutManager::updateFbos()
     this->update3dFbo();
 }
 
+void LayoutManager::updateSpout()
+{
+	m_spoutSender.send(m_fbo.getTexture());
+}
 
 void LayoutManager::updateOutputFbo()
 {

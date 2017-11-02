@@ -1,6 +1,7 @@
 /*
 
-			SpoutReceiver.h
+					SpoutSender.h
+ 
 
 		Copyright (c) 2014-2015, Lynn Jarvis. All rights reserved.
 
@@ -23,63 +24,59 @@
 		INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 		LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 		OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- 
+
 */
 #pragma once
 
-#ifndef __SpoutReceiver__
-#define __SpoutReceiver__
+#ifndef __SpoutSender__
+#define __SpoutSender__
 
 #include "spoutSDK.h"
 
-class SPOUT_DLLEXP SpoutReceiver {
+class SPOUT_DLLEXP SpoutSender {
 
 	public:
 
-	SpoutReceiver();
-    ~SpoutReceiver();
+	SpoutSender();
+    ~SpoutSender();
 
-	bool CreateReceiver(char* Sendername, unsigned int &width, unsigned int &height, bool bUseActive = false);
-	bool ReceiveTexture(char* Sendername, unsigned int &width, unsigned int &height, GLuint TextureID = 0, GLuint TextureTarget = 0, bool bInvert = false, GLuint HostFBO = 0);
-	bool ReceiveImage  (char* Sendername, unsigned int &width, unsigned int &height, unsigned char * pixels, GLenum glFormat = GL_RGBA, GLuint HostFBO = 0);
-	bool GetImageSize  (char* Sendername, unsigned int &width, unsigned int &height, bool &bMemoryMode);
-	void ReleaseReceiver(); 
+	// bool CreateSender(const char *Sendername, unsigned int width, unsigned int height, DWORD dwFormat = 0);
+	bool CreateSender(char *Sendername, unsigned int width, unsigned int height, DWORD dwFormat = 0);
+	// bool UpdateSender(const char *Sendername, unsigned int width, unsigned int height);
+	bool UpdateSender(char *Sendername, unsigned int width, unsigned int height);
+	void ReleaseSender(DWORD dwMsec = 0);
 
-	bool BindSharedTexture();
-	bool UnBindSharedTexture();
-	bool DrawSharedTexture(float max_x = 1.0, float max_y = 1.0, float aspect = 1.0, bool bInvert = true);
-	
-	int  GetSenderCount();
-	bool GetSenderName(int index, char* Sendername, int MaxSize = 256);
-	bool GetSenderInfo(const char* Sendername, unsigned int &width, unsigned int &height, HANDLE &dxShareHandle, DWORD &dwFormat);
+	bool SendImage(unsigned char* pixels, unsigned int width, unsigned int height, GLenum glFormat = GL_RGBA, bool bAlignment = true, bool bInvert=false);
+	bool SendTexture(GLuint TextureID, GLuint TextureTarget, unsigned int width, unsigned int height, bool bInvert=true, GLuint HostFBO = 0);
+	bool DrawToSharedTexture(GLuint TextureID, GLuint TextureTarget, unsigned int width, unsigned int height, float max_x = 1.0, float max_y = 1.0, float aspect = 1.0, bool bInvert = false, GLuint HostFBO = 0);
 
-	bool GetActiveSender(char* Sendername);
-	bool SetActiveSender(char* Sendername);
-		
 	bool SelectSenderPanel(const char* message = NULL);
-
-	bool GetMemoryShareMode();
-	bool SetMemoryShareMode(bool bMemory = true);	
 
 	bool SetDX9(bool bDX9 = true); // set to use DirectX 9 (default is DirectX 11)
 	bool GetDX9();
+	bool SetMemoryShareMode(bool bMem = true);
+	bool GetMemoryShareMode();
 
-	void SetDX9compatible(bool bCompatible = true);
+	void SetDX9compatible(bool bCompatible = true); // DirectX 11 format compatible with DirectX 9
 	bool GetDX9compatible();
 
-	int GetNumAdapters(); // Get the number of graphics adapters in the system
+	int  GetNumAdapters(); // Get the number of graphics adapters in the system
 	bool GetAdapterName(int index, char *adaptername, int maxchars); // Get an adapter name
 	bool SetAdapter(int index = 0); // Set required graphics adapter for output
-	int GetAdapter(); // Get the current adapter index
+	int  GetAdapter(); // Get the current adapter index
+
+	bool GetHostPath(const char *sendername, char *hostpath, int maxchars); // The path of the host that produced the sender
 
 	bool SetVerticalSync(bool bSync = true);
-	int GetVerticalSync();
+	int  GetVerticalSync();
 
-	Spout spout; // for debug
+	bool SenderDebug(char *Sendername, int size);
+
+	Spout spout; // LJ DEBUG - for testing
 
 protected :
 
-	// Spout spout;
+	bool bInv; // LJ DEBUG Transition flag for a 2.005 app with a 2.004 user installation
 
 };
 

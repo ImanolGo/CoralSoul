@@ -8,7 +8,7 @@ This software provides a generative visuals controlled by real time weather and 
 
 ## Installation
 
-Developed for MacOS Sierra under OpenFrameworks 0.9.8
+Developed for Microsoft Windows 10 under OpenFrameworks 0.9.8
 
 ## Credits
 

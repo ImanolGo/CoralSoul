@@ -17,6 +17,7 @@
 #include "RectangleVisual.h"
 #include "ofxMask.h"
 #include "ofxBlur.h"
+#include "ofxSpout.h"
 
 
 //========================== class LayoutManager ==============================
@@ -96,6 +97,8 @@ private:
     void setupBlur();
     
     void setupFbo();
+
+	void setupSpout();
     
     void updateFbos();
     
@@ -104,6 +107,8 @@ private:
     void update3dFbo();
     
     void updateMask();
+
+	void updateSpout();
     
     void drawFbos();
     
@@ -144,6 +149,9 @@ private:
     
     int                 m_previewMode;
     ofxBlur             m_blur;
+	
+	ofxSpout::Sender	m_spoutSender;
+
 
 };
 
