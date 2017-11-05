@@ -12,6 +12,7 @@
 		0865E5F21FACBD360090C15C /* ofxFXObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0865E5EE1FACBD360090C15C /* ofxFXObject.cpp */; };
 		0865E61A1FADC22E0090C15C /* WireFrameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0865E6181FADC22E0090C15C /* WireFrameScene.cpp */; };
 		0865E61E1FAE2BE20090C15C /* MaskManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0865E61C1FAE2BE20090C15C /* MaskManager.cpp */; };
+		0865E6221FAF770F0090C15C /* RainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0865E6201FAF770F0090C15C /* RainScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
 		12A8C9C212129D904A9DB2C1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A555C6B34D5D8F88CBE349A8 /* OscPrintReceivedElements.cpp */; };
 		15FA0788DED9B05645862A3D /* ofxEasingCubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2647D2EA00878BEB0023C444 /* ofxEasingCubic.cpp */; };
@@ -184,6 +185,8 @@
 		0865E6191FADC22E0090C15C /* WireFrameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WireFrameScene.h; path = Scenes/WireFrameScene.h; sourceTree = "<group>"; };
 		0865E61C1FAE2BE20090C15C /* MaskManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MaskManager.cpp; path = Layout/MaskManager.cpp; sourceTree = "<group>"; };
 		0865E61D1FAE2BE20090C15C /* MaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaskManager.h; path = Layout/MaskManager.h; sourceTree = "<group>"; };
+		0865E6201FAF770F0090C15C /* RainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RainScene.cpp; path = Scenes/RainScene.cpp; sourceTree = "<group>"; };
+		0865E6211FAF770F0090C15C /* RainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RainScene.h; path = Scenes/RainScene.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
@@ -1140,6 +1143,8 @@
 				15AE7B79BBACBC510C450229 /* VideoScene.h */,
 				0865E6181FADC22E0090C15C /* WireFrameScene.cpp */,
 				0865E6191FADC22E0090C15C /* WireFrameScene.h */,
+				0865E6201FAF770F0090C15C /* RainScene.cpp */,
+				0865E6211FAF770F0090C15C /* RainScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1534,6 +1539,7 @@
 				C6B3BFC2668F137F745DC3C6 /* CameraAnimationsManager.cpp in Sources */,
 				8C9DFFBD826A20F752ED0CD6 /* CameraManager.cpp in Sources */,
 				DC16DA963E4E5873F0AE7C9E /* LightManager.cpp in Sources */,
+				0865E6221FAF770F0090C15C /* RainScene.cpp in Sources */,
 				6F36C225B48477DFCCA6FB64 /* ResourceManager.cpp in Sources */,
 				68A59FFAF8D6A1C715A69CD4 /* EngineFont.cpp in Sources */,
 				3A6C7D72771284673CBE247D /* ImageVisual.cpp in Sources */,

@@ -60,7 +60,7 @@ public:
     
     void onLightZChange(float& value);
     
-    void onLightColorChange(ofColor& color);
+    void onLightColorChange(ofColor color);
     
 private:
 

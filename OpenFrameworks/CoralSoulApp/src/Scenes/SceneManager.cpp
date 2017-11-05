@@ -64,6 +64,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new WireFrameScene());
     m_mySceneManager.addScene(scene);
     
+    //Create WireFrame Scene
+    scene = ofPtr<ofxScene> (new RainScene());
+    m_mySceneManager.addScene(scene);
+    
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();

@@ -83,12 +83,14 @@ void ModelManager::setupLight()
     m_light_pos.set(ofGetWidth()*.5, ofGetHeight()*.5, 0);
     m_light.setPosition(m_light_pos.x, m_light_pos.y, 0);
     
-    m_material.setAmbientColor(0);
+    m_material.setAmbientColor(10);
     m_material.setSpecularColor(0);
     m_material.setShininess(0);
     //m_material.setSpecularColor(0);
     
     m_light.setDirectional();
+
+    //m_light.setAmbientColor(ofColor(200));
     //m_light.setAttenuation();
     m_light_rot = ofVec3f(0, -90, 0);
     this->setLightOri(m_light, m_light_rot);
@@ -98,7 +100,8 @@ void ModelManager::loadModel()
 {
     //load the model - the 3ds and the texture file need to be in the same folder
     m_simpleModel.loadModel("images/model/SimplifiedWall.obj");
-    m_model.loadModel("images/model/TexturedWall.obj");
+    //m_model.loadModel("images/model/TexturedWall.obj");
+    m_model.loadModel("images/model/ROCA_MODELO_VFX_233000.obj");
     
     //you can create as many rotations as you want
     //choose which axis you want it to effect
@@ -167,26 +170,35 @@ void ModelManager::drawModel()
 {
      //ofDisableArbTex();
     //ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
+
+   // ofGetGlobalAmbientColor();
     
+    //ofSetGlobalAmbientColor(ofColor(200));
+
     m_fboTexture.begin();
         AppManager::getInstance().getSceneManager().draw();
     m_fboTexture.end();
 
+    m_light.enable();
     //img.getTexture().bind();
-    m_fboTexture.getTexture().bind();
+    
+   // m_fboTexture.getTexture().bind();
     //this->bindTexture();
 
     ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
-
     //ofMultMatrix(m_model.getModelMatrix());
     //ofMultMatrix(meshHelper.matrix);
+    
+   // m_material.begin();
+    //ofMaterial & material = meshHelper.material;
+    //m_mesh.drawFaces();
 
-    ofMaterial & material = meshHelper.material;
+
     m_model.drawFaces();
+    
+   // m_material.end();
 
-    //m_model.drawFaces();
-
-    m_fboTexture.getTexture().unbind();
+    //m_fboTexture.getTexture().unbind();
     //img.getTexture().unbind();
     //this->unbindTexture();
 
@@ -331,7 +343,7 @@ void ModelManager::onLightZChange(float& value)
     setLightOri(m_light, m_light_rot);
 }
 
-void ModelManager::onLightColorChange(ofColor& color)
+void ModelManager::onLightColorChange(ofColor color)
 {
     m_light.setDiffuseColor(color);
     m_light.setSpecularColor(color);

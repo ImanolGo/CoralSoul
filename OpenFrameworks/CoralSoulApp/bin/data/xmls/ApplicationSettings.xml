@@ -19,6 +19,7 @@
 
     <texture name="Equalizer" path="images/general/equalizer.png"/>
     <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
+    <texture name="WATER" path="images/general/waterTexture.jpg"/>
 
   </textures>
 
