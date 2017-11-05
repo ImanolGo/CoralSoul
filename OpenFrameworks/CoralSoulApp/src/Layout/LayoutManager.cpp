@@ -44,6 +44,7 @@ void LayoutManager::setup()
 
 	Manager::setup();
 
+    //ofEnableArbTex();
     
     this->createTextVisuals();
     this->createSvgVisuals();
@@ -56,13 +57,14 @@ void LayoutManager::setup()
     this->setupWindowFrames();
 
     //this->addVisuals();
-
+   // ofDisableArbTex();
 }
 void LayoutManager::setupBlur()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     m_blur.setup(width, height);
+  
 }
 
 void LayoutManager::setupMask()
@@ -70,8 +72,10 @@ void LayoutManager::setupMask()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-   // ofEnableArbTex();
-    m_mask.allocate(width, height, ofxMask::LUMINANCE);
+    //ofEnableArbTex();
+    //m_mask.allocate(width, height, ofxMask::LUMINANCE);
+    string name = "output";
+    AppManager::getInstance().getMaskManager().allocate(name, width, height);
     //ofDisableArbTex();
 }
 
@@ -164,24 +168,33 @@ void LayoutManager::resetWindowFrames()
 
 void LayoutManager::update()
 {
+     ///ofEnableArbTex();
+    
     this->updateFbos();
     this->updateMask();
 	this->updateSpout();
+    
+     //ofDisableArbTex();
 }
 
 void LayoutManager::updateMask()
 {
-    m_mask.beginMask();
+    string name = "output";
+    AppManager::getInstance().getMaskManager().beginMask(name);
+    
+   // m_mask.beginMask();
         m_blur.begin();
             AppManager::getInstance().getModelManager().getMask().draw(0,0);
         m_blur.end();
         m_blur.draw();
-    m_mask.endMask();
+    //m_mask.endMask();
+    AppManager::getInstance().getMaskManager().endMask(name);
     
-    m_mask.begin();
+    AppManager::getInstance().getMaskManager().begin(name);
+        ofClear(0);
          AppManager::getInstance().getSceneManager().draw();
         //ofDrawRectangle(100,100,500,500);
-    m_mask.end();
+    AppManager::getInstance().getMaskManager().end(name);
 }
 
 void LayoutManager::updateFbos()
@@ -199,13 +212,17 @@ void LayoutManager::updateSpout()
 
 void LayoutManager::updateOutputFbo()
 {
+    string name = "output";
+    
     ofEnableAlphaBlending();
     m_fbo.begin();
     ofPushStyle();
     ofClear(0, 0, 0);
     
        // AppManager::getInstance().getSceneManager().draw();
-        m_mask.draw();
+        AppManager::getInstance().getMaskManager().draw(name);
+        //AppManager::getInstance().getSceneManager().draw();
+       // m_mask.draw();
        // m_blur.draw();
     
     ofPopStyle();
@@ -221,8 +238,10 @@ void LayoutManager::update3dFbo()
     ofClear(0, 0, 0);
         //ofBackgroundGradient(ofColor::gray, ofColor::black);
         if(m_previewMode == MASK){
-            //AppManager::getInstance().getModelManager().getMask().draw(0,0);
-            m_mask.drawMasker();
+            string name = "output";
+            AppManager::getInstance().getMaskManager().drawMask(name);
+            //m_mask.drawMasker();
+            
             //m_blur.draw();
         }
         else if(m_previewMode == MODEL){
@@ -230,6 +249,10 @@ void LayoutManager::update3dFbo()
         }
         else if(m_previewMode == WIREFRAME){
             AppManager::getInstance().getModelManager().getWireframe().draw(0,0);
+        }
+    
+        else if(m_previewMode == SCENE){
+            AppManager::getInstance().getSceneManager().draw();
         }
     
     m_3dfbo.end();
@@ -329,8 +352,10 @@ void LayoutManager::draw()
     if(!m_initialized)
         return;
     
+   //  ofEnableArbTex();
     this->drawFbos();
     this->drawText();
+    // ofDisableArbTex();
     
 }
 

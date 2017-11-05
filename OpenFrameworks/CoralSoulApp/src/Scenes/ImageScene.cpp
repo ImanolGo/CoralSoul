@@ -1,8 +1,8 @@
 /*
  *  ImageScene.cpp
- *  Primavera Sound Stage
+ *  CoralSoulApp
  *
- *  Created by Imanol Gomez on 31/10/17.
+ *  Created by Imanol Gomez on 28/10/17.
  *
  */
 
@@ -40,6 +40,7 @@ void ImageScene::update()
 
 void ImageScene::draw()
 {
+    ofClear(0);
     this->drawImage();
 }
 

@@ -1,8 +1,8 @@
 /*
  *  VideoScene.h
- *  Primavera Sound Stage
+ *  CoralSoulApp
  *
- *  Created by Imanol Gomez on 23/04/17.
+ *  Created by Imanol Gomez on 28/10/17.
  *
  */
 

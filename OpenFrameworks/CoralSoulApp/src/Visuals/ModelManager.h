@@ -91,14 +91,19 @@ private:
 private:
 
     ofxAssimpModelLoader m_model;
+    ofxAssimpModelLoader m_simpleModel;
     ofMesh               m_mesh;
     ofLight              m_light;
     ofEasyCam            m_cam;
     ofFbo                m_fboMask;
     ofFbo                m_fboModel;
     ofFbo                m_fboWireframe;
+    ofFbo                m_fboTexture;
     
-    ofVec3f             m_light_rot;
+    ofVec3f              m_light_rot;
+    ofVec3f              m_light_pos;
+    
+    ofMaterial          m_material;
 
     ofImage img;
 };

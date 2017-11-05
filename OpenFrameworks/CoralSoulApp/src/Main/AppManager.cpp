@@ -71,11 +71,13 @@ void AppManager::setupManagers()
     m_resourceManager.setup();
     m_viewManager.setup();
     m_visualEffectsManager.setup();
+    m_maskManager.setup();
     m_layoutManager.setup();
     m_apiManager.setup();
     m_keyboardManager.setup();
     m_sceneManager.setup();
     m_modelManager.setup();
+    
     m_guiManager.setup();
 }
 

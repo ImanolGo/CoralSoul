@@ -103,6 +103,7 @@ void GuiManager::setupPreviewGui()
     opts.push_back("MASK");
     opts.push_back("MODEL");
     opts.push_back("WIREFRAME");
+    opts.push_back("SCENE");
     
     string label = "PREVIEW";
     

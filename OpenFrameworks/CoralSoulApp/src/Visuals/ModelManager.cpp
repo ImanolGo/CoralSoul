@@ -38,12 +38,14 @@ void ModelManager::setup()
 
     ofLogNotice() <<"ModelManager::initialized";
 
+    ofDisableArbTex();  //load textures with normalized texcoords (0..1)
+    
     this->setupCamera();
     this->setupLight();
 	this->loadModel();
     this->setupFbos();
     
-    img.load("images/model/ROCA_MODELO_VFX_38000_centred.jpg");
+    img.load("images/model/sonic_bricks_d.png");
 }
 
 
@@ -60,6 +62,9 @@ void ModelManager::setupFbos()
     
     m_fboWireframe.allocate(width, height);
     m_fboWireframe.begin(); ofClear(0); m_fboWireframe.end();
+    
+    m_fboTexture.allocate(width, height);
+    m_fboTexture.begin(); ofClear(0); m_fboTexture.end();
 }
 
 void ModelManager::setupCamera()
@@ -72,11 +77,19 @@ void ModelManager::setupCamera()
 void ModelManager::setupLight()
 {
     m_light.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
-    m_light.setSpecularColor(ofColor(255.0f, 255.0f, 255.0f));
-    m_light.setAmbientColor(ofColor(0));
+    m_light.setSpecularColor(ofColor(0, 0, 0));
+    //m_light.setAmbientColor(ofColor(0));
+    
+    m_light_pos.set(ofGetWidth()*.5, ofGetHeight()*.5, 0);
+    m_light.setPosition(m_light_pos.x, m_light_pos.y, 0);
+    
+    m_material.setAmbientColor(0);
+    m_material.setSpecularColor(0);
+    m_material.setShininess(0);
+    //m_material.setSpecularColor(0);
     
     m_light.setDirectional();
-    m_light.setAttenuation();
+    //m_light.setAttenuation();
     m_light_rot = ofVec3f(0, -90, 0);
     this->setLightOri(m_light, m_light_rot);
 }
@@ -84,7 +97,8 @@ void ModelManager::setupLight()
 void ModelManager::loadModel()
 {
     //load the model - the 3ds and the texture file need to be in the same folder
-    m_model.loadModel("images/model/texturemappedwall.3ds");
+    m_simpleModel.loadModel("images/model/SimplifiedWall.obj");
+    m_model.loadModel("images/model/TexturedWall.obj");
     
     //you can create as many rotations as you want
     //choose which axis you want it to effect
@@ -92,6 +106,7 @@ void ModelManager::loadModel()
     //m_model.setRotation(0, 90, 1, 0, 0);
    // m_model.setRotation(1, 1, 90, 0, 1);
     m_model.setScale(-1, -1, 1);
+    m_simpleModel.setScale(-1, -1, 1);
     //m_model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5, 0);
 
 }
@@ -100,11 +115,14 @@ void ModelManager::update()
 {
    this->updateModel();
    this->updateFbos();
+    
+    //m_light.setPosition(ofGetMouseX(), ofGetMouseY(), 0);
 }
 
 void ModelManager::updateModel()
 {
     m_model.update();
+    m_simpleModel.update();
     m_mesh = m_model.getMesh(0);
 }
 
@@ -120,7 +138,7 @@ void ModelManager::updateFbos()
     m_fboWireframe.begin();
     ofClear(0, 0, 0);
     m_cam.begin();
-        m_model.drawWireframe();
+        m_simpleModel.drawWireframe();
     m_cam.end();
     m_fboWireframe.end();
     
@@ -147,50 +165,44 @@ void ModelManager::drawMask()
 
 void ModelManager::drawModel()
 {
+     //ofDisableArbTex();
+    //ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
     
-    // turn on smooth lighting //
-    ofSetSmoothLighting(true);
-    
-    ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
+    m_fboTexture.begin();
+        AppManager::getInstance().getSceneManager().draw();
+    m_fboTexture.end();
 
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    //img.getTexture().bind();
+    m_fboTexture.getTexture().bind();
+    //this->bindTexture();
 
-    ofEnableDepthTest();
-    #ifndef TARGET_PROGRAMMABLE_GL
-        glShadeModel(GL_SMOOTH); //some model / light stuff
-    #endif
-    m_light.enable();
-    ofEnableSeparateSpecularLight();
-    
-#ifndef TARGET_PROGRAMMABLE_GL
-    glEnable(GL_NORMALIZE);
-#endif
-
-    //img.bind();
-    
     ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
-    
+
     //ofMultMatrix(m_model.getModelMatrix());
     //ofMultMatrix(meshHelper.matrix);
-    
+
     ofMaterial & material = meshHelper.material;
-    //m_mesh.drawFaces();
-    
     m_model.drawFaces();
 
-    //img.unbind();
+    //m_model.drawFaces();
+
+    m_fboTexture.getTexture().unbind();
+    //img.getTexture().unbind();
+    //this->unbindTexture();
 
     ofDisableDepthTest();
     m_light.disable();
     ofDisableLighting();
     ofDisableSeparateSpecularLight();
+    
+    ofEnableArbTex();
 }
 
 void ModelManager::drawWireframe()
 {
     ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
     ofEnableDepthTest();
 #ifndef TARGET_PROGRAMMABLE_GL
@@ -205,13 +217,13 @@ void ModelManager::drawWireframe()
     
     //img.bind();
     
-    ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
+   // ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
     
-    ofMultMatrix(m_model.getModelMatrix());
-    ofMultMatrix(meshHelper.matrix);
+    //ofMultMatrix(m_simpleModel.getModelMatrix());
+    //ofMultMatrix(meshHelper.matrix);
     
-    ofMaterial & material = meshHelper.material;
-    m_mesh.drawWireframe();
+    //ofMaterial & material = meshHelper.material;
+    m_simpleModel.drawWireframe();
     
     //m_model.drawFaces();
     
@@ -228,7 +240,7 @@ void ModelManager::bindTexture() {
     
     auto tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
     
-    tex.bind();
+    img.getTexture().bind();
     
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
@@ -247,7 +259,7 @@ void ModelManager::bindTexture() {
 void ModelManager::unbindTexture() {
     
     auto tex  = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
-    tex.unbind();
+    img.getTexture().unbind();
     
     glMatrixMode(GL_TEXTURE);
     glPopMatrix();

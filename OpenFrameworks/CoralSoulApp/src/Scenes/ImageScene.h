@@ -1,11 +1,10 @@
 /*
  *  ImageScene.h
- *  Primavera Sound Stage
+ *  CoralSoulApp
  *
- *  Created by Imanol Gomez on 31/10/17.
+ *  Created by Imanol Gomez on 28/10/17.
  *
  */
-
 #pragma once
 
 #include "ofxScene.h"

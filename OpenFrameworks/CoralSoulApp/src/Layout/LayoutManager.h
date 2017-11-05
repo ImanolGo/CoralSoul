@@ -38,7 +38,8 @@ class LayoutManager: public Manager
     enum PreviewMode{
         MASK,
         MODEL,
-        WIREFRAME
+        WIREFRAME,
+        SCENE
     };
 
     

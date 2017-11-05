@@ -64,11 +64,14 @@ public:
     //! Returns the 3D model manager
     ModelManager&  getModelManager() { return m_modelManager; }
     
-    //! Returns the scenes manager manager
+    //! Returns the scenes manager
     SceneManager&  getSceneManager() { return m_sceneManager; }
     
-    //! Returns the api manager manager
+    //! Returns the api manager
     ApiManager&  getApiManager() { return m_apiManager; }
+    
+    //! Returns the mask manager
+    MaskManager&  getMaskManager() { return m_maskManager; }
     
     
     //==========================================================================
@@ -113,7 +116,8 @@ private:
     ModelManager             m_modelManager;             ///< Manages the 3D models
     SceneManager             m_sceneManager;             ///< Manages all the scenes
     ApiManager               m_apiManager;               ///< Manages all the apis
-   
+    MaskManager              m_maskManager;              ///< Manages all the masks
+    
     bool                     m_debugMode;
     bool                     m_initialized;
 };
