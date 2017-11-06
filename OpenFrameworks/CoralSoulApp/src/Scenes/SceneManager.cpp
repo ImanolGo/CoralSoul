@@ -96,6 +96,7 @@ void SceneManager::update()
     m_fbo.begin();
         ofClear(0);
         ofPushStyle();
+        ofSetColor(255);
         ofEnableAlphaBlending();
         m_mySceneManager.draw();
         ofDisableAlphaBlending();

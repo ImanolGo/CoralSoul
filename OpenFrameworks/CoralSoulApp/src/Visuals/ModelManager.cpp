@@ -38,7 +38,9 @@ void ModelManager::setup()
 
     ofLogNotice() <<"ModelManager::initialized";
 
+   // ofEnableDepthTest();
     ofDisableArbTex();  //load textures with normalized texcoords (0..1)
+    ofSetSmoothLighting(true); // turn on smooth lighting //
     
     this->setupCamera();
     this->setupLight();
@@ -77,15 +79,15 @@ void ModelManager::setupCamera()
 void ModelManager::setupLight()
 {
     m_light.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
-    m_light.setSpecularColor(ofColor(0, 0, 0));
-    //m_light.setAmbientColor(ofColor(0));
+    m_light.setSpecularColor(ofColor(255, 255, 255));
+    m_light.setAmbientColor(ofColor(255));
     
     m_light_pos.set(ofGetWidth()*.5, ofGetHeight()*.5, 0);
     m_light.setPosition(m_light_pos.x, m_light_pos.y, 0);
     
-    m_material.setAmbientColor(10);
-    m_material.setSpecularColor(0);
-    m_material.setShininess(0);
+    m_material.setAmbientColor(255);
+    m_material.setSpecularColor(255);
+    m_material.setShininess(244);
     //m_material.setSpecularColor(0);
     
     m_light.setDirectional();
@@ -98,10 +100,12 @@ void ModelManager::setupLight()
 
 void ModelManager::loadModel()
 {
+    //ofEnableDepthTest();
+    
     //load the model - the 3ds and the texture file need to be in the same folder
     m_simpleModel.loadModel("images/model/SimplifiedWall.obj");
     //m_model.loadModel("images/model/TexturedWall.obj");
-    m_model.loadModel("images/model/ROCA_MODELO_VFX_233000.obj");
+    m_model.loadModel("images/model/ROCA_MODELO_VFX_38000_UV.obj");
     
     //you can create as many rotations as you want
     //choose which axis you want it to effect
@@ -111,15 +115,15 @@ void ModelManager::loadModel()
     m_model.setScale(-1, -1, 1);
     m_simpleModel.setScale(-1, -1, 1);
     //m_model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5, 0);
-
+    
+     //ofDisableDepthTest();
 }
 
 void ModelManager::update()
 {
    this->updateModel();
    this->updateFbos();
-    
-    //m_light.setPosition(ofGetMouseX(), ofGetMouseY(), 0);
+   // m_light.setPosition(ofGetMouseX(), ofGetMouseY(), 0);
 }
 
 void ModelManager::updateModel()
@@ -151,14 +155,13 @@ void ModelManager::updateFbos()
         this->drawModel();
         m_cam.end();
     m_fboModel.end();
+    
+ 
 }
 
 void ModelManager::draw()
 {
-  //this->drawModel();
-  //this->drawMask();
-  //m_fboModel.draw(0,0);
-  m_fboWireframe.draw(0,0);
+    this->drawModel();
 }
 
 void ModelManager::drawMask()
@@ -168,46 +171,34 @@ void ModelManager::drawMask()
 
 void ModelManager::drawModel()
 {
-     //ofDisableArbTex();
-    //ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
-
-   // ofGetGlobalAmbientColor();
-    
-    //ofSetGlobalAmbientColor(ofColor(200));
-
     m_fboTexture.begin();
-        AppManager::getInstance().getSceneManager().draw();
+    AppManager::getInstance().getSceneManager().draw();
     m_fboTexture.end();
-
+    
+    ofEnableDepthTest();
+    
+    // enable lighting //
+    ofEnableLighting();
+    
     m_light.enable();
-    //img.getTexture().bind();
+    //material.begin();
     
-   // m_fboTexture.getTexture().bind();
-    //this->bindTexture();
-
-    ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
-    //ofMultMatrix(m_model.getModelMatrix());
-    //ofMultMatrix(meshHelper.matrix);
+    ofPushStyle();
+    ofSetColor(255);
     
-   // m_material.begin();
-    //ofMaterial & material = meshHelper.material;
-    //m_mesh.drawFaces();
-
-
-    m_model.drawFaces();
+    m_fboTexture.getTexture().bind();
+        m_model.drawFaces();
+    m_fboTexture.getTexture().unbind();
     
-   // m_material.end();
-
-    //m_fboTexture.getTexture().unbind();
-    //img.getTexture().unbind();
-    //this->unbindTexture();
-
-    ofDisableDepthTest();
-    m_light.disable();
+    ofPopStyle();
+    
+    // material.end();
+    
+    // turn off lighting //
     ofDisableLighting();
-    ofDisableSeparateSpecularLight();
     
-    ofEnableArbTex();
+    ofDisableDepthTest();
+
 }
 
 void ModelManager::drawWireframe()
@@ -348,4 +339,5 @@ void ModelManager::onLightColorChange(ofColor color)
     m_light.setDiffuseColor(color);
     m_light.setSpecularColor(color);
 }
+
 

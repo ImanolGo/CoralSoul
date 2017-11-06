@@ -192,7 +192,7 @@ void LayoutManager::updateMask()
     
     AppManager::getInstance().getMaskManager().begin(name);
         ofClear(0);
-         AppManager::getInstance().getSceneManager().draw();
+         AppManager::getInstance().getModelManager().getModel().draw(0,0);
         //ofDrawRectangle(100,100,500,500);
     AppManager::getInstance().getMaskManager().end(name);
 }
@@ -220,7 +220,8 @@ void LayoutManager::updateOutputFbo()
     ofClear(0, 0, 0);
     
        // AppManager::getInstance().getSceneManager().draw();
-        AppManager::getInstance().getMaskManager().draw(name);
+        AppManager::getInstance().getModelManager().getModel().draw(0,0);
+        //AppManager::getInstance().getMaskManager().draw(name);
         //AppManager::getInstance().getSceneManager().draw();
        // m_mask.draw();
        // m_blur.draw();
@@ -409,4 +410,5 @@ void LayoutManager::onBlurScaleChange(float& value)
 {
      m_blur.setScale(ofClamp(value, 0, 10));
 }
+
 

@@ -77,7 +77,7 @@ void AppManager::setupManagers()
     m_keyboardManager.setup();
     m_sceneManager.setup();
     m_modelManager.setup();
-    
+
     m_guiManager.setup();
 }
 

@@ -41,10 +41,14 @@ void RainScene::setupRipples()
     
     auto tex =  AppManager::getInstance().getModelManager().getModel().getTexture();
     
-    m_ripples.allocate(width, height);
-    m_bounce.allocate(width, height);
-    //m_bounce.setTexture(*m_texture.get(), 1);
-    m_bounce.setTexture(tex, 1);
+   // m_ripples.allocate(width, height);
+   // m_bounce.allocate(width, height);
+    //m_bounce.setTexture(tex, 1);
+    
+    m_ripples.allocate(m_texture->getWidth(), m_texture->getHeight());
+    m_bounce.allocate(m_texture->getWidth(),  m_texture->getHeight());
+    m_bounce.setTexture(*m_texture.get(), 1);
+   
 }
 
 
@@ -60,7 +64,9 @@ void RainScene::updateRipples()
     
     auto tex =  AppManager::getInstance().getModelManager().getModel().getTexture();
     
-    m_bounce.setTexture(tex, 1);
+    //m_bounce.setTexture(tex, 1);
+    
+    m_bounce.setTexture(*m_texture.get(), 1);
     
     m_ripples.begin();
     ofFill();
@@ -77,6 +83,8 @@ void RainScene::draw()
 {
     ofClear(0);
     this->drawRipples();
+    
+   
 }
 
 void RainScene::drawRipples()
@@ -85,6 +93,8 @@ void RainScene::drawRipples()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
 
      m_bounce.draw(0,0, width, height);
+    
+     m_texture->draw(0,0, width, height);
 }
 
 void RainScene::willFadeIn() {

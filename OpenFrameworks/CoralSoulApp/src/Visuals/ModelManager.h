@@ -100,6 +100,7 @@ private:
     ofFbo                m_fboWireframe;
     ofFbo                m_fboTexture;
     
+    
     ofVec3f              m_light_rot;
     ofVec3f              m_light_pos;
     
