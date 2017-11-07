@@ -73,9 +73,9 @@ void LayoutManager::setupMask()
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
     //ofEnableArbTex();
-    //m_mask.allocate(width, height, ofxMask::LUMINANCE);
-    string name = "output";
-    AppManager::getInstance().getMaskManager().allocate(name, width, height);
+    m_mask.allocate(width, height, ofxMask::LUMINANCE);
+    //string name = "output";
+    //AppManager::getInstance().getMaskManager().allocate(name, width, height);
     //ofDisableArbTex();
 }
 
@@ -180,21 +180,23 @@ void LayoutManager::update()
 void LayoutManager::updateMask()
 {
     string name = "output";
-    AppManager::getInstance().getMaskManager().beginMask(name);
+    //AppManager::getInstance().getMaskManager().beginMask(name);
     
-   // m_mask.beginMask();
+    m_mask.beginMask();
         m_blur.begin();
             AppManager::getInstance().getModelManager().getMask().draw(0,0);
         m_blur.end();
         m_blur.draw();
-    //m_mask.endMask();
-    AppManager::getInstance().getMaskManager().endMask(name);
+    m_mask.endMask();
+    //AppManager::getInstance().getMaskManager().endMask(name);
     
-    AppManager::getInstance().getMaskManager().begin(name);
-        ofClear(0);
+    //AppManager::getInstance().getMaskManager().begin(name);
+    m_mask.begin();
+         ofClear(0);
          AppManager::getInstance().getModelManager().getModel().draw(0,0);
         //ofDrawRectangle(100,100,500,500);
-    AppManager::getInstance().getMaskManager().end(name);
+    m_mask.end();
+    //AppManager::getInstance().getMaskManager().end(name);
 }
 
 void LayoutManager::updateFbos()
@@ -220,10 +222,10 @@ void LayoutManager::updateOutputFbo()
     ofClear(0, 0, 0);
     
        // AppManager::getInstance().getSceneManager().draw();
-        AppManager::getInstance().getModelManager().getModel().draw(0,0);
+        //AppManager::getInstance().getModelManager().getModel().draw(0,0);
         //AppManager::getInstance().getMaskManager().draw(name);
         //AppManager::getInstance().getSceneManager().draw();
-       // m_mask.draw();
+       m_mask.draw();
        // m_blur.draw();
     
     ofPopStyle();
@@ -240,8 +242,8 @@ void LayoutManager::update3dFbo()
         //ofBackgroundGradient(ofColor::gray, ofColor::black);
         if(m_previewMode == MASK){
             string name = "output";
-            AppManager::getInstance().getMaskManager().drawMask(name);
-            //m_mask.drawMasker();
+            //AppManager::getInstance().getMaskManager().drawMask(name);
+            m_mask.drawMasker();
             
             //m_blur.draw();
         }

@@ -48,6 +48,8 @@ void ModelManager::setup()
     this->setupFbos();
     
     img.load("images/model/sonic_bricks_d.png");
+    
+     ofEnableArbTex();
 }
 
 
