@@ -10,7 +10,7 @@
 #include "RainScene.h"
 #include "AppManager.h"
 
-RainScene::RainScene(): ofxScene("WATER")
+RainScene::RainScene(): ofxScene("RAIN")
 {
     //Intentionally left empty
 }

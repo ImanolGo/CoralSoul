@@ -70,10 +70,7 @@ public:
     //! Returns the api manager
     ApiManager&  getApiManager() { return m_apiManager; }
     
-    //! Returns the mask manager
-    MaskManager&  getMaskManager() { return m_maskManager; }
-    
-    
+
     //==========================================================================
     
     void toggleDebugMode();
@@ -116,8 +113,7 @@ private:
     ModelManager             m_modelManager;             ///< Manages the 3D models
     SceneManager             m_sceneManager;             ///< Manages all the scenes
     ApiManager               m_apiManager;               ///< Manages all the apis
-    MaskManager              m_maskManager;              ///< Manages all the masks
-    
+   
     bool                     m_debugMode;
     bool                     m_initialized;
 };

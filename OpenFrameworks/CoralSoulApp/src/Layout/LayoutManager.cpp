@@ -180,7 +180,6 @@ void LayoutManager::update()
 void LayoutManager::updateMask()
 {
     string name = "output";
-    //AppManager::getInstance().getMaskManager().beginMask(name);
     
     m_mask.beginMask();
         m_blur.begin();
@@ -188,15 +187,11 @@ void LayoutManager::updateMask()
         m_blur.end();
         m_blur.draw();
     m_mask.endMask();
-    //AppManager::getInstance().getMaskManager().endMask(name);
-    
-    //AppManager::getInstance().getMaskManager().begin(name);
+   
     m_mask.begin();
          ofClear(0);
          AppManager::getInstance().getModelManager().getModel().draw(0,0);
-        //ofDrawRectangle(100,100,500,500);
     m_mask.end();
-    //AppManager::getInstance().getMaskManager().end(name);
 }
 
 void LayoutManager::updateFbos()
@@ -221,12 +216,7 @@ void LayoutManager::updateOutputFbo()
     ofPushStyle();
     ofClear(0, 0, 0);
     
-       // AppManager::getInstance().getSceneManager().draw();
-        //AppManager::getInstance().getModelManager().getModel().draw(0,0);
-        //AppManager::getInstance().getMaskManager().draw(name);
-        //AppManager::getInstance().getSceneManager().draw();
        m_mask.draw();
-       // m_blur.draw();
     
     ofPopStyle();
     m_fbo.end();
@@ -239,10 +229,9 @@ void LayoutManager::update3dFbo()
     ofEnableAlphaBlending();
     m_3dfbo.begin();
     ofClear(0, 0, 0);
-        //ofBackgroundGradient(ofColor::gray, ofColor::black);
+
         if(m_previewMode == MASK){
             string name = "output";
-            //AppManager::getInstance().getMaskManager().drawMask(name);
             m_mask.drawMasker();
             
             //m_blur.draw();
@@ -355,11 +344,8 @@ void LayoutManager::draw()
     if(!m_initialized)
         return;
     
-   //  ofEnableArbTex();
     this->drawFbos();
     this->drawText();
-    // ofDisableArbTex();
-    
 }
 
 

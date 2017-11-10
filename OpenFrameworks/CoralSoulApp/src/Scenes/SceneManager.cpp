@@ -64,7 +64,11 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new WireFrameScene());
     m_mySceneManager.addScene(scene);
     
-    //Create WireFrame Scene
+    //Create Sun Scene
+    scene = ofPtr<ofxScene> (new SunScene());
+    m_mySceneManager.addScene(scene);
+    
+    //Create Rain Scene
     scene = ofPtr<ofxScene> (new RainScene());
     m_mySceneManager.addScene(scene);
     

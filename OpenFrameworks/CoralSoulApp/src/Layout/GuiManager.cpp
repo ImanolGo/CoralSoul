@@ -149,7 +149,8 @@ void GuiManager::setupLightGui()
     folder->addSlider(m_lightX);
     folder->addSlider(m_lightY);
     folder->addSlider(m_lightZ);
-    folder->addColorPicker("LIGHT");
+    auto colorPicker = folder->addColorPicker("LIGHT");
+    colorPicker->setColor(ofColor(255));
     folder->expand();
     m_gui.addBreak();
 

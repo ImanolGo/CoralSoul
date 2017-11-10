@@ -57,11 +57,9 @@ void AppManager::setup()
 void AppManager::setupOF()
 {
     ofSetLogLevel(OF_LOG_NOTICE);
-    //ofSetFrameRate(25);
     ofSetVerticalSync(true);
     ofSetEscapeQuitsApp(true);
     ofSetBackgroundAuto(true);
-    //ofDisableArbTex();
 }
 
 
@@ -71,7 +69,6 @@ void AppManager::setupManagers()
     m_resourceManager.setup();
     m_viewManager.setup();
     m_visualEffectsManager.setup();
-    m_maskManager.setup();
     m_layoutManager.setup();
     m_apiManager.setup();
     m_keyboardManager.setup();
@@ -102,17 +99,9 @@ void AppManager::draw()
     if(!m_initialized)
         return;
     
-    
-    //ofLogNotice()<<"AppManager::ofGetLastFrameTime()-> " << ofGetLastFrameTime();
-
-    //ofBackgroundGradient( ofColor(80), ofColor(55), OF_GRADIENT_CIRCULAR );
     ofBackground(55,55,55);
-   // m_viewManager.draw();
-    //m_modelManager.draw();
     m_layoutManager.draw();
-    m_guiManager.draw();
-    //m_noiseManager.draw();
-    
+    m_guiManager.draw();    
 }
 
 void AppManager::toggleDebugMode()

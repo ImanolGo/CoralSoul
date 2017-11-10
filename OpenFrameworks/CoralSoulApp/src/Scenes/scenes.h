@@ -13,4 +13,5 @@
 #include "ImageScene.h"
 #include "WireFrameScene.h"
 #include "RainScene.h"
+#include "SunScene.h"
 

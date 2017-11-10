@@ -10,6 +10,7 @@
 		0466B9E6A55078A9F39B1B4B /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4F639B12AA5C1013177E49 /* svgtiny_gradient.cpp */; };
 		04DF616AA21AD331DF08C325 /* ftParticleFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D9822CFA7F77387B3BBDBC /* ftParticleFlow.cpp */; };
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
+		081033621FB59ABF004B7FE9 /* SunScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081033601FB59ABF004B7FE9 /* SunScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
 		12A8C9C212129D904A9DB2C1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A555C6B34D5D8F88CBE349A8 /* OscPrintReceivedElements.cpp */; };
 		15FA0788DED9B05645862A3D /* ofxEasingCubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2647D2EA00878BEB0023C444 /* ofxEasingCubic.cpp */; };
@@ -103,7 +104,6 @@
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E66F471FC218F559192473CB /* VideoVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 478D509B2DE7CC0EC16A7E2A /* VideoVisual.cpp */; };
 		E76816EF014518B0B3E83C39 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 73DCC3AF2CF91782437F76A9 /* ofxSvg.cpp */; };
-		E79CB8C17D289FDF08DFD821 /* MaskManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2EA41BEA7E5A43E6C47D692 /* MaskManager.cpp */; };
 		E8FCFBD2BB05D10A257C49CA /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F4A2D5CF12390826C7B09 /* ofxEasingBack.cpp */; };
 		E937780B3C3172684F9A853F /* ftSvAverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770A2162DC9A7E58BFC790 /* ftSvAverage.cpp */; };
 		EB3F239C790AB692983E163E /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4636EB9EE1FB53F0831634D6 /* ofxAssimpModelLoader.cpp */; };
@@ -158,6 +158,8 @@
 		07141120E0D590C3C000701C /* MessageMappingOscPacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MessageMappingOscPacketListener.h; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxOsc/libs/oscpack/src/osc/MessageMappingOscPacketListener.h; sourceTree = SOURCE_ROOT; };
 		0731597061D6181DB86681B1 /* ofxDatGuiSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiSlider.h; path = src/Addons/ofxDatGui/src/components/ofxDatGuiSlider.h; sourceTree = SOURCE_ROOT; };
 		0758DB960B9BE6F86F84AC84 /* ofxChromaGlitch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxChromaGlitch.h; path = src/Addons/ofxFX/src/filters/ofxChromaGlitch.h; sourceTree = SOURCE_ROOT; };
+		081033601FB59ABF004B7FE9 /* SunScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SunScene.cpp; path = Scenes/SunScene.cpp; sourceTree = "<group>"; };
+		081033611FB59ABF004B7FE9 /* SunScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SunScene.h; path = Scenes/SunScene.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
@@ -395,7 +397,6 @@
 		A0D87CEDA56BF3FFC8789710 /* ofxEasingExpo.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxEasingExpo.cpp; path = src/Addons/ofxTween/src/Easings/ofxEasingExpo.cpp; sourceTree = SOURCE_ROOT; };
 		A0DA67D8E8DC65FF86B1F449 /* ftDensityFloatMultiplier.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ftDensityFloatMultiplier.h; path = src/Addons/ofxFlowTools/src/tools/ftDensityFloatMultiplier.h; sourceTree = SOURCE_ROOT; };
 		A17ABB2FA12529C62C87AAA7 /* ofxAbletonLiveDevice.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAbletonLiveDevice.h; path = src/Addons/ofxAbletonLive/src/ofxAbletonLiveDevice.h; sourceTree = SOURCE_ROOT; };
-		A2EA41BEA7E5A43E6C47D692 /* MaskManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MaskManager.cpp; path = src/Layout/MaskManager.cpp; sourceTree = SOURCE_ROOT; };
 		A306218993743104B7A74F9D /* ofxUDPManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUDPManager.cpp; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxNetwork/src/ofxUDPManager.cpp; sourceTree = SOURCE_ROOT; };
 		A4FF8AA5487EC8E32E7F74E6 /* ofxAbletonLive.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAbletonLive.cpp; path = src/Addons/ofxAbletonLive/src/ofxAbletonLive.cpp; sourceTree = SOURCE_ROOT; };
 		A505257A3D327FF0548919A4 /* ofxDatGui2dPad.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGui2dPad.h; path = src/Addons/ofxDatGui/src/components/ofxDatGui2dPad.h; sourceTree = SOURCE_ROOT; };
@@ -450,7 +451,6 @@
 		BFFFFAAA30DF3E6F626A2F8B /* ofxNoise.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNoise.h; path = src/Addons/ofxFX/src/generative/ofxNoise.h; sourceTree = SOURCE_ROOT; };
 		C0A1515CE2EE374780990878 /* ftSubstractGradientShader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ftSubstractGradientShader.h; path = src/Addons/ofxFlowTools/src/fluid/ftSubstractGradientShader.h; sourceTree = SOURCE_ROOT; };
 		C1379EA3A1B652B75D612F45 /* ftDrawMouseForces.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ftDrawMouseForces.cpp; path = src/Addons/ofxFlowTools/src/drawforces/ftDrawMouseForces.cpp; sourceTree = SOURCE_ROOT; };
-		C1CCAA8796D39D9B1DEEEF93 /* MaskManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MaskManager.h; path = src/Layout/MaskManager.h; sourceTree = SOURCE_ROOT; };
 		C22C2EDB1283183E521B70B2 /* OscException.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscException.h; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxOsc/libs/oscpack/src/osc/OscException.h; sourceTree = SOURCE_ROOT; };
 		C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSceneManager.cpp; path = src/Addons/ofxSceneManager/src/ofxSceneManager.cpp; sourceTree = SOURCE_ROOT; };
 		C43EE683F764EC7C3767CCCD /* camera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = camera.h; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxAssimpModelLoader/libs/assimp/include/assimp/camera.h; sourceTree = SOURCE_ROOT; };
@@ -741,8 +741,6 @@
 				2C4030DB557CBDCD31BDF418 /* GuiTheme.h */,
 				4229475864D5EBC7913C8351 /* LayoutManager.cpp */,
 				78E61E440A21EE9FC6156AAD /* LayoutManager.h */,
-				A2EA41BEA7E5A43E6C47D692 /* MaskManager.cpp */,
-				C1CCAA8796D39D9B1DEEEF93 /* MaskManager.h */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -1371,6 +1369,8 @@
 				15AE7B79BBACBC510C450229 /* VideoScene.h */,
 				72DADFA19E2023E797BA2F51 /* WireFrameScene.cpp */,
 				79F4F8F21C65325A536B0F3F /* WireFrameScene.h */,
+				081033601FB59ABF004B7FE9 /* SunScene.cpp */,
+				081033611FB59ABF004B7FE9 /* SunScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1742,6 +1742,7 @@
 				04DF616AA21AD331DF08C325 /* ftParticleFlow.cpp in Sources */,
 				E937780B3C3172684F9A853F /* ftSvAverage.cpp in Sources */,
 				A89C1D586E1CD69DA460A7F7 /* ftAverageVelocity.cpp in Sources */,
+				081033621FB59ABF004B7FE9 /* SunScene.cpp in Sources */,
 				337AAEDF4DCC79FE548A7139 /* ofxFXObject.cpp in Sources */,
 				48AA5B81BBB3EAEF1A3779F6 /* ofxMask.cpp in Sources */,
 				39A1221DFF732DEADFF38065 /* RtMidi.cpp in Sources */,
@@ -1797,7 +1798,6 @@
 				34CDB15CB0780633DAF598F9 /* OscManager.cpp in Sources */,
 				5D33A9513B2A4C6DBD3188C7 /* GuiManager.cpp in Sources */,
 				93510377552D47B6620A7586 /* LayoutManager.cpp in Sources */,
-				E79CB8C17D289FDF08DFD821 /* MaskManager.cpp in Sources */,
 				1AF15FCF93D2DDD6D4285C8E /* AppManager.cpp in Sources */,
 				64E6B07C94DBB067C015EE69 /* CoralSoulApp.cpp in Sources */,
 				DA22DA3A4F2E611DF50078F2 /* main.cpp in Sources */,
