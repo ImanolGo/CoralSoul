@@ -50,6 +50,10 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
         AppManager::getInstance().getGuiManager().toggleGui();
     }
     
+    if(key == 'f' || key == 'F') {
+        AppManager::getInstance().getLayoutManager().toggleFullScreen();
+    }
+    
     if(key == ' ') {
         //AppManager::getInstance().toggleDebugMode();
         //AppManager::getInstance().getLightSculptureManager().onToggleShowIds();

@@ -23,7 +23,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager(), m_previewMode(0)
+LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_isFullScreen(false)
 {
 	//Intentionally left empty
 }
@@ -349,6 +349,22 @@ void LayoutManager::draw()
     if(!m_initialized)
         return;
     
+    if(m_isFullScreen){
+        this->drawFullscreen();
+    }
+    else{
+        this->drawPreviews();
+    }
+   
+}
+
+void LayoutManager::drawFullscreen()
+{
+     m_fbo.draw(0,0);
+}
+
+void LayoutManager::drawPreviews()
+{
     this->drawFbos();
     this->drawText();
 }

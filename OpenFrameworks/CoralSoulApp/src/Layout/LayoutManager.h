@@ -79,6 +79,8 @@ public:
     void onSetPreviewMode(int mode) {m_previewMode = mode;}
     
     void onBlurScaleChange(float& value);
+    
+    void toggleFullScreen() {m_isFullScreen = !m_isFullScreen;}
 
 private:
 
@@ -117,6 +119,10 @@ private:
 
 	void updateSpout();
     
+    void drawFullscreen();
+    
+    void drawPreviews();
+    
     void drawFbos();
     
     void drawOutputFbo();
@@ -147,6 +153,8 @@ private:
     RectangleVisual     m_windowFrame;
     RectangleVisual     m_3dWindowFrame;
     ofRectangle         m_3dWindowRect;
+    
+    bool                m_isFullScreen;
     
     ofFbo               m_fbo;
     ofFbo               m_3dfbo;
