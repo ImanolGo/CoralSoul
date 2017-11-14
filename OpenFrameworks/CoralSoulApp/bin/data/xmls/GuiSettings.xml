@@ -3,17 +3,17 @@
 	<LightX>-137.53</LightX>
 	<LightY>10.11</LightY>
 	<LightZ>46.52</LightZ>
-	<Temp_>21.02</Temp_>
-	<Humidity>68</Humidity>
-	<Wind_Speed>4.6</Wind_Speed>
-	<Wind_Dir>110</Wind_Dir>
+	<Temp_>17.53</Temp_>
+	<Humidity>87</Humidity>
+	<Wind_Speed>2.6</Wind_Speed>
+	<Wind_Dir>270</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
-	<X>168.54</X>
+	<X>191.01</X>
 	<Y>112.36</Y>
 	<Z>589.89</Z>
 	<FOV>54.61</FOV>
-	<Noise_Resolution>9</Noise_Resolution>
+	<Noise_Resolution>33</Noise_Resolution>
 	<Noise_Frequency>0.92</Noise_Frequency>
-	<Noise_Speed>0.1</Noise_Speed>
+	<Noise_Speed>0.49</Noise_Speed>
 </group>

@@ -10,6 +10,7 @@
 #pragma once
 
 #include "ofxFlowTools.h"
+#include "ofxGui.h"
 
 using namespace flowTools;
 
@@ -33,7 +34,7 @@ public:
     ~FluidVisual();
     
     //! Setup the Fluid Visual
-    void setup(float downSampling = 1.0f);
+    void setup(string settingsName, float downSampling = 1.0f);
     
     //! Update the Fluid Visual
     void update();
@@ -56,6 +57,8 @@ public:
     
 private:
     
+    void setupGui();
+    
     void drawVisuals();
     
     void setupFluid();
@@ -64,29 +67,20 @@ private:
     
     void drawFluid();
     
+    void drawGui();
+    
 public:
     
     static const int FLUID_WIDTH;
     static const int FLUID_HEIGHT;
     
-    ofParameter<bool>	toggleGuiDraw;
-    ofParameterGroup	visualisationParameters;
-    
-    ofParameterGroup	drawForceParameters;
-    ofParameter<bool>	doResetDrawForces;
-    ofParameterGroup	leftButtonParameters;
-    ofParameterGroup	rightButtonParameters;
-    ofParameter<bool>	showScalar;
-    ofParameter<bool>	showField;
-    ofParameter<float>	displayScalarScale;
-    ofParameter<float>	velocityFieldArrowScale;
-    ofParameter<float>	temperatureFieldBarScale;
-    ofParameter<bool>	visualisationLineSmooth;
-    
-    
     void reset();
     
 private:
+    
+    //GUI
+    ofxPanel            m_gui;
+    string              m_guiSettingsName;
     
     // FlowTools
     ftOpticalFlow		m_opticalFlow;

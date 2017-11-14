@@ -32,6 +32,12 @@
  *	\details It creates an places al the text and elements regarding the layout
  */
 
+enum ScreenMode{
+    DRAW_NORMAL = 0,
+    DRAW_OUTPUT,
+    DRAW_PREVIEW
+};
+
 class LayoutManager: public Manager
 {
     
@@ -80,7 +86,7 @@ public:
     
     void onBlurScaleChange(float& value);
     
-    void toggleFullScreen() {m_isFullScreen = !m_isFullScreen;}
+    void toggleDrawMode(int mode) {m_drawMode = mode;}
 
 private:
 
@@ -119,9 +125,11 @@ private:
 
 	void updateSpout();
     
-    void drawFullscreen();
+    void drawOutput();
     
-    void drawPreviews();
+    void drawNormal();
+    
+    void drawPreview();
     
     void drawFbos();
     
@@ -151,13 +159,13 @@ private:
     
     ofRectangle         m_windowRect;
     RectangleVisual     m_windowFrame;
-    RectangleVisual     m_3dWindowFrame;
-    ofRectangle         m_3dWindowRect;
+    RectangleVisual     m_previewWindowFrame;
+    ofRectangle         m_previewWindowRect;
     
-    bool                m_isFullScreen;
+    int                 m_drawMode;
     
     ofFbo               m_fbo;
-    ofFbo               m_3dfbo;
+    ofFbo               m_previewFbo;
     ofColor             m_color;
     
     ofxMask             m_mask;

@@ -51,7 +51,16 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
     }
     
     if(key == 'f' || key == 'F') {
-        AppManager::getInstance().getLayoutManager().toggleFullScreen();
+        AppManager::getInstance().getLayoutManager().toggleDrawMode(1);
+    }
+    
+    
+    if(key == 'p' || key == 'P') {
+        AppManager::getInstance().getLayoutManager().toggleDrawMode(2);
+    }
+    
+    if(key == 'n' || key == 'N') {
+        AppManager::getInstance().getLayoutManager().toggleDrawMode(0);
     }
     
     if(key == ' ') {

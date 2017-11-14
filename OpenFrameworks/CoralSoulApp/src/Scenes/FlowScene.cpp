@@ -28,7 +28,7 @@ void FlowScene::setup() {
 
 void FlowScene::setupFluid()
 {
-    m_fluid.setup();
+    m_fluid.setup("xmls/FLOW_GUI.xml");
 }
 
 void FlowScene::update()

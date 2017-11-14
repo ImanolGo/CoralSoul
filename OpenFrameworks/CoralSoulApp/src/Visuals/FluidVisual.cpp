@@ -25,15 +25,17 @@ FluidVisual::FluidVisual(): m_downSampling(1.0f), m_numDrawForces(3)
 
 FluidVisual::~FluidVisual()
 {
-
+    m_gui.saveToFile(m_guiSettingsName);
 }
 
 
-void FluidVisual::setup(float downSampling)
+void FluidVisual::setup(string settingsName, float downSampling)
 {
+    m_guiSettingsName = settingsName;
     m_downSampling = downSampling;
     
     this->setupFluid();
+    this->setupGui();
 }
 
 
@@ -65,6 +67,46 @@ void FluidVisual::setupFluid()
     m_flexDrawForces[2].setup(flowWidth, flowHeight, FT_TEMPERATURE, true);
     m_flexDrawForces[2].setName("draw flow res 2");
     
+}
+
+void FluidVisual::setupGui()
+{
+    m_gui.setup("FluidGUI", m_guiSettingsName);
+    m_gui.setPosition(300,20);
+    m_gui.setDefaultBackgroundColor(ofColor(0, 0, 0, 127));
+    m_gui.setDefaultFillColor(ofColor(160, 160, 160, 160));
+    
+    int guiColorSwitch = 0;
+    ofColor guiHeaderColor[2];
+    guiHeaderColor[0].set(160, 160, 80, 200);
+    guiHeaderColor[1].set(80, 160, 160, 200);
+    ofColor guiFillColor[2];
+    guiFillColor[0].set(160, 160, 80, 200);
+    guiFillColor[1].set(80, 160, 160, 200);
+    
+    m_gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    m_gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    m_gui.add(m_opticalFlow.parameters);
+    
+    m_gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    m_gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    m_gui.add(m_velocityMask.parameters);
+    
+    m_gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    m_gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    m_gui.add(m_fluid.parameters);
+    
+    m_gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    m_gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    m_gui.add(m_particleFlow.parameters);
+    
+    
+    m_gui.loadFromFile(m_guiSettingsName);
+    m_gui.minimizeAll();
 }
 
 void FluidVisual::update()
@@ -123,6 +165,8 @@ void FluidVisual::updateFluid()
 void FluidVisual::draw(const ofRectangle& area)
 {
     m_fluid.draw(area.x, area.y, area.width, area.height);
+    
+    this->drawGui();
 }
 
 /*void FluidVisual::draw()
@@ -130,6 +174,10 @@ void FluidVisual::draw(const ofRectangle& area)
     m_fluid.draw(0, 0, ofGetWidth(), ofGetHeight());
 }*/
 
+void FluidVisual::drawGui()
+{
+    m_gui.draw();
+}
 
 void FluidVisual::addForce(ofVec2f position) {
     

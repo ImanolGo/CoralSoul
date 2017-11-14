@@ -23,7 +23,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_isFullScreen(false)
+LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0)
 {
 	//Intentionally left empty
 }
@@ -91,8 +91,8 @@ void LayoutManager::setupFbo()
     m_fbo.allocate(width, height, GL_RGBA);
     m_fbo.begin(); ofClear(0); m_fbo.end();
     
-    m_3dfbo.allocate(width, height, GL_RGBA);
-    m_3dfbo.begin(); ofClear(0); m_3dfbo.end();
+    m_previewFbo.allocate(width, height, GL_RGBA);
+    m_previewFbo.begin(); ofClear(0); m_previewFbo.end();
 }
 
 void LayoutManager::setupSpout()
@@ -116,27 +116,27 @@ void LayoutManager::resetWindowRects()
         m_windowRect.width = 3*frame_width/5 - 2*MARGIN;
         m_windowRect.height =  m_windowRect.width / ratio;
         
-        m_3dWindowRect.width = 2*frame_width/5 - 2*MARGIN;
-        m_3dWindowRect.height = m_3dWindowRect.width / ratio;
+        m_previewWindowRect.width = 2*frame_width/5 - 2*MARGIN;
+        m_previewWindowRect.height = m_previewWindowRect.width / ratio;
         
         m_windowRect.x = AppManager::getInstance().getGuiManager().getWidth()  + 3*MARGIN;
         m_windowRect.y = ofGetHeight()*0.5 - m_windowRect.height/2;
         
-        m_3dWindowRect.x = m_windowRect.x + 2*MARGIN + m_windowRect.width;
-        m_3dWindowRect.y =  ofGetHeight()*0.5 - m_3dWindowRect.height/2;
+        m_previewWindowRect.x = m_windowRect.x + 2*MARGIN + m_windowRect.width;
+        m_previewWindowRect.y =  ofGetHeight()*0.5 - m_previewWindowRect.height/2;
     }
     else
     {
         m_windowRect.width = frame_width - 2*MARGIN;
         m_windowRect.height =  m_windowRect.width / ratio;
         
-        m_3dWindowRect.width = 3*m_windowRect.width/4;
-        m_3dWindowRect.height = m_3dWindowRect.width / ratio;
+        m_previewWindowRect.width = 3*m_windowRect.width/4;
+        m_previewWindowRect.height = m_previewWindowRect.width / ratio;
         
         m_windowRect.x = AppManager::getInstance().getGuiManager().getWidth()  + 3*MARGIN;
 
-        m_3dWindowRect.x = m_windowRect.x;
-        m_3dWindowRect.y = m_windowRect.y + m_windowRect.height + 2*MARGIN  + m_textVisuals["3D"]->getHeight();
+        m_previewWindowRect.x = m_windowRect.x;
+        m_previewWindowRect.y = m_windowRect.y + m_windowRect.height + 2*MARGIN  + m_textVisuals["3D"]->getHeight();
     }
 
 }
@@ -153,7 +153,7 @@ void LayoutManager::setupWindowFrames()
     
     ofColor color = AppManager::getInstance().getSettingsManager().getColor("FrameRectangle");
     m_windowFrame.setColor(color);
-    m_3dWindowFrame.setColor(color);
+    m_previewWindowFrame.setColor(color);
 }
 
 void LayoutManager::resetWindowFrames()
@@ -161,8 +161,8 @@ void LayoutManager::resetWindowFrames()
     m_windowFrame.setPosition(ofPoint( m_windowRect.x - FRAME_MARGIN, m_windowRect.y - FRAME_MARGIN, 0));
     m_windowFrame.setWidth(m_windowRect.width + 2*FRAME_MARGIN); m_windowFrame.setHeight(m_windowRect.height + 2*FRAME_MARGIN);
     
-    m_3dWindowFrame.setPosition(ofPoint( m_3dWindowRect.x - FRAME_MARGIN, m_3dWindowRect.y - FRAME_MARGIN, 0));
-    m_3dWindowFrame.setWidth(m_3dWindowRect.width + 2*FRAME_MARGIN); m_3dWindowFrame.setHeight(m_3dWindowRect.height + 2*FRAME_MARGIN);
+    m_previewWindowFrame.setPosition(ofPoint( m_previewWindowRect.x - FRAME_MARGIN, m_previewWindowRect.y - FRAME_MARGIN, 0));
+    m_previewWindowFrame.setWidth(m_previewWindowRect.width + 2*FRAME_MARGIN); m_previewWindowFrame.setHeight(m_previewWindowRect.height + 2*FRAME_MARGIN);
 }
 
 
@@ -227,7 +227,7 @@ void LayoutManager::updateOutputFbo()
 void LayoutManager::update3dFbo()
 {
     ofEnableAlphaBlending();
-    m_3dfbo.begin();
+    m_previewFbo.begin();
     ofClear(0, 0, 0);
 
         if(m_previewMode == MASK){
@@ -252,7 +252,7 @@ void LayoutManager::update3dFbo()
             AppManager::getInstance().getNoiseManager().getFbo().draw(0,0);
         }
     
-    m_3dfbo.end();
+    m_previewFbo.end();
     ofDisableAlphaBlending();
     
 }
@@ -275,8 +275,8 @@ void LayoutManager::createTextVisuals()
     m_textVisuals[text] = textVisual;
     
     
-    x =  m_3dWindowRect.x + m_3dWindowRect.getWidth()*0.5;
-    y =  m_3dWindowRect.y - h - 2*MARGIN;
+    x =  m_previewWindowRect.x + m_previewWindowRect.getWidth()*0.5;
+    y =  m_previewWindowRect.y - h - 2*MARGIN;
     text = "3D Preview";
     textVisual = ofPtr<TextVisual>(new TextVisual(pos,w,h,true));
     textVisual->setText(text, fontName, size, ofColor::white);
@@ -293,8 +293,8 @@ void LayoutManager::resetWindowTitles()
     m_textVisuals["Output"]->setPosition(pos);
     
     
-    pos.x =  m_3dWindowRect.x + m_3dWindowRect.getWidth()*0.5;
-    pos.y =  m_3dWindowRect.y - m_textVisuals["3D"]->getHeight()*0.5  - MARGIN;
+    pos.x =  m_previewWindowRect.x + m_previewWindowRect.getWidth()*0.5;
+    pos.y =  m_previewWindowRect.y - m_textVisuals["3D"]->getHeight()*0.5  - MARGIN;
     m_textVisuals["3D"]->setPosition(pos);
 }
 
@@ -349,21 +349,27 @@ void LayoutManager::draw()
     if(!m_initialized)
         return;
     
-    if(m_isFullScreen){
-        this->drawFullscreen();
-    }
-    else{
-        this->drawPreviews();
+    switch (m_drawMode)
+    {
+        case DRAW_NORMAL:  this->drawNormal(); break;
+        case DRAW_OUTPUT:  this->drawOutput(); break;
+        case DRAW_PREVIEW:  this->drawPreview(); break;
+        default: this->drawNormal(); break;
     }
    
 }
 
-void LayoutManager::drawFullscreen()
+void LayoutManager::drawOutput()
 {
-     m_fbo.draw(0,0);
+    m_fbo.draw(0,0);
 }
 
-void LayoutManager::drawPreviews()
+void LayoutManager::drawPreview()
+{
+    m_previewFbo.draw(0,0);
+}
+
+void LayoutManager::drawNormal()
 {
     this->drawFbos();
     this->drawText();
@@ -393,8 +399,8 @@ void LayoutManager::drawOutputFbo()
 void LayoutManager::draw3dFbo()
 {
     
-    m_3dWindowFrame.draw();
-    m_3dfbo.draw(m_3dWindowRect.x,m_3dWindowRect.y,m_3dWindowRect.width,m_3dWindowRect.height);
+    m_previewWindowFrame.draw();
+    m_previewFbo.draw(m_previewWindowRect.x,m_previewWindowRect.y,m_previewWindowRect.width,m_previewWindowRect.height);
 }
 
 
