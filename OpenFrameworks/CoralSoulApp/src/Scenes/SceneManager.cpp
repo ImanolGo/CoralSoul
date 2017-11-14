@@ -72,6 +72,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new RainScene());
     m_mySceneManager.addScene(scene);
     
+    //Create Flow Scene
+    scene = ofPtr<ofxScene> (new FlowScene());
+    m_mySceneManager.addScene(scene);
+    
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();

@@ -71,7 +71,7 @@ void RainScene::updateRipples()
     m_ripples.begin();
     ofFill();
         ofSetColor(ofNoise( ofGetFrameNum() ) * 255 * 5, 255);
-        ofEllipse(ofRandom(width),ofRandom(height), 10,10);
+        ofDrawEllipse(ofRandom(width),ofRandom(height), 10,10);
     m_ripples.end();
     m_ripples.update();
     
@@ -100,7 +100,6 @@ void RainScene::drawRipples()
 
 void RainScene::willFadeIn() {
     ofLogNotice("RainScene::willFadeIn");
-    //AppManager::getInstance().getModelManager().onLightColorChange(ofColor(0, 191, 255));
     
 }
 

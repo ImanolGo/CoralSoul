@@ -91,6 +91,8 @@ private:
     
     void setupWeatherGui();
     
+    void setupNoiseGui();
+    
     void drawRectangle();
     
     void drawGui();
@@ -123,6 +125,10 @@ private:
     ofParameter<float>      m_lightX;
     ofParameter<float>      m_lightY;
     ofParameter<float>      m_lightZ;
+    
+    ofParameter<int>        m_noiseResolution;
+    ofParameter<float>      m_noiseFrequency;
+    ofParameter<float>      m_noiseSpeed;
     
     ofxDatGuiLabel*        m_cityLabel;
    

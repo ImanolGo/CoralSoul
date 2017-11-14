@@ -247,6 +247,11 @@ void LayoutManager::update3dFbo()
             AppManager::getInstance().getSceneManager().draw();
         }
     
+        else if(m_previewMode == NOISE){
+            //AppManager::getInstance().getNoiseManager().draw(m_fbo.getWidth(), m_fbo.getHeight());
+            AppManager::getInstance().getNoiseManager().getFbo().draw(0,0);
+        }
+    
     m_3dfbo.end();
     ofDisableAlphaBlending();
     

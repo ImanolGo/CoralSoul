@@ -70,6 +70,9 @@ public:
     //! Returns the api manager
     ApiManager&  getApiManager() { return m_apiManager; }
     
+    //! Returns the noise manager
+    NoiseManager&  getNoiseManager() { return m_noiseManager; }
+    
 
     //==========================================================================
     
@@ -113,6 +116,7 @@ private:
     ModelManager             m_modelManager;             ///< Manages the 3D models
     SceneManager             m_sceneManager;             ///< Manages all the scenes
     ApiManager               m_apiManager;               ///< Manages all the apis
+    NoiseManager               m_noiseManager;             ///< Manages the noise generator
    
     bool                     m_debugMode;
     bool                     m_initialized;

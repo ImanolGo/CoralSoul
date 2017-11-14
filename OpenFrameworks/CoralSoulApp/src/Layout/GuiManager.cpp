@@ -47,6 +47,7 @@ void GuiManager::setup()
     this->setupLightGui();
     this->setupWeatherGui();
     this->setupCameraGui();
+    this->setupNoiseGui();
     this->setupGuiEvents();
     this->loadGuiValues();
 
@@ -104,6 +105,7 @@ void GuiManager::setupPreviewGui()
     opts.push_back("MODEL");
     opts.push_back("WIREFRAME");
     opts.push_back("SCENE");
+    opts.push_back("NOISE");
     
     string label = "PREVIEW";
     
@@ -155,6 +157,32 @@ void GuiManager::setupLightGui()
     m_gui.addBreak();
 
 }
+
+void GuiManager::setupNoiseGui()
+{
+    auto noiseManager = &AppManager::getInstance().getNoiseManager();
+    
+    m_noiseResolution.set("Noise Resolution",  64, 2, 256 );
+    m_noiseResolution.addListener(noiseManager, &NoiseManager::onNoiseResolutionChange);
+    m_parameters.add(m_noiseResolution);
+    
+    m_noiseFrequency.set("Noise Frequency",  0.4, 0.0, 4.0);
+    m_noiseFrequency.addListener(noiseManager, &NoiseManager::onNoiseFrequencyChange);
+    m_parameters.add(m_noiseFrequency);
+    
+    m_noiseSpeed.set("Noise Speed",  1.0, 0.001, 3);
+    m_noiseSpeed.addListener(noiseManager, &NoiseManager::onNoiseSpeedChange);
+    m_parameters.add(m_noiseSpeed);
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("NOISE", ofColor::white);
+    folder->addSlider(m_noiseResolution);
+    folder->addSlider(m_noiseFrequency);
+    folder->addSlider(m_noiseSpeed);
+    //folder->expand();
+    m_gui.addBreak();
+    
+}
+
 
 
 void GuiManager::setupCameraGui()

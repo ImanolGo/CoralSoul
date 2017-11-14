@@ -39,7 +39,8 @@ class LayoutManager: public Manager
         MASK,
         MODEL,
         WIREFRAME,
-        SCENE
+        SCENE,
+        NOISE
     };
 
     
