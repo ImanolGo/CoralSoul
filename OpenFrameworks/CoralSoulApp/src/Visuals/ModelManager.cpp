@@ -183,7 +183,7 @@ void ModelManager::drawModel()
     ofEnableLighting();
     
     m_light.enable();
-    //material.begin();
+    m_material.begin();
     
     ofPushStyle();
     ofSetColor(255);
@@ -194,13 +194,48 @@ void ModelManager::drawModel()
     
     ofPopStyle();
     
-    // material.end();
+    m_material.end();
     
     // turn off lighting //
     ofDisableLighting();
     
     ofDisableDepthTest();
 
+}
+
+void  ModelManager::drawModel(const ofFbo& tex)
+{
+     m_cam.begin();
+    
+    m_fboTexture.begin();
+        tex.draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
+    m_fboTexture.end();
+    
+    ofEnableDepthTest();
+    
+    // enable lighting //
+    ofEnableLighting();
+    
+    m_light.enable();
+    //m_material.begin();
+    
+    ofPushStyle();
+    ofSetColor(255);
+    
+    m_fboTexture.getTexture().bind();
+        m_model.drawFaces();
+    m_fboTexture.getTexture().unbind();
+    
+    ofPopStyle();
+    
+    //m_material.end();
+    
+    // turn off lighting //
+    ofDisableLighting();
+    
+    ofDisableDepthTest();
+    
+     m_cam.end();
 }
 
 void ModelManager::drawWireframe()

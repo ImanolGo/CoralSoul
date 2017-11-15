@@ -24,6 +24,7 @@ FlowScene::~FlowScene()
 void FlowScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupFluid();
+    this->setupFbo();
 }
 
 void FlowScene::setupFluid()
@@ -31,9 +32,20 @@ void FlowScene::setupFluid()
     m_fluid.setup("xmls/FLOW_GUI.xml");
 }
 
+void FlowScene::setupFbo()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    m_fbo.allocate(width, height);
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+}
+
+
 void FlowScene::update()
 {
     this->updateFluid();
+    this->updateFbo();
 }
 
 void FlowScene::updateFluid()
@@ -45,11 +57,17 @@ void FlowScene::updateFluid()
 }
 
 
+void FlowScene::updateFbo()
+{
+    m_fbo.begin();
+        ofClear(0);
+        this->drawFluid();
+    m_fbo.end();
+}
 void FlowScene::draw()
 {
     ofClear(0);
-    this->drawFluid();
-   
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
 void FlowScene::drawFluid()

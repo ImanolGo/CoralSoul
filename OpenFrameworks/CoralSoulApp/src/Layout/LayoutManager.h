@@ -119,7 +119,7 @@ private:
     
     void updateOutputFbo();
     
-    void update3dFbo();
+    void updatePreviewFbo();
     
     void updateMask();
 
@@ -135,7 +135,7 @@ private:
     
     void drawOutputFbo();
     
-    void draw3dFbo();
+    void drawPreviewFbo();
     
     void drawText();
     

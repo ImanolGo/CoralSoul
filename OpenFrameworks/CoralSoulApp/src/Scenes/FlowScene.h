@@ -46,6 +46,10 @@ private:
     
     void setupFluid();
     
+    void setupFbo();
+    
+    void updateFbo();
+    
     void updateFluid();
     
     void drawFluid();
@@ -53,6 +57,8 @@ private:
 private:
     
     FluidVisual             m_fluid;
+    ofFbo                   m_fbo;
+    
     
 };
 

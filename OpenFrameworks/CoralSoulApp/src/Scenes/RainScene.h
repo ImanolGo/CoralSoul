@@ -48,9 +48,13 @@ private:
     
     void setupImage();
     
+    void setupFbo();
+    
     void setupRipples();
     
     void updateRipples();
+    
+    void updateFbo();
     
     void drawRipples();
     
@@ -60,6 +64,8 @@ private:
     
     ofxRipples  m_ripples;
     ofxBounce   m_bounce;
+    
+     ofFbo      m_fbo;
     
 };
 

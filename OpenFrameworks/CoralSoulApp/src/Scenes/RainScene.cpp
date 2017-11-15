@@ -25,6 +25,7 @@ void RainScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupImage();
     this->setupRipples();
+    this->setupFbo();
 }
 
 void RainScene::setupImage()
@@ -51,10 +52,20 @@ void RainScene::setupRipples()
    
 }
 
+void RainScene::setupFbo()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    m_fbo.allocate(width, height);
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+}
+
 
 void RainScene::update()
 {
     this->updateRipples();
+    this->updateFbo();
 }
 
 void RainScene::updateRipples()
@@ -78,13 +89,18 @@ void RainScene::updateRipples()
     m_bounce << m_ripples;
 }
 
+void RainScene::updateFbo()
+{
+    m_fbo.begin();
+        ofClear(0);
+        this->drawRipples();
+    m_fbo.end();
+}
 
 void RainScene::draw()
 {
     ofClear(0);
-    this->drawRipples();
-    
-   
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
 void RainScene::drawRipples()

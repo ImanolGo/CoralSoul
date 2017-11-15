@@ -81,7 +81,7 @@ void SceneManager::createScenes()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
 
     m_mySceneManager.run(width, height);
-    this->onTransitionTimeChange(2.0);
+    this->onTransitionTimeChange(1.0);
 }
 
 

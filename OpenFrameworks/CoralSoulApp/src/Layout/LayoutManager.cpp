@@ -190,14 +190,15 @@ void LayoutManager::updateMask()
    
     m_mask.begin();
          ofClear(0);
-         AppManager::getInstance().getModelManager().getModel().draw(0,0);
+         //AppManager::getInstance().getModelManager().getModel().draw(0,0);
+         AppManager::getInstance().getSceneManager().draw();
     m_mask.end();
 }
 
 void LayoutManager::updateFbos()
 {
     this->updateOutputFbo();
-    this->update3dFbo();
+    this->updatePreviewFbo();
 }
 
 void LayoutManager::updateSpout()
@@ -224,7 +225,7 @@ void LayoutManager::updateOutputFbo()
     
 }
 
-void LayoutManager::update3dFbo()
+void LayoutManager::updatePreviewFbo()
 {
     ofEnableAlphaBlending();
     m_previewFbo.begin();
@@ -386,7 +387,7 @@ void LayoutManager::drawText()
 void LayoutManager::drawFbos()
 {
     this->drawOutputFbo();
-    this->draw3dFbo();
+    this->drawPreviewFbo();
 }
 
 
@@ -396,7 +397,7 @@ void LayoutManager::drawOutputFbo()
     m_fbo.draw(m_windowRect.x,m_windowRect.y,m_windowRect.width,m_windowRect.height);
 }
 
-void LayoutManager::draw3dFbo()
+void LayoutManager::drawPreviewFbo()
 {
     
     m_previewWindowFrame.draw();

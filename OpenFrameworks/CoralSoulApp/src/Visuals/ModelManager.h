@@ -38,6 +38,8 @@ public:
     //! Draw the layout
     void draw();
     
+    void drawModel(const ofFbo& tex);
+    
     const ofFbo & getMask() const {return m_fboMask;}
     
     const ofFbo & getModel() const {return m_fboModel;}

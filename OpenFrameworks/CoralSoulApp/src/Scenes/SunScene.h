@@ -46,7 +46,11 @@ private:
     
     void setupImage();
     
+    void setupFbo();
+    
     void updateSun();
+    
+    void updateFbo();
     
     void drawSun();
     
@@ -57,6 +61,7 @@ private:
     ofPtr<ofTexture> m_texture;
     
     ofColor         m_color;
+    ofFbo           m_fbo;
         
 };
 

@@ -24,6 +24,7 @@ SunScene::~SunScene()
 void SunScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupImage();
+    this->setupFbo();
 }
 
 void SunScene::setupImage()
@@ -31,11 +32,20 @@ void SunScene::setupImage()
     m_texture = AppManager::getInstance().getResourceManager().getTexture("RockTexture");
 }
 
+void SunScene::setupFbo()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    m_fbo.allocate(width, height);
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+}
 
 
 void SunScene::update()
 {
     this->updateSun();
+    this->updateFbo();
 }
 
 void SunScene::updateSun()
@@ -48,12 +58,18 @@ void SunScene::updateSun()
     AppManager::getInstance().getModelManager().onLightZChange(angle);
 }
 
+void SunScene::updateFbo()
+{
+    m_fbo.begin();
+        ofClear(0);
+        this->drawSun();
+    m_fbo.end();
+}
 
 void SunScene::draw()
 {
     ofClear(0);
-    this->drawSun();
-   
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
 void SunScene::drawSun()
