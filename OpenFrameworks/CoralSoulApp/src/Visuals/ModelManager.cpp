@@ -46,8 +46,9 @@ void ModelManager::setup()
     this->setupLight();
 	this->loadModel();
     this->setupFbos();
+    this->setupShaders();
     
-    img.load("images/model/sonic_bricks_d.png");
+    //img.load("images/model/sonic_bricks_d.png");
     
      ofEnableArbTex();
 }
@@ -100,6 +101,25 @@ void ModelManager::setupLight()
     this->setLightOri(m_light, m_light_rot);
 }
 
+void ModelManager::setupShaders()
+{
+    m_thickShader.setGeometryInputType(GL_LINES);
+    m_thickShader.setGeometryOutputType(GL_TRIANGLE_STRIP);
+    m_thickShader.setGeometryOutputCount(4);
+    
+    if(ofIsGLProgrammableRenderer())
+    {
+        m_thickShader.load("shaders/shadersGL3/ThickLineShaderVert.glsl", "shaders/shadersGL3/ThickLineShaderFrag.glsl", "shaders/shadersGL3/ThickLineShaderGeom.glsl");
+        m_displacementShader.load("shaders/shadersGL3/DisplacementMap");
+    }
+    else{
+        m_thickShader.load("shaders/shadersGL2/ThickLineShaderVert.glsl", "shaders/shadersGL2/ThickLineShaderFrag.glsl", "shaders/shadersGL2/ThickLineShaderGeom.glsl");
+            m_displacementShader.load("shaders/shadersGL2/DisplacementMap");
+    }
+   
+
+}
+
 void ModelManager::loadModel()
 {
     //ofEnableDepthTest();
@@ -132,7 +152,7 @@ void ModelManager::updateModel()
 {
     m_model.update();
     m_simpleModel.update();
-    m_mesh = m_model.getMesh(0);
+    m_mesh = m_simpleModel.getMesh(0);
 }
 
 void ModelManager::updateFbos()
@@ -147,7 +167,9 @@ void ModelManager::updateFbos()
     m_fboWireframe.begin();
     ofClear(0, 0, 0);
     m_cam.begin();
-        m_simpleModel.drawWireframe();
+        //ofSetLineWidth(2);
+        //m_simpleModel.drawWireframe();
+        this->drawWireframe();
     m_cam.end();
     m_fboWireframe.end();
     
@@ -240,39 +262,102 @@ void  ModelManager::drawModel(const ofFbo& tex)
 
 void ModelManager::drawWireframe()
 {
-    ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
+    ofSetLineWidth(5.0);
     
-    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    //modify mesh with some noise
+    float liquidness = 5;
+    float amplitude = 1;
+    float speedDampen = 5;
+    vector<ofVec3f>& verts = m_mesh.getVertices();
+    for(unsigned int i = 0; i < verts.size(); i++){
+        verts[i].x += ofSignedNoise(verts[i].x/liquidness, verts[i].y/liquidness,verts[i].z/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
+        verts[i].y += ofSignedNoise(verts[i].z/liquidness, verts[i].x/liquidness,verts[i].y/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
+        verts[i].z += ofSignedNoise(verts[i].y/liquidness, verts[i].z/liquidness,verts[i].x/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
+    }
     
     ofEnableDepthTest();
-#ifndef TARGET_PROGRAMMABLE_GL
-    glShadeModel(GL_SMOOTH); //some model / light stuff
-#endif
+    
+    // enable lighting //
+    ofEnableLighting();
+    
     m_light.enable();
-    ofEnableSeparateSpecularLight();
     
-#ifndef TARGET_PROGRAMMABLE_GL
-    glEnable(GL_NORMALIZE);
-#endif
     
-    //img.bind();
+    ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
+    ofMaterial material = m_simpleModel.getMaterialForMesh(0);
+    ofMultMatrix(m_simpleModel.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
     
-   // ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
+    material.begin();
     
-    //ofMultMatrix(m_simpleModel.getModelMatrix());
-    //ofMultMatrix(meshHelper.matrix);
+    m_mesh.drawWireframe();
     
-    //ofMaterial & material = meshHelper.material;
-    m_simpleModel.drawWireframe();
-    
-    //m_model.drawFaces();
-    
-    //img.unbind();
+    material.end();
+    // turn off lighting //
+    ofDisableLighting();
     
     ofDisableDepthTest();
-    m_light.disable();
-    ofDisableLighting();
-    ofDisableSeparateSpecularLight();
+    
+    //m_simpleModel.drawWireframe();
+    
+
+//    m_fboTexture.begin();
+//    AppManager::getInstance().getNoiseManager().getFbo().draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
+//    m_fboTexture.end();
+//
+//    ofSetLineWidth(5.0);
+//
+//     m_fboTexture.getTexture().bind();
+//     m_displacementShader.begin();
+//         m_simpleModel.drawWireframe();
+//
+//     m_displacementShader.end();
+//     m_fboTexture.getTexture().unbind();
+    
+//    ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
+//
+//    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//
+//    ofEnableDepthTest();
+//#ifndef TARGET_PROGRAMMABLE_GL
+//    glShadeModel(GL_SMOOTH); //some model / light stuff
+//#endif
+//    m_light.enable();
+//    ofEnableSeparateSpecularLight();
+//
+//#ifndef TARGET_PROGRAMMABLE_GL
+//    glEnable(GL_NORMALIZE);
+//#endif
+//
+//   // m_thickShader.begin();
+//
+//    // set thickness of ribbons
+//    //m_thickShader.setUniform1f("thickness", 20);
+//
+//
+//    //img.bind();
+//
+//    //ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
+//
+//    //ofMultMatrix(m_simpleModel.getModelMatrix());
+//    //ofMultMatrix(meshHelper.matrix);
+//
+//    //ofMaterial & material = meshHelper.material;
+//    m_simpleModel.drawWireframe();
+//    //m_mesh.drawWireframe();
+//
+//    //m_model.drawFaces();
+//
+//    //img.unbind();
+//
+//    //m_thickShader.end();
+//
+//    ofDisableDepthTest();
+//    m_light.disable();
+//    ofDisableLighting();
+//    ofDisableSeparateSpecularLight();
+//
+    
 }
 
 
@@ -280,7 +365,7 @@ void ModelManager::bindTexture() {
     
     auto tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
     
-    img.getTexture().bind();
+    //img.getTexture().bind();
     
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
@@ -299,7 +384,7 @@ void ModelManager::bindTexture() {
 void ModelManager::unbindTexture() {
     
     auto tex  = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
-    img.getTexture().unbind();
+   // img.getTexture().unbind();
     
     glMatrixMode(GL_TEXTURE);
     glPopMatrix();

@@ -70,6 +70,8 @@ private:
     
     void setupLight();
     
+    void setupShaders();
+    
     void setupFbos();
     
     void loadModel();
@@ -107,6 +109,9 @@ private:
     ofVec3f              m_light_pos;
     
     ofMaterial          m_material;
+    
+    ofShader            m_thickShader;
+    ofShader            m_displacementShader;
 
     ofImage img;
 };
