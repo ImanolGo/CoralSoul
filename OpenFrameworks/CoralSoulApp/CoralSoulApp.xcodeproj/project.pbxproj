@@ -42,7 +42,6 @@
 		42B74F87B7AAD874FB4969BF /* ofxAssimpMeshHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB512C9BFD828EA08C1F5C1F /* ofxAssimpMeshHelper.cpp */; };
 		44954A08B2522C6FE16E629B /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 834CDEC771773ED253C54783 /* ofxTCPClient.cpp */; };
 		46A50237177AED3C6967ABE5 /* ofxEasingExpo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0D87CEDA56BF3FFC8789710 /* ofxEasingExpo.cpp */; };
-		48AA5B81BBB3EAEF1A3779F6 /* ofxMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B588A7FE508DC3A3FEC131 /* ofxMask.cpp */; };
 		48F94177806B5CB8D3C0F283 /* CameraAnimations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A05F1DCF8180DEEC9FBAE585 /* CameraAnimations.cpp */; };
 		49EE14834E328B244122B5DE /* ofxDatGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F01F646CD84F962650B9F49A /* ofxDatGui.cpp */; };
 		4D5BF349E2CCE75A3A8DD44E /* ofxEasingQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2EEF646D906C2A7E13E0F90 /* ofxEasingQuad.cpp */; };
@@ -232,7 +231,6 @@
 		2FAE0FD9D5AFB2800EC4B8E8 /* ofxFXObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFXObject.cpp; path = src/Addons/ofxFX/src/ofxFXObject.cpp; sourceTree = SOURCE_ROOT; };
 		30DBA2078E351C745FCB2997 /* ofxMidiMessage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiMessage.h; path = src/Addons/ofxMidi/src/ofxMidiMessage.h; sourceTree = SOURCE_ROOT; };
 		30DEEDD6C60031B5DD8ADCDB /* ofxAssimpAnimation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAssimpAnimation.h; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxAssimpModelLoader/src/ofxAssimpAnimation.h; sourceTree = SOURCE_ROOT; };
-		31B588A7FE508DC3A3FEC131 /* ofxMask.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMask.cpp; path = src/Addons/ofxMask/src/ofxMask.cpp; sourceTree = SOURCE_ROOT; };
 		334B241F4B14F42A81A9E03F /* ofxPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPanel.h; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxGui/src/ofxPanel.h; sourceTree = SOURCE_ROOT; };
 		3656BF3981C35A273806DCEB /* BasicVisual.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = BasicVisual.h; path = src/Engine/Visuals/BasicVisual.h; sourceTree = SOURCE_ROOT; };
 		36AF3713CDCE6E27F1398607 /* ftSvDisplayScalar.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ftSvDisplayScalar.h; path = src/Addons/ofxFlowTools/src/splitvelocity/ftSvDisplayScalar.h; sourceTree = SOURCE_ROOT; };
@@ -527,7 +525,6 @@
 		E6C4E0E3C4B190E082E74978 /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscOutboundPacketStream.cpp; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.cpp; sourceTree = SOURCE_ROOT; };
 		E712BDE453ADAF3253F708D6 /* ftGaussianBlurShader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ftGaussianBlurShader.h; path = src/Addons/ofxFlowTools/src/filters/ftGaussianBlurShader.h; sourceTree = SOURCE_ROOT; };
 		E7507B0B44F38973DFAFB654 /* ofxUDPManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUDPManager.h; path = ../../../../../../../../Applications/of_v0.9.8_osx_release/addons/ofxNetwork/src/ofxUDPManager.h; sourceTree = SOURCE_ROOT; };
-		E755EAD35E0A2EB1DDCF67D0 /* ofxMask.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMask.h; path = src/Addons/ofxMask/src/ofxMask.h; sourceTree = SOURCE_ROOT; };
 		E768E1E089381A569E86791D /* ofxBloom.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBloom.h; path = src/Addons/ofxFX/src/filters/ofxBloom.h; sourceTree = SOURCE_ROOT; };
 		E7E1149ABD66452E31089FC4 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiMessage.cpp; path = src/Addons/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = SOURCE_ROOT; };
 		E94C671A9BAD54B890CFA4A7 /* ofxRtMidiOut.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRtMidiOut.h; path = src/Addons/ofxMidi/src/desktop/ofxRtMidiOut.h; sourceTree = SOURCE_ROOT; };
@@ -585,15 +582,6 @@
 				D1C77A5B38BC862739AEC400 /* OscManager.h */,
 			);
 			name = I0;
-			sourceTree = "<group>";
-		};
-		08CE437ADC711DF45517548C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				31B588A7FE508DC3A3FEC131 /* ofxMask.cpp */,
-				E755EAD35E0A2EB1DDCF67D0 /* ofxMask.h */,
-			);
-			name = src;
 			sourceTree = "<group>";
 		};
 		0FF7CAEDFA036750CEB39296 /* visualisation */ = {
@@ -1324,7 +1312,6 @@
 				74A312B2568D421CAAEF740A /* ofxDatGui */,
 				810FC8833FA2B9CF6358B009 /* ofxFlowTools */,
 				D9F7CAC7D21A1FED92DCF13D /* ofxFX */,
-				E9838E8F4DE05D44776B7800 /* ofxMask */,
 				CF103C99794828DF38B9DA47 /* ofxMidi */,
 				AB7CA19E522801B3E16BBF86 /* ofxSceneManager */,
 				5995A3C00988FA68A52A435E /* ofxSimpleTimer */,
@@ -1629,14 +1616,6 @@
 			name = ofxOsc;
 			sourceTree = "<group>";
 		};
-		E9838E8F4DE05D44776B7800 /* ofxMask */ = {
-			isa = PBXGroup;
-			children = (
-				08CE437ADC711DF45517548C /* src */,
-			);
-			name = ofxMask;
-			sourceTree = "<group>";
-		};
 		EAC9C9CB089C8DF06F40AD5C /* ofxTween */ = {
 			isa = PBXGroup;
 			children = (
@@ -1821,7 +1800,6 @@
 				E937780B3C3172684F9A853F /* ftSvAverage.cpp in Sources */,
 				A89C1D586E1CD69DA460A7F7 /* ftAverageVelocity.cpp in Sources */,
 				337AAEDF4DCC79FE548A7139 /* ofxFXObject.cpp in Sources */,
-				48AA5B81BBB3EAEF1A3779F6 /* ofxMask.cpp in Sources */,
 				39A1221DFF732DEADFF38065 /* RtMidi.cpp in Sources */,
 				AB6A6163B8048EBA5842E8A8 /* ofxRtMidiIn.cpp in Sources */,
 				94234EAB2457D33C02984DBD /* ofxRtMidiOut.cpp in Sources */,

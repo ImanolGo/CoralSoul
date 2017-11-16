@@ -15,7 +15,6 @@
 #include "SvgVisual.h"
 #include "ImageVisual.h"
 #include "RectangleVisual.h"
-#include "ofxMask.h"
 #include "ofxBlur.h"
 
 #if defined(TARGET_WIN32)
@@ -167,8 +166,6 @@ private:
     ofFbo               m_fbo;
     ofFbo               m_previewFbo;
     ofColor             m_color;
-    
-    ofxMask             m_mask;
     
     int                 m_previewMode;
     ofxBlur             m_blur;

@@ -72,13 +72,8 @@ void LayoutManager::setupMask()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-    //ofEnableArbTex();
-   // m_mask.allocate(width, height, ofxMask::LUMINANCE);
     string name = "output";
     AppManager::getInstance().getMaskManager().allocate(name, width, height);
-    //string name = "output";
-    //AppManager::getInstance().getMaskManager().allocate(name, width, height);
-    //ofDisableArbTex();
 }
 
 
@@ -183,18 +178,15 @@ void LayoutManager::updateMask()
 {
     string name = "output";
     
-    // m_mask.beginMask();
     AppManager::getInstance().getMaskManager().beginMask(name);
     m_blur.begin();
         AppManager::getInstance().getModelManager().getMask().draw(0,0);
     m_blur.end();
     m_blur.draw();
     AppManager::getInstance().getMaskManager().endMask(name);
-    //m_mask.endMask();
    
     AppManager::getInstance().getMaskManager().begin(name);
         ofClear(0);
-        //AppManager::getInstance().getModelManager().getModel().draw(0,0);
         AppManager::getInstance().getSceneManager().draw();
     AppManager::getInstance().getMaskManager().end(name);
 }
@@ -219,8 +211,6 @@ void LayoutManager::updateOutputFbo()
     ofEnableAlphaBlending();
     m_fbo.begin();
     ofClear(0, 0, 0);
-    
-      // m_mask.draw();
         AppManager::getInstance().getMaskManager().draw(name);
     m_fbo.end();
     ofDisableAlphaBlending();
@@ -236,9 +226,6 @@ void LayoutManager::updatePreviewFbo()
         if(m_previewMode == MASK){
             string name = "output";
             AppManager::getInstance().getMaskManager().drawMask(name);
-           // m_mask.drawMasker();
-            
-            //m_blur.draw();
         }
         else if(m_previewMode == MODEL){
             AppManager::getInstance().getModelManager().getModel().draw(0,0);
