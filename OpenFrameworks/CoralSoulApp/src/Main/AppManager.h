@@ -73,6 +73,9 @@ public:
     //! Returns the noise manager
     NoiseManager&  getNoiseManager() { return m_noiseManager; }
     
+    //! Returns the mask manager
+    MaskManager&  getMaskManager() { return m_maskManager; }
+    
 
     //==========================================================================
     
@@ -117,7 +120,8 @@ private:
     SceneManager             m_sceneManager;             ///< Manages all the scenes
     ApiManager               m_apiManager;               ///< Manages all the apis
     NoiseManager               m_noiseManager;             ///< Manages the noise generator
-   
+    MaskManager              m_maskManager;              ///< Manages all the masks
+    
     bool                     m_debugMode;
     bool                     m_initialized;
 };

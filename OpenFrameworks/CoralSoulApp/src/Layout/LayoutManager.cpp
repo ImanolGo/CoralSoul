@@ -73,7 +73,9 @@ void LayoutManager::setupMask()
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
     //ofEnableArbTex();
-    m_mask.allocate(width, height, ofxMask::LUMINANCE);
+   // m_mask.allocate(width, height, ofxMask::LUMINANCE);
+    string name = "output";
+    AppManager::getInstance().getMaskManager().allocate(name, width, height);
     //string name = "output";
     //AppManager::getInstance().getMaskManager().allocate(name, width, height);
     //ofDisableArbTex();
@@ -181,18 +183,20 @@ void LayoutManager::updateMask()
 {
     string name = "output";
     
-    m_mask.beginMask();
-        m_blur.begin();
-            AppManager::getInstance().getModelManager().getMask().draw(0,0);
-        m_blur.end();
-        m_blur.draw();
-    m_mask.endMask();
+    // m_mask.beginMask();
+    AppManager::getInstance().getMaskManager().beginMask(name);
+    m_blur.begin();
+        AppManager::getInstance().getModelManager().getMask().draw(0,0);
+    m_blur.end();
+    m_blur.draw();
+    AppManager::getInstance().getMaskManager().endMask(name);
+    //m_mask.endMask();
    
-    m_mask.begin();
-         ofClear(0);
-         //AppManager::getInstance().getModelManager().getModel().draw(0,0);
-         AppManager::getInstance().getSceneManager().draw();
-    m_mask.end();
+    AppManager::getInstance().getMaskManager().begin(name);
+        ofClear(0);
+        //AppManager::getInstance().getModelManager().getModel().draw(0,0);
+        AppManager::getInstance().getSceneManager().draw();
+    AppManager::getInstance().getMaskManager().end(name);
 }
 
 void LayoutManager::updateFbos()
@@ -214,12 +218,10 @@ void LayoutManager::updateOutputFbo()
     
     ofEnableAlphaBlending();
     m_fbo.begin();
-    ofPushStyle();
     ofClear(0, 0, 0);
     
-       m_mask.draw();
-    
-    ofPopStyle();
+      // m_mask.draw();
+        AppManager::getInstance().getMaskManager().draw(name);
     m_fbo.end();
     ofDisableAlphaBlending();
     
@@ -233,7 +235,8 @@ void LayoutManager::updatePreviewFbo()
 
         if(m_previewMode == MASK){
             string name = "output";
-            m_mask.drawMasker();
+            AppManager::getInstance().getMaskManager().drawMask(name);
+           // m_mask.drawMasker();
             
             //m_blur.draw();
         }
