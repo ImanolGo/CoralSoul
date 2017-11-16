@@ -352,12 +352,12 @@ void LayoutManager::draw()
 
 void LayoutManager::drawOutput()
 {
-    m_fbo.draw(0,0);
+    m_fbo.draw(0,0, ofGetWidth(), ofGetHeight());
 }
 
 void LayoutManager::drawPreview()
 {
-    m_previewFbo.draw(0,0);
+    m_previewFbo.draw(0,0, ofGetWidth(), ofGetHeight());
 }
 
 void LayoutManager::drawNormal()

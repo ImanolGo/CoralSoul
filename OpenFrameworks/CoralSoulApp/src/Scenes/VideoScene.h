@@ -10,6 +10,10 @@
 
 #include "ofxScene.h"
 
+#if defined(TARGET_WIN32)
+#include "ofxWMFVideoPlayer.h"
+#endif
+
 class VideoScene : public ofxScene {
     
 public:
@@ -51,8 +55,13 @@ private:
     
 private:
     
+#if defined(TARGET_WIN32)
+	ofxWMFVideoPlayer m_videoPlayer;
+#else
+	ofVideoPlayer     m_videoPlayer;
+#endif
     
-    ofVideoPlayer     m_videoPlayer;
+    
     
 };
 
