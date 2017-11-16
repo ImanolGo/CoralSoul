@@ -127,7 +127,7 @@ void GuiManager::setupLayoutGui()
     
     ofxDatGuiFolder* folder = m_gui.addFolder("LAYOUT", ofColor::purple);
     folder->addSlider(m_layourBlurScale);
-    folder->expand();
+    //folder->expand();
     m_gui.addBreak();
 }
 
@@ -151,9 +151,9 @@ void GuiManager::setupLightGui()
     folder->addSlider(m_lightX);
     folder->addSlider(m_lightY);
     folder->addSlider(m_lightZ);
-    auto colorPicker = folder->addColorPicker("LIGHT");
-    colorPicker->setColor(ofColor(255));
-    folder->expand();
+    //auto colorPicker = folder->addColorPicker("LIGHT");
+    //colorPicker->setColor(ofColor(255));
+    //folder->expand();
     m_gui.addBreak();
 
 }
