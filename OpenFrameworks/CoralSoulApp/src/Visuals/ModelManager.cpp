@@ -124,10 +124,26 @@ void ModelManager::loadModel()
 {
     //ofEnableDepthTest();
     
+    auto modelResources = AppManager::getInstance().getSettingsManager().getModelResourcesPath();
+    
+    string path = "images/model/SimplifiedWall.obj";
+    string name = "Full";
+    
+    if(modelResources.find(name)!=modelResources.end()){
+        path = modelResources[name];
+    }
+    
+    m_model.loadModel(path);
+    
+    name = "Simplified";
+    if(modelResources.find(name)!=modelResources.end()){
+        path = modelResources[name];
+    }
+    
     //load the model - the 3ds and the texture file need to be in the same folder
-    m_simpleModel.loadModel("images/model/SimplifiedWall.obj");
+    m_simpleModel.loadModel(path);
     //m_model.loadModel("images/model/TexturedWall.obj");
-    m_model.loadModel("images/model/ROCA_MODELO_VFX_38000_UV.obj");
+   
     
     //you can create as many rotations as you want
     //choose which axis you want it to effect

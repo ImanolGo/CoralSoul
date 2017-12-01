@@ -1,5 +1,5 @@
 <group>
-	<Blur>0.39</Blur>
+	<Blur>0.42</Blur>
 	<LightX>-173.95</LightX>
 	<LightY>-38.43</LightY>
 	<LightZ>26.29</LightZ>
@@ -9,9 +9,9 @@
 	<Wind_Dir>110</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
-	<X>224.72</X>
+	<X>213.48</X>
 	<Y>33.71</Y>
-	<Z>606.74</Z>
+	<Z>556.18</Z>
 	<FOV>54.61</FOV>
 	<Noise_Resolution>75</Noise_Resolution>
 	<Noise_Frequency>1.08</Noise_Frequency>
