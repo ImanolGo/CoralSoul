@@ -58,6 +58,8 @@ public:
     
     void nasaTimerCompleteHandler( int &args ) ;
     
+    const ofImage& getNasaImage() {return m_nasaImage;}
+    
 private:
     
     void setupApis();
@@ -65,6 +67,8 @@ private:
     void setupWeatherApi();
     
     void setupNasaApi();
+    
+    void initializeNasaImage();
     
     void setupTimers();
     
@@ -88,6 +92,7 @@ private:
     string                  m_weatherUrl;
     string                  m_nasaUrl;
     weather_conditions      m_weatherConditions;
+    ofImage                 m_nasaImage;
 
 };
 

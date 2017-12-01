@@ -9,6 +9,7 @@
 
 #include "ApiManager.h"
 #include "AppManager.h"
+#include "ofxJSON.h"
 
 
 ApiManager::ApiManager(): Manager()
@@ -93,6 +94,20 @@ void ApiManager::setupWeatherApi()
     ofLogNotice() <<"ApiManager::setupWeatherApi << weather url = " <<  m_weatherUrl;
     
     ofLoadURLAsync(m_weatherUrl, "weather");
+    
+    this->initializeNasaImage();
+}
+
+void ApiManager::initializeNasaImage()
+{
+    m_nasaImage.allocate(640, 480, OF_IMAGE_GRAYSCALE);
+    int i = 0;
+    while ( i < m_nasaImage.getPixels().size() ) {
+        m_nasaImage.getPixels()[i] = 0 ; // initialize black
+        i++;
+    }
+    
+    m_nasaImage.update();
 }
 
 void ApiManager::setupNasaApi()
@@ -134,12 +149,26 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         {
             this->parseNasa(response.data);
         }
+        
+        else if(response.request.name == "nasa_image")
+        {
+            ofLogNotice() <<"ApiManager::urlResponse -> NASA IMAGE ";
+            m_nasaImage.load(response.data);
+        }
     }
 }
 
 void ApiManager::parseNasa(string file)
 {
-    std::cout<< file << std::endl;
+    //std::cout<< file << std::endl;
+    
+    ofxJSONElement json(file);
+    ofLogNotice() <<"ApiManager::parseNasa << url = " << json["url"];
+    
+    m_nasaImage.clear();
+    string url = json["url"].asString();
+    ofLoadURLAsync(url,"nasa_image");
+    
 }
 
 void ApiManager::parseWeather(string xml)

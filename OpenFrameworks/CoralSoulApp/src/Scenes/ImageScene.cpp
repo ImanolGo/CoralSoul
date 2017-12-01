@@ -87,5 +87,6 @@ void ImageScene::willFadeOut() {
 }
 
 void ImageScene::willExit() {
+    ofLogNotice("ImageScene::willFadeOut");
 }
 

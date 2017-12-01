@@ -1,12 +1,12 @@
 <group>
-	<Blur>0</Blur>
-	<LightX>115.28</LightX>
+	<Blur>0.22</Blur>
+	<LightX>180</LightX>
 	<LightY>-48.54</LightY>
 	<LightZ>-139.55</LightZ>
 	<Temp_>18.61</Temp_>
-	<Humidity>88</Humidity>
+	<Humidity>82</Humidity>
 	<Wind_Speed>2.1</Wind_Speed>
-	<Wind_Dir>20</Wind_Dir>
+	<Wind_Dir>10</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
 	<X>-112.36</X>

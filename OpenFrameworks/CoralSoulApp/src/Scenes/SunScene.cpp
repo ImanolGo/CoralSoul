@@ -98,6 +98,7 @@ void SunScene::willFadeOut() {
 }
 
 void SunScene::willExit() {
+     ofLogNotice("SunScene::willExit");
 }
 
 

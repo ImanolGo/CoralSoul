@@ -55,5 +55,6 @@ void WireFrameScene::willFadeOut() {
 }
 
 void WireFrameScene::willExit() {
+    ofLogNotice("WireFrameScene::willExit");
 }
 

@@ -110,5 +110,7 @@ void VideoScene::willExit() {
     {
         m_videoPlayer.stop();
     }
+    
+    ofLogNotice("VideoScene::willExit");
 }
 
