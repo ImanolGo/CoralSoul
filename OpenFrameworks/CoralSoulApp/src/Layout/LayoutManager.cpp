@@ -133,7 +133,7 @@ void LayoutManager::resetWindowRects()
         m_windowRect.x = AppManager::getInstance().getGuiManager().getWidth()  + 3*MARGIN;
 
         m_previewWindowRect.x = m_windowRect.x;
-        m_previewWindowRect.y = m_windowRect.y + m_windowRect.height + 2*MARGIN  + m_textVisuals["3D"]->getHeight();
+        m_previewWindowRect.y = m_windowRect.y + m_windowRect.height + 2*MARGIN  + m_textVisuals["Preview"]->getHeight();
     }
 
 }
@@ -268,10 +268,10 @@ void LayoutManager::createTextVisuals()
     
     x =  m_previewWindowRect.x + m_previewWindowRect.getWidth()*0.5;
     y =  m_previewWindowRect.y - h - 2*MARGIN;
-    text = "3D Preview";
+    text = "Preview";
     textVisual = ofPtr<TextVisual>(new TextVisual(pos,w,h,true));
     textVisual->setText(text, fontName, size, ofColor::white);
-    m_textVisuals["3D"] = textVisual;
+    m_textVisuals["Preview"] = textVisual;
     
 }
 
@@ -279,14 +279,14 @@ void LayoutManager::createTextVisuals()
 void LayoutManager::resetWindowTitles()
 {
     float x =  m_windowRect.x + m_windowRect.getWidth()*0.5;
-    float y =  m_windowRect.y -  m_textVisuals["Output"]->getHeight()*0.5 - MARGIN;
+    float y =  m_windowRect.y -  m_textVisuals["Output"]->getHeight()*0.5 + MARGIN;
     ofPoint pos = ofPoint(x, y);
     m_textVisuals["Output"]->setPosition(pos);
     
     
     pos.x =  m_previewWindowRect.x + m_previewWindowRect.getWidth()*0.5;
-    pos.y =  m_previewWindowRect.y - m_textVisuals["3D"]->getHeight()*0.5  - MARGIN;
-    m_textVisuals["3D"]->setPosition(pos);
+    pos.y =  m_previewWindowRect.y - m_textVisuals["Preview"]->getHeight()*0.5  + MARGIN;
+    m_textVisuals["Preview"]->setPosition(pos);
 }
 
 

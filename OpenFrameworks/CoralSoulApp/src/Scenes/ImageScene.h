@@ -42,14 +42,18 @@ public:
     
 private:
     
+    void setupFbo();
+    
     void setupImage();
+    
+    void updateFbo();
     
     void drawImage();
     
 private:
     
-    
     ofPtr<ofTexture> m_texture;
+    ofFbo      m_fbo;
     
 };
 

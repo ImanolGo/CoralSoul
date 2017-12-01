@@ -3,16 +3,24 @@
 
   <of_settings>
 
-      <window title="CoralSoulApp" x="0" y="50" width="1920" height="1200" fullscreen="0" showCursor="1"/>
+      <window title="CoralSoulApp" x="0" y="50" width="1920" height="1080" fullscreen="0" showCursor="1"/>
 
 
     <debug showCursor="1" setVerbose="1"/> 
-	  <network ipAddress="192.168.1.102" portOscReceive="44409" portOscSend="2390" spout="CoralSoulSpout"/>
+	<network ipAddress="192.168.1.102" portOscReceive="44409" portOscSend="2390" spout="CoralSoulSpout"/>
+	<model full="192.168.1.102" simplified="44409" portOscSend="2390" spout="CoralSoulSpout"/>
 
   </of_settings>
+	
+  <models>
+
+    <model name="Full" path="images/model/ROCA_MODELO_COMPLETO_VFX_48000_UV_1.obj"/>
+    <model name="Simplified" path="images/model/SimplifiedWall.obj"/>
+  
+  </models>
 
   <api>
-       <weather city="tenerife" lat="28.291565" lon="-16.629129" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="5"/>
+       <weather city="tenerife" lat="28.0983074" lon="-16.748344" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="5"/>
   </api>
 
   <textures>

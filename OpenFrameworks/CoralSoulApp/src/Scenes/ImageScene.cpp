@@ -24,6 +24,7 @@ ImageScene::~ImageScene()
 void ImageScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupImage();
+    this->setupFbo();
 }
 
 void ImageScene::setupImage()
@@ -31,17 +32,32 @@ void ImageScene::setupImage()
     m_texture = AppManager::getInstance().getResourceManager().getTexture(getName());
 }
 
+void ImageScene::setupFbo()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    m_fbo.allocate(width, height);
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+}
 
 void ImageScene::update()
 {
-    //Empty
+    this->updateFbo();
 }
 
+void ImageScene::updateFbo()
+{
+    m_fbo.begin();
+        ofClear(0);
+        this->drawImage();
+    m_fbo.end();
+}
 
 void ImageScene::draw()
 {
     ofClear(0);
-    this->drawImage();
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
 void ImageScene::drawImage()

@@ -46,9 +46,8 @@ void AppManager::setup()
 
 	Manager::setup();
     
-    this->setupOF();
 	this->setupManagers();
-    
+    this->setupOF();
     m_initialized = true;
     
     //setDebugMode(m_debugMode);
@@ -88,7 +87,6 @@ void AppManager::update()
     m_visualEffectsManager.update();
     m_viewManager.update();
     m_apiManager.update();
-    m_modelManager.update();
     m_modelManager.update();
     m_noiseManager.update();
     m_sceneManager.update();

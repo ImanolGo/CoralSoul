@@ -53,6 +53,8 @@ public:
     
     const ResourcesPathMap& getVideoResourcesPath() const {return m_videoResourcesPath;}
     
+    const ResourcesPathMap& getModelResourcesPath() const {return m_modelResourcesPath;}
+    
     ofColor getColor(const string& colorName);
     
     float getAppWidth() const {return m_appWidth;}
@@ -102,6 +104,9 @@ private:
     //! Loads all the video  settings
     void loadVideoSettings();
     
+    //! Loads all the model names and paths
+    void loadModelSettings();
+    
 private:
     
     typedef             map< string, ofPtr<ofColor> >    ColorMap;               ///< Defines a map of colors attached to a name
@@ -111,6 +116,7 @@ private:
     ResourcesPathMap        m_texturesPath;         ///< stores the texture paths
     ResourcesPathMap        m_svgResourcesPath;     ///< stores the resources paths
     ResourcesPathMap        m_videoResourcesPath;   ///< stores the video paths
+    ResourcesPathMap        m_modelResourcesPath;   ///< stores the model paths
     ColorMap                m_colors;               ///< stores all the application's colors
     float                   m_appWidth;             ///< stores the applications width
     float                   m_appHeight;            ///< stores the applications height

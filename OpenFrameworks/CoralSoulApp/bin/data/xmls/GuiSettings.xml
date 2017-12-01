@@ -1,19 +1,19 @@
 <group>
-	<Blur>0.81</Blur>
+	<Blur>0.39</Blur>
 	<LightX>-173.95</LightX>
 	<LightY>-38.43</LightY>
 	<LightZ>26.29</LightZ>
-	<Temp_>21.01</Temp_>
-	<Humidity>68</Humidity>
-	<Wind_Speed>4.1</Wind_Speed>
+	<Temp_>20.52</Temp_>
+	<Humidity>72</Humidity>
+	<Wind_Speed>3.6</Wind_Speed>
 	<Wind_Dir>110</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
-	<X>249.3</X>
-	<Y>204.48</Y>
-	<Z>941.18</Z>
+	<X>224.72</X>
+	<Y>33.71</Y>
+	<Z>606.74</Z>
 	<FOV>54.61</FOV>
-	<Noise_Resolution>109</Noise_Resolution>
-	<Noise_Frequency>0.92</Noise_Frequency>
-	<Noise_Speed>0.49</Noise_Speed>
+	<Noise_Resolution>75</Noise_Resolution>
+	<Noise_Frequency>1.08</Noise_Frequency>
+	<Noise_Speed>0.84</Noise_Speed>
 </group>

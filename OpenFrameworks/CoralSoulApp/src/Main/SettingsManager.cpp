@@ -52,6 +52,7 @@ void SettingsManager::loadAllSettings()
     this->loadSvgSettings();
     this->loadVideoSettings();
     this->loadColors();
+    this->loadModelSettings();
 }
 
 bool SettingsManager::loadSettingsFile()
@@ -314,13 +315,42 @@ void SettingsManager::loadVideoSettings()
         while(m_xml.setToSibling()); // go to the next svg
         
         
-        ofLogNotice() <<"SettingsManager::loadSvgSettings->  successfully loaded the resource settings" ;
+        ofLogNotice() <<"SettingsManager::loadVideoSettings->  successfully loaded the video settings" ;
         return;
     }
     
-    ofLogNotice() <<"SettingsManager::loadSvgSettings->  path not found: " << path ;
+    ofLogNotice() <<"SettingsManager::loadVideoSettings->  path not found: " << path ;
 }
 
+void SettingsManager::loadModelSettings()
+{
+    m_xml.setTo("//");
+    
+    string path = "//models";
+    if(m_xml.exists(path)) {
+        
+        typedef   std::map<string, string>   AttributesMap;
+        AttributesMap attributes;
+        
+        path = "//models/model[0]";
+        m_xml.setTo(path);
+        do {
+            
+            attributes = m_xml.getAttributes();
+            m_modelResourcesPath[attributes["name"]] = attributes["path"];
+            
+            ofLogNotice() <<"SettingsManager::loadModelSettings->  model = " << attributes["name"]
+            <<", path = "<< attributes["path"] ;
+        }
+        while(m_xml.setToSibling()); // go to the next svg
+        
+        
+        ofLogNotice() <<"SettingsManager::loadModelSettings->  successfully loaded the model settings" ;
+        return;
+    }
+    
+    ofLogNotice() <<"SettingsManager::loadModelSettings->  path not found: " << path ;
+}
 
 
 
