@@ -19,6 +19,14 @@ struct weather_settings
     string city{"berlin"};
     string key{""};
     string units{"metric"};
+    string url{""};
+};
+
+struct nasa_settings
+{
+    float request_time{2.0};
+    string key{""};
+    string url{""};
 };
 
 
@@ -71,6 +79,8 @@ public:
     
     weather_settings getWeatherSettings() const {return m_weatherSettings;}
     
+    nasa_settings getNasaSettings() const {return m_nasaSettings;}
+    
     
 private:
     
@@ -86,8 +96,8 @@ private:
     //! Sets all the network properties
     void setNetworkProperties();
     
-    //! Sets all the weather properties
-    void setWeatherProperties();
+    //! Sets all the api properties
+    void setApiProperties();
     
     //! Sets all the window properties
     void setWindowProperties();
@@ -125,6 +135,7 @@ private:
     string                  m_ipAddress;             ///< stores the Ip Address used for the Network communications
     string                  m_spoutName;			///<stores the name of the spout pipe name
     weather_settings        m_weatherSettings;      ///<stores the weather api's settings
+    nasa_settings           m_nasaSettings;         ///<stores the weather nasa's settings
     
 };
 

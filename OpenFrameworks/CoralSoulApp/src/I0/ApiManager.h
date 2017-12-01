@@ -56,17 +56,27 @@ public:
     
     void weatherTimerCompleteHandler( int &args ) ;
     
+    void nasaTimerCompleteHandler( int &args ) ;
+    
 private:
     
     void setupApis();
     
     void setupWeatherApi();
     
+    void setupNasaApi();
+    
     void setupTimers();
+    
+    void setupWeatherTimer();
+    
+    void setupNasaTimer();
     
     void updateTimers();
     
     void parseWeather(string xml);
+    
+    void parseNasa(string file);
     
     float parseTime(string timeString);
     
@@ -74,7 +84,9 @@ private:
 private:
     
     ofxSimpleTimer          m_weatherTimer;
+    ofxSimpleTimer          m_nasaTimer;
     string                  m_weatherUrl;
+    string                  m_nasaUrl;
     weather_conditions      m_weatherConditions;
 
 };

@@ -42,9 +42,17 @@ void ApiManager::setup()
 void ApiManager::setupApis()
 {
     this->setupWeatherApi();
+    this->setupNasaApi();
 }
 
 void ApiManager::setupTimers()
+{
+    this->setupWeatherTimer();
+    this->setupNasaTimer();
+   
+}
+
+void ApiManager::setupWeatherTimer()
 {
     auto weatherSettings = AppManager::getInstance().getSettingsManager().getWeatherSettings();
     
@@ -54,13 +62,28 @@ void ApiManager::setupTimers()
     ofAddListener( m_weatherTimer.TIMER_COMPLETE , this, &ApiManager::weatherTimerCompleteHandler ) ;
 }
 
+void ApiManager::setupNasaTimer()
+{
+    auto nasaSettings = AppManager::getInstance().getSettingsManager().getNasaSettings();
+    
+    m_nasaTimer.setup( nasaSettings.request_time*1000 );
+    
+    m_nasaTimer.start( false ) ;
+    ofAddListener( m_nasaTimer.TIMER_COMPLETE , this, &ApiManager::nasaTimerCompleteHandler ) ;
+}
+
 
 void ApiManager::setupWeatherApi()
 {
     auto weatherSettings = AppManager::getInstance().getSettingsManager().getWeatherSettings();
     
-    m_weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
-    m_weatherUrl+=weatherSettings.city;
+    //m_weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
+    m_weatherUrl = weatherSettings.url;
+    m_weatherUrl+="lat=";
+    m_weatherUrl+=ofToString(weatherSettings.lat);
+    m_weatherUrl+="&lon=";
+    m_weatherUrl+=ofToString(weatherSettings.lon);
+    //m_weatherUrl+=weatherSettings.city;
     m_weatherUrl+="&units=";
     m_weatherUrl+=weatherSettings.units;
     m_weatherUrl+="&appid=";
@@ -70,6 +93,18 @@ void ApiManager::setupWeatherApi()
     ofLogNotice() <<"ApiManager::setupWeatherApi << weather url = " <<  m_weatherUrl;
     
     ofLoadURLAsync(m_weatherUrl, "weather");
+}
+
+void ApiManager::setupNasaApi()
+{
+    auto nasaSettings = AppManager::getInstance().getSettingsManager().getNasaSettings();
+    
+    m_nasaUrl = nasaSettings.url;
+    m_nasaUrl += nasaSettings.key;
+    
+    ofLogNotice() <<"ApiManager::setupNasaApi << weather url = " <<  m_weatherUrl;
+    
+    ofLoadURLAsync(m_nasaUrl, "nasa");
 }
 
 
@@ -85,7 +120,7 @@ void ApiManager::updateTimers()
 
 void ApiManager::urlResponse(ofHttpResponse & response)
 {
-    //ofLogNotice() <<"InstagramManager::urlResponse -> " << response.request.name << ", " << response.status;
+   // ofLogNotice() <<"ApiManager::urlResponse -> " << response.request.name << ", " << response.status;
     
     if(response.status==200)
     {
@@ -94,7 +129,17 @@ void ApiManager::urlResponse(ofHttpResponse & response)
             this->parseWeather(response.data);
             AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
         }
+        
+        else if(response.request.name == "nasa")
+        {
+            this->parseNasa(response.data);
+        }
     }
+}
+
+void ApiManager::parseNasa(string file)
+{
+    std::cout<< file << std::endl;
 }
 
 void ApiManager::parseWeather(string xml)
@@ -162,6 +207,12 @@ void ApiManager::weatherTimerCompleteHandler( int &args )
     //ofLogNotice() <<"ApiManager::weatherTimerCompleteHandler";
     m_weatherTimer.start(false);
     ofLoadURLAsync(m_weatherUrl, "weather");
+}
+
+void ApiManager::nasaTimerCompleteHandler( int &args )
+{
+    m_nasaTimer.start(false);
+    ofLoadURLAsync(m_nasaUrl, "nasa");
 }
 
 float ApiManager::parseTime(string timeString)

@@ -150,8 +150,8 @@ void ModelManager::loadModel()
     //you can update these rotations later on
     //m_model.setRotation(0, 90, 1, 0, 0);
    // m_model.setRotation(1, 1, 90, 0, 1);
-    m_model.setScale(-1, -1, 1);
-    m_simpleModel.setScale(-1, -1, 1);
+    m_model.setScale(-1, -1, -1);
+    m_simpleModel.setScale(-1, -1, -1);
     //m_model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5, 0);
     
      //ofDisableDepthTest();
@@ -175,25 +175,25 @@ void ModelManager::updateFbos()
 {
     m_fboMask.begin();
         ofClear(0, 0, 0);
-        m_cam.begin();
+        //m_cam.begin();
             m_model.drawFaces();
-        m_cam.end();
+       // m_cam.end();
     m_fboMask.end();
     
     m_fboWireframe.begin();
     ofClear(0, 0, 0);
-    m_cam.begin();
+   // m_cam.begin();
         //ofSetLineWidth(2);
         //m_simpleModel.drawWireframe();
         this->drawWireframe();
-    m_cam.end();
+   // m_cam.end();
     m_fboWireframe.end();
     
     m_fboModel.begin();
         ofClear(0, 0, 0);
-        m_cam.begin();
+        //m_cam.begin();
         this->drawModel();
-        m_cam.end();
+        //m_cam.end();
     m_fboModel.end();
     
  
@@ -243,7 +243,7 @@ void ModelManager::drawModel()
 
 void  ModelManager::drawModel(const ofFbo& tex)
 {
-     m_cam.begin();
+     //m_cam.begin();
     
     m_fboTexture.begin();
         tex.draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
@@ -273,16 +273,13 @@ void  ModelManager::drawModel(const ofFbo& tex)
     
     ofDisableDepthTest();
     
-     m_cam.end();
+     //m_cam.end();
 }
-
-void ModelManager::drawWireframe()
+void ModelManager::updateNoise()
 {
-    ofSetLineWidth(5.0);
-    
     //modify mesh with some noise
     float liquidness = 5;
-    float amplitude = 1;
+    float amplitude = 0.1;
     float speedDampen = 5;
     vector<ofVec3f>& verts = m_mesh.getVertices();
     for(unsigned int i = 0; i < verts.size(); i++){
@@ -290,6 +287,16 @@ void ModelManager::drawWireframe()
         verts[i].y += ofSignedNoise(verts[i].z/liquidness, verts[i].x/liquidness,verts[i].y/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
         verts[i].z += ofSignedNoise(verts[i].y/liquidness, verts[i].z/liquidness,verts[i].x/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
     }
+}
+
+void ModelManager::drawWireframe()
+{
+    //ofEnableSmoothing();
+    //ofEnableAntiAliasing();
+    
+    //this->updateNoise();
+    
+    ofSetLineWidth(3.0);
     
     ofEnableDepthTest();
     
@@ -314,66 +321,8 @@ void ModelManager::drawWireframe()
     
     ofDisableDepthTest();
     
-    //m_simpleModel.drawWireframe();
-    
-
-//    m_fboTexture.begin();
-//    AppManager::getInstance().getNoiseManager().getFbo().draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
-//    m_fboTexture.end();
-//
-//    ofSetLineWidth(5.0);
-//
-//     m_fboTexture.getTexture().bind();
-//     m_displacementShader.begin();
-//         m_simpleModel.drawWireframe();
-//
-//     m_displacementShader.end();
-//     m_fboTexture.getTexture().unbind();
-    
-//    ofTexture tex = AppManager::getInstance().getLayoutManager().getCurrentFbo().getTexture();
-//
-//    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-//
-//    ofEnableDepthTest();
-//#ifndef TARGET_PROGRAMMABLE_GL
-//    glShadeModel(GL_SMOOTH); //some model / light stuff
-//#endif
-//    m_light.enable();
-//    ofEnableSeparateSpecularLight();
-//
-//#ifndef TARGET_PROGRAMMABLE_GL
-//    glEnable(GL_NORMALIZE);
-//#endif
-//
-//   // m_thickShader.begin();
-//
-//    // set thickness of ribbons
-//    //m_thickShader.setUniform1f("thickness", 20);
-//
-//
-//    //img.bind();
-//
-//    //ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
-//
-//    //ofMultMatrix(m_simpleModel.getModelMatrix());
-//    //ofMultMatrix(meshHelper.matrix);
-//
-//    //ofMaterial & material = meshHelper.material;
-//    m_simpleModel.drawWireframe();
-//    //m_mesh.drawWireframe();
-//
-//    //m_model.drawFaces();
-//
-//    //img.unbind();
-//
-//    //m_thickShader.end();
-//
-//    ofDisableDepthTest();
-//    m_light.disable();
-//    ofDisableLighting();
-//    ofDisableSeparateSpecularLight();
-//
-    
+//    ofDisableSmoothing();
+//    ofDisableAntiAliasing();
 }
 
 

@@ -29,7 +29,7 @@ void WireFrameScene::setup() {
 
 void WireFrameScene::update()
 {
-    //Empty
+    //AppManager::getInstance().getModelManager().updateNoise();
 }
 
 

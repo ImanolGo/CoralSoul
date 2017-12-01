@@ -1,24 +1,24 @@
 <group>
-	<Blur>0.42</Blur>
-	<LightX>-173.95</LightX>
-	<LightY>-38.43</LightY>
-	<LightZ>26.29</LightZ>
-	<Temp_>20.52</Temp_>
-	<Humidity>72</Humidity>
-	<Wind_Speed>3.6</Wind_Speed>
-	<Wind_Dir>110</Wind_Dir>
+	<Blur>0</Blur>
+	<LightX>115.28</LightX>
+	<LightY>-48.54</LightY>
+	<LightZ>-139.55</LightZ>
+	<Temp_>18.61</Temp_>
+	<Humidity>88</Humidity>
+	<Wind_Speed>2.1</Wind_Speed>
+	<Wind_Dir>20</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
-	<X>213.48</X>
+	<X>-112.36</X>
 	<Y>33.71</Y>
-	<Z>556.18</Z>
+	<Z>505.62</Z>
 	<FOV>54.61</FOV>
-	<Pos_X>-89.89</Pos_X>
-	<Pos_Y>0</Pos_Y>
-	<Pos_Z>0</Pos_Z>
-	<Rot_X>0</Rot_X>
-	<Rot_Y>0</Rot_Y>
-	<Rot_Z>0</Rot_Z>
+	<Pos_X>1000</Pos_X>
+	<Pos_Y>539.33</Pos_Y>
+	<Pos_Z>404.49</Pos_Z>
+	<Rot_X>186.07</Rot_X>
+	<Rot_Y>339.78</Rot_Y>
+	<Rot_Z>357.98</Rot_Z>
 	<Noise_Resolution>75</Noise_Resolution>
 	<Noise_Frequency>1.08</Noise_Frequency>
 	<Noise_Speed>0.84</Noise_Speed>

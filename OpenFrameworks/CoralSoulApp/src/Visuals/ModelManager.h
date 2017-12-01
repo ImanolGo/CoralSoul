@@ -35,6 +35,9 @@ public:
     //! Update the layout
     void update();
     
+    //! Update the noise of the mesh
+    void updateNoise();
+    
     //! Draw the layout
     void draw();
     

@@ -47,7 +47,7 @@ void SettingsManager::loadAllSettings()
     this->setWindowProperties();
     this->setDebugProperties();
     this->setNetworkProperties();
-    this->setWeatherProperties();
+    this->setApiProperties();
     this->loadTextureSettings();
     this->loadSvgSettings();
     this->loadVideoSettings();
@@ -134,7 +134,7 @@ void SettingsManager::setWindowProperties()
     ofLogNotice() <<"SettingsManager::setWindowProperties->  path not found: " << windowPath ;
 }
 
-void SettingsManager::setWeatherProperties()
+void SettingsManager::setApiProperties()
 {
     m_xml.setTo("//");
     
@@ -143,6 +143,7 @@ void SettingsManager::setWeatherProperties()
         m_xml.setTo(windowPath);
         typedef   std::map<string, string>   AttributesMap;
         AttributesMap attributes = m_xml.getAttributes();
+        m_weatherSettings.url = attributes["url"];
         m_weatherSettings.key = attributes["key"];
         m_weatherSettings.city = attributes["city"];
         m_weatherSettings.units = attributes["units"];
@@ -150,13 +151,36 @@ void SettingsManager::setWeatherProperties()
         m_weatherSettings.lon = ofToFloat(attributes["lon"]);
         m_weatherSettings.request_time = ofToFloat(attributes["request_time"]);
         
-        ofLogNotice() <<"SettingsManager::setWeatherProperties->  successfully loaded the weather settings" ;
-        ofLogNotice() <<"SettingsManager::setWeatherProperties->  city = "<< m_weatherSettings.city <<", units = " << m_weatherSettings.units <<", lat = "
+        ofLogNotice() <<"SettingsManager::setApiProperties->  successfully loaded the weather settings" ;
+        ofLogNotice() <<"SettingsManager::setApiProperties->  url = " << m_weatherSettings.url <<", city = "<< m_weatherSettings.city <<", units = " << m_weatherSettings.units <<", lat = "
         <<m_weatherSettings.lat <<", lon = "<<m_weatherSettings.lon<<", request time = "<<m_weatherSettings.request_time<<", key = "<<m_weatherSettings.key;
-        return;
+    }
+    else{
+        ofLogNotice() <<"SettingsManager::setApiProperties->  path not found: " << windowPath ;
     }
     
-    ofLogNotice() <<"SettingsManager::setWeatherProperties->  path not found: " << windowPath ;
+    
+    
+    
+    m_xml.setTo("//");
+    
+    windowPath = "//api/nasa";
+    if(m_xml.exists(windowPath)) {
+        m_xml.setTo(windowPath);
+        typedef   std::map<string, string>   AttributesMap;
+        AttributesMap attributes = m_xml.getAttributes();
+        m_nasaSettings.url = attributes["url"];
+        m_nasaSettings.key = attributes["key"];
+        m_nasaSettings.request_time = ofToFloat(attributes["request_time"]);
+        
+        ofLogNotice() <<"SettingsManager::setApiProperties->  successfully loaded the nasa settings" ;
+        ofLogNotice() <<"SettingsManager::setApiProperties->  url = " << m_nasaSettings.url <<", request time = "<<m_weatherSettings.request_time<<", key = "<<m_weatherSettings.key;
+    }
+    else{
+         ofLogNotice() <<"SettingsManager::setApiProperties->  path not found: " << windowPath ;
+    }
+    
+   
 }
 
 void SettingsManager::setNetworkProperties()
