@@ -87,6 +87,8 @@ private:
     
     void setupCameraGui();
     
+    void setupModelGui();
+    
     void setupLightGui();
     
     void setupWeatherGui();
@@ -113,6 +115,13 @@ private:
     ofParameter<float>      m_cameraY;
     ofParameter<float>      m_cameraZ;
     ofParameter<float>      m_cameraFov;
+    
+    ofParameter<float>      m_modelPosX;
+    ofParameter<float>      m_modelPosY;
+    ofParameter<float>      m_modelPosZ;
+    ofParameter<float>      m_modelRotX;
+    ofParameter<float>      m_modelRotY;
+    ofParameter<float>      m_modelRotZ;
     
     ofParameter<float>      m_layourBlurScale;
     

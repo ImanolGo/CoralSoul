@@ -47,6 +47,7 @@ void GuiManager::setup()
     this->setupLightGui();
     this->setupWeatherGui();
     this->setupCameraGui();
+    this->setupModelGui();
     this->setupNoiseGui();
     this->setupGuiEvents();
     this->loadGuiValues();
@@ -219,6 +220,52 @@ void GuiManager::setupCameraGui()
     
     m_gui.addBreak();
 }
+
+void GuiManager::setupModelGui()
+{
+    auto modelManager = &AppManager::getInstance().getModelManager();
+    
+    m_modelPosX.set("Pos X", 0, -1000.0, 1000.0);
+    m_modelPosX.addListener(modelManager, &ModelManager::onPositionXChange);
+    m_parameters.add(m_modelPosX);
+    
+    m_modelPosY.set("Pos Y", 0, -1000.0, 1000.0);
+    m_modelPosY.addListener(modelManager, &ModelManager::onPositionYChange);
+    m_parameters.add(m_modelPosY);
+    
+    m_modelPosZ.set("Pos Z", 0, -1000.0, 1000.0);
+    m_modelPosZ.addListener(modelManager, &ModelManager::onPositionZChange);
+    m_parameters.add(m_modelPosZ);
+    
+    m_modelRotX.set("Rot X", 0, 0.0, 360);
+    m_modelRotX.addListener(modelManager, &ModelManager::onRotationXChange);
+    m_parameters.add(m_modelRotX);
+    
+    m_modelRotY.set("Rot Y", 0, 0.0, 360);
+    m_modelRotY.addListener(modelManager, &ModelManager::onRotationYChange);
+    m_parameters.add(m_modelRotY);
+    
+    m_modelRotZ.set("Rot Z", 0, 0.0, 360);
+    m_modelRotZ.addListener(modelManager, &ModelManager::onRotationZChange);
+    m_parameters.add(m_modelRotZ);
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("MODEL", ofColor::yellow);
+    folder->addSlider(m_modelPosX);
+    folder->addSlider(m_modelPosY);
+    folder->addSlider(m_modelPosZ);
+    folder->addSlider(m_modelRotX);
+    folder->addSlider(m_modelRotY);
+    folder->addSlider(m_modelRotZ);
+    folder->expand();
+    
+    m_gui.addBreak();
+    
+    ofParameter<float>      m_modelRotX;
+    ofParameter<float>      m_modelRotY;
+    ofParameter<float>      m_modelRotZ;
+    
+}
+
 
 void GuiManager::setupWeatherGui()
 {

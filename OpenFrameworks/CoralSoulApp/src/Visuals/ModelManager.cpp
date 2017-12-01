@@ -472,6 +472,49 @@ void ModelManager::onLightZChange(float& value)
     setLightOri(m_light, m_light_rot);
 }
 
+void ModelManager::onPositionXChange(float& value)
+{
+    m_modelPos.x = value;
+    m_model.setPosition(m_modelPos.x , m_modelPos.y , m_modelPos.z);
+    m_simpleModel.setPosition(m_modelPos.x , m_modelPos.y , m_modelPos.z);
+}
+
+void ModelManager::onPositionYChange(float& value)
+{
+    m_modelPos.y = value;
+    m_model.setPosition(m_modelPos.x , m_modelPos.y , m_modelPos.z);
+    m_simpleModel.setPosition(m_modelPos.x , m_modelPos.y , m_modelPos.z);
+}
+
+void ModelManager::onPositionZChange(float& value)
+{
+    m_modelPos.z = value;
+    m_model.setPosition(m_modelPos.x , m_modelPos.y , m_modelPos.z);
+    m_simpleModel.setPosition(m_modelPos.x , m_modelPos.y , m_modelPos.z);
+}
+
+void ModelManager::onRotationXChange(float& value)
+{
+    m_modelRot.x = value;
+    m_model.setRotation(0, m_modelRot.x, 1, 0, 0);
+    m_simpleModel.setRotation(0, m_modelRot.x, 1, 0, 0);
+}
+
+void ModelManager::onRotationYChange(float& value)
+{
+    m_modelRot.y = value;
+    m_model.setRotation(1, m_modelRot.y, 0, 1, 0);
+    m_simpleModel.setRotation(1, m_modelRot.y, 0, 1, 0);
+}
+
+void ModelManager::onRotationZChange(float& value)
+{
+    m_modelRot.z = value;
+    m_model.setRotation(2, m_modelRot.z, 0, 0, 1);
+    m_simpleModel.setRotation(2, m_modelRot.z, 0, 0, 1);
+}
+
+
 void ModelManager::onLightColorChange(ofColor color)
 {
     m_light.setDiffuseColor(color);

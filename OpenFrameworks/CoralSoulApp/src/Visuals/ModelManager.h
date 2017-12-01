@@ -55,6 +55,18 @@ public:
     void onCameraZChange(float& value);
     
     void onCameraFovChange(float& value);
+    
+    void onPositionXChange(float& value);
+    
+    void onPositionYChange(float& value);
+    
+    void onPositionZChange(float& value);
+    
+    void onRotationXChange(float& value);
+    
+    void onRotationYChange(float& value);
+    
+    void onRotationZChange(float& value);
 
     void onLightXChange(float& value);
     
@@ -107,6 +119,8 @@ private:
     
     ofVec3f              m_light_rot;
     ofVec3f              m_light_pos;
+    ofVec3f              m_modelPos;
+    ofVec3f              m_modelRot;
     
     ofMaterial          m_material;
     

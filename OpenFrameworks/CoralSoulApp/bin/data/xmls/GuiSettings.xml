@@ -13,6 +13,12 @@
 	<Y>33.71</Y>
 	<Z>556.18</Z>
 	<FOV>54.61</FOV>
+	<Pos_X>-89.89</Pos_X>
+	<Pos_Y>0</Pos_Y>
+	<Pos_Z>0</Pos_Z>
+	<Rot_X>0</Rot_X>
+	<Rot_Y>0</Rot_Y>
+	<Rot_Z>0</Rot_Z>
 	<Noise_Resolution>75</Noise_Resolution>
 	<Noise_Frequency>1.08</Noise_Frequency>
 	<Noise_Speed>0.84</Noise_Speed>
