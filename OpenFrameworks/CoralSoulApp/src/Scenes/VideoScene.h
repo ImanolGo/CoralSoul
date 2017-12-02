@@ -47,11 +47,15 @@ public:
     
 private:
     
+    void setupFbo();
+    
     void setupVideo();
     
     void updateVideo();
     
     void drawVideo();
+    
+    void updateFbo();
     
 private:
     
@@ -61,8 +65,7 @@ private:
 	ofVideoPlayer     m_videoPlayer;
 #endif
     
-    
-    
+    ofFbo   m_fbo;
 };
 
 

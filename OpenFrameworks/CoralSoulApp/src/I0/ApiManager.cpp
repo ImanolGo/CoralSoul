@@ -162,6 +162,8 @@ void ApiManager::parseNasa(string file)
 {
     //std::cout<< file << std::endl;
     
+    //ofLogNotice() <<"ApiManager::parseNasa << file: \n" << file;
+    
     ofxJSONElement json(file);
     ofLogNotice() <<"ApiManager::parseNasa << url = " << json["url"];
     

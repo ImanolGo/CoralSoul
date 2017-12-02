@@ -24,6 +24,7 @@ VideoScene::~VideoScene()
 void VideoScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupVideo();
+    this->setupFbo();
 }
 
 void VideoScene::setupVideo()
@@ -32,18 +33,6 @@ void VideoScene::setupVideo()
     
     if(videoPaths.find(getName())!=videoPaths.end())
     {
-//        ofDisableDataPath();
-//        string path = videoPaths.at(getName());
-//        path = "../../../" + path; //To make it realtive to PrimaveraSoundProto.app
-//        ofDirectory dir(path);
-//        m_videoPlayer.load(dir.getAbsolutePath());
-//        m_videoPlayer.setLoopState(OF_LOOP_NORMAL);
-//        m_videoPlayer.play();
-//
-//        ofEnableDataPath();
-        
-       
-       
         string path = videoPaths.at(getName());
         m_videoPlayer.load(path);
         m_videoPlayer.setLoopState(OF_LOOP_NORMAL);
@@ -55,10 +44,20 @@ void VideoScene::setupVideo()
     }
 }
 
+void VideoScene::setupFbo()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    m_fbo.allocate(width, height);
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+}
+
 
 void VideoScene::update()
 {
     this->updateVideo();
+    this->updateFbo();
 }
 
 void VideoScene::updateVideo()
@@ -69,10 +68,19 @@ void VideoScene::updateVideo()
     }
 }
 
+void VideoScene::updateFbo()
+{
+    m_fbo.begin();
+    ofClear(0);
+        this->drawVideo();
+    m_fbo.end();
+}
+
+
 void VideoScene::draw()
 {
-    ofBackground(0,0,0);
-    this->drawVideo();
+    ofClear(0);
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
 void VideoScene::drawVideo()
