@@ -87,10 +87,8 @@ void VideoScene::drawVideo()
 {
     if(m_videoPlayer.isInitialized() && m_videoPlayer.isLoaded())
     {
-        
         float width = AppManager::getInstance().getSettingsManager().getAppWidth();
         float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-        
         m_videoPlayer.draw(0,0,width,height);
     }
     

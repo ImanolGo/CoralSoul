@@ -237,15 +237,15 @@ void GuiManager::setupModelGui()
     m_modelPosZ.addListener(modelManager, &ModelManager::onPositionZChange);
     m_parameters.add(m_modelPosZ);
     
-    m_modelRotX.set("Rot X", 0, 0.0, 360);
+    m_modelRotX.set("Rot X", 0, -180.0, 180);
     m_modelRotX.addListener(modelManager, &ModelManager::onRotationXChange);
     m_parameters.add(m_modelRotX);
     
-    m_modelRotY.set("Rot Y", 0, 0.0, 360);
+    m_modelRotY.set("Rot Y", 0, -180.0, 180);
     m_modelRotY.addListener(modelManager, &ModelManager::onRotationYChange);
     m_parameters.add(m_modelRotY);
     
-    m_modelRotZ.set("Rot Z", 0, 0.0, 360);
+    m_modelRotZ.set("Rot Z", 0, -180.0, 180);
     m_modelRotZ.addListener(modelManager, &ModelManager::onRotationZChange);
     m_parameters.add(m_modelRotZ);
     

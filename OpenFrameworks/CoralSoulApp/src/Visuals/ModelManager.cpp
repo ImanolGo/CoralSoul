@@ -150,8 +150,8 @@ void ModelManager::loadModel()
     //you can update these rotations later on
     //m_model.setRotation(0, 90, 1, 0, 0);
    // m_model.setRotation(1, 1, 90, 0, 1);
-    m_model.setScale(-1, -1, -1);
-    m_simpleModel.setScale(-1, -1, -1);
+    m_model.setScale(-1, -1, 1);
+    m_simpleModel.setScale(-1, -1, 1);
     //m_model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5, 0);
     
      //ofDisableDepthTest();
@@ -175,25 +175,25 @@ void ModelManager::updateFbos()
 {
     m_fboMask.begin();
         ofClear(0, 0, 0);
-        //m_cam.begin();
+        m_cam.begin();
             m_model.drawFaces();
-       // m_cam.end();
+       m_cam.end();
     m_fboMask.end();
     
     m_fboWireframe.begin();
     ofClear(0, 0, 0);
-   // m_cam.begin();
+    m_cam.begin();
         //ofSetLineWidth(2);
         //m_simpleModel.drawWireframe();
         this->drawWireframe();
-   // m_cam.end();
+    m_cam.end();
     m_fboWireframe.end();
     
     m_fboModel.begin();
         ofClear(0, 0, 0);
-        //m_cam.begin();
+        m_cam.begin();
         this->drawModel();
-        //m_cam.end();
+        m_cam.end();
     m_fboModel.end();
     
  
@@ -243,7 +243,7 @@ void ModelManager::drawModel()
 
 void  ModelManager::drawModel(const ofFbo& tex)
 {
-     //m_cam.begin();
+    m_cam.begin();
     
     m_fboTexture.begin();
         tex.draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
@@ -273,7 +273,7 @@ void  ModelManager::drawModel(const ofFbo& tex)
     
     ofDisableDepthTest();
     
-     //m_cam.end();
+     m_cam.end();
 }
 void ModelManager::updateNoise()
 {

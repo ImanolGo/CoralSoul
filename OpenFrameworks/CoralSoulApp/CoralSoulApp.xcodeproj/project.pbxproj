@@ -758,8 +758,8 @@
 			isa = PBXGroup;
 			children = (
 				C1CCAA8796D39D9B1DEEEF93 /* MaskManager.h */,
-				FF71FE1412779C0AE111BC56 /* GuiManager.h */,
 				4907E8B0250B798D3E6F09A1 /* GuiManager.cpp */,
+				FF71FE1412779C0AE111BC56 /* GuiManager.h */,
 				4229475864D5EBC7913C8351 /* LayoutManager.cpp */,
 				2C4030DB557CBDCD31BDF418 /* GuiTheme.h */,
 				A2EA41BEA7E5A43E6C47D692 /* MaskManager.cpp */,
@@ -1426,8 +1426,8 @@
 				670CE8E5FACF3883E2F120DE /* FluidVisual.h */,
 				41464A4354EB3FA247C475DD /* FluidVisual.cpp */,
 				90674964F311EA9EE1680EC6 /* NoiseManager.cpp */,
-				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 				957C36416A9426CD5147BDBE /* ModelManager.cpp */,
+				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 			);
 			name = Visuals;
 			sourceTree = "<group>";
