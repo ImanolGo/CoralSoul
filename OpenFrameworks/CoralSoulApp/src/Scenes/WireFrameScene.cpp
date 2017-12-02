@@ -29,7 +29,7 @@ void WireFrameScene::setup() {
 
 void WireFrameScene::update()
 {
-    //AppManager::getInstance().getModelManager().updateNoise();
+    //Intentionally left empty
 }
 
 
@@ -44,6 +44,11 @@ void WireFrameScene::draw()
 void WireFrameScene::willFadeIn() {
     ofLogNotice("WireFrameScene::willFadeIn");
     
+    float amp = 0.2;
+    float speed = 0.2;
+    AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
+    AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
+    
 }
 
 void WireFrameScene::willDraw() {
@@ -56,5 +61,10 @@ void WireFrameScene::willFadeOut() {
 
 void WireFrameScene::willExit() {
     ofLogNotice("WireFrameScene::willExit");
+    
+    float amp = 0.0;
+    float speed = 0.0;
+    AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
+    AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
 }
 

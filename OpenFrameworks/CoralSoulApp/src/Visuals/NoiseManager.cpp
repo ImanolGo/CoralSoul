@@ -71,6 +71,7 @@ void NoiseManager::update()
 {
     this->updateNoise();
     this->updateFbo();
+    this->updateNoise();
 }
 
 

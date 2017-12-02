@@ -1422,10 +1422,10 @@
 		C02C33831C66F04FEBAE29DE /* Visuals */ = {
 			isa = PBXGroup;
 			children = (
-				231CBABD013CA50504B82828 /* NoiseManager.h */,
-				670CE8E5FACF3883E2F120DE /* FluidVisual.h */,
-				41464A4354EB3FA247C475DD /* FluidVisual.cpp */,
 				90674964F311EA9EE1680EC6 /* NoiseManager.cpp */,
+				231CBABD013CA50504B82828 /* NoiseManager.h */,
+				41464A4354EB3FA247C475DD /* FluidVisual.cpp */,
+				670CE8E5FACF3883E2F120DE /* FluidVisual.h */,
 				957C36416A9426CD5147BDBE /* ModelManager.cpp */,
 				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 			);
@@ -1449,6 +1449,7 @@
 				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
 				8C488F38001D542DA27140DF /* scenes.h */,
+				72DADFA19E2023E797BA2F51 /* WireFrameScene.cpp */,
 				79F4F8F21C65325A536B0F3F /* WireFrameScene.h */,
 				3C4EA15C90BCFE1FFC1245B1 /* BlankScene.cpp */,
 				1D40AB48F6F739773BAB451A /* RainScene.cpp */,
@@ -1460,7 +1461,6 @@
 				15AE7B79BBACBC510C450229 /* VideoScene.h */,
 				1A14124BF720E4CA8987CC24 /* SceneManager.cpp */,
 				94B476E65081D2D5CE6D1228 /* BlankScene.h */,
-				72DADFA19E2023E797BA2F51 /* WireFrameScene.cpp */,
 				2B9F1B8564F083FFCE4C466E /* FlowScene.cpp */,
 			);
 			name = Scenes;

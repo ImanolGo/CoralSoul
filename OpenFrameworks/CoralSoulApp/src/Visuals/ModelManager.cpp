@@ -17,7 +17,7 @@
 
 #include "ModelManager.h"
 
-ModelManager::ModelManager(): Manager()
+ModelManager::ModelManager(): Manager(), m_noiseAmplitude(0.0), m_noiseSpeed(0.2)
 {
 	//Intentionally left empty
 }
@@ -160,8 +160,8 @@ void ModelManager::loadModel()
 void ModelManager::update()
 {
    this->updateModel();
+   this->updateNoise();
    this->updateFbos();
-   // m_light.setPosition(ofGetMouseX(), ofGetMouseY(), 0);
 }
 
 void ModelManager::updateModel()
@@ -278,15 +278,22 @@ void  ModelManager::drawModel(const ofFbo& tex)
 void ModelManager::updateNoise()
 {
     //modify mesh with some noise
+    
+    if(m_noiseAmplitude<=0.0 || m_noiseSpeed<=0.0){
+        return;
+    }
+    
     float liquidness = 5;
-    float amplitude = 0.1;
-    float speedDampen = 5;
+    float amplitude = m_noiseAmplitude;
+    float speedDampen = 1.0/m_noiseSpeed;
     vector<ofVec3f>& verts = m_mesh.getVertices();
     for(unsigned int i = 0; i < verts.size(); i++){
         verts[i].x += ofSignedNoise(verts[i].x/liquidness, verts[i].y/liquidness,verts[i].z/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
         verts[i].y += ofSignedNoise(verts[i].z/liquidness, verts[i].x/liquidness,verts[i].y/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
         verts[i].z += ofSignedNoise(verts[i].y/liquidness, verts[i].z/liquidness,verts[i].x/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
     }
+    
+    //ofLogNotice() <<"ModelManager::updateNoise << amp = " << amplitude << ", speedDampen = " << speedDampen;
 }
 
 void ModelManager::drawWireframe()

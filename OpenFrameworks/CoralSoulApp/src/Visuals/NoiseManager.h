@@ -85,6 +85,7 @@ class NoiseManager: public Manager
     
         ofColor     m_color;
         ofImage     m_noiseImage;
+    
 };
 
 

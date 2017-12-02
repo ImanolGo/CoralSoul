@@ -35,9 +35,6 @@ public:
     //! Update the layout
     void update();
     
-    //! Update the noise of the mesh
-    void updateNoise();
-    
     //! Draw the layout
     void draw();
     
@@ -79,6 +76,10 @@ public:
     
     void onLightColorChange(ofColor color);
     
+    void onNoiseAmplitudeChange(float& value) {m_noiseAmplitude = value;}
+    
+    void onNoiseSpeedChange(float& value) {m_noiseSpeed = value;}
+    
 private:
 
     void setupCamera();
@@ -94,6 +95,8 @@ private:
     void updateModel();
     
     void updateFbos();
+
+    void updateNoise();
     
     void drawModel();
     
@@ -131,6 +134,9 @@ private:
     ofShader            m_displacementShader;
 
     ofImage img;
+    
+    float              m_noiseAmplitude;
+    float              m_noiseSpeed;
 };
 
 //==========================================================================
