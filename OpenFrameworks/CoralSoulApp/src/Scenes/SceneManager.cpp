@@ -80,6 +80,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new NasaScene());
     m_mySceneManager.addScene(scene);
     
+    //Create Flow Scene
+    scene = ofPtr<ofxScene> (new VectorFieldScene());
+    m_mySceneManager.addScene(scene);
+    
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();

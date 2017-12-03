@@ -16,4 +16,5 @@
 #include "SunScene.h"
 #include "FlowScene.h"
 #include "NasaScene.h"
+#include "VectorFieldScene.h"
 

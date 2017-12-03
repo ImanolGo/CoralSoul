@@ -14,6 +14,7 @@
 		082BD09A1FD4A60B0037B7C5 /* ofxVectorField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 082BD0981FD4A60B0037B7C5 /* ofxVectorField.cpp */; };
 		082BD09F1FD4A6C30037B7C5 /* VectorFieldParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 082BD09B1FD4A6C30037B7C5 /* VectorFieldParticle.cpp */; };
 		082BD0A01FD4A6C30037B7C5 /* VectorFieldVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 082BD09D1FD4A6C30037B7C5 /* VectorFieldVisual.cpp */; };
+		082BD0A31FD4B4FF0037B7C5 /* VectorFieldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 082BD0A11FD4B4FE0037B7C5 /* VectorFieldScene.cpp */; };
 		08E9D8C61FD219990043FF93 /* NasaScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E9D8C41FD219990043FF93 /* NasaScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
 		12A8C9C212129D904A9DB2C1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A555C6B34D5D8F88CBE349A8 /* OscPrintReceivedElements.cpp */; };
@@ -176,6 +177,8 @@
 		082BD09C1FD4A6C30037B7C5 /* VectorFieldParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldParticle.h; path = Visuals/VectorFieldParticle.h; sourceTree = "<group>"; };
 		082BD09D1FD4A6C30037B7C5 /* VectorFieldVisual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VectorFieldVisual.cpp; path = Visuals/VectorFieldVisual.cpp; sourceTree = "<group>"; };
 		082BD09E1FD4A6C30037B7C5 /* VectorFieldVisual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldVisual.h; path = Visuals/VectorFieldVisual.h; sourceTree = "<group>"; };
+		082BD0A11FD4B4FE0037B7C5 /* VectorFieldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VectorFieldScene.cpp; path = Scenes/VectorFieldScene.cpp; sourceTree = "<group>"; };
+		082BD0A21FD4B4FF0037B7C5 /* VectorFieldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldScene.h; path = Scenes/VectorFieldScene.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		08E9D8C41FD219990043FF93 /* NasaScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NasaScene.cpp; path = Scenes/NasaScene.cpp; sourceTree = "<group>"; };
 		08E9D8C51FD219990043FF93 /* NasaScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NasaScene.h; path = Scenes/NasaScene.h; sourceTree = "<group>"; };
@@ -1481,6 +1484,8 @@
 				2B9F1B8564F083FFCE4C466E /* FlowScene.cpp */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
 				8C488F38001D542DA27140DF /* scenes.h */,
+				082BD0A11FD4B4FE0037B7C5 /* VectorFieldScene.cpp */,
+				082BD0A21FD4B4FF0037B7C5 /* VectorFieldScene.h */,
 				72DADFA19E2023E797BA2F51 /* WireFrameScene.cpp */,
 				79F4F8F21C65325A536B0F3F /* WireFrameScene.h */,
 				3C4EA15C90BCFE1FFC1245B1 /* BlankScene.cpp */,
@@ -1488,10 +1493,10 @@
 				1FBFF3E74C628E11BF30EF17 /* ImageScene.cpp */,
 				F79FD8ACD200E65C2E5AF42D /* ImageScene.h */,
 				BE605DDBE9554C679DAC4537 /* SunScene.h */,
+				1A14124BF720E4CA8987CC24 /* SceneManager.cpp */,
 				76C4479895B14357D331E849 /* SceneManager.h */,
 				60B34DDDC79DEB0226A04C93 /* VideoScene.cpp */,
 				15AE7B79BBACBC510C450229 /* VideoScene.h */,
-				1A14124BF720E4CA8987CC24 /* SceneManager.cpp */,
 				94B476E65081D2D5CE6D1228 /* BlankScene.h */,
 			);
 			name = Scenes;
@@ -1938,6 +1943,7 @@
 				32218A4B237B113B88DC6D1D /* ofxAssimpAnimation.cpp in Sources */,
 				744345A5EAA35DA0BA8298E7 /* ofxAssimpTexture.cpp in Sources */,
 				EB3F239C790AB692983E163E /* ofxAssimpModelLoader.cpp in Sources */,
+				082BD0A31FD4B4FF0037B7C5 /* VectorFieldScene.cpp in Sources */,
 				C1203AE83FC37ED4C74E8AA5 /* ofxBaseGui.cpp in Sources */,
 				6AA8C36A2D520BBEDEFA62D3 /* ofxSliderGroup.cpp in Sources */,
 				C328E39BB25AB1723CCF64B5 /* ofxToggle.cpp in Sources */,
