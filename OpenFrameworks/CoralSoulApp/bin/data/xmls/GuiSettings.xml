@@ -3,10 +3,10 @@
 	<LightX>107.19</LightX>
 	<LightY>-48.54</LightY>
 	<LightZ>-139.55</LightZ>
-	<Temp_>19.92</Temp_>
-	<Humidity>78</Humidity>
-	<Wind_Speed>5.1</Wind_Speed>
-	<Wind_Dir>80</Wind_Dir>
+	<Temp_>17.6</Temp_>
+	<Humidity>64</Humidity>
+	<Wind_Speed>6.2</Wind_Speed>
+	<Wind_Dir>60</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Distance>617.98</Distance>
 	<X>78.65</X>
@@ -19,7 +19,7 @@
 	<Rot_X>4.04</Rot_X>
 	<Rot_Y>14.16</Rot_Y>
 	<Rot_Z>0</Rot_Z>
-	<Noise_Resolution>75</Noise_Resolution>
-	<Noise_Frequency>1.08</Noise_Frequency>
-	<Noise_Speed>0.84</Noise_Speed>
+	<Noise_Resolution>63</Noise_Resolution>
+	<Noise_Frequency>0.45</Noise_Frequency>
+	<Noise_Speed>0.51</Noise_Speed>
 </group>

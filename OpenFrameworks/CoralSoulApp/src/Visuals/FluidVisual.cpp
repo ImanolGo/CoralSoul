@@ -73,7 +73,7 @@ void FluidVisual::setupFluid()
 void FluidVisual::setupGui()
 {
     m_gui.setup("FluidGUI", m_guiSettingsName);
-    m_gui.setPosition(300,20);
+    m_gui.setPosition(ofGetWidth() - m_gui.getWidth() - 20 ,20);
     m_gui.setDefaultBackgroundColor(ofColor(0, 0, 0, 127));
     m_gui.setDefaultFillColor(ofColor(160, 160, 160, 160));
     

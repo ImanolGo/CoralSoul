@@ -80,7 +80,7 @@ private:
     
     void parseWeather(string xml);
     
-    void parseNasa(string file);
+    void parseNasa(string response);
     
     float parseTime(string timeString);
     
@@ -93,6 +93,7 @@ private:
     string                  m_nasaUrl;
     weather_conditions      m_weatherConditions;
     ofImage                 m_nasaImage;
+    ofImage                 m_defaultImage;
 
 };
 

@@ -216,7 +216,7 @@ void GuiManager::setupCameraGui()
     folder->addSlider(m_cameraY);
     folder->addSlider(m_cameraZ);
     //folder->addSlider(m_cameraFov);
-    folder->expand();
+    //folder->expand();
     
     m_gui.addBreak();
 }
@@ -256,7 +256,7 @@ void GuiManager::setupModelGui()
     folder->addSlider(m_modelRotX);
     folder->addSlider(m_modelRotY);
     folder->addSlider(m_modelRotZ);
-    folder->expand();
+    //folder->expand();
     
     m_gui.addBreak();
     

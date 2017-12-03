@@ -100,14 +100,12 @@ void ApiManager::setupWeatherApi()
 
 void ApiManager::initializeNasaImage()
 {
-    m_nasaImage.allocate(640, 480, OF_IMAGE_GRAYSCALE);
-    int i = 0;
-    while ( i < m_nasaImage.getPixels().size() ) {
-        m_nasaImage.getPixels()[i] = 0 ; // initialize black
-        i++;
-    }
+    auto texture = AppManager::getInstance().getResourceManager().getTexture("Apod");
+    ofPixels pixels;
+    texture->readToPixels(pixels);
     
-    m_nasaImage.update();
+    m_defaultImage.setFromPixels(pixels);
+    m_nasaImage = m_defaultImage;
 }
 
 void ApiManager::setupNasaApi()
@@ -158,18 +156,29 @@ void ApiManager::urlResponse(ofHttpResponse & response)
     }
 }
 
-void ApiManager::parseNasa(string file)
+void ApiManager::parseNasa(string response)
 {
     //std::cout<< file << std::endl;
     
     //ofLogNotice() <<"ApiManager::parseNasa << file: \n" << file;
     
-    ofxJSONElement json(file);
-    ofLogNotice() <<"ApiManager::parseNasa << url = " << json["url"];
+    ofxJSONElement json(response);
     
     m_nasaImage.clear();
     string url = json["url"].asString();
-    ofLoadURLAsync(url,"nasa_image");
+    
+    ofFile file(url);
+    string ext = file.getExtension();
+    ofLogNotice() <<"ApiManager::parseNasa << url = " << json["url"] << ", extension -> " <<  ext;
+   
+    if(ext == "jpg" || ext == "png" ){
+         ofLoadURLAsync(url,"nasa_image");
+    }
+    else{
+        m_nasaImage = m_defaultImage;
+    }
+    
+   
     
 }
 
