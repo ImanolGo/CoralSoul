@@ -10,6 +10,9 @@
 #include "VectorFieldScene.h"
 #include "AppManager.h"
 
+#define radian2degree(a) (a * 57.295779513082)
+#define degree2radian(a) (a * 0.017453292519)
+
 VectorFieldScene::VectorFieldScene(): ofxScene("VECTORFIELD")
 {
     //Intentionally left empty
@@ -50,7 +53,18 @@ void VectorFieldScene::update()
 
 void VectorFieldScene::updateVectorField()
 {
-    auto source = AppManager::getInstance().getNoiseManager().getFbo();
+    auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
+    float angleRadiands = degree2radian(weatherConditions.windDirection);
+    float mag = 1.0;
+    float speed = ofMap(weatherConditions.windSpeed, 0, 100, 0.5, 10, true);
+    
+    ofVec2f force;
+    force.x = mag*sin(angleRadiands);
+    force.y = -mag*cos(angleRadiands);
+    
+    m_vectorField.addForce(force);
+    m_vectorField.setSpeed(speed);
+    
     m_vectorField.update();
 }
 

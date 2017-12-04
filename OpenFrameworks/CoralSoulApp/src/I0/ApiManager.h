@@ -60,6 +60,20 @@ public:
     
     const ofImage& getNasaImage() {return m_nasaImage;}
     
+    const weather_conditions& getCurrentWeather() {return m_weatherConditions;}
+    
+    void onWindSpeedChange(float& value){m_weatherConditions.windSpeed = value;}
+    
+    void onWindDirChange(float& value){m_weatherConditions.windDirection = value;}
+    
+    void onTemperatureChange(float& value){m_weatherConditions.temp = value;}
+    
+    void onHumidityChange(float& value){m_weatherConditions.humidity = value;}
+    
+    void onPrecipitationChange(float& value){m_weatherConditions.precipitationValue = value;}
+    
+    void onCloudsChange(float& value){m_weatherConditions.clouds = value;}
+    
 private:
     
     void setupApis();

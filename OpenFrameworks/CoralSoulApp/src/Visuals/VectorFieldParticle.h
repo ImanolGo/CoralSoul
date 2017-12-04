@@ -33,7 +33,7 @@ public:
     //! Draw the Vector Field Particle
     void draw();
     
-    void addForce(ofVec2f dir);
+    void addForce(const ofVec2f& dir);
     
     void setMaxSpeed(float speed) {m_maxSpeed = speed;}
     

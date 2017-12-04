@@ -130,6 +130,7 @@ private:
     ofParameter<float>      m_weatherWindSpeed;
     ofParameter<float>      m_weatherWindDirection;
     ofParameter<float>      m_weatherPrecipitation;
+    ofParameter<float>      m_weatherClouds;
     
     ofParameter<float>      m_lightX;
     ofParameter<float>      m_lightY;

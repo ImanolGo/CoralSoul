@@ -20,7 +20,7 @@
   </models>
 
   <api>
-       <weather url = "http://api.openweathermap.org/data/2.5/weather?" city="Santa Cruz de Tenerife" lat="28.0983074" lon="-16.748344" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="5"/>
+       <weather url = "http://api.openweathermap.org/data/2.5/weather?" city="Santa Cruz de Tenerife" lat="28.0983074" lon="-16.748344" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="5000"/>
        <nasa url="https://api.nasa.gov/planetary/apod?api_key=" key="n0OdkEMGNnqqBQ7RHSGTx7U4OnwrMCAporxkvCEu" request_time ="3600"/>
   </api>
 

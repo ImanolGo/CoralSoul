@@ -43,12 +43,20 @@ public:
     //! Draw the Vector Field Visual
     void draw();
     
+    void addForce(const ofVec2f& force);
+    
+    void setSpeed(float value);
+    
    
 private:
     
     void setupVectorField();
     
+    void setupFbo();
+    
     void setupParticles();
+    
+    void updateFbo();
     
     void updateVectorField();
     
@@ -58,6 +66,8 @@ private:
     
     void drawParticles();
     
+     void drawFbo();
+    
     
 private:
     
@@ -66,6 +76,11 @@ private:
     
     float       m_spacing;
     float       m_speed;
+    float       m_fadeTime;
+    int         m_skipFrames;
+    
+    ofFbo       m_fbo;
+    
     
     
 };

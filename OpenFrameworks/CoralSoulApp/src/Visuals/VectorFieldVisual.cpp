@@ -10,10 +10,10 @@
 #include "AppManager.h"
 #include "VectorFieldVisual.h"
 
-const int VectorFieldVisual::NUM_PARTICLES = 500;
+const int VectorFieldVisual::NUM_PARTICLES = 1000;
 
 
-VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(10)
+VectorFieldVisual::VectorFieldVisual():m_speed(0.01), m_spacing(20), m_skipFrames(0), m_fadeTime(5)
 {
     //Intentionaly left empty
 }
@@ -27,10 +27,20 @@ VectorFieldVisual::~VectorFieldVisual()
 
 void VectorFieldVisual::setup()
 {
+    this->setupFbo();
     this->setupVectorField();
     this->setupParticles();
 }
 
+
+void VectorFieldVisual::setupFbo()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
+   
+    m_fbo.allocate(width,height);
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+}
 
 void VectorFieldVisual::setupVectorField()
 {
@@ -61,6 +71,7 @@ void VectorFieldVisual::update()
 {
     this->updateVectorField();
     this->updateParticles();
+    this->updateFbo();
 }
 
 void VectorFieldVisual::updateVectorField()
@@ -81,10 +92,38 @@ void VectorFieldVisual::updateParticles()
     }
 }
 
+void VectorFieldVisual::updateFbo()
+{
+    float decrease = 3.0;
+    float framesToDie = 255.0/decrease;
+    float dt = ofGetLastFrameTime();
+    int numSkipFrames = m_fadeTime/(framesToDie*dt);
+    m_skipFrames++;
+    
+    ofEnableAlphaBlending();
+    m_fbo.begin();
+    ofPushStyle();
+    if(m_skipFrames>=numSkipFrames){
+        ofSetColor(0,0,0,decrease);
+        ofDrawRectangle(0,0,m_fbo.getWidth(),m_fbo.getHeight());
+        m_skipFrames = 0;
+    }
+    
+    ofSetColor(255);
+    
+        this->drawParticles();
+    
+    ofPopStyle();
+    m_fbo.end();
+    ofDisableAlphaBlending();
+}
+
 void VectorFieldVisual::draw()
 {
-    this->drawVectorField();
-    this->drawParticles();
+//    this->drawVectorField();
+//    this->drawParticles();
+    
+    m_fbo.draw(0,0);
 }
 
 
@@ -101,3 +140,17 @@ void VectorFieldVisual::drawParticles()
 }
 
 
+
+void VectorFieldVisual::addForce(const ofVec2f& force)
+{
+    for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].addForce(force);
+    }
+}
+
+void VectorFieldVisual::setSpeed(float value)
+{
+    for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].setMaxSpeed(value);
+    }
+}

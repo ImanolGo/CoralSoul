@@ -73,7 +73,7 @@ void GuiManager::setupGuiParameters()
     m_gui.setPosition(pos.x + margin, pos.y + margin);
     m_gui.addHeader(GUI_SETTINGS_NAME, false);
     
-    m_gui.addFRM();
+    m_gui.addFRM(0.1);
     
     m_gui.addBreak();
 }
@@ -269,28 +269,31 @@ void GuiManager::setupModelGui()
 
 void GuiManager::setupWeatherGui()
 {
- 
     auto apiManager = &AppManager::getInstance().getApiManager();
     
     m_weatherTemperature.set("Temp.", 0.0, -20.0, 50.0);
-    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_weatherTemperature.addListener(apiManager, &ApiManager::onTemperatureChange);
     m_parameters.add(m_weatherTemperature);
     
     m_weatherHumidity.set("Humidity", 0.0, 0.0, 100.0);
-    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_weatherHumidity.addListener(apiManager, &ApiManager::onHumidityChange);
     m_parameters.add(m_weatherHumidity);
     
     m_weatherWindSpeed.set("Wind Speed", 0.0, 0.0, 100.0);
-    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_weatherWindSpeed.addListener(apiManager, &ApiManager::onWindSpeedChange);
     m_parameters.add(m_weatherWindSpeed);
     
     m_weatherWindDirection.set("Wind Dir", 0.0, 0.0, 360.0);
-    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_weatherWindDirection.addListener(apiManager, &ApiManager::onWindDirChange);
     m_parameters.add(m_weatherWindDirection);
     
     m_weatherPrecipitation.set("Prec.", 0.0, 0.0, 360.0);
-    //m_weatherTemperature.addListener(apiManager, &ApiManager::onCameraDistanceChange);
+    m_weatherPrecipitation.addListener(apiManager, &ApiManager::onPrecipitationChange);
     m_parameters.add(m_weatherPrecipitation);
+    
+    m_weatherClouds.set("Clouds.", 0.0, 0.0, 100);
+    m_weatherClouds.addListener(apiManager, &ApiManager::onCloudsChange);
+    m_parameters.add(m_weatherClouds);
  
     
     ofxDatGuiFolder* folder = m_gui.addFolder("WEATHER", ofColor::blue);
@@ -300,6 +303,7 @@ void GuiManager::setupWeatherGui()
     folder->addSlider(m_weatherWindSpeed);
     folder->addSlider(m_weatherWindDirection);
     folder->addSlider(m_weatherPrecipitation);
+    folder->addSlider(m_weatherClouds);
     folder->expand();
     
     m_gui.addBreak();

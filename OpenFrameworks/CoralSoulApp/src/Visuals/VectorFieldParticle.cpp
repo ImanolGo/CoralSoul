@@ -10,7 +10,7 @@
 
 #include "VectorFieldParticle.h"
 
-VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(4)
+VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2)
 {
     this->setup();
 }
@@ -32,7 +32,7 @@ void VectorFieldParticle::setup(){
 }
 
 
-void VectorFieldParticle::addForce(ofVec2f dir)
+void VectorFieldParticle::addForce(const ofVec2f& dir)
 {
     m_acc += dir;
 }
@@ -55,7 +55,7 @@ void VectorFieldParticle::update()
 void VectorFieldParticle::draw(){
     ofPushStyle();
         ofSetColor(m_color);
-        ofSetLineWidth(2.0);
+        ofSetLineWidth(6.0);
         ofDrawLine(m_prevPos,m_pos);
     ofPopStyle();
 }
@@ -68,7 +68,7 @@ void VectorFieldParticle::stayOnScreen()
     if( m_pos.x < 0 ) m_pos.x += width;
     if( m_pos.x >= width) m_pos.x -= width;
     if( m_pos.y < 0 ) m_pos.y += height;
-    if( m_pos.y >= ofGetHeight() ) m_pos.y -= height;
+    if( m_pos.y >= height ) m_pos.y -= height;
 }
 
 bool VectorFieldParticle::isOffScreen(){
