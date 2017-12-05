@@ -67,8 +67,8 @@ void FlowScene::updateFbo()
 void FlowScene::draw()
 {
     ofClear(0);
-    //AppManager::getInstance().getModelManager().drawModel(m_fbo);
-    this->drawFluid();
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
+    //this->drawFluid();
 }
 
 void FlowScene::drawFluid()

@@ -43,10 +43,10 @@ public:
     
 private:
     
+    void updateNoise();
+    
 private:
     
-    
-
     
 };
 

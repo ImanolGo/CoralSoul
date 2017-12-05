@@ -29,7 +29,19 @@ void WireFrameScene::setup() {
 
 void WireFrameScene::update()
 {
-    //Intentionally left empty
+    this->updateNoise();
+}
+
+
+void WireFrameScene::updateNoise()
+{
+    auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
+    float speed = 0.2;
+    float f = 1.0/weatherConditions.swellPeriod;
+    float amp = ofMap(sin(TWO_PI*f*ofGetElapsedTimef()), -1, 1, weatherConditions.swellMinHeight/10,  weatherConditions.swellMaxHeight/10);
+    
+    AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
+    AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
 }
 
 
@@ -46,6 +58,7 @@ void WireFrameScene::willFadeIn() {
     
     float amp = 0.2;
     float speed = 0.2;
+
     AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
     AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
     

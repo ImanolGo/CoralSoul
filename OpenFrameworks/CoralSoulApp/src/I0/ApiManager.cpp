@@ -44,12 +44,14 @@ void ApiManager::setupApis()
 {
     this->setupWeatherApi();
     this->setupNasaApi();
+    this->setupsurfApi();
 }
 
 void ApiManager::setupTimers()
 {
     this->setupWeatherTimer();
     this->setupNasaTimer();
+    this->setupsurfTimer();
    
 }
 
@@ -63,6 +65,16 @@ void ApiManager::setupWeatherTimer()
     ofAddListener( m_weatherTimer.TIMER_COMPLETE , this, &ApiManager::weatherTimerCompleteHandler ) ;
 }
 
+void ApiManager::setupsurfTimer()
+{
+    auto surfSettings = AppManager::getInstance().getSettingsManager().getsurfSettings();
+    
+    m_surfTimer.setup( surfSettings.request_time*1000 );
+    
+    m_surfTimer.start( false ) ;
+    ofAddListener( m_surfTimer.TIMER_COMPLETE , this, &ApiManager::surfTimerCompleteHandler ) ;
+}
+
 void ApiManager::setupNasaTimer()
 {
     auto nasaSettings = AppManager::getInstance().getSettingsManager().getNasaSettings();
@@ -72,6 +84,7 @@ void ApiManager::setupNasaTimer()
     m_nasaTimer.start( false ) ;
     ofAddListener( m_nasaTimer.TIMER_COMPLETE , this, &ApiManager::nasaTimerCompleteHandler ) ;
 }
+
 
 
 void ApiManager::setupWeatherApi()
@@ -115,9 +128,21 @@ void ApiManager::setupNasaApi()
     m_nasaUrl = nasaSettings.url;
     m_nasaUrl += nasaSettings.key;
     
-    ofLogNotice() <<"ApiManager::setupNasaApi << weather url = " <<  m_weatherUrl;
+    ofLogNotice() <<"ApiManager::setupNasaApi << nasa url = " <<  m_nasaUrl;
     
     ofLoadURLAsync(m_nasaUrl, "nasa");
+}
+
+void ApiManager::setupsurfApi()
+{
+    auto surfSettings = AppManager::getInstance().getSettingsManager().getsurfSettings();
+    
+    m_surfUrl = surfSettings.url;
+    ofStringReplace(m_surfUrl,"0000",surfSettings.spotId);
+    
+    ofLogNotice() <<"ApiManager::setupsurfApi << surf url = " <<  m_surfUrl;
+    
+    ofLoadURLAsync(m_surfUrl, "surf");
 }
 
 
@@ -129,6 +154,8 @@ void ApiManager::update()
 void ApiManager::updateTimers()
 {
     m_weatherTimer.update();
+    m_nasaTimer.update();
+    m_surfTimer.update();
 }
 
 void ApiManager::urlResponse(ofHttpResponse & response)
@@ -152,6 +179,12 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         {
             ofLogNotice() <<"ApiManager::urlResponse -> NASA IMAGE ";
             m_nasaImage.load(response.data);
+        }
+        
+        else if(response.request.name == "surf")
+        {
+             this->parsesurf(response.data);
+             AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
         }
     }
 }
@@ -181,6 +214,21 @@ void ApiManager::parseNasa(string response)
    
     
 }
+
+void ApiManager::parsesurf(string response)
+{
+    ofLogNotice() << response;
+    
+    ofxJSONElement json(response);
+    
+
+    m_weatherConditions.swellMaxHeight = json["Analysis"]["surfMax"][0].asFloat();
+    m_weatherConditions.swellMinHeight = json["Analysis"]["surfMin"][0].asFloat();
+    m_weatherConditions.swellPeriod = json["Surf"]["swell_period1"][0][0].asFloat();
+    
+    ofLogNotice() <<"ApiManager::parsesurf << surfMax = " <<  m_weatherConditions.swellMaxHeight<< ", surfMin -> " <<    m_weatherConditions.swellMinHeight << ", swell period -> " <<m_weatherConditions.swellPeriod;
+}
+
 
 void ApiManager::parseWeather(string xml)
 {
@@ -253,6 +301,12 @@ void ApiManager::nasaTimerCompleteHandler( int &args )
 {
     m_nasaTimer.start(false);
     ofLoadURLAsync(m_nasaUrl, "nasa");
+}
+
+void ApiManager::surfTimerCompleteHandler( int &args )
+{
+    m_surfTimer.start(false);
+    ofLoadURLAsync(m_surfUrl, "surf");
 }
 
 float ApiManager::parseTime(string timeString)

@@ -25,7 +25,15 @@ struct weather_conditions
     string  precipitationMode{"no"};
     float  precipitationValue{0.0};
     string city{""};
+    
+    float swellMaxHeight{0.0};
+    float swellMinHeight{0.0};
+    float swellPeriod{0.0};
+    float tideMaxHeight{0.0};
+    float tideMinHeight{0.0};
+    float tideHeight{0.0};
 };
+
 
 //========================== class ApiManager =======================================
 //===================================================================================
@@ -58,6 +66,8 @@ public:
     
     void nasaTimerCompleteHandler( int &args ) ;
     
+    void surfTimerCompleteHandler( int &args ) ;
+    
     const ofImage& getNasaImage() {return m_nasaImage;}
     
     const weather_conditions& getCurrentWeather() {return m_weatherConditions;}
@@ -74,6 +84,14 @@ public:
     
     void onCloudsChange(float& value){m_weatherConditions.clouds = value;}
     
+    void onMaxSwellChange(float& value){m_weatherConditions.swellMaxHeight = value;}
+    
+    void onMinSwellChange(float& value){m_weatherConditions.swellMinHeight = value;}
+    
+    void onSwellPeriodChange(float& value){m_weatherConditions.swellPeriod = value;}
+    
+    void onTideHeightChange(float& value){m_weatherConditions.tideHeight = value;}
+    
 private:
     
     void setupApis();
@@ -81,6 +99,8 @@ private:
     void setupWeatherApi();
     
     void setupNasaApi();
+    
+    void setupsurfApi();
     
     void initializeNasaImage();
     
@@ -90,11 +110,15 @@ private:
     
     void setupNasaTimer();
     
+    void setupsurfTimer();
+    
     void updateTimers();
     
     void parseWeather(string xml);
     
     void parseNasa(string response);
+    
+    void parsesurf(string response);
     
     float parseTime(string timeString);
     
@@ -103,8 +127,10 @@ private:
     
     ofxSimpleTimer          m_weatherTimer;
     ofxSimpleTimer          m_nasaTimer;
+    ofxSimpleTimer          m_surfTimer;
     string                  m_weatherUrl;
     string                  m_nasaUrl;
+    string                  m_surfUrl;
     weather_conditions      m_weatherConditions;
     ofImage                 m_nasaImage;
     ofImage                 m_defaultImage;

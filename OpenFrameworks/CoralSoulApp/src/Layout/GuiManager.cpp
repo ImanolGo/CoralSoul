@@ -294,7 +294,19 @@ void GuiManager::setupWeatherGui()
     m_weatherClouds.set("Clouds.", 0.0, 0.0, 100);
     m_weatherClouds.addListener(apiManager, &ApiManager::onCloudsChange);
     m_parameters.add(m_weatherClouds);
- 
+    
+    m_swellMaxHeight.set("Max Swell", 0.0, 0.0, 10);
+    m_swellMaxHeight.addListener(apiManager, &ApiManager::onMaxSwellChange);
+    m_parameters.add(m_swellMaxHeight);
+    
+    m_swellMinHeight.set("Min Swell", 0.0, 0.0, 10);
+    m_swellMinHeight.addListener(apiManager, &ApiManager::onMinSwellChange);
+    m_parameters.add(m_swellMinHeight);
+    
+    m_swellPeriod.set("Swell Period", 0.0, 0.0, 20);
+    m_swellPeriod.addListener(apiManager, &ApiManager::onSwellPeriodChange);
+    m_parameters.add(m_swellPeriod);
+    
     
     ofxDatGuiFolder* folder = m_gui.addFolder("WEATHER", ofColor::blue);
     m_cityLabel = folder->addLabel("CITY: ");
@@ -304,6 +316,9 @@ void GuiManager::setupWeatherGui()
     folder->addSlider(m_weatherWindDirection);
     folder->addSlider(m_weatherPrecipitation);
     folder->addSlider(m_weatherClouds);
+    folder->addSlider(m_swellMaxHeight);
+    folder->addSlider(m_swellMinHeight);
+    folder->addSlider(m_swellPeriod);
     folder->expand();
     
     m_gui.addBreak();
@@ -437,6 +452,11 @@ void GuiManager::onWeatherChange(const weather_conditions& value)
     m_weatherWindSpeed = value.windSpeed;
     m_weatherWindDirection = value.windDirection;
     m_weatherPrecipitation = value.precipitationValue;
+    
+    m_swellMaxHeight = value.swellMaxHeight;
+    m_swellMinHeight = value.swellMinHeight;
+    m_swellPeriod = value.swellPeriod;
+    m_tideHeight = value.tideHeight;
     
     if(m_cityLabel!=NULL){
         m_cityLabel->setLabel("CITY: " +  value.city);

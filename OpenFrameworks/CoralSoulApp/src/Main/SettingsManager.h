@@ -29,6 +29,14 @@ struct nasa_settings
     string url{""};
 };
 
+struct surf_settings
+{
+    float request_time{2.0};
+    string spotId{""};
+    string name{"name"};
+    string url{""};
+};
+
 
 //========================== class SettingsManager ==============================
 //============================================================================
@@ -80,6 +88,8 @@ public:
     weather_settings getWeatherSettings() const {return m_weatherSettings;}
     
     nasa_settings getNasaSettings() const {return m_nasaSettings;}
+    
+    surf_settings getsurfSettings() const {return m_surfSettings;}
     
     
 private:
@@ -135,7 +145,8 @@ private:
     string                  m_ipAddress;             ///< stores the Ip Address used for the Network communications
     string                  m_spoutName;			///<stores the name of the spout pipe name
     weather_settings        m_weatherSettings;      ///<stores the weather api's settings
-    nasa_settings           m_nasaSettings;         ///<stores the weather nasa's settings
+    nasa_settings           m_nasaSettings;         ///<stores the nasa's settings
+    surf_settings           m_surfSettings;        ///<stores the surf's settings
     
 };
 

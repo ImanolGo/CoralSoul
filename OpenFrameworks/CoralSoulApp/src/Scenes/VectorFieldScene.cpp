@@ -79,16 +79,13 @@ void VectorFieldScene::updateFbo()
 void VectorFieldScene::draw()
 {
     ofClear(0);
-    //AppManager::getInstance().getModelManager().drawModel(m_fbo);
-    m_vectorField.draw();
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
+    //m_vectorField.draw();
     //this->drawVectorField();
 }
 
 void VectorFieldScene::drawVectorField()
 {
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    
     m_vectorField.draw();
 }
 

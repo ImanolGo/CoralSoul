@@ -160,8 +160,7 @@ void SettingsManager::setApiProperties()
     }
     
     
-    
-    
+
     m_xml.setTo("//");
     
     windowPath = "//api/nasa";
@@ -178,6 +177,26 @@ void SettingsManager::setApiProperties()
     }
     else{
          ofLogNotice() <<"SettingsManager::setApiProperties->  path not found: " << windowPath ;
+    }
+    
+    
+    m_xml.setTo("//");
+    
+    windowPath = "//api/surf";
+    if(m_xml.exists(windowPath)) {
+        m_xml.setTo(windowPath);
+        typedef   std::map<string, string>   AttributesMap;
+        AttributesMap attributes = m_xml.getAttributes();
+        m_surfSettings.name = attributes["name"];
+        m_surfSettings.url = attributes["url"];
+        m_surfSettings.spotId = attributes["spotId"];
+        m_surfSettings.request_time = ofToFloat(attributes["request_time"]);
+        
+        ofLogNotice() <<"SettingsManager::setApiProperties->  successfully loaded the surf settings" ;
+        ofLogNotice() <<"SettingsManager::setApiProperties->  name = " <<  m_surfSettings.name  <<", url = " << m_surfSettings.url <<", request time = "<<m_surfSettings.request_time<<", spotId = "<<m_surfSettings.spotId;
+    }
+    else{
+        ofLogNotice() <<"SettingsManager::setApiProperties->  path not found: " << windowPath ;
     }
     
    
