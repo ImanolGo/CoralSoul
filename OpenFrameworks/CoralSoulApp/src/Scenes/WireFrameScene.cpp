@@ -36,9 +36,11 @@ void WireFrameScene::update()
 void WireFrameScene::updateNoise()
 {
     auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
-    float speed = 0.2;
+    //float speed = 0.2;
     float f = 1.0/weatherConditions.swellPeriod;
-    float amp = ofMap(sin(TWO_PI*f*ofGetElapsedTimef()), -1, 1, weatherConditions.swellMinHeight/10,  weatherConditions.swellMaxHeight/10);
+    float sine = sin(TWO_PI*f*ofGetElapsedTimef());
+    float amp = ofMap(sine, -1, 1, 0.05,  weatherConditions.swellHeight/8);
+    float speed = ofMap(sine, -1, 1, 0.1,  0.3);
     
     AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
     AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);

@@ -3,14 +3,13 @@
 	<LightX>180</LightX>
 	<LightY>-40.45</LightY>
 	<LightZ>-115.28</LightZ>
-	<Temp_>17.26</Temp_>
-	<Humidity>52</Humidity>
-	<Wind_Speed>5.7</Wind_Speed>
+	<Temp_>16.93</Temp_>
+	<Humidity>90</Humidity>
+	<Wind_Speed>4.1</Wind_Speed>
 	<Wind_Dir>70</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Clouds_>0</Clouds_>
-	<Max_Swell>3.76</Max_Swell>
-	<Min_Swell>0.918</Min_Swell>
+	<Swell_Height>0</Swell_Height>
 	<Swell_Period>6.18</Swell_Period>
 	<Distance>617.98</Distance>
 	<X>78.65</X>

@@ -22,8 +22,8 @@
   <api>
        <weather url = "http://api.openweathermap.org/data/2.5/weather?" city="Santa Cruz de Tenerife" lat="28.0983074" lon="-16.748344" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="60"/>
        <nasa url="https://api.nasa.gov/planetary/apod?api_key=" key="n0OdkEMGNnqqBQ7RHSGTx7U4OnwrMCAporxkvCEu" request_time ="3600"/>
-       <surf name="Tenerife Canaries" url="http://api.surfline.com/v1/forecasts/0000?resources=surf,analysis&amp;days=1&amp;getAllSpots=false&amp;units=m&amp;usenearshore=true&amp;interpolate=false&amp;showOptimal=false" spotId="77187" request_time ="3600"/>
-       <weather url = "http://api.openweathermap.org/data/2.5/weather?" city="Santa Cruz de Tenerife" lat="28.0983074" lon="-16.748344" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="60"/>
+       <surf city="La Caleta" url=" http://magicseaweed.com/api/" key = "6894ba16117b5b91b63a653717789f6c" id="1855" units="eu" request_time ="3600"/>
+     
   </api>
 
   <textures>

@@ -138,7 +138,12 @@ void ApiManager::setupsurfApi()
     auto surfSettings = AppManager::getInstance().getSettingsManager().getsurfSettings();
     
     m_surfUrl = surfSettings.url;
-    ofStringReplace(m_surfUrl,"0000",surfSettings.spotId);
+    m_surfUrl += surfSettings.key;
+    m_surfUrl+="/forecast/?spot_id=";
+    m_surfUrl+=surfSettings.id;
+    m_surfUrl+="&fields=swell.components.combined.height,swell.components.combined.period";
+    m_surfUrl+="&units=";
+    m_surfUrl+=surfSettings.units;
     
     ofLogNotice() <<"ApiManager::setupsurfApi << surf url = " <<  m_surfUrl;
     
@@ -160,7 +165,7 @@ void ApiManager::updateTimers()
 
 void ApiManager::urlResponse(ofHttpResponse & response)
 {
-   // ofLogNotice() <<"ApiManager::urlResponse -> " << response.request.name << ", " << response.status;
+    //ofLogNotice() <<"ApiManager::urlResponse -> " << response.request.name << ", " << response.status;
     
     if(response.status==200)
     {
@@ -222,11 +227,10 @@ void ApiManager::parsesurf(string response)
     ofxJSONElement json(response);
     
 
-    m_weatherConditions.swellMaxHeight = json["Analysis"]["surfMax"][0].asFloat();
-    m_weatherConditions.swellMinHeight = json["Analysis"]["surfMin"][0].asFloat();
-    m_weatherConditions.swellPeriod = json["Surf"]["swell_period1"][0][0].asFloat();
+    m_weatherConditions.swellHeight = json["swell"][0]["components"]["combined"]["height"].asFloat();
+    m_weatherConditions.swellPeriod = json["swell"][0]["components"]["combined"]["period"].asFloat();
     
-    ofLogNotice() <<"ApiManager::parsesurf << surfMax = " <<  m_weatherConditions.swellMaxHeight<< ", surfMin -> " <<    m_weatherConditions.swellMinHeight << ", swell period -> " <<m_weatherConditions.swellPeriod;
+    ofLogNotice() <<"ApiManager::parsesurf << swell height = " <<  m_weatherConditions.swellHeight << ", swell period -> " <<m_weatherConditions.swellPeriod;
 }
 
 
