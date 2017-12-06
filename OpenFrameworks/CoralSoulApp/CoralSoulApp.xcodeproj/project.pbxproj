@@ -1382,12 +1382,12 @@
 				5056FC61E30B9810903B814D /* AppManager.cpp */,
 				D26C09D837E4FD6CBDBE2B8C /* AppManager.h */,
 				8512B70A33C86533C9EADD77 /* CoralSoulApp.cpp */,
+				70CD46859324290ECBB2A90F /* CoralSoulApp.h */,
 				73D7AA4CF4895FC3DEEC2978 /* SettingsManager.cpp */,
 				496FB8BB67BF37BF8B96AD33 /* SettingsManager.h */,
 				F94F04C2A3BFBCB8D6F36DEB /* Manager.h */,
 				D2A2BE33BFF330BDC05A7FC5 /* managers.h */,
 				6E3F47F486843AA062205007 /* main.cpp */,
-				70CD46859324290ECBB2A90F /* CoralSoulApp.h */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -1480,7 +1480,6 @@
 				08E9D8C41FD219990043FF93 /* NasaScene.cpp */,
 				08E9D8C51FD219990043FF93 /* NasaScene.h */,
 				ED2AB7AA9DFC6F71B8272146 /* SunScene.cpp */,
-				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				2B9F1B8564F083FFCE4C466E /* FlowScene.cpp */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
 				8C488F38001D542DA27140DF /* scenes.h */,
@@ -1490,6 +1489,7 @@
 				79F4F8F21C65325A536B0F3F /* WireFrameScene.h */,
 				3C4EA15C90BCFE1FFC1245B1 /* BlankScene.cpp */,
 				1D40AB48F6F739773BAB451A /* RainScene.cpp */,
+				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				1FBFF3E74C628E11BF30EF17 /* ImageScene.cpp */,
 				F79FD8ACD200E65C2E5AF42D /* ImageScene.h */,
 				BE605DDBE9554C679DAC4537 /* SunScene.h */,

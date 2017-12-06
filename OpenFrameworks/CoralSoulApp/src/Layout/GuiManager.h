@@ -15,8 +15,8 @@
 //========================== class GuiManager ==============================
 //============================================================================
 /** \class GuiManager GuiManager.h
- *	\brief Class managing the application´s grapical user interface (GUI)
- *	\details It creates the gui and the callback functions that will be affected
+ *    \brief Class managing the application´s grapical user interface (GUI)
+ *    \details It creates the gui and the callback functions that will be affected
  *    by the gui
  */
 
@@ -27,13 +27,13 @@ class GuiManager: public Manager
     static const int GUI_WIDTH;
     
 public:
-
+    
     //! Constructor
     GuiManager();
-
+    
     //! Destructor
     ~GuiManager();
-
+    
     //! Set-up the gui
     void setup();
     
@@ -100,14 +100,14 @@ private:
     void drawGui();
     
     void setupGuiEvents();
-
+    
 private:
     
-    ofxDatGui			m_gui;
-
-    ofParameter<float>	m_guiFPS;
+    ofxDatGui            m_gui;
     
-
+    ofParameter<float>    m_guiFPS;
+    
+    
     ofParameterGroup      m_parameters;
     
     ofParameter<float>      m_cameraDistance;
@@ -132,11 +132,8 @@ private:
     ofParameter<float>      m_weatherPrecipitation;
     ofParameter<float>      m_weatherClouds;
     
-    ofParameter<float>      m_swellMaxHeight;
-    ofParameter<float>      m_swellMinHeight;
+    ofParameter<float>      m_swellHeight;
     ofParameter<float>      m_swellPeriod;
-    ofParameter<float>      m_tideHeight;
-
     
     ofParameter<float>      m_lightX;
     ofParameter<float>      m_lightY;
@@ -147,7 +144,7 @@ private:
     ofParameter<float>      m_noiseSpeed;
     
     ofxDatGuiLabel*        m_cityLabel;
-   
+    
     bool        m_showGui;  //It defines the whether the gui should be shown or not
 };
 

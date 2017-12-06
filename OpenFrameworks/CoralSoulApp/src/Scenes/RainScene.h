@@ -65,7 +65,7 @@ private:
     ofxRipples  m_ripples;
     ofxBounce   m_bounce;
     
-     ofFbo      m_fbo;
+    ofFbo      m_fbo;
     
 };
 

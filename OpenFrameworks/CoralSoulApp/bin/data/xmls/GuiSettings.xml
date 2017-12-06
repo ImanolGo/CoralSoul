@@ -9,9 +9,8 @@
 	<Wind_Dir>100</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Clouds_>0</Clouds_>
-	<Max_Swell>1.224</Max_Swell>
-	<Min_Swell>0.918</Min_Swell>
-	<Swell_Period>8.4</Swell_Period>
+	<Swell_Height>1.2</Swell_Height>
+	<Swell_Period>10</Swell_Period>
 	<Distance>617.98</Distance>
 	<X>78.65</X>
 	<Y>146.07</Y>
@@ -23,7 +22,7 @@
 	<Rot_X>3.53</Rot_X>
 	<Rot_Y>15.63</Rot_Y>
 	<Rot_Z>0</Rot_Z>
-	<Noise_Resolution>63</Noise_Resolution>
-	<Noise_Frequency>0.45</Noise_Frequency>
-	<Noise_Speed>0.51</Noise_Speed>
+	<Noise_Resolution>26</Noise_Resolution>
+	<Noise_Frequency>0.27</Noise_Frequency>
+	<Noise_Speed>0.24</Noise_Speed>
 </group>

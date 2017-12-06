@@ -76,14 +76,28 @@ void RainScene::updateRipples()
    // auto tex =  AppManager::getInstance().getModelManager().getModel().getTexture();
     
     //m_bounce.setTexture(tex, 1);
+    float precMM = AppManager::getInstance().getApiManager().getCurrentWeather().precipitationValue;
+    int skip = (int) ofMap(precMM, 0.0, 10.0, 10, 1, true);
     
     m_bounce.setTexture(*m_texture.get(), 1);
     
-    m_ripples.begin();
-    ofFill();
+    if(precMM > 0 && ofGetFrameNum()%skip == 0){
+        m_ripples.begin();
+        
+        ofFill();
         ofSetColor(ofNoise( ofGetFrameNum() ) * 255 * 5, 255);
-        ofDrawEllipse(ofRandom(width),ofRandom(height), 10,10);
-    m_ripples.end();
+        int dropsPerCycle = 2;
+        for(int i=0; i<dropsPerCycle; i++){
+             ofDrawEllipse(ofRandom(width),ofRandom(height), 10,10);
+        }
+       
+        
+       
+        m_ripples.end();
+    }
+    
+   
+   
     m_ripples.update();
     
     m_bounce << m_ripples;

@@ -56,7 +56,7 @@ void FluidVisual::setupFluid()
     // FLUID & PARTICLES
     m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight);
     m_particleFlow.setup(flowWidth, flowHeight, drawWidth, drawHeight);
-    m_particleFlow.activate(true);
+    m_particleFlow.activate(false);
     
     // FORCES
     m_numDrawForces = 3;
@@ -136,7 +136,7 @@ void FluidVisual::updateFluid()
                     break;
                 case FT_VELOCITY:
                     m_fluid.addVelocity(m_flexDrawForces[i].getTexture(), strength);
-                    m_particleFlow.addFlowVelocity(m_flexDrawForces[i].getTexture(), strength);
+                    //m_particleFlow.addFlowVelocity(m_flexDrawForces[i].getTexture(), strength);
                     break;
                 case FT_TEMPERATURE:
                     m_fluid.addTemperature(m_flexDrawForces[i].getTexture(), strength);
@@ -161,12 +161,12 @@ void FluidVisual::updateFluid()
         //        particleFlow.addDensity(fluidSimulation.getDensity());
         m_particleFlow.setObstacle(m_fluid.getObstacle());
     }
-    m_particleFlow.update();
+    //m_particleFlow.update();
 }
 
 void FluidVisual::draw(const ofRectangle& area)
 {
-    m_particleFlow.draw(area.x, area.y, area.width, area.height);
+    //m_particleFlow.draw(area.x, area.y, area.width, area.height);
 //    if (m_particleFlow.isActive()) {
 //         m_particleFlow.draw(area.x, area.y, area.width, area.height);
 //    }
@@ -174,7 +174,9 @@ void FluidVisual::draw(const ofRectangle& area)
 //        m_fluid.draw(area.x, area.y, area.width, area.height);
 //    }
 //
-    this->drawGui();
+    m_fluid.draw(area.x, area.y, area.width, area.height);
+
+    //this->drawGui();
 }
 
 /*void FluidVisual::draw()
