@@ -13,18 +13,6 @@
 #include "ofxSimpleTimer.h"
 
 
-struct api_settings
-{
-    float lat{0.0};
-    float lon{0.0};
-    float request_time{2.0};
-    string city{"berlin"};
-    string key{""};
-    string units{"metric"};
-    string url{""};
-    string id{""};
-};
-
 struct weather_conditions
 {
     float temp{0.0};
@@ -38,8 +26,12 @@ struct weather_conditions
     float  precipitationValue{0.0};
     string city{""};
     
-    float swellHeight{0.0};
+    float swellMaxHeight{0.0};
+    float swellMinHeight{0.0};
     float swellPeriod{0.0};
+    float tideMaxHeight{0.0};
+    float tideMinHeight{0.0};
+    float tideHeight{0.0};
 };
 
 
@@ -92,10 +84,13 @@ public:
     
     void onCloudsChange(float& value){m_weatherConditions.clouds = value;}
     
-    void onSwellHeightChange(float& value){m_weatherConditions.swellHeight = value;}
+    void onMaxSwellChange(float& value){m_weatherConditions.swellMaxHeight = value;}
+    
+    void onMinSwellChange(float& value){m_weatherConditions.swellMinHeight = value;}
     
     void onSwellPeriodChange(float& value){m_weatherConditions.swellPeriod = value;}
-
+    
+    void onTideHeightChange(float& value){m_weatherConditions.tideHeight = value;}
     
 private:
     

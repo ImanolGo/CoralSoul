@@ -10,7 +10,32 @@
 #pragma once
 
 #include "Manager.h"
-#include "ApiManager.h"
+
+struct weather_settings
+{
+    float lat{0.0};
+    float lon{0.0};
+    float request_time{2.0};
+    string city{"berlin"};
+    string key{""};
+    string units{"metric"};
+    string url{""};
+};
+
+struct nasa_settings
+{
+    float request_time{2.0};
+    string key{""};
+    string url{""};
+};
+
+struct surf_settings
+{
+    float request_time{2.0};
+    string spotId{""};
+    string name{"name"};
+    string url{""};
+};
 
 
 //========================== class SettingsManager ==============================
@@ -60,11 +85,11 @@ public:
     
     int getOscPortSend() const {return m_portOscSend;}
     
-    api_settings getWeatherSettings() const {return m_weatherSettings;}
+    weather_settings getWeatherSettings() const {return m_weatherSettings;}
     
-    api_settings getNasaSettings() const {return m_nasaSettings;}
+    nasa_settings getNasaSettings() const {return m_nasaSettings;}
     
-    api_settings getsurfSettings() const {return m_surfSettings;}
+    surf_settings getsurfSettings() const {return m_surfSettings;}
     
     
 private:
@@ -117,11 +142,11 @@ private:
     float                   m_appHeight;            ///< stores the applications height
     int                     m_portOscReceive;       ///< stores the  port to receive OSC messages from
     int                     m_portOscSend;          ///< stores the  port to send OSC messages to
-    string                  m_ipAddress;            ///< stores the Ip Address used for the Network communications
+    string                  m_ipAddress;             ///< stores the Ip Address used for the Network communications
     string                  m_spoutName;			///<stores the name of the spout pipe name
-    api_settings            m_weatherSettings;      ///<stores the weather api's settings
-    api_settings            m_nasaSettings;         ///<stores the nasa's settings
-    api_settings            m_surfSettings;         ///<stores the surf's settings
+    weather_settings        m_weatherSettings;      ///<stores the weather api's settings
+    nasa_settings           m_nasaSettings;         ///<stores the nasa's settings
+    surf_settings           m_surfSettings;        ///<stores the surf's settings
     
 };
 

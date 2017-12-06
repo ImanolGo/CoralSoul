@@ -40,6 +40,8 @@ public:
     
     void drawModel(const ofFbo& tex);
     
+    void drawWireframe(const ofTexture& texture);
+    
     const ofFbo & getMask() const {return m_fboMask;}
     
     const ofFbo & getModel() const {return m_fboModel;}
@@ -79,6 +81,8 @@ public:
     void onNoiseAmplitudeChange(float& value) {m_noiseAmplitude = value;}
     
     void onNoiseSpeedChange(float& value) {m_noiseSpeed = value;}
+    
+    void onWireFrameColorChange(ofColor& color) {m_wireFrameColor = color;}
     
 private:
 
@@ -121,6 +125,7 @@ private:
     ofFbo                m_fboModel;
     ofFbo                m_fboWireframe;
     ofFbo                m_fboTexture;
+    ofFbo                m_fboTextureWireFrame;
     
     
     ofVec3f              m_light_rot;
@@ -137,6 +142,7 @@ private:
     
     float              m_noiseAmplitude;
     float              m_noiseSpeed;
+    ofColor            m_wireFrameColor;
 };
 
 //==========================================================================

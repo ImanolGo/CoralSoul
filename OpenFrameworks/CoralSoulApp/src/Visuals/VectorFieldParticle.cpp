@@ -40,11 +40,16 @@ void VectorFieldParticle::addForce(const ofVec2f& dir)
 
 void VectorFieldParticle::update()
 {
+    float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
     m_vel+=m_acc;
     m_vel.limit(m_maxSpeed);
     m_prevPos = m_pos;
     m_pos+=m_vel;
     m_acc = ofVec2f(0);
+    
+    float adj = ofMap(m_pos.y, 0, height, 255, 0);
+    m_color = ofColor(40, adj, 255);
     
     if(this->isOffScreen()){
         this->stayOnScreen();

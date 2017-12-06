@@ -132,8 +132,10 @@ private:
     ofParameter<float>      m_weatherPrecipitation;
     ofParameter<float>      m_weatherClouds;
     
-    ofParameter<float>      m_swellHeight;
+    ofParameter<float>      m_swellMaxHeight;
+    ofParameter<float>      m_swellMinHeight;
     ofParameter<float>      m_swellPeriod;
+    ofParameter<float>      m_tideHeight;
 
     
     ofParameter<float>      m_lightX;

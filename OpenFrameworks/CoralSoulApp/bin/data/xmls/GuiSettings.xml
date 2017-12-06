@@ -1,19 +1,20 @@
 <group>
 	<Blur>0.22</Blur>
-	<LightX>180</LightX>
-	<LightY>-40.45</LightY>
-	<LightZ>-115.28</LightZ>
-	<Temp_>16.93</Temp_>
-	<Humidity>90</Humidity>
-	<Wind_Speed>4.1</Wind_Speed>
-	<Wind_Dir>70</Wind_Dir>
+	<LightX>129.44</LightX>
+	<LightY>50.56</LightY>
+	<LightZ>-20.22</LightZ>
+	<Temp_>17.59</Temp_>
+	<Humidity>40</Humidity>
+	<Wind_Speed>6.7</Wind_Speed>
+	<Wind_Dir>130</Wind_Dir>
 	<Prec_>0</Prec_>
 	<Clouds_>0</Clouds_>
-	<Swell_Height>0</Swell_Height>
-	<Swell_Period>6.18</Swell_Period>
+	<Max_Swell>1.224</Max_Swell>
+	<Min_Swell>0.918</Min_Swell>
+	<Swell_Period>8.4</Swell_Period>
 	<Distance>617.98</Distance>
 	<X>78.65</X>
-	<Y>168.54</Y>
+	<Y>146.07</Y>
 	<Z>943.82</Z>
 	<FOV>54.61</FOV>
 	<Pos_X>44.94</Pos_X>

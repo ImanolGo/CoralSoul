@@ -187,15 +187,13 @@ void SettingsManager::setApiProperties()
         m_xml.setTo(windowPath);
         typedef   std::map<string, string>   AttributesMap;
         AttributesMap attributes = m_xml.getAttributes();
-        m_surfSettings.city = attributes["city"];
-        m_surfSettings.key = attributes["key"];
-        m_surfSettings.units = attributes["units"];
+        m_surfSettings.name = attributes["name"];
         m_surfSettings.url = attributes["url"];
-        m_surfSettings.id = attributes["id"];
+        m_surfSettings.spotId = attributes["spotId"];
         m_surfSettings.request_time = ofToFloat(attributes["request_time"]);
         
         ofLogNotice() <<"SettingsManager::setApiProperties->  successfully loaded the surf settings" ;
-        ofLogNotice() <<"SettingsManager::setApiProperties->  name = " <<  m_surfSettings.city  <<", url = " << m_surfSettings.url <<", request time = "<<m_surfSettings.request_time<<", spotId = "<<m_surfSettings.id;
+        ofLogNotice() <<"SettingsManager::setApiProperties->  name = " <<  m_surfSettings.name  <<", url = " << m_surfSettings.url <<", request time = "<<m_surfSettings.request_time<<", spotId = "<<m_surfSettings.spotId;
     }
     else{
         ofLogNotice() <<"SettingsManager::setApiProperties->  path not found: " << windowPath ;

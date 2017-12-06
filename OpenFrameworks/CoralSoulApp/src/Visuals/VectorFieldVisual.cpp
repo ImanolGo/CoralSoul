@@ -13,7 +13,7 @@
 const int VectorFieldVisual::NUM_PARTICLES = 1000;
 
 
-VectorFieldVisual::VectorFieldVisual():m_speed(0.01), m_spacing(20), m_skipFrames(0), m_fadeTime(5)
+VectorFieldVisual::VectorFieldVisual():m_speed(0.01), m_spacing(20), m_skipFrames(0), m_fadeTime(10)
 {
     //Intentionaly left empty
 }

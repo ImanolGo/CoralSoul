@@ -33,6 +33,7 @@
     <texture name="RAIN" path="images/general/waterTexture.jpg"/>
     <texture name="RockTexture" path="images/general/RockTexture.png"/>
     <texture name="Apod" path="images/apod/apod.jpg"/>
+    <texture name="Coral" path="images/model/coralTexture3.jpg"/>
 
   </textures>
 

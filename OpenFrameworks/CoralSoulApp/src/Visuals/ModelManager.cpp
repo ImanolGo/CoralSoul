@@ -70,6 +70,11 @@ void ModelManager::setupFbos()
     
     m_fboTexture.allocate(width, height);
     m_fboTexture.begin(); ofClear(0); m_fboTexture.end();
+    
+    
+    m_fboTextureWireFrame.allocate(width, height);
+    m_fboTextureWireFrame.begin(); ofClear(0); m_fboTextureWireFrame.end();
+    
 }
 
 void ModelManager::setupCamera()
@@ -185,6 +190,7 @@ void ModelManager::updateFbos()
     m_cam.begin();
         //ofSetLineWidth(2);
         //m_simpleModel.drawWireframe();
+    
         this->drawWireframe();
     m_cam.end();
     m_fboWireframe.end();
@@ -257,16 +263,11 @@ void  ModelManager::drawModel(const ofFbo& tex)
     m_light.enable();
     //m_material.begin();
     
-    ofPushStyle();
-    ofSetColor(255);
-    
     m_fboTexture.getTexture().bind();
         m_model.drawFaces();
     m_fboTexture.getTexture().unbind();
     
-    ofPopStyle();
-    
-    //m_material.end();
+   // m_material.end();
     
     // turn off lighting //
     ofDisableLighting();
@@ -296,21 +297,21 @@ void ModelManager::updateNoise()
     //ofLogNotice() <<"ModelManager::updateNoise << amp = " << amplitude << ", speedDampen = " << speedDampen;
 }
 
-void ModelManager::drawWireframe()
+void ModelManager::drawWireframe(const ofTexture& texture)
 {
-    //ofEnableSmoothing();
-    //ofEnableAntiAliasing();
+    m_cam.begin();
     
-    //this->updateNoise();
+    m_fboTextureWireFrame.begin();
+        texture.draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
+    m_fboTextureWireFrame.end();
     
+    ofPushStyle();
     ofSetLineWidth(3.0);
     
     ofEnableDepthTest();
     
     // enable lighting //
-    ofEnableLighting();
-    
-    m_light.enable();
+    //ofEnableLighting();
     
     
     ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
@@ -318,15 +319,62 @@ void ModelManager::drawWireframe()
     ofMultMatrix(m_simpleModel.getModelMatrix());
     ofMultMatrix(meshHelper.matrix);
     
-    material.begin();
+    //material.begin();
+    //m_light.enable();
+  
+    //m_mesh.setColor(0, m_wireFrameColor);
+    m_fboTextureWireFrame.getTexture().bind();
+        m_mesh.drawWireframe();
+    m_fboTextureWireFrame.getTexture().unbind();
     
-    m_mesh.drawWireframe();
     
-    material.end();
+    //material.end();
     // turn off lighting //
     ofDisableLighting();
     
     ofDisableDepthTest();
+    
+    ofPopStyle();
+    
+    m_cam.end();
+}
+void ModelManager::drawWireframe()
+{
+    //ofEnableSmoothing();
+    //ofEnableAntiAliasing();
+    
+    //this->updateNoise();
+    
+    ofPushStyle();
+    ofSetLineWidth(3.0);
+    
+    ofEnableDepthTest();
+    
+    // enable lighting //
+    //ofEnableLighting();
+    
+   
+    
+    
+    ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
+    ofMaterial material = m_simpleModel.getMaterialForMesh(0);
+    ofMultMatrix(m_simpleModel.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
+    
+     //material.begin();
+     //m_light.enable();
+  
+     m_mesh.drawWireframe();
+    
+    
+    
+     //material.end();
+    // turn off lighting //
+    ofDisableLighting();
+    
+    ofDisableDepthTest();
+    
+    ofPopStyle();
     
 //    ofDisableSmoothing();
 //    ofDisableAntiAliasing();
