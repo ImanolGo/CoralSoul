@@ -1,9 +1,9 @@
 <group>
 	<Blur>0.22</Blur>
-	<LightX>129.44</LightX>
-	<LightY>50.56</LightY>
-	<LightZ>-20.22</LightZ>
-	<Temp_>18.59</Temp_>
+	<LightX>58.65</LightX>
+	<LightY>109.21</LightY>
+	<LightZ>58.65</LightZ>
+	<Temp_>18.58</Temp_>
 	<Humidity>40</Humidity>
 	<Wind_Speed>11.8</Wind_Speed>
 	<Wind_Dir>80</Wind_Dir>
@@ -22,7 +22,7 @@
 	<Rot_X>4.04</Rot_X>
 	<Rot_Y>14.16</Rot_Y>
 	<Rot_Z>0</Rot_Z>
-	<Noise_Resolution>118</Noise_Resolution>
-	<Noise_Frequency>1.35</Noise_Frequency>
-	<Noise_Speed>1.97</Noise_Speed>
+	<Noise_Resolution>26</Noise_Resolution>
+	<Noise_Frequency>0.27</Noise_Frequency>
+	<Noise_Speed>0.24</Noise_Speed>
 </group>

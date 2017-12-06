@@ -1382,12 +1382,12 @@
 				5056FC61E30B9810903B814D /* AppManager.cpp */,
 				D26C09D837E4FD6CBDBE2B8C /* AppManager.h */,
 				8512B70A33C86533C9EADD77 /* CoralSoulApp.cpp */,
+				70CD46859324290ECBB2A90F /* CoralSoulApp.h */,
 				73D7AA4CF4895FC3DEEC2978 /* SettingsManager.cpp */,
 				496FB8BB67BF37BF8B96AD33 /* SettingsManager.h */,
 				F94F04C2A3BFBCB8D6F36DEB /* Manager.h */,
 				D2A2BE33BFF330BDC05A7FC5 /* managers.h */,
 				6E3F47F486843AA062205007 /* main.cpp */,
-				70CD46859324290ECBB2A90F /* CoralSoulApp.h */,
 			);
 			name = Main;
 			sourceTree = "<group>";
