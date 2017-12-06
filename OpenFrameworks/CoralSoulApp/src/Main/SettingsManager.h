@@ -10,39 +10,14 @@
 #pragma once
 
 #include "Manager.h"
-
-struct weather_settings
-{
-    float lat{0.0};
-    float lon{0.0};
-    float request_time{2.0};
-    string city{"berlin"};
-    string key{""};
-    string units{"metric"};
-    string url{""};
-};
-
-struct nasa_settings
-{
-    float request_time{2.0};
-    string key{""};
-    string url{""};
-};
-
-struct surf_settings
-{
-    float request_time{2.0};
-    string spotId{""};
-    string name{"name"};
-    string url{""};
-};
+#include "ApiManager.h"
 
 
 //========================== class SettingsManager ==============================
 //============================================================================
 /** \class SettingsManager SettingsManager.h
- *	\brief Class managing the whole settings of the application
- *	\details it reads from an xml settings file and provides access to the information
+ *    \brief Class managing the whole settings of the application
+ *    \details it reads from an xml settings file and provides access to the information
  */
 
 typedef             map<string,string>               ResourcesPathMap;       ///< defines a map of path attached to the resources name
@@ -85,11 +60,11 @@ public:
     
     int getOscPortSend() const {return m_portOscSend;}
     
-    weather_settings getWeatherSettings() const {return m_weatherSettings;}
+    api_settings getWeatherSettings() const {return m_weatherSettings;}
     
-    nasa_settings getNasaSettings() const {return m_nasaSettings;}
+    api_settings getNasaSettings() const {return m_nasaSettings;}
     
-    surf_settings getsurfSettings() const {return m_surfSettings;}
+    api_settings getsurfSettings() const {return m_surfSettings;}
     
     
 private:
@@ -132,7 +107,7 @@ private:
     typedef             map< string, ofPtr<ofColor> >    ColorMap;               ///< Defines a map of colors attached to a name
     
     
-    ofXml		            m_xml;                  ///< instance of the xml parser
+    ofXml                    m_xml;                  ///< instance of the xml parser
     ResourcesPathMap        m_texturesPath;         ///< stores the texture paths
     ResourcesPathMap        m_svgResourcesPath;     ///< stores the resources paths
     ResourcesPathMap        m_videoResourcesPath;   ///< stores the video paths
@@ -142,11 +117,11 @@ private:
     float                   m_appHeight;            ///< stores the applications height
     int                     m_portOscReceive;       ///< stores the  port to receive OSC messages from
     int                     m_portOscSend;          ///< stores the  port to send OSC messages to
-    string                  m_ipAddress;             ///< stores the Ip Address used for the Network communications
-    string                  m_spoutName;			///<stores the name of the spout pipe name
-    weather_settings        m_weatherSettings;      ///<stores the weather api's settings
-    nasa_settings           m_nasaSettings;         ///<stores the nasa's settings
-    surf_settings           m_surfSettings;        ///<stores the surf's settings
+    string                  m_ipAddress;            ///< stores the Ip Address used for the Network communications
+    string                  m_spoutName;            ///<stores the name of the spout pipe name
+    api_settings            m_weatherSettings;      ///<stores the weather api's settings
+    api_settings            m_nasaSettings;         ///<stores the nasa's settings
+    api_settings            m_surfSettings;         ///<stores the surf's settings
     
 };
 

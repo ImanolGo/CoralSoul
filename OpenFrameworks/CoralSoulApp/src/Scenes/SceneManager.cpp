@@ -44,7 +44,7 @@ void SceneManager::setup()
 
 void SceneManager::createScenes()
 {
-    m_mySceneManager.setTransitionDissolve();
+    m_mySceneManager.setTransitionFade();
     
     ofPtr<ofxScene> scene;
 
@@ -89,7 +89,7 @@ void SceneManager::createScenes()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
 
     m_mySceneManager.run(width, height);
-    this->onTransitionTimeChange(1.0);
+    this->onTransitionTimeChange(1.5);
 }
 
 

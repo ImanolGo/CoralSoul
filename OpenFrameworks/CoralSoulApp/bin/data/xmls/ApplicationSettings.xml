@@ -20,9 +20,9 @@
   </models>
 
   <api>
-       <weather url = "http://api.openweathermap.org/data/2.5/weather?" city="Santa Cruz de Tenerife" lat="28.0983074" lon="-16.748344" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="60"/>
+       <weather url = "http://api.openweathermap.org/data/2.5/weather?" city="Santa Cruz de Tenerife" lat="28.0983074" lon="-16.748344" units="metric" key="e4c4bf0f238afdc3bcef9346e1a47ff3" request_time ="300"/>
        <nasa url="https://api.nasa.gov/planetary/apod?api_key=" key="n0OdkEMGNnqqBQ7RHSGTx7U4OnwrMCAporxkvCEu" request_time ="3600"/>
-       <surf city="La Caleta" url=" http://magicseaweed.com/api/" key = "6894ba16117b5b91b63a653717789f6c" id="1855" units="eu" request_time ="3600"/>
+       <surf city="La Caleta" url="http://magicseaweed.com/api/" key = "6894ba16117b5b91b63a653717789f6c" id="1855" units="eu" request_time ="3600"/>
      
   </api>
 
@@ -30,7 +30,7 @@
 
     <texture name="Equalizer" path="images/general/equalizer.png"/>
     <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
-    <texture name="RAIN" path="images/general/waterTexture.jpg"/>
+    <texture name="RAIN" path="images/general/waterTexture1.jpg"/>
     <texture name="RockTexture" path="images/general/RockTexture.png"/>
     <texture name="Apod" path="images/apod/apod.jpg"/>
     <texture name="Coral" path="images/model/coralTexture3.jpg"/>

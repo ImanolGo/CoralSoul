@@ -56,7 +56,7 @@ void FluidVisual::setupFluid()
     // FLUID & PARTICLES
     m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight);
     m_particleFlow.setup(flowWidth, flowHeight, drawWidth, drawHeight);
-    m_particleFlow.activate(true);
+    m_particleFlow.activate(false);
     
     // FORCES
     m_numDrawForces = 3;
@@ -166,15 +166,15 @@ void FluidVisual::updateFluid()
 
 void FluidVisual::draw(const ofRectangle& area)
 {
-    m_particleFlow.draw(area.x, area.y, area.width, area.height);
-//    if (m_particleFlow.isActive()) {
-//         m_particleFlow.draw(area.x, area.y, area.width, area.height);
-//    }
-//    else{
-//        m_fluid.draw(area.x, area.y, area.width, area.height);
-//    }
-//
-    this->drawGui();
+    //m_particleFlow.draw(area.x, area.y, area.width, area.height);
+    if (m_particleFlow.isActive()) {
+         m_particleFlow.draw(area.x, area.y, area.width, area.height);
+    }
+    else{
+        m_fluid.draw(area.x, area.y, area.width, area.height);
+    }
+
+    //this->drawGui();
 }
 
 /*void FluidVisual::draw()
