@@ -23,7 +23,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0)
+LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0), m_useMask(true)
 {
 	//Intentionally left empty
 }
@@ -211,8 +211,13 @@ void LayoutManager::updateOutputFbo()
     ofEnableAlphaBlending();
     m_fbo.begin();
     ofClear(0, 0, 0);
-        AppManager::getInstance().getMaskManager().draw(name);
-        //AppManager::getInstance().getSceneManager().draw();
+        if(m_useMask){
+            AppManager::getInstance().getMaskManager().draw(name);
+        }
+        else{
+            AppManager::getInstance().getSceneManager().draw();
+        }
+
     m_fbo.end();
     ofDisableAlphaBlending();
     

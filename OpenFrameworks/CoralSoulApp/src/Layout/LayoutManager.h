@@ -85,6 +85,8 @@ public:
     
     void onBlurScaleChange(float& value);
     
+    void onMaskChange(bool value) {m_useMask = value;}
+    
     void toggleDrawMode(int mode) {m_drawMode = mode;}
 
 private:
@@ -169,6 +171,7 @@ private:
     
     int                 m_previewMode;
     ofxBlur             m_blur;
+    bool                m_useMask;
 	
     
     #if defined(TARGET_WIN32)

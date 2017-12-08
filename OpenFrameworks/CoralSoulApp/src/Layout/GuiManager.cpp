@@ -128,6 +128,7 @@ void GuiManager::setupLayoutGui()
     
     ofxDatGuiFolder* folder = m_gui.addFolder("LAYOUT", ofColor::purple);
     folder->addSlider(m_layourBlurScale);
+    folder->addToggle("Mask", true);
     //folder->expand();
     m_gui.addBreak();
 }
@@ -225,27 +226,27 @@ void GuiManager::setupModelGui()
 {
     auto modelManager = &AppManager::getInstance().getModelManager();
     
-    m_modelPosX.set("Pos X", 0, -1000.0, 1000.0);
+    m_modelPosX.set("Pos X", 0, -100, 100);
     m_modelPosX.addListener(modelManager, &ModelManager::onPositionXChange);
     m_parameters.add(m_modelPosX);
     
-    m_modelPosY.set("Pos Y", 0, -1000.0, 1000.0);
+    m_modelPosY.set("Pos Y", 0, -200, 200);
     m_modelPosY.addListener(modelManager, &ModelManager::onPositionYChange);
     m_parameters.add(m_modelPosY);
     
-    m_modelPosZ.set("Pos Z", 0, -1000.0, 1000.0);
+    m_modelPosZ.set("Pos Z", 0, -100, 500);
     m_modelPosZ.addListener(modelManager, &ModelManager::onPositionZChange);
     m_parameters.add(m_modelPosZ);
     
-    m_modelRotX.set("Rot X", 0, -180.0, 180);
+    m_modelRotX.set("Rot X", 0, -20, 20);
     m_modelRotX.addListener(modelManager, &ModelManager::onRotationXChange);
     m_parameters.add(m_modelRotX);
     
-    m_modelRotY.set("Rot Y", 0, -180.0, 180);
+    m_modelRotY.set("Rot Y", 0, -20, 20);
     m_modelRotY.addListener(modelManager, &ModelManager::onRotationYChange);
     m_parameters.add(m_modelRotY);
     
-    m_modelRotZ.set("Rot Z", 0, -180.0, 180);
+    m_modelRotZ.set("Rot Z", 0, -20, 20);
     m_modelRotZ.addListener(modelManager, &ModelManager::onRotationZChange);
     m_parameters.add(m_modelRotZ);
     
@@ -429,9 +430,9 @@ void GuiManager::onToggleEvent(ofxDatGuiToggleEvent e)
 {
     cout << "onToggleEvent: " << e.target->getName() << " Selected" << endl;
     
-    if(e.target->getName() == "Clear")
+    if(e.target->getName() == "Mask")
     {
-        //AppManager::getInstance().getLightSculptureManager().onClearLights(e.target->getChecked());
+        AppManager::getInstance().getLayoutManager().onMaskChange(e.target->getChecked());
     }
 }
 

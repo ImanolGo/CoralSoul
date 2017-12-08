@@ -40,8 +40,14 @@ void CalibrationScene::update()
 void CalibrationScene::draw()
 {
     ofClear(0);
-    this->drawImage();
-    //AppManager::getInstance().getModelManager().drawModel(m_fbo);
+    ofPushStyle();
+  
+        this->drawImage();
+    
+        ofSetColor(255, 255, 255,150);
+        AppManager::getInstance().getModelManager().getModel().draw(0,0);
+    
+    ofPopStyle();
 }
 
 void CalibrationScene::drawImage()
@@ -59,6 +65,7 @@ void CalibrationScene::drawImage()
 
 void CalibrationScene::willFadeIn() {
     ofLogNotice("CalibrationScene::willFadeIn");
+    AppManager::getInstance().getLayoutManager().onMaskChange(false);
     
 }
 
@@ -72,5 +79,6 @@ void CalibrationScene::willFadeOut() {
 
 void CalibrationScene::willExit() {
     ofLogNotice("CalibrationScene::willFadeOut");
+     AppManager::getInstance().getLayoutManager().onMaskChange(true);
 }
 

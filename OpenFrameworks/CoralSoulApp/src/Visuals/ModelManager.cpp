@@ -217,28 +217,26 @@ void ModelManager::drawMask()
 
 void ModelManager::drawModel()
 {
-    m_fboTexture.begin();
-    AppManager::getInstance().getSceneManager().draw();
-    m_fboTexture.end();
+//    m_fboTexture.begin();
+//    AppManager::getInstance().getSceneManager().draw();
+//    m_fboTexture.end();
     
     ofEnableDepthTest();
     
     // enable lighting //
     ofEnableLighting();
     
-    m_light.enable();
+    //m_light.enable();
     m_material.begin();
     
     ofPushStyle();
     ofSetColor(255);
     
-    m_fboTexture.getTexture().bind();
-        m_model.drawFaces();
-    m_fboTexture.getTexture().unbind();
+    m_model.drawFaces();
     
     ofPopStyle();
     
-    m_material.end();
+    //m_material.end();
     
     // turn off lighting //
     ofDisableLighting();
