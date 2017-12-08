@@ -1,5 +1,5 @@
 /*
- *  VectorFieldScene.cpp
+ *  WindScene.cpp
  *  CoralSoulApp
  *
  *  Created by Imanol Gomez on 03/12/17.
@@ -7,35 +7,35 @@
  */
 
 
-#include "VectorFieldScene.h"
+#include "WindScene.h"
 #include "AppManager.h"
 
 #define radian2degree(a) (a * 57.295779513082)
 #define degree2radian(a) (a * 0.017453292519)
 
-VectorFieldScene::VectorFieldScene(): ofxScene("VECTORFIELD")
+WindScene::WindScene(): ofxScene("WIND")
 {
     //Intentionally left empty
 }
 
-VectorFieldScene::~VectorFieldScene()
+WindScene::~WindScene()
 {
     //Intentionally left empty
 }
 
 
-void VectorFieldScene::setup() {
+void WindScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupVectorField();
     this->setupFbo();
 }
 
-void VectorFieldScene::setupVectorField()
+void WindScene::setupVectorField()
 {
     m_vectorField.setup();
 }
 
-void VectorFieldScene::setupFbo()
+void WindScene::setupFbo()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
@@ -45,13 +45,13 @@ void VectorFieldScene::setupFbo()
 }
 
 
-void VectorFieldScene::update()
+void WindScene::update()
 {
     this->updateVectorField();
     this->updateFbo();
 }
 
-void VectorFieldScene::updateVectorField()
+void WindScene::updateVectorField()
 {
     auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
     float angleRadiands = degree2radian(weatherConditions.windDirection);
@@ -69,14 +69,14 @@ void VectorFieldScene::updateVectorField()
 }
 
 
-void VectorFieldScene::updateFbo()
+void WindScene::updateFbo()
 {
     m_fbo.begin();
         ofClear(0);
         this->drawVectorField();
     m_fbo.end();
 }
-void VectorFieldScene::draw()
+void WindScene::draw()
 {
     ofClear(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
@@ -84,24 +84,24 @@ void VectorFieldScene::draw()
     //this->drawVectorField();
 }
 
-void VectorFieldScene::drawVectorField()
+void WindScene::drawVectorField()
 {
     m_vectorField.draw();
 }
 
-void VectorFieldScene::willFadeIn() {
-    ofLogNotice("VectorFieldScene::willFadeIn");
+void WindScene::willFadeIn() {
+    ofLogNotice("WindScene::willFadeIn");
 
 }
 
-void VectorFieldScene::willDraw() {
-    ofLogNotice("VectorFieldScene::willDraw");
+void WindScene::willDraw() {
+    ofLogNotice("WindScene::willDraw");
 }
 
-void VectorFieldScene::willFadeOut() {
-    ofLogNotice("VectorFieldScene::willFadeOut");
+void WindScene::willFadeOut() {
+    ofLogNotice("WindScene::willFadeOut");
 }
 
-void VectorFieldScene::willExit() {
-     ofLogNotice("VectorFieldScene::willExit");
+void WindScene::willExit() {
+     ofLogNotice("WindScene::willExit");
 }

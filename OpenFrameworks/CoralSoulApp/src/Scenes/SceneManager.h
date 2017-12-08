@@ -10,6 +10,7 @@
 
 #include "Manager.h"
 #include "ofxSceneManager.h"
+#include "ofxSimpleTimer.h"
 
 
 //========================== class SceneManager ==============================
@@ -62,6 +63,8 @@ public:
     
     const ofFbo& getFbo() {return m_fbo;}
     
+    void sceneTimerCompleteHandler( int &args ) ;
+    
 private:
     
     //! Create the scenes
@@ -70,13 +73,28 @@ private:
     //! Set up the fbo that saves the texture.
     void setupFbo();
     
+    //! Set up the scene timer
+    void setupTimer();
+    
+     //! Initializes the scene list
+    void initializeSceneList();
+    
+    //! Update the scene timer
+    void updateTimer();
+    
     //! updates all the scenes
     void updateScenes();
+    
+    //! updates the fbo
+    void updateFbo();
 
 private:
 
     ofxSceneManager          m_mySceneManager;
     ofFbo                    m_fbo;
+    ofxSimpleTimer           m_sceneTimer;
+    
+    vector<string>           m_sceneList;
     
 };
 

@@ -75,6 +75,7 @@ void AppManager::setupManagers()
     m_noiseManager.setup();
     m_sceneManager.setup();
     m_modelManager.setup();
+    m_oscManager.setup();
 
     m_guiManager.setup();
 }
@@ -92,6 +93,7 @@ void AppManager::update()
     m_sceneManager.update();
     m_guiManager.update();
     m_layoutManager.update();
+    m_oscManager.update();
 }
 
 

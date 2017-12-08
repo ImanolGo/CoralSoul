@@ -1,31 +1,31 @@
 /*
- *  NasaScene.cpp
+ *  UniverseScene.cpp
  *  CoralSoulApp
  *
  *  Created by Imanol Gomez on 01/12/17.
  *
  */
 
-#include "NasaScene.h"
+#include "UniverseScene.h"
 #include "AppManager.h"
 
-NasaScene::NasaScene(): ofxScene("NASA")
+UniverseScene::UniverseScene(): ofxScene("UNIVERSE")
 {
     //Intentionally left empty
 }
 
-NasaScene::~NasaScene()
+UniverseScene::~UniverseScene()
 {
     //Intentionally left empty
 }
 
 
-void NasaScene::setup() {
-    ofLogNotice("NasaScene::setup");
+void UniverseScene::setup() {
+    ofLogNotice("UniverseScene::setup");
     this->setupFbo();
 }
 
-void NasaScene::setupFbo()
+void UniverseScene::setupFbo()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
@@ -34,12 +34,12 @@ void NasaScene::setupFbo()
     m_fbo.begin(); ofClear(0); m_fbo.end();
 }
 
-void NasaScene::update()
+void UniverseScene::update()
 {
     this->updateFbo();
 }
 
-void NasaScene::updateFbo()
+void UniverseScene::updateFbo()
 {
     m_fbo.begin();
         ofClear(0);
@@ -47,7 +47,7 @@ void NasaScene::updateFbo()
     m_fbo.end();
 }
 
-void NasaScene::draw()
+void UniverseScene::draw()
 {
     ofClear(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
@@ -55,7 +55,7 @@ void NasaScene::draw()
     //m_fbo.draw(0,0);
 }
 
-void NasaScene::drawImage()
+void UniverseScene::drawImage()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
@@ -68,20 +68,20 @@ void NasaScene::drawImage()
     
 }
 
-void NasaScene::willFadeIn() {
-    ofLogNotice("NasaScene::willFadeIn");
+void UniverseScene::willFadeIn() {
+    ofLogNotice("UniverseScene::willFadeIn");
     
 }
 
-void NasaScene::willDraw() {
-    ofLogNotice("NasaScene::willDraw");
+void UniverseScene::willDraw() {
+    ofLogNotice("UniverseScene::willDraw");
 }
 
-void NasaScene::willFadeOut() {
-    ofLogNotice("NasaScene::willFadeOut");
+void UniverseScene::willFadeOut() {
+    ofLogNotice("UniverseScene::willFadeOut");
 }
 
-void NasaScene::willExit() {
-     ofLogNotice("NasaScene::willExit");
+void UniverseScene::willExit() {
+     ofLogNotice("UniverseScene::willExit");
 }
 

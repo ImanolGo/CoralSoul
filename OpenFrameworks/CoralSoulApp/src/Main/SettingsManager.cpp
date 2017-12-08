@@ -93,6 +93,7 @@ void SettingsManager::setDebugProperties()
             ofSetLogLevel(OF_LOG_NOTICE);
         }
         
+        m_sceneTimer =  ofToFloat(attributes["sceneTimer"]);
         
         ofLogNotice() <<"SettingsManager::setDebugProperties->  successfully loaded the OF general settings" ;
         return;

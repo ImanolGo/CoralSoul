@@ -1,5 +1,5 @@
 /*
- *  WireFrameScene.cpp
+ *  SeaScene.cpp
  *  Primavera Sound Stage
  *
  *  Created by Imanol Gomez on 31/10/17.
@@ -7,33 +7,47 @@
  */
 
 
-#include "WireFrameScene.h"
+#include "SeaScene.h"
 #include "AppManager.h"
 
-WireFrameScene::WireFrameScene(): ofxScene("WIREFRAME")
+SeaScene::SeaScene(): ofxScene("SEA")
 {
     //Intentionally left empty
 }
 
-WireFrameScene::~WireFrameScene()
+SeaScene::~SeaScene()
 {
     //Intentionally left empty
 }
 
 
-void WireFrameScene::setup() {
+void SeaScene::setup()
+{
     ofLogNotice(getName() + "::setup");
+    this->setupPostProcessing();
+}
+
+
+void SeaScene::setupPostProcessing()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    // Setup post-processing chain
+    m_post.init(width, height);
+    m_post.createPass<FxaaPass>()->setEnabled(true);
+    m_post.createPass<BloomPass>()->setEnabled(false);
 }
 
 
 
-void WireFrameScene::update()
+void SeaScene::update()
 {
     this->updateNoise();
 }
 
 
-void WireFrameScene::updateNoise()
+void SeaScene::updateNoise()
 {
     auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
     float speed = 0.2;
@@ -47,18 +61,22 @@ void WireFrameScene::updateNoise()
 }
 
 
-void WireFrameScene::draw()
+void SeaScene::draw()
 {
     ofClear(0);
     
+    // m_post.begin();
+    
     auto tex = AppManager::getInstance().getResourceManager().getTexture("Coral");
     AppManager::getInstance().getModelManager().drawWireframe(*tex.get());
+    
+    //m_post.end();
 }
 
 
 
-void WireFrameScene::willFadeIn() {
-    ofLogNotice("WireFrameScene::willFadeIn");
+void SeaScene::willFadeIn() {
+    ofLogNotice("SeaScene::willFadeIn");
     
     float amp = 0.2;
     float speed = 0.2;
@@ -70,16 +88,16 @@ void WireFrameScene::willFadeIn() {
     
 }
 
-void WireFrameScene::willDraw() {
-    ofLogNotice("WireFrameScene::willDraw");
+void SeaScene::willDraw() {
+    ofLogNotice("SeaScene::willDraw");
 }
 
-void WireFrameScene::willFadeOut() {
-    ofLogNotice("WireFrameScene::willFadeOut");
+void SeaScene::willFadeOut() {
+    ofLogNotice("SeaScene::willFadeOut");
 }
 
-void WireFrameScene::willExit() {
-    ofLogNotice("WireFrameScene::willExit");
+void SeaScene::willExit() {
+    ofLogNotice("SeaScene::willExit");
     
     float amp = 0.0;
     float speed = 0.0;

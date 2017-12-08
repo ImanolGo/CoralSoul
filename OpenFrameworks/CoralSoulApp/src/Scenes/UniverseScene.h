@@ -1,8 +1,8 @@
 /*
- *  SunScene.h
+ *  UniverseScene.h
  *  CoralSoulApp
  *
- *  Created by Imanol Gomez on 10/11/17.
+ *  Created by Imanol Gomez on 01/12/17.
  *
  */
 
@@ -10,16 +10,15 @@
 
 #include "ofxScene.h"
 
-
-class SunScene : public ofxScene {
+class UniverseScene : public ofxScene {
     
 public:
     
     //! Constructor
-    SunScene();
+    UniverseScene();
     
     //! Destructor
-    ~SunScene();
+    ~UniverseScene();
     
     //! Set up the scene
     void setup();
@@ -44,25 +43,16 @@ public:
     
 private:
     
-    void setupImage();
-    
     void setupFbo();
-    
-    void updateSun();
     
     void updateFbo();
     
-    void drawSun();
-    
-    ofColor colorTemperatureToRGB(float kelvin);
+    void drawImage();
     
 private:
     
-    ofPtr<ofTexture> m_texture;
+    ofFbo      m_fbo;
     
-    ofColor         m_color;
-    ofFbo           m_fbo;
-        
 };
 
 

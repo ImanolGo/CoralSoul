@@ -22,3 +22,4 @@
 #include "ApiManager.h"
 #include "NoiseManager.h"
 #include "ModelManager.h"
+#include "OscManager.h"

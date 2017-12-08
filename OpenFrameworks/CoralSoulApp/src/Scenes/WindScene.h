@@ -1,5 +1,5 @@
 /*
- *  VectorFieldScene.h
+ *  WindScene.h
  *  CoralSoulApp
  *
  *  Created by Imanol Gomez on 03/12/17.
@@ -11,15 +11,15 @@
 #include "ofxScene.h"
 #include "VectorFieldVisual.h"
 
-class VectorFieldScene : public ofxScene {
+class WindScene : public ofxScene {
     
 public:
     
     //! Constructor
-    VectorFieldScene();
+    WindScene();
     
     //! Destructor
-    ~VectorFieldScene();
+    ~WindScene();
     
     //! Set up the scene
     void setup();

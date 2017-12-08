@@ -76,6 +76,9 @@ public:
     //! Returns the mask manager
     MaskManager&  getMaskManager() { return m_maskManager; }
     
+    //! Returns the osc manager
+    OscManager&  getOscManager() { return m_oscManager; }
+    
 
     //==========================================================================
     
@@ -121,6 +124,7 @@ private:
     ApiManager               m_apiManager;               ///< Manages all the apis
     NoiseManager               m_noiseManager;             ///< Manages the noise generator
     MaskManager              m_maskManager;              ///< Manages all the masks
+    OscManager               m_oscManager;              ///< Manages all the osc communications
     
     bool                     m_debugMode;
     bool                     m_initialized;

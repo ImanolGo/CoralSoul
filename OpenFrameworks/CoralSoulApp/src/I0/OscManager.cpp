@@ -71,7 +71,7 @@ void OscManager::update()
         if(m.getAddress() == OSC_PARENT_ADDRESS + "/Scene")
         {
             string sceneName = m.getArgAsString(0);
-           // AppManager::getInstance().getGuiManager().onSceneChange(sceneName);
+            AppManager::getInstance().getGuiManager().onSceneChange(sceneName);
         }
         
         

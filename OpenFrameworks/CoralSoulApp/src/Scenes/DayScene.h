@@ -1,8 +1,8 @@
 /*
- *  NasaScene.h
+ *  DayScene.h
  *  CoralSoulApp
  *
- *  Created by Imanol Gomez on 01/12/17.
+ *  Created by Imanol Gomez on 10/11/17.
  *
  */
 
@@ -10,15 +10,16 @@
 
 #include "ofxScene.h"
 
-class NasaScene : public ofxScene {
+
+class DayScene : public ofxScene {
     
 public:
     
     //! Constructor
-    NasaScene();
+    DayScene();
     
     //! Destructor
-    ~NasaScene();
+    ~DayScene();
     
     //! Set up the scene
     void setup();
@@ -43,16 +44,25 @@ public:
     
 private:
     
+    void setupImage();
+    
     void setupFbo();
+    
+    void updateSun();
     
     void updateFbo();
     
-    void drawImage();
+    void drawSun();
+    
+    ofColor colorTemperatureToRGB(float kelvin);
     
 private:
     
-    ofFbo      m_fbo;
+    ofPtr<ofTexture> m_texture;
     
+    ofColor         m_color;
+    ofFbo           m_fbo;
+        
 };
 
 

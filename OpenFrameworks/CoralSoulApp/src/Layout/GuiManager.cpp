@@ -456,3 +456,19 @@ void GuiManager::onWeatherChange(const weather_conditions& value)
     }
 }
 
+
+void GuiManager::onSceneChange(const string &sceneName)
+{
+    int index = AppManager::getInstance().getSceneManager().getIndex(sceneName);
+    this->onSceneChange(index);
+}
+
+void GuiManager::onSceneChange(int sceneIndex)
+{
+    string dropBoxName = "SCENES";
+    auto menu = m_gui.getDropdown(dropBoxName);
+    menu->select(sceneIndex);
+    string label =  menu->getChildAt(sceneIndex)->getLabel();
+    menu->setLabel(dropBoxName + ":" + label);
+    AppManager::getInstance().getSceneManager().changeScene(sceneIndex);
+}

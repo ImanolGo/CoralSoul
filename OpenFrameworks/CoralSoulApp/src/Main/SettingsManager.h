@@ -60,6 +60,8 @@ public:
     
     int getOscPortSend() const {return m_portOscSend;}
     
+    float getSceneTimer() const {return m_sceneTimer;}
+    
     api_settings getWeatherSettings() const {return m_weatherSettings;}
     
     api_settings getNasaSettings() const {return m_nasaSettings;}
@@ -119,6 +121,7 @@ private:
     int                     m_portOscSend;          ///< stores the  port to send OSC messages to
     string                  m_ipAddress;            ///< stores the Ip Address used for the Network communications
     string                  m_spoutName;            ///<stores the name of the spout pipe name
+    float                   m_sceneTimer;           ///< stores the time between scene
     api_settings            m_weatherSettings;      ///<stores the weather api's settings
     api_settings            m_nasaSettings;         ///<stores the nasa's settings
     api_settings            m_surfSettings;         ///<stores the surf's settings

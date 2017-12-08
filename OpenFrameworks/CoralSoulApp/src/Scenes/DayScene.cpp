@@ -1,5 +1,5 @@
 /*
- *  SunScene.cpp
+ *  DayScene.cpp
  *  CoralSoulApp
  *
  *  Created by Imanol Gomez on 10/11/17.
@@ -7,32 +7,32 @@
  */
 
 
-#include "SunScene.h"
+#include "DayScene.h"
 #include "AppManager.h"
 
-SunScene::SunScene(): ofxScene("SUN")
+DayScene::DayScene(): ofxScene("DAY")
 {
     //Intentionally left empty
 }
 
-SunScene::~SunScene()
+DayScene::~DayScene()
 {
     //Intentionally left empty
 }
 
 
-void SunScene::setup() {
+void DayScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupImage();
     this->setupFbo();
 }
 
-void SunScene::setupImage()
+void DayScene::setupImage()
 {
     m_texture = AppManager::getInstance().getResourceManager().getTexture("RockTexture");
 }
 
-void SunScene::setupFbo()
+void DayScene::setupFbo()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
@@ -42,13 +42,13 @@ void SunScene::setupFbo()
 }
 
 
-void SunScene::update()
+void DayScene::update()
 {
     this->updateSun();
     this->updateFbo();
 }
 
-void SunScene::updateSun()
+void DayScene::updateSun()
 {
     auto time = ofGetElapsedTimef();
     float kelvin =  ofMap(sin(time), -1, 1, 2000, 10000);
@@ -58,7 +58,7 @@ void SunScene::updateSun()
     AppManager::getInstance().getModelManager().onLightZChange(angle);
 }
 
-void SunScene::updateFbo()
+void DayScene::updateFbo()
 {
     m_fbo.begin();
         ofClear(0);
@@ -66,13 +66,13 @@ void SunScene::updateFbo()
     m_fbo.end();
 }
 
-void SunScene::draw()
+void DayScene::draw()
 {
     ofClear(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
-void SunScene::drawSun()
+void DayScene::drawSun()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
@@ -83,26 +83,26 @@ void SunScene::drawSun()
     ofPopStyle();
 }
 
-void SunScene::willFadeIn() {
-    ofLogNotice("SunScene::willFadeIn");
+void DayScene::willFadeIn() {
+    ofLogNotice("DayScene::willFadeIn");
     //AppManager::getInstance().getModelManager().onLightColorChange(ofColor(0, 191, 255));
     
 }
 
-void SunScene::willDraw() {
-    ofLogNotice("SunScene::willDraw");
+void DayScene::willDraw() {
+    ofLogNotice("DayScene::willDraw");
 }
 
-void SunScene::willFadeOut() {
-    ofLogNotice("SunScene::willFadeOut");
+void DayScene::willFadeOut() {
+    ofLogNotice("DayScene::willFadeOut");
 }
 
-void SunScene::willExit() {
-     ofLogNotice("SunScene::willExit");
+void DayScene::willExit() {
+     ofLogNotice("DayScene::willExit");
 }
 
 
-ofColor SunScene::colorTemperatureToRGB(float kelvin)
+ofColor DayScene::colorTemperatureToRGB(float kelvin)
 {
  
     float temp = kelvin / 100.0;

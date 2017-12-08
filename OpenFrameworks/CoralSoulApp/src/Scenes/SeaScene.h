@@ -1,5 +1,5 @@
 /*
- *  WireFrameScene.h
+ *  SeaScene.h
  *  Primavera Sound Stage
  *
  *  Created by Imanol Gomez on 31/10/17.
@@ -9,16 +9,17 @@
 #pragma once
 
 #include "ofxScene.h"
+#include "ofxPostProcessing.h"
 
-class WireFrameScene : public ofxScene {
+class SeaScene : public ofxScene {
     
 public:
     
     //! Constructor
-    WireFrameScene();
+    SeaScene();
     
     //! Destructor
-    ~WireFrameScene();
+    ~SeaScene();
     
     //! Set up the scene
     void setup();
@@ -43,10 +44,13 @@ public:
     
 private:
     
+    void setupPostProcessing();
+    
     void updateNoise();
     
 private:
     
+    ofxPostProcessing m_post;
     
 };
 
