@@ -211,8 +211,8 @@ void LayoutManager::updateOutputFbo()
     ofEnableAlphaBlending();
     m_fbo.begin();
     ofClear(0, 0, 0);
-        //AppManager::getInstance().getMaskManager().draw(name);
-        AppManager::getInstance().getSceneManager().draw();
+        AppManager::getInstance().getMaskManager().draw(name);
+        //AppManager::getInstance().getSceneManager().draw();
     m_fbo.end();
     ofDisableAlphaBlending();
     

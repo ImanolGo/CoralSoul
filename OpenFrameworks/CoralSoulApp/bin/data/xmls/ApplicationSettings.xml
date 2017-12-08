@@ -4,7 +4,7 @@
   <of_settings>
 
     <window title="CoralSoulApp" x="0" y="50" width="1920" height="1080" fullscreen="0" showCursor="1"/>
-    <debug showCursor="1" setVerbose="1" sceneTimer = "5"/> 
+    <debug showCursor="1" setVerbose="1" sceneTimer = "20"/> 
     <network ipAddress="127.0.0.1" portOscReceive="5678" portOscSend="2390" spout="CoralSoulSpout"/>
 
   </of_settings>
@@ -31,6 +31,7 @@
     <texture name="RockTexture" path="images/general/RockTexture.png"/>
     <texture name="Apod" path="images/apod/apod.jpg"/>
     <texture name="Coral" path="images/model/coralTexture3.jpg"/>
+    <texture name="Layout" path="images/model/LAYOUT_2017_11_23.jpg"/>
 
   </textures>
 
