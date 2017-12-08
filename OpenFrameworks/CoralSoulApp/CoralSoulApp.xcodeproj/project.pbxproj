@@ -40,6 +40,7 @@
 		083193BC1FD86699005F00ED /* HsbShiftPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0831939F1FD86698005F00ED /* HsbShiftPass.cpp */; };
 		083193BD1FD86699005F00ED /* PixelatePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083193A11FD86698005F00ED /* PixelatePass.cpp */; };
 		083193BE1FD86699005F00ED /* FakeSSSPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083193A21FD86699005F00ED /* FakeSSSPass.cpp */; };
+		089DFF551FDA9F0C0053CADB /* CalibrationScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */; };
 		08E9D8C61FD219990043FF93 /* UniverseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E9D8C41FD219990043FF93 /* UniverseScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
 		12A8C9C212129D904A9DB2C1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A555C6B34D5D8F88CBE349A8 /* OscPrintReceivedElements.cpp */; };
@@ -255,6 +256,8 @@
 		083193A31FD86699005F00ED /* PixelatePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PixelatePass.h; path = Addons/ofxPostProcessing/src/PixelatePass.h; sourceTree = "<group>"; };
 		083193A41FD86699005F00ED /* HorizontalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalTiltShifPass.h; path = Addons/ofxPostProcessing/src/HorizontalTiltShifPass.h; sourceTree = "<group>"; };
 		083193A51FD86699005F00ED /* FakeSSSPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FakeSSSPass.h; path = Addons/ofxPostProcessing/src/FakeSSSPass.h; sourceTree = "<group>"; };
+		089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CalibrationScene.cpp; path = Scenes/CalibrationScene.cpp; sourceTree = "<group>"; };
+		089DFF541FDA9F0C0053CADB /* CalibrationScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalibrationScene.h; path = Scenes/CalibrationScene.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		08E9D8C41FD219990043FF93 /* UniverseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniverseScene.cpp; path = Scenes/UniverseScene.cpp; sourceTree = "<group>"; };
 		08E9D8C51FD219990043FF93 /* UniverseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniverseScene.h; path = Scenes/UniverseScene.h; sourceTree = "<group>"; };
@@ -1630,6 +1633,7 @@
 				72DADFA19E2023E797BA2F51 /* SeaScene.cpp */,
 				79F4F8F21C65325A536B0F3F /* SeaScene.h */,
 				3C4EA15C90BCFE1FFC1245B1 /* BlankScene.cpp */,
+				94B476E65081D2D5CE6D1228 /* BlankScene.h */,
 				1D40AB48F6F739773BAB451A /* RainScene.cpp */,
 				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				1FBFF3E74C628E11BF30EF17 /* ImageScene.cpp */,
@@ -1640,7 +1644,8 @@
 				76C4479895B14357D331E849 /* SceneManager.h */,
 				60B34DDDC79DEB0226A04C93 /* VideoScene.cpp */,
 				15AE7B79BBACBC510C450229 /* VideoScene.h */,
-				94B476E65081D2D5CE6D1228 /* BlankScene.h */,
+				089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */,
+				089DFF541FDA9F0C0053CADB /* CalibrationScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -2113,6 +2118,7 @@
 				360EB7662DB82B821343000B /* ofxSlider.cpp in Sources */,
 				083193A91FD86699005F00ED /* BloomPass.cpp in Sources */,
 				2D19C483E46CE46F699C6069 /* ofxUDPManager.cpp in Sources */,
+				089DFF551FDA9F0C0053CADB /* CalibrationScene.cpp in Sources */,
 				89BA7777CF92A359ABAF417D /* ofxTCPServer.cpp in Sources */,
 				083193B41FD86699005F00ED /* LimbDarkeningPass.cpp in Sources */,
 				082BD09F1FD4A6C30037B7C5 /* VectorFieldParticle.cpp in Sources */,

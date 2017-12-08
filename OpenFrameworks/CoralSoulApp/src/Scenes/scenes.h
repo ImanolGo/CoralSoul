@@ -17,4 +17,5 @@
 #include "FlowScene.h"
 #include "UniverseScene.h"
 #include "WindScene.h"
+#include "CalibrationScene.h"
 

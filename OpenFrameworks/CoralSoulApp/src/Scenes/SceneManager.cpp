@@ -82,6 +82,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new UniverseScene());
     m_mySceneManager.addScene(scene);
     
+    //Create Calibration Scene
+    scene = ofPtr<ofxScene> (new CalibrationScene());
+    m_mySceneManager.addScene(scene);
+    
     //Create Blank Scene
     scene = ofPtr<ofxScene> (new BlankScene());
     m_mySceneManager.addScene(scene);
