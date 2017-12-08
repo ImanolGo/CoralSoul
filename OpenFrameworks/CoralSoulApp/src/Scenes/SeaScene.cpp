@@ -34,9 +34,9 @@ void SeaScene::setupPostProcessing()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     
     // Setup post-processing chain
-    m_post.init(width, height);
-    m_post.createPass<FxaaPass>()->setEnabled(true);
-    m_post.createPass<BloomPass>()->setEnabled(false);
+   // m_post.init(width, height);
+   // m_post.createPass<FxaaPass>()->setEnabled(true);
+    //m_post.createPass<BloomPass>()->setEnabled(false);
 }
 
 
