@@ -126,8 +126,7 @@ private:
     void parsesurf(string response);
     
     float parseTime(string timeString);
-    
-    
+
 private:
     
     ofxSimpleTimer          m_weatherTimer;

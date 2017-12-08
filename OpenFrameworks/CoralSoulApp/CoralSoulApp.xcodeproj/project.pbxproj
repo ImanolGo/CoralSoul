@@ -260,7 +260,7 @@
 		089DFF541FDA9F0C0053CADB /* CalibrationScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalibrationScene.h; path = Scenes/CalibrationScene.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		08E9D8C41FD219990043FF93 /* UniverseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniverseScene.cpp; path = Scenes/UniverseScene.cpp; sourceTree = "<group>"; };
-		08E9D8C51FD219990043FF93 /* UniverseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniverseScene.h; path = Scenes/UniverseScene.h; sourceTree = "<group>"; };
+		08E9D8C51FD219990043FF93 /* UniverseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniverseScene.h; path = src/Scenes/UniverseScene.h; sourceTree = "<group>"; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
 		0A18FD7E595E1ABEF3EF5A33 /* jsoncpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = jsoncpp.cpp; path = src/Addons/ofxJSON/libs/jsoncpp/src/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
@@ -1624,7 +1624,6 @@
 			isa = PBXGroup;
 			children = (
 				08E9D8C41FD219990043FF93 /* UniverseScene.cpp */,
-				08E9D8C51FD219990043FF93 /* UniverseScene.h */,
 				2B9F1B8564F083FFCE4C466E /* FlowScene.cpp */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
 				8C488F38001D542DA27140DF /* scenes.h */,
@@ -1782,6 +1781,7 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				08E9D8C51FD219990043FF93 /* UniverseScene.h */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,

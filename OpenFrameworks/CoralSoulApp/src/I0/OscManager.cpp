@@ -80,6 +80,21 @@ void OscManager::update()
 }
 
 
+void OscManager::sendFloatMessage(float value, string& name)
+{
+    string message = OSC_PARENT_ADDRESS + "/" + name;
+    ofxOscMessage m;
+    m.setAddress(message);
+    m.addFloatArg(value);
+    m_oscSender.sendMessage(m);
+}
+
+void OscManager::sendMessage(ofxOscMessage& message)
+{
+    m_oscSender.sendMessage(message);
+}
+
+
 string OscManager::getMessageAsString(const ofxOscMessage& m) const
 {
     string msg_string;
@@ -106,7 +121,32 @@ string OscManager::getMessageAsString(const ofxOscMessage& m) const
 }
 
 
-
+void OscManager::sendOscWeather(const weather_conditions& weather)
+{
+    string message = "temperature";
+    this->sendFloatMessage(weather.temp, message);
+    
+    message = "humidity";
+    this->sendFloatMessage(weather.humidity, message);
+    
+    message = "windSpeed";
+    this->sendFloatMessage(weather.windSpeed, message);
+    
+    message = "windDirection";
+    this->sendFloatMessage(weather.windDirection, message);
+    
+    message = "clouds";
+    this->sendFloatMessage(weather.clouds, message);
+    
+    message = "precipitation";
+    this->sendFloatMessage(weather.precipitationValue, message);
+    
+    message = "swellHeight";
+    this->sendFloatMessage(weather.swellHeight, message);
+    
+    message = "swellPeriod";
+    this->sendFloatMessage(weather.swellPeriod, message);
+}
 
 
 

@@ -13,6 +13,7 @@
 #include "ofxOsc.h"
 #include "TextVisual.h"
 #include "RectangleVisual.h"
+#include "ApiManager.h"
 
 //========================== class OscManager =======================================
 //==============================================================================
@@ -43,6 +44,13 @@ public:
     //! draw the manager
     void draw();
     
+    // Send osc message float
+    void sendFloatMessage(float value, string& name);
+    
+     // Send aritrary osc message
+    void sendMessage(ofxOscMessage& message);
+    
+    void sendOscWeather(const weather_conditions& weather);
     
 private:
     

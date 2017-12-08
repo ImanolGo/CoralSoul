@@ -173,6 +173,7 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         {
             this->parseWeather(response.data);
             AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
+            AppManager::getInstance().getOscManager ().sendOscWeather(m_weatherConditions);
         }
         
         else if(response.request.name == "nasa")
@@ -190,6 +191,7 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         {
             this->parsesurf(response.data);
             AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
+            AppManager::getInstance().getOscManager().sendOscWeather(m_weatherConditions);
         }
     }
 }
@@ -336,9 +338,6 @@ float ApiManager::parseTime(string timeString)
     
     return time;
 }
-
-
-
 
 
 
