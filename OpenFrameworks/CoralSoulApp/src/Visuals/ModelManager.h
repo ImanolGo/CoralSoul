@@ -12,6 +12,7 @@
 
 #include "Manager.h"
 #include "ofxAssimpModelLoader.h"
+#include "BasicVisual.h"
 
 //========================== class ModelManager ==============================
 //============================================================================
@@ -102,6 +103,8 @@ private:
 
     void updateNoise();
     
+    void updateLight();
+    
     void drawModel();
     
     void drawMask();
@@ -119,7 +122,8 @@ private:
     ofxAssimpModelLoader m_model;
     ofxAssimpModelLoader m_simpleModel;
     ofMesh               m_mesh;
-    ofLight              m_light;
+    ofLight              m_dirLight;
+    ofLight              m_spotLight;
     ofEasyCam            m_cam;
     ofFbo                m_fboMask;
     ofFbo                m_fboModel;
@@ -128,6 +132,8 @@ private:
     ofFbo                m_fboTextureWireFrame;
     
     
+    BasicVisual          m_dirLightVisual;
+    BasicVisual          m_spotLightVisual;
     ofVec3f              m_light_rot;
     ofVec3f              m_light_pos;
     ofVec3f              m_modelPos;

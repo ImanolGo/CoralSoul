@@ -86,24 +86,24 @@ void ModelManager::setupCamera()
 
 void ModelManager::setupLight()
 {
-    m_light.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
-    m_light.setSpecularColor(ofColor(255, 255, 255));
-    m_light.setAmbientColor(ofColor(255));
+    m_dirLight.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
+    m_dirLight.setSpecularColor(ofColor(255, 255, 255));
+    m_dirLight.setAmbientColor(ofColor(255));
     
-    m_light_pos.set(ofGetWidth()*.5, ofGetHeight()*.5, 0);
-    m_light.setPosition(m_light_pos.x, m_light_pos.y, 0);
+    m_dirLightVisual.setPosition(ofPoint(ofGetWidth()*.5, ofGetHeight()*.5, 0));
+    m_dirLight.setPosition(m_dirLightVisual.getPosition());
     
     m_material.setAmbientColor(255);
     m_material.setSpecularColor(255);
     m_material.setShininess(244);
     //m_material.setSpecularColor(0);
     
-    m_light.setDirectional();
+    m_dirLight.setDirectional();
 
-    //m_light.setAmbientColor(ofColor(200));
-    //m_light.setAttenuation();
-    m_light_rot = ofVec3f(0, -90, 0);
-    this->setLightOri(m_light, m_light_rot);
+    //m_dirLight.setAmbientColor(ofColor(200));
+    //m_dirLight.setAttenuation();
+    m_dirLightVisual.setRotation(ofVec3f(0, -90, 0));
+    this->setLightOri(m_dirLight, m_dirLightVisual.getRotation());
 }
 
 void ModelManager::setupShaders()
@@ -164,9 +164,18 @@ void ModelManager::loadModel()
 
 void ModelManager::update()
 {
+   this->updateLight();
    this->updateModel();
    this->updateNoise();
    this->updateFbos();
+    
+}
+
+void ModelManager::updateLight()
+{
+    m_dirLight.setDiffuseColor(m_dirLightVisual.getColor());
+    m_dirLight.setSpecularColor(m_dirLightVisual.getColor());
+    setLightOri(m_dirLight, m_dirLightVisual.getRotation());
 }
 
 void ModelManager::updateModel()
@@ -226,7 +235,7 @@ void ModelManager::drawModel()
     // enable lighting //
     ofEnableLighting();
     
-    //m_light.enable();
+    //m_dirLight.enable();
     m_material.begin();
     
     ofPushStyle();
@@ -258,7 +267,7 @@ void  ModelManager::drawModel(const ofFbo& tex)
     // enable lighting //
     ofEnableLighting();
     
-    m_light.enable();
+    m_dirLight.enable();
     //m_material.begin();
     
     m_fboTexture.getTexture().bind();
@@ -318,7 +327,7 @@ void ModelManager::drawWireframe(const ofTexture& texture)
     ofMultMatrix(meshHelper.matrix);
     
     //material.begin();
-    //m_light.enable();
+    //m_dirLight.enable();
   
     //m_mesh.setColor(0, m_wireFrameColor);
     m_fboTextureWireFrame.getTexture().bind();
@@ -360,7 +369,7 @@ void ModelManager::drawWireframe()
     ofMultMatrix(meshHelper.matrix);
     
      //material.begin();
-     //m_light.enable();
+     //m_dirLight.enable();
   
      m_mesh.drawWireframe();
     
@@ -458,20 +467,23 @@ void ModelManager::onCameraFovChange(float& value)
 
 void ModelManager::onLightXChange(float& value)
 {
-    m_light_rot.x = value;
-    setLightOri(m_light, m_light_rot);
+    auto rot = m_dirLightVisual.getRotation();
+    rot.x = value;
+    m_dirLightVisual.setRotation(rot);
 }
 
 void ModelManager::onLightYChange(float& value)
 {
-    m_light_rot.y = value;
-    setLightOri(m_light, m_light_rot);
+    auto rot = m_dirLightVisual.getRotation();
+    rot.y = value;
+    m_dirLightVisual.setRotation(rot);
 }
 
 void ModelManager::onLightZChange(float& value)
 {
-    m_light_rot.z = value;
-    setLightOri(m_light, m_light_rot);
+    auto rot = m_dirLightVisual.getRotation();
+    rot.z = value;
+    m_dirLightVisual.setRotation(rot);
 }
 
 void ModelManager::onPositionXChange(float& value)
@@ -519,8 +531,7 @@ void ModelManager::onRotationZChange(float& value)
 
 void ModelManager::onLightColorChange(ofColor color)
 {
-    m_light.setDiffuseColor(color);
-    m_light.setSpecularColor(color);
+    m_dirLightVisual.setColor(color);
 }
 
 
