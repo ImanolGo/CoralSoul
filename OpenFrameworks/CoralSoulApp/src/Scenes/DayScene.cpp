@@ -55,7 +55,7 @@ void DayScene::updateSun()
     m_color = colorTemperatureToRGB(kelvin);
     
     float angle =  ofMap(sin(time), -1, 1, -180, 180);
-    AppManager::getInstance().getModelManager().onLightZChange(angle);
+    //AppManager::getInstance().getModelManager().onLightZChange(angle);
 }
 
 void DayScene::updateFbo()
@@ -85,7 +85,8 @@ void DayScene::drawSun()
 
 void DayScene::willFadeIn() {
     ofLogNotice("DayScene::willFadeIn");
-    //AppManager::getInstance().getModelManager().onLightColorChange(ofColor(0, 191, 255));
+    ofColor color(0);
+    AppManager::getInstance().getModelManager().setDirLightColorAnimation(color, 0.5);
     
 }
 
@@ -99,6 +100,8 @@ void DayScene::willFadeOut() {
 
 void DayScene::willExit() {
      ofLogNotice("DayScene::willExit");
+     ofColor color(255);
+     AppManager::getInstance().getModelManager().setDirLightColorAnimation(color, 0.5);
 }
 
 

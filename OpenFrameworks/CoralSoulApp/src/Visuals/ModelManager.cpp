@@ -13,8 +13,6 @@
 #include "AppManager.h"
 #include "SettingsManager.h"
 #include "ViewManager.h"
-
-
 #include "ModelManager.h"
 
 ModelManager::ModelManager(): Manager(), m_noiseAmplitude(0.0), m_noiseSpeed(0.2)
@@ -86,12 +84,19 @@ void ModelManager::setupCamera()
 
 void ModelManager::setupLight()
 {
+    this->setupDirectionalLight();
+    this->setupSpotLight();
+}
+
+void ModelManager::setupDirectionalLight()
+{
+    m_dirLightVisual = ofPtr<BasicVisual>(new BasicVisual());
     m_dirLight.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
     m_dirLight.setSpecularColor(ofColor(255, 255, 255));
     m_dirLight.setAmbientColor(ofColor(255));
     
-    m_dirLightVisual.setPosition(ofPoint(ofGetWidth()*.5, ofGetHeight()*.5, 0));
-    m_dirLight.setPosition(m_dirLightVisual.getPosition());
+    m_dirLightVisual->setPosition(ofPoint(ofGetWidth()*.5, ofGetHeight()*.5, 0));
+    m_dirLight.setPosition(m_dirLightVisual->getPosition());
     
     m_material.setAmbientColor(255);
     m_material.setSpecularColor(255);
@@ -102,8 +107,33 @@ void ModelManager::setupLight()
 
     //m_dirLight.setAmbientColor(ofColor(200));
     //m_dirLight.setAttenuation();
-    m_dirLightVisual.setRotation(ofVec3f(0, -90, 0));
-    this->setLightOri(m_dirLight, m_dirLightVisual.getRotation());
+    m_dirLightVisual->setRotation(ofVec3f(0, -90, 0));
+    this->setLightOri(m_dirLight, m_dirLightVisual->getRotation());
+}
+
+void ModelManager::setupSpotLight()
+{
+    m_spotLightVisual = ofPtr<BasicVisual>(new BasicVisual());
+    
+    m_spotLightVisual->setPosition(ofPoint(ofGetWidth()*.5, ofGetHeight()*.5, 200));
+    m_spotLight.setPosition(m_spotLightVisual->getPosition());
+    
+    m_spotLight.setDiffuseColor( ofColor(255.f, 255.f, 255.f));
+    m_spotLight.setSpecularColor( ofColor(255.f, 255.f, 255.f));
+    
+    m_spotLight.setSpotlight();// turn the light into spotLight, emit a cone of light //
+    
+    // size of the cone of emitted light, angle between light axis and side of cone //
+    // angle range between 0 - 90 in degrees //
+    m_spotLight.setSpotlightCutOff( 50 );
+    
+    // rate of falloff, illumitation decreases as the angle from the cone axis increases //
+    // range 0 - 128, zero is even illumination, 128 is max falloff //
+    m_spotLight.setSpotConcentration( 45 );
+    
+    auto pos = m_spotLightVisual->getPosition();
+    pos.z = 0;
+    m_spotLight.lookAt(pos);
 }
 
 void ModelManager::setupShaders()
@@ -173,9 +203,20 @@ void ModelManager::update()
 
 void ModelManager::updateLight()
 {
-    m_dirLight.setDiffuseColor(m_dirLightVisual.getColor());
-    m_dirLight.setSpecularColor(m_dirLightVisual.getColor());
-    setLightOri(m_dirLight, m_dirLightVisual.getRotation());
+    m_dirLight.setDiffuseColor(m_dirLightVisual->getColor());
+    m_dirLight.setSpecularColor(m_dirLightVisual->getColor());
+    setLightOri(m_dirLight, m_dirLightVisual->getRotation());
+    
+    auto pos = m_model.getPosition();
+    pos.z+=100;
+    //ofPoint pos(ofGetMouseX(), -ofGetMouseY(), 500);
+    m_spotLightVisual->setPosition(pos);
+   // auto pos = m_spotLightVisual->getPosition();
+    pos.z = 0;
+    m_spotLight.lookAt(pos);
+    m_spotLight.setPosition(m_spotLightVisual->getPosition());
+    m_spotLight.setOrientation( ofVec3f( 0, cos(ofGetElapsedTimef()) * RAD_TO_DEG, 0) );
+    
 }
 
 void ModelManager::updateModel()
@@ -268,6 +309,7 @@ void  ModelManager::drawModel(const ofFbo& tex)
     ofEnableLighting();
     
     m_dirLight.enable();
+    m_spotLight.enable();
     //m_material.begin();
     
     m_fboTexture.getTexture().bind();
@@ -419,6 +461,27 @@ void ModelManager::unbindTexture() {
 }
 
 
+void ModelManager::setDirLightColorAnimation(ofColor& color, float duration)
+{
+    AppManager::getInstance().getVisualEffectsManager().removeVisualEffects(m_dirLightVisual, "ColorEffect");
+    
+    EffectSettings settings; settings.function = LINEAR; settings.type = EASE_OUT;
+    settings.startAnimation = 0; settings.animationTime = duration;
+    
+    AppManager::getInstance().getVisualEffectsManager().createColorEffect(m_dirLightVisual, color, settings);
+}
+
+
+ void ModelManager::setDirLightFadeAnimation(float fadeAmount, float duration)
+{
+    AppManager::getInstance().getVisualEffectsManager().removeVisualEffects(m_dirLightVisual, "FadeVisual");
+    
+    EffectSettings settings; settings.function = LINEAR; settings.type = EASE_OUT;
+    settings.startAnimation = 0; settings.animationTime = duration;
+    
+    AppManager::getInstance().getVisualEffectsManager().createFadeEffect(m_dirLightVisual, fadeAmount, settings);
+}
+
 void ModelManager::setLightOri(ofLight &light, ofVec3f rot)
 {
     ofVec3f xax(1, 0, 0);
@@ -467,23 +530,23 @@ void ModelManager::onCameraFovChange(float& value)
 
 void ModelManager::onLightXChange(float& value)
 {
-    auto rot = m_dirLightVisual.getRotation();
+    auto rot = m_dirLightVisual->getRotation();
     rot.x = value;
-    m_dirLightVisual.setRotation(rot);
+    m_dirLightVisual->setRotation(rot);
 }
 
 void ModelManager::onLightYChange(float& value)
 {
-    auto rot = m_dirLightVisual.getRotation();
+    auto rot = m_dirLightVisual->getRotation();
     rot.y = value;
-    m_dirLightVisual.setRotation(rot);
+    m_dirLightVisual->setRotation(rot);
 }
 
 void ModelManager::onLightZChange(float& value)
 {
-    auto rot = m_dirLightVisual.getRotation();
+    auto rot = m_dirLightVisual->getRotation();
     rot.z = value;
-    m_dirLightVisual.setRotation(rot);
+    m_dirLightVisual->setRotation(rot);
 }
 
 void ModelManager::onPositionXChange(float& value)
@@ -531,7 +594,7 @@ void ModelManager::onRotationZChange(float& value)
 
 void ModelManager::onLightColorChange(ofColor color)
 {
-    m_dirLightVisual.setColor(color);
+    m_dirLightVisual->setColor(color);
 }
 
 

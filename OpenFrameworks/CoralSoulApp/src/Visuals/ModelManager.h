@@ -85,11 +85,19 @@ public:
     
     void onWireFrameColorChange(ofColor& color) {m_wireFrameColor = color;}
     
+    void setDirLightColorAnimation(ofColor& color, float duration);
+    
+    void setDirLightFadeAnimation(float fadeAmount, float duration);
+
 private:
 
     void setupCamera();
     
     void setupLight();
+    
+    void setupDirectionalLight();
+    
+    void setupSpotLight();
     
     void setupShaders();
     
@@ -132,8 +140,8 @@ private:
     ofFbo                m_fboTextureWireFrame;
     
     
-    BasicVisual          m_dirLightVisual;
-    BasicVisual          m_spotLightVisual;
+    ofPtr<BasicVisual>   m_dirLightVisual;
+    ofPtr<BasicVisual>   m_spotLightVisual;
     ofVec3f              m_light_rot;
     ofVec3f              m_light_pos;
     ofVec3f              m_modelPos;
