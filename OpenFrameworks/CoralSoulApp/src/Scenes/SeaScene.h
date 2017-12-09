@@ -9,7 +9,6 @@
 #pragma once
 
 #include "ofxScene.h"
-#include "ofxPostProcessing.h"
 
 class SeaScene : public ofxScene {
     
@@ -50,7 +49,6 @@ private:
     
 private:
     
-    ofxPostProcessing m_post;
     
 };
 
