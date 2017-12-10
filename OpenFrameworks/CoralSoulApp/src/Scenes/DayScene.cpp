@@ -69,6 +69,7 @@ void DayScene::updateFbo()
 void DayScene::draw()
 {
     ofClear(0);
+	ofBackground(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
@@ -87,6 +88,8 @@ void DayScene::willFadeIn() {
     ofLogNotice("DayScene::willFadeIn");
     ofColor color(0);
     AppManager::getInstance().getModelManager().setDirLightColorAnimation(color, 0.5);
+	color = ofColor(255);
+	AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
     
 }
 
@@ -102,6 +105,8 @@ void DayScene::willExit() {
      ofLogNotice("DayScene::willExit");
      ofColor color(255);
      AppManager::getInstance().getModelManager().setDirLightColorAnimation(color, 0.5);
+	 color = ofColor(0);
+	 AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
 }
 
 

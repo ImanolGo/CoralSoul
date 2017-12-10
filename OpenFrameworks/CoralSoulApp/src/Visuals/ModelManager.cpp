@@ -130,7 +130,7 @@ void ModelManager::setupSpotLight()
     // rate of falloff, illumitation decreases as the angle from the cone axis increases //
     // range 0 - 128, zero is even illumination, 128 is max falloff //
     m_spotLight.setSpotConcentration( 45 );
-    
+	m_spotLightVisual->setColor(ofColor(0));
     auto pos = m_spotLightVisual->getPosition();
     pos.z = 0;
     m_spotLight.lookAt(pos);
@@ -216,6 +216,9 @@ void ModelManager::updateLight()
     m_spotLight.lookAt(pos);
     m_spotLight.setPosition(m_spotLightVisual->getPosition());
     m_spotLight.setOrientation( ofVec3f( 0, cos(ofGetElapsedTimef()) * RAD_TO_DEG, 0) );
+
+	m_spotLight.setDiffuseColor(m_spotLightVisual->getColor());
+	m_spotLight.setSpecularColor(m_spotLightVisual->getColor());
     
 }
 
@@ -300,6 +303,7 @@ void  ModelManager::drawModel(const ofFbo& tex)
     m_cam.begin();
     
     m_fboTexture.begin();
+		ofClear(0);
         tex.draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
     m_fboTexture.end();
     
@@ -351,16 +355,17 @@ void ModelManager::drawWireframe(const ofTexture& texture)
     m_cam.begin();
     
     m_fboTextureWireFrame.begin();
+		ofClear(0);
         texture.draw(0,0,m_fboTexture.getWidth(), m_fboTexture.getHeight());
     m_fboTextureWireFrame.end();
     
     ofPushStyle();
-    ofSetLineWidth(3.0);
+    ofSetLineWidth(1.0);
     
     ofEnableDepthTest();
     
     // enable lighting //
-    //ofEnableLighting();
+    ofEnableLighting();
     
     
     ofxAssimpMeshHelper & meshHelper = m_simpleModel.getMeshHelper(0);
@@ -368,8 +373,8 @@ void ModelManager::drawWireframe(const ofTexture& texture)
     ofMultMatrix(m_simpleModel.getModelMatrix());
     ofMultMatrix(meshHelper.matrix);
     
-    //material.begin();
-    //m_dirLight.enable();
+    material.begin();
+    m_dirLight.enable();
   
     //m_mesh.setColor(0, m_wireFrameColor);
     m_fboTextureWireFrame.getTexture().bind();
@@ -377,7 +382,7 @@ void ModelManager::drawWireframe(const ofTexture& texture)
     m_fboTextureWireFrame.getTexture().unbind();
     
     
-    //material.end();
+    material.end();
     // turn off lighting //
     ofDisableLighting();
     
@@ -389,18 +394,18 @@ void ModelManager::drawWireframe(const ofTexture& texture)
 }
 void ModelManager::drawWireframe()
 {
-    //ofEnableSmoothing();
+   // ofEnableSmoothing();
     //ofEnableAntiAliasing();
     
     //this->updateNoise();
     
     ofPushStyle();
-    ofSetLineWidth(3.0);
+    ofSetLineWidth(1.0);
     
     ofEnableDepthTest();
     
     // enable lighting //
-    //ofEnableLighting();
+    ofEnableLighting();
     
    
     
@@ -470,6 +475,17 @@ void ModelManager::setDirLightColorAnimation(ofColor& color, float duration)
     
     AppManager::getInstance().getVisualEffectsManager().createColorEffect(m_dirLightVisual, color, settings);
 }
+
+void ModelManager::setSpotLightColorAnimation(ofColor& color, float duration)
+{
+	AppManager::getInstance().getVisualEffectsManager().removeVisualEffects(m_spotLightVisual, "ColorEffect");
+
+	EffectSettings settings; settings.function = LINEAR; settings.type = EASE_OUT;
+	settings.startAnimation = 0; settings.animationTime = duration;
+
+	AppManager::getInstance().getVisualEffectsManager().createColorEffect(m_spotLightVisual, color, settings);
+}
+
 
 
  void ModelManager::setDirLightFadeAnimation(float fadeAmount, float duration)

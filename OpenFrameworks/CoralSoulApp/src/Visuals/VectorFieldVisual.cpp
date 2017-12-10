@@ -134,9 +134,12 @@ void VectorFieldVisual::drawVectorField()
 
 void VectorFieldVisual::drawParticles()
 {
+	//ofEnableSmoothing();
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
     for( int i=0; i<m_particles.size(); i++){
         m_particles[i].draw();
     }
+	ofDisableBlendMode();
 }
 
 

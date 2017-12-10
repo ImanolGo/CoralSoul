@@ -67,6 +67,7 @@ void FlowScene::updateFbo()
 void FlowScene::draw()
 {
     ofClear(0);
+	ofBackground(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
     //this->drawFluid();
 }
@@ -95,5 +96,5 @@ void FlowScene::willFadeOut() {
 
 void FlowScene::willExit() {
      ofLogNotice("FlowScene::willExit");
-     m_fluid.reset();
+     //m_fluid.reset();
 }

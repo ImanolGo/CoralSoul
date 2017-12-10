@@ -1,6 +1,6 @@
 <group>
 	<optical_flow>
-		<strength>82.1429</strength>
+		<strength>92.1429</strength>
 		<offset>5</offset>
 		<lambda>0.380102</lambda>
 		<threshold>0.00408163</threshold>
@@ -12,7 +12,7 @@
 		</time_decay_blur>
 	</optical_flow>
 	<velocity_mask>
-		<strength>9.03061</strength>
+		<strength>15.0306</strength>
 		<hue>101.02</hue>
 		<saturation>3.65306</saturation>
 		<blur_passes>3</blur_passes>
@@ -20,11 +20,11 @@
 	</velocity_mask>
 	<fluid_solver>
 		<reset>0</reset>
-		<speed>33.1633</speed>
+		<speed>12.1633</speed>
 		<cell_size>1.25</cell_size>
 		<iterations>40</iterations>
-		<viscosity>0.0653061</viscosity>
-		<vorticity>0.852041</vorticity>
+		<viscosity>0.365306</viscosity>
+		<vorticity>0.52041</vorticity>
 		<dissipation>0.002</dissipation>
 		<advanced_dissipation>
 			<velocity_offset>-0.001</velocity_offset>
@@ -48,7 +48,7 @@
 	</fluid_solver>
 	<particle_flow>
 		<active>1</active>
-		<speed>33.1633</speed>
+		<speed>12.1633</speed>
 		<cell_size>1.25</cell_size>
 		<birth_chance>0.5</birth_chance>
 		<birth_velocity_chance>0.5</birth_velocity_chance>

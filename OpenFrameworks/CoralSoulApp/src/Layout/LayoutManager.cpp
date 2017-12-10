@@ -357,7 +357,7 @@ void LayoutManager::draw()
 }
 
 void LayoutManager::drawOutput()
-{
+{	
     m_fbo.draw(0,0, ofGetWidth(), ofGetHeight());
 }
 

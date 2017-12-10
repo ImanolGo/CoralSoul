@@ -40,6 +40,7 @@ void CalibrationScene::update()
 void CalibrationScene::draw()
 {
     ofClear(0);
+	ofBackground(0);
     ofPushStyle();
   
         this->drawImage();
