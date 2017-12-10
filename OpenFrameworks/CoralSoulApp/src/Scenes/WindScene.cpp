@@ -79,6 +79,7 @@ void WindScene::updateFbo()
 void WindScene::draw()
 {
     ofClear(0);
+	ofBackground(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
     //m_vectorField.draw();
     //this->drawVectorField();

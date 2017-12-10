@@ -49,6 +49,7 @@ void RainScene::setupRipples()
     m_ripples.allocate(m_texture->getWidth(), m_texture->getHeight());
     m_bounce.allocate(m_texture->getWidth(),  m_texture->getHeight());
     m_bounce.setTexture(*m_texture.get(), 1);
+	m_ripples.damping = 0.999;
    
 }
 
@@ -85,13 +86,11 @@ void RainScene::updateRipples()
         m_ripples.begin();
         
         ofFill();
-        ofSetColor(ofNoise( ofGetFrameNum() ) * 255 * 5, 255);
+        ofSetColor(ofNoise( ofGetFrameNum() ) * 255*2, 255);
         int dropsPerCycle = 2;
         for(int i=0; i<dropsPerCycle; i++){
-             ofDrawEllipse(ofRandom(width),ofRandom(height), 10,10);
+             ofDrawEllipse(ofRandom(width),ofRandom(height), 3,3);
         }
-       
-        
        
         m_ripples.end();
     }
@@ -114,6 +113,7 @@ void RainScene::updateFbo()
 void RainScene::draw()
 {
     ofClear(0);
+	ofBackground(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 

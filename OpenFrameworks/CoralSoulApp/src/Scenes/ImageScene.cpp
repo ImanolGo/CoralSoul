@@ -57,6 +57,7 @@ void ImageScene::updateFbo()
 void ImageScene::draw()
 {
     ofClear(0);
+	ofBackground(0);
     AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 

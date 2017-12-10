@@ -47,6 +47,7 @@ void SceneManager::setup()
 void SceneManager::createScenes()
 {
     m_mySceneManager.setTransitionFade();
+	//m_mySceneManager.setTransitionDissolve();
     
     ofPtr<ofxScene> scene;
     
@@ -168,7 +169,9 @@ void SceneManager::updateTimer()
 
 void SceneManager::draw()
 {
+	ofEnableAlphaBlending();
     m_fbo.draw(0,0);
+	ofDisableAlphaBlending();
 }
 
 void SceneManager::draw(const ofRectangle& rect)

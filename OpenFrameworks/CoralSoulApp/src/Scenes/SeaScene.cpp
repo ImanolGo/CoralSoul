@@ -64,6 +64,7 @@ void SeaScene::updateNoise()
 void SeaScene::draw()
 {
     ofClear(0);
+	ofBackground(0);
     
     // m_post.begin();
     

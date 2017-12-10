@@ -86,6 +86,8 @@ public:
     void onWireFrameColorChange(ofColor& color) {m_wireFrameColor = color;}
     
     void setDirLightColorAnimation(ofColor& color, float duration);
+
+	void setSpotLightColorAnimation(ofColor& color, float duration);
     
     void setDirLightFadeAnimation(float fadeAmount, float duration);
 

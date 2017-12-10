@@ -242,7 +242,7 @@ void GuiManager::setupModelGui()
     m_modelRotX.addListener(modelManager, &ModelManager::onRotationXChange);
     m_parameters.add(m_modelRotX);
     
-    m_modelRotY.set("Rot Y", 0, -20, 20);
+    m_modelRotY.set("Rot Y", 0, -30, 30);
     m_modelRotY.addListener(modelManager, &ModelManager::onRotationYChange);
     m_parameters.add(m_modelRotY);
     
