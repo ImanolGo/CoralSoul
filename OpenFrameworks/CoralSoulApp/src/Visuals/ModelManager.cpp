@@ -196,7 +196,7 @@ void ModelManager::update()
 {
    this->updateLight();
    this->updateModel();
-   this->updateNoise();
+   //this->updateNoise();
    this->updateFbos();
     
 }

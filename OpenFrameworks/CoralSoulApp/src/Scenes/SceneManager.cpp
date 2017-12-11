@@ -77,11 +77,11 @@ void SceneManager::createScenes()
     
     //Create Flow Scene
     scene = ofPtr<ofxScene> (new FlowScene());
-    m_mySceneManager.addScene(scene);
+    //m_mySceneManager.addScene(scene);
     
     //Create Universe Scene
     scene = ofPtr<ofxScene> (new UniverseScene());
-    m_mySceneManager.addScene(scene);
+    //m_mySceneManager.addScene(scene);
     
     //Create Calibration Scene
     scene = ofPtr<ofxScene> (new CalibrationScene());

@@ -28,6 +28,7 @@
     <texture name="Equalizer" path="images/general/equalizer.png"/>
     <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
     <texture name="RAIN" path="images/general/waterTexture1.jpg"/>
+    <texture name="SEA" path="images/general/waterTexture.jpg"/>
     <texture name="RockTexture" path="images/general/RockTexture.png"/>
     <texture name="Apod" path="images/apod/apod.jpg"/>
     <texture name="Coral" path="images/model/coralTexture3.jpg"/>
@@ -37,6 +38,16 @@
     <texture name="Brush" path="images/general/brush.png"/>  
 
   </textures>
+
+  <networks>
+
+    <network name="iPad" ipAddress="127.0.0.1" port="90001"/>
+    <network name="Resolume" ipAddress="127.0.0.1" port="90002"/>
+    <network name="Ableton" ipAddress="127.0.0.1" port="90003"/>
+    <network name="Duration" ipAddress="127.0.0.1" port="90004"/>
+
+  </networks>
+
 
   <videos>
 

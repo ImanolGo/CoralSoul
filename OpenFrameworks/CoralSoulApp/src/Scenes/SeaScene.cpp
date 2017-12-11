@@ -68,8 +68,12 @@ void SeaScene::draw()
     
     // m_post.begin();
     
-    auto tex = AppManager::getInstance().getResourceManager().getTexture("Coral");
-    AppManager::getInstance().getModelManager().drawWireframe(*tex.get());
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    auto tex = AppManager::getInstance().getResourceManager().getTexture("SEA");
+    tex->draw(0,0,width, height);
+    //AppManager::getInstance().getModelManager().drawWireframe(*tex.get());
     
     //m_post.end();
 }

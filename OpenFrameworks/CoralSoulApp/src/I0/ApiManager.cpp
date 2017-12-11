@@ -43,14 +43,14 @@ void ApiManager::setup()
 void ApiManager::setupApis()
 {
     this->setupWeatherApi();
-    this->setupNasaApi();
+    //this->setupNasaApi();
     this->setupsurfApi();
 }
 
 void ApiManager::setupTimers()
 {
     this->setupWeatherTimer();
-    this->setupNasaTimer();
+    //this->setupNasaTimer();
     this->setupsurfTimer();
     
 }
@@ -159,7 +159,7 @@ void ApiManager::update()
 void ApiManager::updateTimers()
 {
     m_weatherTimer.update();
-    m_nasaTimer.update();
+    //m_nasaTimer.update();
     m_surfTimer.update();
 }
 
