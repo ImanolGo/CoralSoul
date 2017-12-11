@@ -12,6 +12,7 @@
 #include "ofxVectorField.h"
 #include "VectorFieldParticle.h"
 #include "ofxBlur.h"
+#include "ofxPostProcessing.h"
 
 
 //========================= class VectorFieldVisual ==========================
@@ -84,7 +85,7 @@ private:
     
     ofFbo       m_fbo;
     ofxBlur     m_blur;
-    
+    ofxPostProcessing m_post;
     
     
 };

@@ -24,10 +24,10 @@ typedef             map<string,string>               ResourcesPathMap;       ///
 
 class SettingsManager: public Manager
 {
+
+public:
     
     static const string APPLICATION_SETTINGS_FILE_NAME;
-    
-public:
     
     //! Destructor
     ~SettingsManager();

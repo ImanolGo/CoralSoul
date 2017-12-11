@@ -1,13 +1,13 @@
 <group>
 	<Blur>0.72</Blur>
-	<LightX>180</LightX>
+	<LightX>167.87</LightX>
 	<LightY>9.58</LightY>
-	<LightZ>180</LightZ>
-	<Temp_>19.61</Temp_>
-	<Humidity>73</Humidity>
-	<Wind_Speed>3.1</Wind_Speed>
-	<Wind_Dir>110</Wind_Dir>
-	<Prec_>16.29</Prec_>
+	<LightZ>10.11</LightZ>
+	<Temp_>17.92</Temp_>
+	<Humidity>64</Humidity>
+	<Wind_Speed>9.55</Wind_Speed>
+	<Wind_Dir>50</Wind_Dir>
+	<Prec_>0</Prec_>
 	<Clouds_>0</Clouds_>
 	<Swell_Height>1.2</Swell_Height>
 	<Swell_Period>14</Swell_Period>

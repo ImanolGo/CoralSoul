@@ -63,7 +63,7 @@ private:
     ImageVisual m_brush;
     
     
-    int duration;
-    float height;
+    int      m_duration;
+    float   m_height;
     
 };

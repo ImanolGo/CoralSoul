@@ -5,7 +5,7 @@
 
     <window title="CoralSoulApp" x="0" y="50" width="1920" height="1080" fullscreen="0" showCursor="1"/>
     <debug showCursor="1" setVerbose="1" sceneTimer = "120"/> 
-    <network ipAddress="127.0.0.1" portOscReceive="5678" portOscSend="2390" spout="CoralSoulSpout"/>
+    <network ipAddress="127.0.0.1" portOscReceive="90000" portOscSend="12346" spout="CoralSoulSpout"/>
 
   </of_settings>
 	
@@ -35,7 +35,7 @@
     <texture name="Layout" path="images/model/LAYOUT_2017_11_23.jpg"/>
     <texture name="StarryNight" path="images/environment/stars_sky_night_113553_3100x1740.jpg"/>
     <texture name="ForegroundStars" path="images/environment/ForegroundStars.png"/>
-    <texture name="Brush" path="images/general/brush.png"/>  
+    <texture name="Brush" path="images/general/brush2.png"/>  
 
   </textures>
 

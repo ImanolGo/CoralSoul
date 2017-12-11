@@ -13,7 +13,7 @@
 const int VectorFieldVisual::NUM_PARTICLES = 1000;
 
 
-VectorFieldVisual::VectorFieldVisual():m_speed(0.01), m_spacing(20), m_skipFrames(0), m_fadeTime(10)
+VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(3)
 {
     //Intentionaly left empty
 }
@@ -38,7 +38,6 @@ void VectorFieldVisual::setupFbo()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
-   
     m_fbo.allocate(width,height);
     m_fbo.begin(); ofClear(0); m_fbo.end();
 }
@@ -58,6 +57,14 @@ void VectorFieldVisual::setupVectorField()
     m_vectorField.scale(20);
     m_vectorField.bias(1, 0);
     m_vectorField.blur();
+    
+    
+    m_post.init(width,height,true);
+    m_post.createPass<FxaaPass>()->setEnabled(true);
+    //m_post.createPass<DofPass>()->setEnabled(true);
+    //m_post.createPass<SSAOPass>()->setEnabled(true);
+    m_post.createPass<BloomPass>()->setEnabled(true);
+    //m_post.createPass<BlurPass>()->setEnabled(true);
 }
 
 void VectorFieldVisual::setupParticles()
@@ -111,6 +118,7 @@ void VectorFieldVisual::updateFbo()
     
     ofEnableAlphaBlending();
     m_fbo.begin();
+    //ofClear(0);
     ofPushStyle();
     if(m_skipFrames>=numSkipFrames){
         ofSetColor(0,0,0,decrease);
@@ -133,12 +141,24 @@ void VectorFieldVisual::draw()
 //    this->drawVectorField();
 //    this->drawParticles();
     
-    m_blur.begin();
-        m_fbo.draw(0,0);
-    m_blur.end();
-    m_blur.draw();
+//    m_blur.begin();
+//        m_fbo.draw(0,0);
+//    m_blur.end();
+//    m_blur.draw();
     
-   // m_fbo.draw(0,0);
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    // m_fbo.draw(0,0);
+    
+    m_post.begin();
+        //ofClear(0);
+        m_fbo.draw(0,0);
+    m_post.end(false);
+
+    m_post.draw(0,0, width, height);
+    
+    // m_fbo.draw(0,0);
     
 }
 

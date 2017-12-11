@@ -36,8 +36,47 @@ void OscManager::setup()
     
     this->setupOscReceiver();
     this->setupOscSender();
+    this->readSenderInformation();
     
     ofLogNotice() <<"OscManager::initialized" ;
+}
+
+void OscManager::readSenderInformation()
+{
+    ofXml xml;
+    string fileName = SettingsManager::APPLICATION_SETTINGS_FILE_NAME;
+    if(!xml.load( fileName)){
+        ofLogNotice() <<"OscManager::readSenderInformation-> unable to load file: " << fileName;
+        return;
+    }
+    
+    ofLogNotice() <<"OscManager::readSenderInformation->  successfully loaded " << fileName ;
+    
+    
+    string path = "//networks";
+    if(xml.exists(path)) {
+        
+        typedef   std::map<string, string>   AttributesMap;
+        AttributesMap attributes;
+        
+        path = "//networks/network[0]";
+        xml.setTo(path);
+        do {
+            
+            attributes = xml.getAttributes();
+            ofxOscSender  oscSender;
+            oscSender.setup(attributes["ipAddress"], ofToInt(attributes["port"]));
+            m_oscSenders[attributes["name"]] = oscSender ;
+            
+            ofLogNotice() <<"OscManager::readSenderInformation->  name = " << attributes["name"]
+            <<", ipAddress = "<< attributes["ipAddress"]  << ", port = " << attributes["port"];
+        }
+        while(xml.setToSibling()); // go to the next texture
+        
+        return;
+    }
+    
+    ofLogNotice() <<"OscManager::readSenderInformation->  path not found: " << path;
 }
 
 void OscManager::setupOscReceiver()
@@ -45,8 +84,6 @@ void OscManager::setupOscReceiver()
     int portReceive = AppManager::getInstance().getSettingsManager().getOscPortReceive();
     ofLogNotice() <<"OscManager::setupOscReceiver -> listening for osc messages on port  " << portReceive;
     m_oscReceiver.setup(portReceive);
-   
-    
 }
 
 void OscManager::setupOscSender()
@@ -86,12 +123,19 @@ void OscManager::sendFloatMessage(float value, string& name)
     ofxOscMessage m;
     m.setAddress(message);
     m.addFloatArg(value);
-    m_oscSender.sendMessage(m);
+    //m_oscSender.sendMessage(m);
+    
+    for (auto& oscSender : m_oscSenders) {
+        oscSender.second.sendMessage(m);
+    }
 }
 
 void OscManager::sendMessage(ofxOscMessage& message)
 {
-    m_oscSender.sendMessage(message);
+    //m_oscSender.sendMessage(message);
+    for (auto& oscSender : m_oscSenders) {
+        oscSender.second.sendMessage(message);
+    }
 }
 
 

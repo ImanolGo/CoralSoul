@@ -54,6 +54,8 @@ public:
     
 private:
     
+    void readSenderInformation();
+    
     //! sets upt the osc receiver
     void setupOscReceiver();
     
@@ -68,6 +70,8 @@ private:
     
      ofxOscReceiver m_oscReceiver;          ///< OSC receiver class
      ofxOscSender   m_oscSender;            ///< OSC sender class
+    
+      map<string, ofxOscSender>  m_oscSenders;
     
      ofPtr<TextVisual>          m_sendingInformation;
      ofPtr<TextVisual>          m_receivingInformation;

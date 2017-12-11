@@ -56,7 +56,7 @@ void WindScene::updateVectorField()
     auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
     float angleRadiands = degree2radian(weatherConditions.windDirection);
     float mag = 1.0;
-    float speed = ofMap(weatherConditions.windSpeed, 0, 100, 0.5, 10, true);
+    float speed = ofMap(weatherConditions.windSpeed, 0, 100, 1.0, 10, true);
     
     ofVec2f force;
     force.x = mag*sin(angleRadiands);
