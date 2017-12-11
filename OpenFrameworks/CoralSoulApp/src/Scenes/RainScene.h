@@ -50,6 +50,8 @@ private:
     
     void setupFbo();
     
+    void setupShader();
+    
     void setupRipples();
     
     void updateRipples();
@@ -66,6 +68,8 @@ private:
     ofxBounce   m_bounce;
     
     ofFbo      m_fbo;
+    ofShader   m_shader;
+    float                  m_frequency, m_amplitude, m_speed; //shader parameters
     
 };
 

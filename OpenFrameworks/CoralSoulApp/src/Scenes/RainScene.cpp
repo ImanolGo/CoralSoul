@@ -26,7 +26,26 @@ void RainScene::setup() {
     this->setupImage();
     this->setupRipples();
     this->setupFbo();
+    this->setupShader();
 }
+
+
+void RainScene::setupShader()
+{
+    
+    if(ofIsGLProgrammableRenderer()){
+        m_shader.load("shaders/shadersGL3/LiquifyShader");
+    }
+    else{
+        m_shader.load("shaders/shadersGL2/LiquifyShader");
+        
+    }
+    
+    m_frequency = 0.4;
+    m_amplitude = 0.2;
+    m_speed = 0.3;
+}
+
 
 void RainScene::setupImage()
 {
@@ -100,13 +119,24 @@ void RainScene::updateRipples()
     m_ripples.update();
     
     m_bounce << m_ripples;
+    
+    m_amplitude  = ofMap(precMM, 0.0, 10.0, 0, 0.4, true);
 }
 
 void RainScene::updateFbo()
 {
     m_fbo.begin();
         ofClear(0);
-        this->drawRipples();
+        //Drawing to screen through the shader
+        m_shader.begin();        //Enable the shader
+    
+        m_shader.setUniform1f("time", ofGetElapsedTimef());
+        // m_shader.setUniformTexture("tex", m_fbo.getTextureReference(), 0);
+        m_shader.setUniform1f("frequency", m_frequency);
+        m_shader.setUniform1f("amplitude", m_amplitude);
+        m_shader.setUniform1f("speed", m_speed);
+            this->drawRipples();
+        m_shader.end();        //Disable the shader
     m_fbo.end();
 }
 

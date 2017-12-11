@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <settings>
 
   <of_settings>
@@ -32,6 +32,9 @@
     <texture name="Apod" path="images/apod/apod.jpg"/>
     <texture name="Coral" path="images/model/coralTexture3.jpg"/>
     <texture name="Layout" path="images/model/LAYOUT_2017_11_23.jpg"/>
+    <texture name="StarryNight" path="images/environment/stars_sky_night_113553_3100x1740.jpg"/>
+    <texture name="ForegroundStars" path="images/environment/ForegroundStars.png"/>
+    <texture name="Brush" path="images/general/brush.png"/>  
 
   </textures>
 

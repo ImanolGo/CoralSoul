@@ -30,6 +30,7 @@ void VectorFieldVisual::setup()
     this->setupFbo();
     this->setupVectorField();
     this->setupParticles();
+    this->setupBlur();
 }
 
 
@@ -65,6 +66,14 @@ void VectorFieldVisual::setupParticles()
     {
         m_particles.push_back(VectorFieldParticle());
     }
+}
+
+void VectorFieldVisual::setupBlur()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
+    m_blur.setup(width, height);
+    m_blur.setScale(0.05);
 }
 
 void VectorFieldVisual::update()
@@ -106,6 +115,7 @@ void VectorFieldVisual::updateFbo()
     if(m_skipFrames>=numSkipFrames){
         ofSetColor(0,0,0,decrease);
         ofDrawRectangle(0,0,m_fbo.getWidth(),m_fbo.getHeight());
+        //ofDrawRectRounded(0,0,m_fbo.getWidth(),m_fbo.getHeight(), 0.1);
         m_skipFrames = 0;
     }
     
@@ -123,7 +133,13 @@ void VectorFieldVisual::draw()
 //    this->drawVectorField();
 //    this->drawParticles();
     
-    m_fbo.draw(0,0);
+    m_blur.begin();
+        m_fbo.draw(0,0);
+    m_blur.end();
+    m_blur.draw();
+    
+   // m_fbo.draw(0,0);
+    
 }
 
 

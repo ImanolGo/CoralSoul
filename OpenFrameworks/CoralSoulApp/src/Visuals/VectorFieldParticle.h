@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ImageVisual.h"
 
 //======================== class VectorFieldParticle =========================
 //============================================================================
@@ -44,6 +45,8 @@ private:
     //! Setup the Vector Field Particle
     void setup();
     
+    void setupBrush();
+    
     bool isOffScreen();
     
     void stayOnScreen();
@@ -57,8 +60,10 @@ private:
     float       m_maxSpeed;
     
     ofColor     m_color;
+    ImageVisual m_brush;
     
     
     int duration;
+    float height;
     
 };

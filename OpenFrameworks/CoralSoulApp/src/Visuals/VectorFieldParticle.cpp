@@ -10,7 +10,7 @@
 
 #include "VectorFieldParticle.h"
 
-VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2)
+VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), height(8)
 {
     this->setup();
 }
@@ -29,8 +29,15 @@ void VectorFieldParticle::setup(){
     m_pos.x = ofRandom(0,width);
     m_pos.y = ofRandom(0,height);
     m_prevPos = m_pos;
+    
+    this->setupBrush();
 }
 
+void VectorFieldParticle::setupBrush()
+{
+    m_brush.setResource("Brush");
+    m_brush.setWidth(20,true);
+}
 
 void VectorFieldParticle::addForce(const ofVec2f& dir)
 {
@@ -45,7 +52,7 @@ void VectorFieldParticle::update()
     m_vel+=m_acc;
     m_vel.limit(m_maxSpeed);
     m_prevPos = m_pos;
-    m_pos+=m_vel;
+    m_pos+= (m_vel + ofVec2f(0.5*ofRandomf(),0.5*ofRandomf()));
     m_acc = ofVec2f(0);
     
     float adj = ofMap(m_pos.y, 0, height, 255, 0);
@@ -55,14 +62,23 @@ void VectorFieldParticle::update()
         this->stayOnScreen();
         m_prevPos = m_pos;
     }
+    
+    m_brush.setPosition(m_pos);
+    m_brush.setColor(m_color);
 }
 
 void VectorFieldParticle::draw(){
+    
+    ofPushMatrix();
     ofPushStyle();
         ofSetColor(m_color);
-        ofSetLineWidth(6.0);
+        //ofScale(0.5, 0.5);
+        ofSetLineWidth(height);
+    //m_brush.draw();
         ofDrawLine(m_prevPos,m_pos);
+        //ofDrawRectRounded(-width*0.5,-height*0.5,m_fbo.getWidth(),height, 0.1);
     ofPopStyle();
+    ofPopMatrix();
 }
 
 void VectorFieldParticle::stayOnScreen()

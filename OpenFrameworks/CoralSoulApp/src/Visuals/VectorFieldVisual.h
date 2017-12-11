@@ -11,6 +11,7 @@
 
 #include "ofxVectorField.h"
 #include "VectorFieldParticle.h"
+#include "ofxBlur.h"
 
 
 //========================= class VectorFieldVisual ==========================
@@ -54,6 +55,8 @@ private:
     
     void setupFbo();
     
+    void setupBlur();
+    
     void setupParticles();
     
     void updateFbo();
@@ -80,6 +83,7 @@ private:
     int         m_skipFrames;
     
     ofFbo       m_fbo;
+    ofxBlur     m_blur;
     
     
     
