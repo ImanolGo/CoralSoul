@@ -1,8 +1,8 @@
 /*
- *  DayScene.h
+ *  NightScene.h
  *  CoralSoulApp
  *
- *  Created by Imanol Gomez on 10/11/17.
+ *  Created by Imanol Gomez on 12/12/17.
  *
  */
 
@@ -11,15 +11,15 @@
 #include "ofxScene.h"
 
 
-class DayScene : public ofxScene {
+class NightScene : public ofxScene {
     
 public:
     
     //! Constructor
-    DayScene();
+    NightScene();
     
     //! Destructor
-    ~DayScene();
+    ~NightScene();
     
     //! Set up the scene
     void setup();
@@ -46,22 +46,36 @@ private:
     
     void setupImage();
     
+    void setupPlane();
+    
     void setupFbo();
     
     void updateSun();
     
+    void updatePlane();
+    
+    void drawPlane();
+    
     void updateFbo();
     
     void drawDay();
+    
+    void drawNight();
     
     ofColor colorTemperatureToRGB(float kelvin);
     
 private:
     
     ofPtr<ofTexture> m_texture;
+    ofTexture        m_starryNightTex;
     
     ofColor         m_color;
     ofFbo           m_fbo;
+    
+    ofPlanePrimitive    m_plane;
+    ofVec2f             m_nightPosition;
+    float               m_starsSpeed;
+        
 };
 
 

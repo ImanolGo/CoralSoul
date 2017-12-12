@@ -67,6 +67,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new DayScene());
     m_mySceneManager.addScene(scene);
     
+    //Create Day Scene
+    scene = ofPtr<ofxScene> (new NightScene());
+    m_mySceneManager.addScene(scene);
+    
     //Create Wind Scene
     scene = ofPtr<ofxScene> (new WindScene());
     m_mySceneManager.addScene(scene);
@@ -129,10 +133,16 @@ void SceneManager::setupTimer()
 void SceneManager::initializeSceneList()
 {
     m_sceneList.clear();
-    m_sceneList  = {"DAY","SEA", "WIND"};
+    m_sceneList  = {"SEA", "WIND"};
     
     auto isRaining = AppManager::getInstance().getApiManager().getCurrentWeather().precipitationValue > 0;
     if(isRaining){m_sceneList.push_back("RAIN");}
+    
+    auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
+    if(isDayTime){m_sceneList.push_back("DAY");}
+    else{m_sceneList.push_back("NIGHT");}
+    
+    
 }
 
 

@@ -18,4 +18,5 @@
 #include "UniverseScene.h"
 #include "WindScene.h"
 #include "CalibrationScene.h"
+#include "NightScene.h"
 

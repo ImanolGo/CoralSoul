@@ -41,6 +41,7 @@
 		083193BD1FD86699005F00ED /* PixelatePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083193A11FD86698005F00ED /* PixelatePass.cpp */; };
 		083193BE1FD86699005F00ED /* FakeSSSPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083193A21FD86699005F00ED /* FakeSSSPass.cpp */; };
 		088B2F681FDF4B7900411676 /* glsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 088B2F671FDF4B7800411676 /* glsl.cpp */; };
+		088B2F6F1FDF64E700411676 /* NightScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 088B2F6E1FDF64E600411676 /* NightScene.cpp */; };
 		089DFF551FDA9F0C0053CADB /* CalibrationScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */; };
 		08E9D8C61FD219990043FF93 /* UniverseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E9D8C41FD219990043FF93 /* UniverseScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
@@ -261,6 +262,8 @@
 		088B2F651FDF4B7800411676 /* colorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = colorPicker.h; path = Addons/ofxGLSLMaterial/src/colorPicker.h; sourceTree = "<group>"; };
 		088B2F661FDF4B7800411676 /* glsl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glsl.h; path = Addons/ofxGLSLMaterial/src/glsl.h; sourceTree = "<group>"; };
 		088B2F671FDF4B7800411676 /* glsl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glsl.cpp; path = Addons/ofxGLSLMaterial/src/glsl.cpp; sourceTree = "<group>"; };
+		088B2F6D1FDF64E600411676 /* NightScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NightScene.h; path = Scenes/NightScene.h; sourceTree = "<group>"; };
+		088B2F6E1FDF64E600411676 /* NightScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NightScene.cpp; path = Scenes/NightScene.cpp; sourceTree = "<group>"; };
 		089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CalibrationScene.cpp; path = Scenes/CalibrationScene.cpp; sourceTree = "<group>"; };
 		089DFF541FDA9F0C0053CADB /* CalibrationScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalibrationScene.h; path = Scenes/CalibrationScene.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
@@ -1648,6 +1651,8 @@
 		C9A8C2EA34B35E4BED69D33C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				088B2F6E1FDF64E600411676 /* NightScene.cpp */,
+				088B2F6D1FDF64E600411676 /* NightScene.h */,
 				08E9D8C41FD219990043FF93 /* UniverseScene.cpp */,
 				2B9F1B8564F083FFCE4C466E /* FlowScene.cpp */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
@@ -2106,6 +2111,7 @@
 				64E6B07C94DBB067C015EE69 /* CoralSoulApp.cpp in Sources */,
 				58BCEB4034B30CB4A3456FC7 /* SettingsManager.cpp in Sources */,
 				DA22DA3A4F2E611DF50078F2 /* main.cpp in Sources */,
+				088B2F6F1FDF64E700411676 /* NightScene.cpp in Sources */,
 				8C9DFFBD826A20F752ED0CD6 /* CameraManager.cpp in Sources */,
 				083193B21FD86699005F00ED /* DofAltPass.cpp in Sources */,
 				C6B3BFC2668F137F745DC3C6 /* CameraAnimationsManager.cpp in Sources */,

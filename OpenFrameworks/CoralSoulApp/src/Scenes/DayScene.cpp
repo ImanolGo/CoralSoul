@@ -10,7 +10,7 @@
 #include "DayScene.h"
 #include "AppManager.h"
 
-DayScene::DayScene(): ofxScene("DAY"), m_starsSpeed(0.0005)
+DayScene::DayScene(): ofxScene("DAY")
 {
     //Intentionally left empty
 }
@@ -25,7 +25,6 @@ void DayScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupImage();
     this->setupFbo();
-    this->setupPlane();
 }
 
 void DayScene::setupImage()
@@ -42,51 +41,14 @@ void DayScene::setupFbo()
     m_fbo.begin(); ofClear(0); m_fbo.end();
 }
 
-void DayScene::setupPlane()
-{
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    
-    auto resourcePath = AppManager::getInstance().getSettingsManager().getTextureResourcesPath();
-    
-     ofDisableArbTex();
-    string path = resourcePath["StarryNight"];
-    ofImage img(path);
-    m_starryNightTex = img.getTexture();
-    m_starryNightTex.setTextureWrap(GL_REPEAT, GL_REPEAT);
-    
-    m_plane.set(width, height);
-    m_plane.setPosition(width*0.5,height*0.5,0);
-    m_plane.setResolution(2, 2);
-    
-    ofEnableArbTex();
-
-}
-
 
 
 void DayScene::update()
 {
-    auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
-    if(isDayTime){
-        this->updateSun();
-    }
-    else{
-        this->updatePlane();
-    }
-    
-    
-   
+    this->updateSun();
     this->updateFbo();
 }
 
-void DayScene::updatePlane()
-{
-    m_nightPosition.x+=m_starsSpeed;
-    m_nightPosition.y-=(m_starsSpeed/2);
-    m_plane.mapTexCoords(m_nightPosition.x,  m_nightPosition.y, m_nightPosition.x+1,  m_nightPosition.y+1);
-    
-}
 
 void DayScene::updateSun()
 {
@@ -103,14 +65,8 @@ void DayScene::updateFbo()
     auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
     ofEnableAlphaBlending();
     m_fbo.begin();
-        ofClear(0);
-        if(isDayTime){
+            ofClear(0);
             this->drawDay();
-        }
-        else{
-            this->drawNight();
-        }
-    
     m_fbo.end();
     ofDisableAlphaBlending();
 }
@@ -119,8 +75,7 @@ void DayScene::draw()
 {
     ofClear(0);
 	ofBackground(0);
-    //AppManager::getInstance().getModelManager().drawModel(m_fbo);
-    m_fbo.draw(0,0);
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
 void DayScene::drawDay()
@@ -134,23 +89,6 @@ void DayScene::drawDay()
     ofPopStyle();
 }
 
-void DayScene::drawNight()
-{
-     this->drawPlane();
-    AppManager::getInstance().getResourceManager().getTexture("ForegroundStars")->draw(0,0);
-}
-
-void DayScene::drawPlane()
-{
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    ofDisableArbTex();
-    auto tex = AppManager::getInstance().getResourceManager().getTexture("StarryNight");
-    m_starryNightTex.bind();
-        m_plane.draw();
-    m_starryNightTex.unbind();
-     ofEnableArbTex();
-}
 
 
 void DayScene::willFadeIn() {
@@ -159,9 +97,6 @@ void DayScene::willFadeIn() {
     AppManager::getInstance().getModelManager().setDirLightColorAnimation(color, 0.5);
 	color = ofColor(255);
 	AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
-    
-    m_nightPosition = ofVec2f(0.0);
-    
 }
 
 void DayScene::willDraw() {
