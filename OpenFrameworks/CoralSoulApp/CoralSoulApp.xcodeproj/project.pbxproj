@@ -43,6 +43,7 @@
 		088B2F681FDF4B7900411676 /* glsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 088B2F671FDF4B7800411676 /* glsl.cpp */; };
 		088B2F6F1FDF64E700411676 /* NightScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 088B2F6E1FDF64E600411676 /* NightScene.cpp */; };
 		089DFF551FDA9F0C0053CADB /* CalibrationScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */; };
+		089EB0471FE00425001CDA8F /* MoonCalculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089EB0451FE00425001CDA8F /* MoonCalculator.cpp */; };
 		08E9D8C61FD219990043FF93 /* UniverseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E9D8C41FD219990043FF93 /* UniverseScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
 		12A8C9C212129D904A9DB2C1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A555C6B34D5D8F88CBE349A8 /* OscPrintReceivedElements.cpp */; };
@@ -266,6 +267,8 @@
 		088B2F6E1FDF64E600411676 /* NightScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NightScene.cpp; path = Scenes/NightScene.cpp; sourceTree = "<group>"; };
 		089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CalibrationScene.cpp; path = Scenes/CalibrationScene.cpp; sourceTree = "<group>"; };
 		089DFF541FDA9F0C0053CADB /* CalibrationScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalibrationScene.h; path = Scenes/CalibrationScene.h; sourceTree = "<group>"; };
+		089EB0451FE00425001CDA8F /* MoonCalculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MoonCalculator.cpp; path = I0/MoonCalculator.cpp; sourceTree = "<group>"; };
+		089EB0461FE00425001CDA8F /* MoonCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoonCalculator.h; path = I0/MoonCalculator.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		08E9D8C41FD219990043FF93 /* UniverseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniverseScene.cpp; path = Scenes/UniverseScene.cpp; sourceTree = "<group>"; };
 		08E9D8C51FD219990043FF93 /* UniverseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniverseScene.h; path = src/Scenes/UniverseScene.h; sourceTree = "<group>"; };
@@ -667,6 +670,8 @@
 		0564C083037E0848473DDC94 /* I0 */ = {
 			isa = PBXGroup;
 			children = (
+				089EB0451FE00425001CDA8F /* MoonCalculator.cpp */,
+				089EB0461FE00425001CDA8F /* MoonCalculator.h */,
 				880CC7F71A4098DC1FA89B87 /* MidiManager.cpp */,
 				2F2D27527DD0B2B4E7A6B902 /* MidiManager.h */,
 				4306ED236D73FBA8D086F85D /* ApiManager.cpp */,
@@ -2070,6 +2075,7 @@
 				AB6A6163B8048EBA5842E8A8 /* ofxRtMidiIn.cpp in Sources */,
 				94234EAB2457D33C02984DBD /* ofxRtMidiOut.cpp in Sources */,
 				5F6F3E57E46901A01B995ACC /* ofxMidiMessage.cpp in Sources */,
+				089EB0471FE00425001CDA8F /* MoonCalculator.cpp in Sources */,
 				5BD8DB7268541D72F620FB58 /* ofxMidi.cpp in Sources */,
 				C689A61EB13FE2B5CBB576FB /* ofxMidiIn.cpp in Sources */,
 				9D3E5A7C189607A50D28E499 /* src_colors.cpp in Sources */,

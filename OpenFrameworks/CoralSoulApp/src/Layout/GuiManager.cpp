@@ -112,7 +112,7 @@ void GuiManager::setupPreviewGui()
     
     m_gui.addDropdown(label, opts);
     auto menu = m_gui.getDropdown(label);
-    menu->expand(); //let's have it open by default
+    //menu->expand(); //let's have it open by default
     menu->setStripeColor(ofColor::yellow);
     for (int i=0; i<menu->size(); i++) menu->getChildAt(i)->setStripeColor(ofColor::yellow);
     m_gui.addBreak();
@@ -315,7 +315,7 @@ void GuiManager::setupWeatherGui()
     folder->addSlider(m_weatherClouds);
     folder->addSlider(m_swellHeight);
     folder->addSlider(m_swellPeriod);
-    folder->expand();
+    //folder->expand();
     
     m_gui.addBreak();
 }
@@ -398,7 +398,7 @@ void GuiManager::onDropdownEvent(ofxDatGuiDropdownEvent e)
     else if(e.target->getName() == "PREVIEW")
     {
         AppManager::getInstance().getLayoutManager().onSetPreviewMode(e.child);
-        m_gui.getDropdown(e.target->getName())->expand();
+        //m_gui.getDropdown(e.target->getName())->expand();
         m_gui.getDropdown(e.target->getName())->setLabel("PREVIEW:" + e.target->getLabel());
     }
 }

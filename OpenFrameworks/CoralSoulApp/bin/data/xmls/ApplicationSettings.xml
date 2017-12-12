@@ -35,6 +35,10 @@
     <texture name="Layout" path="images/model/LAYOUT_2017_11_23.jpg"/>
     <texture name="StarryNight" path="images/environment/star_sky2.jpg"/>
     <texture name="ForegroundStars" path="images/environment/ForegroundStars2.png"/>
+    <texture name="Cloud1" path="images/environment/Cloud1.png"/>
+    <texture name="Cloud2" path="images/environment/Cloud2.png"/>
+    <texture name="Cloud3" path="images/environment/Cloud3.png"/>
+    <texture name="Cloud4" path="images/environment/Cloud4.png"/>
     <texture name="Brush" path="images/general/brush2.png"/>  
 
   </textures>

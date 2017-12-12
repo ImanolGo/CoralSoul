@@ -62,6 +62,7 @@ private:
     
     ofColor         m_color;
     ofFbo           m_fbo;
+    
 };
 
 

@@ -287,12 +287,15 @@ void ApiManager::parseWeather(string xml)
     attributes = weatherXml.getAttributes();
     m_weatherConditions.city = attributes["name"];
     
+     m_weatherConditions.moonPhase = (float)m_moonCalculator.getCurrentMoonPhase();
+    
     ofLogNotice() <<"ApiManager::parseWeather << parseWeather -> city = " << m_weatherConditions.city <<", temp = " <<  m_weatherConditions.temp
     << ", humidity = " << m_weatherConditions.humidity
     << ", wind speed = " << m_weatherConditions.windSpeed << ", wind direction = " << m_weatherConditions.windDirection
     << ", clouds = " << m_weatherConditions.clouds
     << ", precipitation mode = " << m_weatherConditions.precipitationMode  << ", precipitation value = " << m_weatherConditions.precipitationValue
-    << ", sunrise = " << m_weatherConditions.sunrise  << ", sunset = " << m_weatherConditions.sunset ;
+    << ", sunrise = " << m_weatherConditions.sunrise  << ", sunset = " << m_weatherConditions.sunset
+    << ", moon phase = " << m_weatherConditions.moonPhase;
     
 }
 
