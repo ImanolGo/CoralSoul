@@ -32,8 +32,8 @@ struct weather_conditions
     float humidity{0.0};
     float windSpeed{0.0};
     float windDirection{0.0};
-    float sunrise{0.0};
-    float sunset{0.0};
+    string sunrise{"07:00"};
+    string sunset{"20:00"};
     float moonPhase{0.0};
     float clouds{0.0};
     string  precipitationMode{"no"};
@@ -131,6 +131,8 @@ private:
     void parsesurf(string response);
     
     float parseTime(string timeString);
+    
+    string getFormatTime(string timeString);
 
 
 private:

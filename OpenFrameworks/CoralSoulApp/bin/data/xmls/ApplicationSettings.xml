@@ -33,7 +33,7 @@
     <texture name="Apod" path="images/apod/apod.jpg"/>
     <texture name="Coral" path="images/model/coralTexture3.jpg"/>
     <texture name="Layout" path="images/model/LAYOUT_2017_11_23.jpg"/>
-    <texture name="StarryNight" path="images/environment/star_sky2.jpg"/>
+    <texture name="StarryNight" path="images/environment/stars-and-planets-photo-img329-JPG.jpg"/>
     <texture name="ForegroundStars" path="images/environment/ForegroundStars2.png"/>
     <texture name="Cloud1" path="images/environment/Cloud1.png"/>
     <texture name="Cloud2" path="images/environment/Cloud2.png"/>
@@ -45,7 +45,7 @@
 
   <networks>
 
-    <network name="iPad" ipAddress="127.0.0.1" port="90001"/>
+    <network name="iPad" ipAddress="172.16.13.105" port="90001"/>
     <network name="Resolume" ipAddress="127.0.0.1" port="90002"/>
     <network name="Ableton" ipAddress="127.0.0.1" port="90003"/>
     <network name="Duration" ipAddress="127.0.0.1" port="90004"/>

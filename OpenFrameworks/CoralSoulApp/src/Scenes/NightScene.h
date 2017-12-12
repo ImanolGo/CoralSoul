@@ -51,17 +51,15 @@ private:
     
     void setupShader();
     
-    void setupPlane();
+    void setupCloudShader();
     
-    void setupFbo();
+    void setupStars();
     
-    void updatePlane();
+    void updateStars();
     
     void updateClouds();
     
-    void drawPlane();
-    
-    void updateFbo();
+    void drawStars();
     
     void drawClouds();
     
@@ -73,18 +71,16 @@ private:
     
     typedef vector<ImageVisual>  ImageVector;
     
-    ofPtr<ofTexture> m_texture;
-    ofTexture        m_starryNightTex;
-    
+    ImageVisual    m_starsImage;
     
     ofColor         m_color;
     ofShader        m_shader;
+    ofShader        m_cloudsShader;
     
     
     ImageVector         m_clouds;
     
-    ofPlanePrimitive    m_plane;
-    ofVec2f             m_nightPosition;
+    ofFbo               m_fboStars;
     float               m_starsSpeed;
         
 };

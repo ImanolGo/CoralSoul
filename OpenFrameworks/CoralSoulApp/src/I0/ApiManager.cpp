@@ -279,8 +279,8 @@ void ApiManager::parseWeather(string xml)
     path = "//current/city/sun";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.sunrise = this->parseTime(attributes["rise"]);
-    m_weatherConditions.sunset = this->parseTime(attributes["set"]);
+    m_weatherConditions.sunrise = this->getFormatTime(attributes["rise"]);
+    m_weatherConditions.sunset = this->getFormatTime(attributes["set"]);
     
     path = "//current/city";
     weatherXml.setTo(path);
@@ -318,13 +318,18 @@ void ApiManager::surfTimerCompleteHandler( int &args )
     ofLoadURLAsync(m_surfUrl, "surf");
 }
 
-float ApiManager::parseTime(string timeString)
+string ApiManager::getFormatTime(string timeString)
 {
     auto split_string = ofSplitString(timeString, "T");
     
     if(split_string.size()>1){
-        split_string = ofSplitString(split_string[1], ":");
+        return split_string[1];
     }
+}
+
+float ApiManager::parseTime(string timeString)
+{
+    auto split_string = ofSplitString(timeString, ":");
     
     float time = 0;
     
@@ -346,8 +351,11 @@ float ApiManager::parseTime(string timeString)
 void ApiManager::checkDayNight()
 {
     float currentTime = 10000*ofGetHours() + 100*ofGetMinutes() + ofGetSeconds();
-    ofLogNotice() <<"ApiManager::checkDayNight -> current time : "<< currentTime;
-    if(currentTime>m_weatherConditions.sunrise && currentTime<m_weatherConditions.sunset){
+    float sunrise = this->parseTime(m_weatherConditions.sunrise );
+    float sunset = this->parseTime(m_weatherConditions.sunset );
+    ofLogNotice() <<"ApiManager::checkDayNight -> current time : "<< currentTime
+    << ", sunrise = " << sunrise << ", sunset = " << sunset;
+    if(currentTime> sunrise && currentTime< sunset){
         ofLogNotice() <<"ApiManager::checkDayNight -> It's day time";
         m_isDayTime = true;
     }

@@ -75,7 +75,7 @@ public:
     
     void onWeatherChange(const weather_conditions& value);
     
-    void onSceneChange(const string& sceneName);
+    void onSceneChange(string& sceneName);
     
     void onSceneChange(int sceneIndex);
     

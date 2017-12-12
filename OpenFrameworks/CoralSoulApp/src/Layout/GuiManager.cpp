@@ -458,7 +458,7 @@ void GuiManager::onWeatherChange(const weather_conditions& value)
 }
 
 
-void GuiManager::onSceneChange(const string &sceneName)
+void GuiManager::onSceneChange(string &sceneName)
 {
     int index = AppManager::getInstance().getSceneManager().getIndex(sceneName);
     this->onSceneChange(index);

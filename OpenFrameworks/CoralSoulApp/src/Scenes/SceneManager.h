@@ -59,7 +59,7 @@ public:
     string getSceneName(int sceneIndex);
     
     //! Returns the index a scene given a name. It returns -1 if it doesn't find any
-    int getIndex(const string& sceneName);
+    int getIndex(string& sceneName);
     
     const ofFbo& getFbo() {return m_fbo;}
     

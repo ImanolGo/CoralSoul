@@ -47,6 +47,9 @@ public:
     // Send osc message float
     void sendFloatMessage(float value, string& name);
     
+    // Send osc message string
+    void sendStringMessage(string value, string& name);
+    
      // Send aritrary osc message
     void sendMessage(ofxOscMessage& message);
     
@@ -64,8 +67,7 @@ private:
     
     //! gets string formatted OSC message
     string getMessageAsString(const ofxOscMessage& m) const;
-
-
+    
  private:
     
      ofxOscReceiver m_oscReceiver;          ///< OSC receiver class

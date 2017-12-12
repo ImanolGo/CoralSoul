@@ -12,7 +12,7 @@
 #include "AppManager.h"
 
 
-const string OscManager::OSC_PARENT_ADDRESS = "/CoralSoul";
+const string OscManager::OSC_PARENT_ADDRESS = "/CoralSoul/Generative";
 
 OscManager::OscManager(): Manager()
 {
@@ -130,6 +130,19 @@ void OscManager::sendFloatMessage(float value, string& name)
     }
 }
 
+void OscManager::sendStringMessage(string value, string& name)
+{
+    string message = OSC_PARENT_ADDRESS + "/" + name;
+    ofxOscMessage m;
+    m.setAddress(message);
+    m.addStringArg(value);
+    //m_oscSender.sendMessage(m);
+    
+    for (auto& oscSender : m_oscSenders) {
+        oscSender.second.sendMessage(m);
+    }
+}
+
 void OscManager::sendMessage(ofxOscMessage& message)
 {
     //m_oscSender.sendMessage(message);
@@ -167,30 +180,40 @@ string OscManager::getMessageAsString(const ofxOscMessage& m) const
 
 void OscManager::sendOscWeather(const weather_conditions& weather)
 {
-    string message = "temperature";
+    string message = "Weather/Temperature";
     this->sendFloatMessage(weather.temp, message);
     
-    message = "humidity";
+    message = "Weather/Humidity";
     this->sendFloatMessage(weather.humidity, message);
     
-    message = "windSpeed";
+    message = "Weather/WindSpeed";
     this->sendFloatMessage(weather.windSpeed, message);
     
-    message = "windDirection";
+    message = "Weather/WindDirection";
     this->sendFloatMessage(weather.windDirection, message);
     
-    message = "clouds";
+    message = "Weather/Cloudiness";
     this->sendFloatMessage(weather.clouds, message);
     
-    message = "precipitation";
+    message = "Weather/Precipitation";
     this->sendFloatMessage(weather.precipitationValue, message);
     
-    message = "swellHeight";
+    message = "Weather/SwellHeight";
     this->sendFloatMessage(weather.swellHeight, message);
     
-    message = "swellPeriod";
+    message = "Weather/SwellPeriod";
     this->sendFloatMessage(weather.swellPeriod, message);
+    
+    message = "Weather/MoonPhase";
+    this->sendFloatMessage(weather.moonPhase, message);
+    
+    message = "Weather/Sunrise";
+    this->sendStringMessage(weather.sunrise, message);
+    
+    message = "Weather/Sunset";
+    this->sendStringMessage(weather.sunset, message);
 }
+
 
 
 

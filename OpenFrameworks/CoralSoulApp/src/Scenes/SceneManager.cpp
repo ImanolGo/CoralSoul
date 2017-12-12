@@ -220,8 +220,15 @@ string SceneManager::getSceneName(int sceneIndex)
    
 }
 
-int SceneManager::getIndex(const string& sceneName)
+int SceneManager::getIndex(string& sceneName)
 {
+    auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
+    
+    if(sceneName=="DAYCYCLE"){
+        if(isDayTime) { sceneName="DAY";}
+        else{sceneName="NIGHT";}
+    }
+    
     for(int i = 0; i< m_mySceneManager.scenes.size(); i++){
         if(m_mySceneManager.scenes[i]->getName() == sceneName){
             return i;
