@@ -96,6 +96,8 @@ public:
     
     void onSwellPeriodChange(float& value){m_weatherConditions.swellPeriod = value;}
     
+    bool isDayTime() const {return m_isDayTime;}
+    
     
 private:
     
@@ -121,6 +123,8 @@ private:
     
     void parseWeather(string xml);
     
+    void checkDayNight();
+    
     void parseNasa(string response);
     
     void parsesurf(string response);
@@ -138,6 +142,7 @@ private:
     weather_conditions      m_weatherConditions;
     ofImage                 m_nasaImage;
     ofImage                 m_defaultImage;
+    bool                    m_isDayTime;
     
 };
 

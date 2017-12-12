@@ -40,6 +40,7 @@
 		083193BC1FD86699005F00ED /* HsbShiftPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0831939F1FD86698005F00ED /* HsbShiftPass.cpp */; };
 		083193BD1FD86699005F00ED /* PixelatePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083193A11FD86698005F00ED /* PixelatePass.cpp */; };
 		083193BE1FD86699005F00ED /* FakeSSSPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083193A21FD86699005F00ED /* FakeSSSPass.cpp */; };
+		088B2F681FDF4B7900411676 /* glsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 088B2F671FDF4B7800411676 /* glsl.cpp */; };
 		089DFF551FDA9F0C0053CADB /* CalibrationScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */; };
 		08E9D8C61FD219990043FF93 /* UniverseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E9D8C41FD219990043FF93 /* UniverseScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
@@ -256,6 +257,10 @@
 		083193A31FD86699005F00ED /* PixelatePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PixelatePass.h; path = Addons/ofxPostProcessing/src/PixelatePass.h; sourceTree = "<group>"; };
 		083193A41FD86699005F00ED /* HorizontalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalTiltShifPass.h; path = Addons/ofxPostProcessing/src/HorizontalTiltShifPass.h; sourceTree = "<group>"; };
 		083193A51FD86699005F00ED /* FakeSSSPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FakeSSSPass.h; path = Addons/ofxPostProcessing/src/FakeSSSPass.h; sourceTree = "<group>"; };
+		088B2F641FDF4B7800411676 /* ofxGLSLMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxGLSLMaterial.h; path = Addons/ofxGLSLMaterial/src/ofxGLSLMaterial.h; sourceTree = "<group>"; };
+		088B2F651FDF4B7800411676 /* colorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = colorPicker.h; path = Addons/ofxGLSLMaterial/src/colorPicker.h; sourceTree = "<group>"; };
+		088B2F661FDF4B7800411676 /* glsl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glsl.h; path = Addons/ofxGLSLMaterial/src/glsl.h; sourceTree = "<group>"; };
+		088B2F671FDF4B7800411676 /* glsl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glsl.cpp; path = Addons/ofxGLSLMaterial/src/glsl.cpp; sourceTree = "<group>"; };
 		089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CalibrationScene.cpp; path = Scenes/CalibrationScene.cpp; sourceTree = "<group>"; };
 		089DFF541FDA9F0C0053CADB /* CalibrationScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalibrationScene.h; path = Scenes/CalibrationScene.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
@@ -750,6 +755,25 @@
 				0831939B1FD86698005F00ED /* VerticalTiltShifPass.h */,
 				083193751FD86696005F00ED /* ZoomBlurPass.cpp */,
 				083193831FD86697005F00ED /* ZoomBlurPass.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		088B2F621FDF4B6100411676 /* ofxGLSLMaterial */ = {
+			isa = PBXGroup;
+			children = (
+				088B2F631FDF4B6700411676 /* src */,
+			);
+			name = ofxGLSLMaterial;
+			sourceTree = "<group>";
+		};
+		088B2F631FDF4B6700411676 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				088B2F651FDF4B7800411676 /* colorPicker.h */,
+				088B2F671FDF4B7800411676 /* glsl.cpp */,
+				088B2F661FDF4B7800411676 /* glsl.h */,
+				088B2F641FDF4B7800411676 /* ofxGLSLMaterial.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1505,6 +1529,7 @@
 		AD642137CCDF61FB3E6CCEA2 /* Addons */ = {
 			isa = PBXGroup;
 			children = (
+				088B2F621FDF4B6100411676 /* ofxGLSLMaterial */,
 				083193711FD86680005F00ED /* ofxPostProcessing */,
 				082BD0961FD4A5F80037B7C5 /* ofxVectorField */,
 				F79FFC9032CC6E409159B3E3 /* ofxBlur */,
@@ -2011,6 +2036,7 @@
 				AD78E47D268E82984BE8DC60 /* FlowScene.cpp in Sources */,
 				083193BE1FD86699005F00ED /* FakeSSSPass.cpp in Sources */,
 				53DA3F90A1A47A308EFFC4B4 /* VideoScene.cpp in Sources */,
+				088B2F681FDF4B7900411676 /* glsl.cpp in Sources */,
 				31FFB0F7CD9D7189801DBCCA /* ApiManager.cpp in Sources */,
 				5152A5DBF51A461014A1F631 /* KeyboardManager.cpp in Sources */,
 				34CDB15CB0780633DAF598F9 /* OscManager.cpp in Sources */,

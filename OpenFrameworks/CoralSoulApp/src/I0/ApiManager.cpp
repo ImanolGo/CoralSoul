@@ -12,7 +12,7 @@
 #include "ofxJSON.h"
 
 
-ApiManager::ApiManager(): Manager()
+ApiManager::ApiManager(): Manager(), m_isDayTime(true)
 {
     //Intentionally left empty
 }
@@ -172,6 +172,7 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         if(response.request.name == "weather")
         {
             this->parseWeather(response.data);
+            this->checkDayNight();
             AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
             AppManager::getInstance().getOscManager ().sendOscWeather(m_weatherConditions);
         }
@@ -339,6 +340,19 @@ float ApiManager::parseTime(string timeString)
     return time;
 }
 
+void ApiManager::checkDayNight()
+{
+    float currentTime = 10000*ofGetHours() + 100*ofGetMinutes() + ofGetSeconds();
+    ofLogNotice() <<"ApiManager::checkDayNight -> current time : "<< currentTime;
+    if(currentTime>m_weatherConditions.sunrise && currentTime<m_weatherConditions.sunset){
+        ofLogNotice() <<"ApiManager::checkDayNight -> It's day time";
+        m_isDayTime = true;
+    }
+    else{
+        ofLogNotice() <<"ApiManager::checkDayNight -> It's night time";
+        m_isDayTime = false;
+    }
+}
 
 
 
