@@ -135,13 +135,13 @@ void SeaScene::activateWaves()
     float fValue = ofMap(weatherCond.swellHeight, 0.0, 5.0, 0.0, 1.0, true);
     
     m.setAddress(address);
-    m.addFloatArg(value);
+    m.addFloatArg(fValue);
     AppManager::getInstance().getOscManager().sendMessage(m);
     
-    fValue = ofMap(weatherCond.swellHeight, 0.0, 20.0, 0.0, 1.0, true);
+    fValue = ofMap(weatherCond.swellHeight, 0.5, 20.0, 1.0, 0.0, true);
     
     m.setAddress(address);
-    m.addFloatArg(value);
+    m.addFloatArg(fValue);
     AppManager::getInstance().getOscManager().sendMessage(m);
     
 }

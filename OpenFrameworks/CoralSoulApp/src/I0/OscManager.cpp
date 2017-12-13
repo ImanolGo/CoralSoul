@@ -141,6 +141,7 @@ void OscManager::sendStringMessage(string value, string& name)
     for (auto& oscSender : m_oscSenders) {
         oscSender.second.sendMessage(m);
     }
+    
 }
 
 void OscManager::sendMessage(ofxOscMessage& message)
@@ -149,6 +150,7 @@ void OscManager::sendMessage(ofxOscMessage& message)
     for (auto& oscSender : m_oscSenders) {
         oscSender.second.sendMessage(message);
     }
+    message.clear();
 }
 
 
