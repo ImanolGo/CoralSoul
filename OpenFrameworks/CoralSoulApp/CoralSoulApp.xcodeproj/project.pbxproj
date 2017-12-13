@@ -44,6 +44,8 @@
 		088B2F6F1FDF64E700411676 /* NightScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 088B2F6E1FDF64E600411676 /* NightScene.cpp */; };
 		089DFF551FDA9F0C0053CADB /* CalibrationScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DFF531FDA9F0C0053CADB /* CalibrationScene.cpp */; };
 		089EB0471FE00425001CDA8F /* MoonCalculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089EB0451FE00425001CDA8F /* MoonCalculator.cpp */; };
+		08D2F2BC1FE1AA02000B49DF /* LifeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08D2F2BA1FE1AA02000B49DF /* LifeScene.cpp */; };
+		08D2F2C21FE1BEAE000B49DF /* ofxColorGradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08D2F2C11FE1BEAE000B49DF /* ofxColorGradient.cpp */; };
 		08E9D8C61FD219990043FF93 /* UniverseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E9D8C41FD219990043FF93 /* UniverseScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
 		12A8C9C212129D904A9DB2C1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A555C6B34D5D8F88CBE349A8 /* OscPrintReceivedElements.cpp */; };
@@ -270,6 +272,10 @@
 		089EB0451FE00425001CDA8F /* MoonCalculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MoonCalculator.cpp; path = I0/MoonCalculator.cpp; sourceTree = "<group>"; };
 		089EB0461FE00425001CDA8F /* MoonCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoonCalculator.h; path = I0/MoonCalculator.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
+		08D2F2BA1FE1AA02000B49DF /* LifeScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LifeScene.cpp; path = Scenes/LifeScene.cpp; sourceTree = "<group>"; };
+		08D2F2BB1FE1AA02000B49DF /* LifeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeScene.h; path = Scenes/LifeScene.h; sourceTree = "<group>"; };
+		08D2F2C01FE1BEAE000B49DF /* ofxColorGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxColorGradient.h; path = Addons/ofxColorGradient/src/ofxColorGradient.h; sourceTree = "<group>"; };
+		08D2F2C11FE1BEAE000B49DF /* ofxColorGradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxColorGradient.cpp; path = Addons/ofxColorGradient/src/ofxColorGradient.cpp; sourceTree = "<group>"; };
 		08E9D8C41FD219990043FF93 /* UniverseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniverseScene.cpp; path = Scenes/UniverseScene.cpp; sourceTree = "<group>"; };
 		08E9D8C51FD219990043FF93 /* UniverseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniverseScene.h; path = src/Scenes/UniverseScene.h; sourceTree = "<group>"; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
@@ -782,6 +788,23 @@
 				088B2F671FDF4B7800411676 /* glsl.cpp */,
 				088B2F661FDF4B7800411676 /* glsl.h */,
 				088B2F641FDF4B7800411676 /* ofxGLSLMaterial.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		08D2F2BE1FE1BE95000B49DF /* ofxColorGradient */ = {
+			isa = PBXGroup;
+			children = (
+				08D2F2BF1FE1BEA4000B49DF /* src */,
+			);
+			name = ofxColorGradient;
+			sourceTree = "<group>";
+		};
+		08D2F2BF1FE1BEA4000B49DF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				08D2F2C11FE1BEAE000B49DF /* ofxColorGradient.cpp */,
+				08D2F2C01FE1BEAE000B49DF /* ofxColorGradient.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1537,6 +1560,7 @@
 		AD642137CCDF61FB3E6CCEA2 /* Addons */ = {
 			isa = PBXGroup;
 			children = (
+				08D2F2BE1FE1BE95000B49DF /* ofxColorGradient */,
 				088B2F621FDF4B6100411676 /* ofxGLSLMaterial */,
 				083193711FD86680005F00ED /* ofxPostProcessing */,
 				082BD0961FD4A5F80037B7C5 /* ofxVectorField */,
@@ -1656,6 +1680,8 @@
 		C9A8C2EA34B35E4BED69D33C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				08D2F2BA1FE1AA02000B49DF /* LifeScene.cpp */,
+				08D2F2BB1FE1AA02000B49DF /* LifeScene.h */,
 				088B2F6E1FDF64E600411676 /* NightScene.cpp */,
 				088B2F6D1FDF64E600411676 /* NightScene.h */,
 				08E9D8C41FD219990043FF93 /* UniverseScene.cpp */,
@@ -2118,6 +2144,7 @@
 				58BCEB4034B30CB4A3456FC7 /* SettingsManager.cpp in Sources */,
 				DA22DA3A4F2E611DF50078F2 /* main.cpp in Sources */,
 				088B2F6F1FDF64E700411676 /* NightScene.cpp in Sources */,
+				08D2F2BC1FE1AA02000B49DF /* LifeScene.cpp in Sources */,
 				8C9DFFBD826A20F752ED0CD6 /* CameraManager.cpp in Sources */,
 				083193B21FD86699005F00ED /* DofAltPass.cpp in Sources */,
 				C6B3BFC2668F137F745DC3C6 /* CameraAnimationsManager.cpp in Sources */,
@@ -2161,6 +2188,7 @@
 				083193B41FD86699005F00ED /* LimbDarkeningPass.cpp in Sources */,
 				082BD09F1FD4A6C30037B7C5 /* VectorFieldParticle.cpp in Sources */,
 				73698588602490A942EE41DA /* ofxTCPManager.cpp in Sources */,
+				08D2F2C21FE1BEAE000B49DF /* ofxColorGradient.cpp in Sources */,
 				083193BB1FD86699005F00ED /* EdgePass.cpp in Sources */,
 				44954A08B2522C6FE16E629B /* ofxTCPClient.cpp in Sources */,
 				51371380D62568A1F9F24E36 /* ofxOscParameterSync.cpp in Sources */,

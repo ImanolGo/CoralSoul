@@ -11,11 +11,9 @@
 
 #include "SceneManager.h"
 #include "scenes.h"
-
-
 #include "AppManager.h"
 
-SceneManager::SceneManager(): Manager(), m_alpha(-1)
+SceneManager::SceneManager(): Manager(), m_alpha(-1), m_transitionTime(1.0)
 {
 	//Intentionally left empty
 }
@@ -79,6 +77,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new RainScene());
     m_mySceneManager.addScene(scene);
     
+    //Create Life Scene
+    scene = ofPtr<ofxScene> (new LifeScene());
+    m_mySceneManager.addScene(scene);
+    
     //Create Flow Scene
     scene = ofPtr<ofxScene> (new FlowScene());
     //m_mySceneManager.addScene(scene);
@@ -99,7 +101,7 @@ void SceneManager::createScenes()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
 
     m_mySceneManager.run(width, height);
-    this->onTransitionTimeChange(1.0);
+    this->onTransitionTimeChange(m_transitionTime);
 }
 
 
@@ -131,7 +133,7 @@ void SceneManager::setupTimer()
 void SceneManager::initializeSceneList()
 {
     m_sceneList.clear();
-    m_sceneList  = {"SEA", "WIND"};
+    m_sceneList  = { "LIFE", "SEA","WIND"};
     
     auto isRaining = AppManager::getInstance().getApiManager().getCurrentWeather().precipitationValue > 0;
     if(isRaining){m_sceneList.push_back("RAIN");}
@@ -139,8 +141,7 @@ void SceneManager::initializeSceneList()
     auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
     if(isDayTime){m_sceneList.push_back("DAY");}
     else{m_sceneList.push_back("NIGHT");}
-    
-    
+
 }
 
 
@@ -149,7 +150,7 @@ void SceneManager::update()
     this->updateScenes();
     this->updateFbo();
     this->updateTimer();
-    this->updateAlpha();
+    //this->updateAlpha();
 }
 
 void SceneManager::updateFbo()
@@ -209,14 +210,20 @@ void SceneManager::draw(const ofRectangle& rect)
 
 void SceneManager::changeScene(string sceneName)
 {
-    
     m_mySceneManager.changeScene(sceneName);
+    m_sceneTimer.start(false,true);
+    m_currentSceneName = sceneName;
+    this->sendSceneChange();
+    
+    
 }
 
 void SceneManager::changeScene(int sceneIndex)
 {
      m_mySceneManager.changeScene(sceneIndex);
      m_sceneTimer.start(false,true);
+     m_currentSceneName = this->getSceneName(sceneIndex);
+     this->sendSceneChange();
 }
 
 
@@ -269,5 +276,16 @@ void SceneManager::sceneTimerCompleteHandler( int &args )
     ofLogNotice() <<"SceneManager::sceneTimerCompleteHandler << Chnage Scene: " << sceneName;
 }
 
+void SceneManager::sendSceneChange()
+{
+    string address = "/CoralSoul/Ableton/Fade";
+    
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addStringArg(m_currentSceneName);
+    m.addFloatArg(m_transitionTime);
+    
+    AppManager::getInstance().getOscManager().sendMessage(m);
+}
 
 

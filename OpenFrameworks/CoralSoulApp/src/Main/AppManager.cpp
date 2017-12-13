@@ -103,8 +103,6 @@ void AppManager::draw()
     if(!m_initialized)
         return;
     
-    return;
-    
     ofBackground(55,55,55);
     m_layoutManager.draw();
     m_guiManager.draw();    

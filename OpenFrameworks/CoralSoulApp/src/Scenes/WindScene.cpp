@@ -112,7 +112,7 @@ void WindScene::willExit() {
 void WindScene::activateParticles()
 {
     string address = "/activeclip/video/effect4/bypassed";
-    int value = 1;
+    int value = 0;
     
     ofxOscMessage m;
     m.setAddress(address);
@@ -124,7 +124,7 @@ void WindScene::activateParticles()
 void WindScene::deactivateParticles()
 {
     string address = "/activeclip/video/effect4/bypassed";
-    int value = 0;
+    int value = 1;
     
     ofxOscMessage m;
     m.setAddress(address);

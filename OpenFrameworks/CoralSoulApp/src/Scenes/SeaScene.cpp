@@ -120,7 +120,7 @@ void SeaScene::willExit()
 void SeaScene::activateWaves()
 {
     string address = "/activeclip/video/effect3/bypassed";
-    int value = 1;
+    int value = 0;
     
     ofxOscMessage m;
     m.setAddress(address);
@@ -131,15 +131,15 @@ void SeaScene::activateWaves()
     address = "/activeclip/video/effect3/param4/values";
     
     auto weatherCond = AppManager::getInstance().getApiManager().getCurrentWeather();
-    
-    float fValue = ofMap(weatherCond.swellHeight, 0.0, 5.0, 0.0, 1.0, true);
+    float fValue = ofMap(weatherCond.swellHeight, 0.0, 10.0, 0.0, 1.0, true);
     
     m.setAddress(address);
     m.addFloatArg(fValue);
     AppManager::getInstance().getOscManager().sendMessage(m);
     
-    fValue = ofMap(weatherCond.swellHeight, 0.5, 20.0, 1.0, 0.0, true);
+    fValue = ofMap(weatherCond.swellPeriod, 0.5, 20.0, 1.0, 0.0, true);
     
+	address = "/activeclip/video/effect3/param5/values";
     m.setAddress(address);
     m.addFloatArg(fValue);
     AppManager::getInstance().getOscManager().sendMessage(m);
@@ -149,7 +149,7 @@ void SeaScene::activateWaves()
 void SeaScene::deactivateWaves()
 {
     string address = "/activeclip/video/effect3/bypassed";
-    int value = 0;
+    int value = 1;
     
     ofxOscMessage m;
     m.setAddress(address);

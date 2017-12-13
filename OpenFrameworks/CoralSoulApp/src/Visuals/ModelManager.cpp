@@ -122,14 +122,15 @@ void ModelManager::setupSpotLight()
     m_spotLight.setSpecularColor( ofColor(255.f, 255.f, 255.f));
     
     m_spotLight.setSpotlight();// turn the light into spotLight, emit a cone of light //
+   // m_spotLight.setPointLight();
     
     // size of the cone of emitted light, angle between light axis and side of cone //
     // angle range between 0 - 90 in degrees //
-    m_spotLight.setSpotlightCutOff( 50 );
+    m_spotLight.setSpotlightCutOff( 30 );
     
     // rate of falloff, illumitation decreases as the angle from the cone axis increases //
     // range 0 - 128, zero is even illumination, 128 is max falloff //
-    m_spotLight.setSpotConcentration( 45 );
+    m_spotLight.setSpotConcentration( 50 );
 	m_spotLightVisual->setColor(ofColor(0));
     auto pos = m_spotLightVisual->getPosition();
     pos.z = 0;
@@ -208,14 +209,20 @@ void ModelManager::updateLight()
     setLightOri(m_dirLight, m_dirLightVisual->getRotation());
     
     auto pos = m_model.getPosition();
-    pos.z+=100;
+    //pos.z+=100;
     //ofPoint pos(ofGetMouseX(), -ofGetMouseY(), 500);
-    m_spotLightVisual->setPosition(pos);
+    
+    m_spotLight.setPosition(cos(ofGetElapsedTimef()*.6f) * 10 * 0 + pos.x,
+                           sin(ofGetElapsedTimef()*.8f) * 10 * 0 + pos.y,
+                           -cos(ofGetElapsedTimef()*3.8f) * 200 + pos.z + 700);
+    
+    //m_spotLightVisual->setPosition(pos);
    // auto pos = m_spotLightVisual->getPosition();
-    pos.z = 0;
-    m_spotLight.lookAt(pos);
-    m_spotLight.setPosition(m_spotLightVisual->getPosition());
-    m_spotLight.setOrientation( ofVec3f( 0, cos(ofGetElapsedTimef()) * RAD_TO_DEG, 0) );
+    pos.z += (50 + 10*cos(ofGetElapsedTimef()));
+    //m_spotLight.lookAt(pos);
+    //m_spotLight.setPosition(m_spotLightVisual->getPosition());
+    //m_spotLight.setPosition(pos);
+    //m_spotLight.setOrientation( ofVec3f( 0, cos(ofGetElapsedTimef()) * RAD_TO_DEG, 0) );
 
 	m_spotLight.setDiffuseColor(m_spotLightVisual->getColor());
 	m_spotLight.setSpecularColor(m_spotLightVisual->getColor());
@@ -243,7 +250,6 @@ void ModelManager::updateFbos()
     m_cam.begin();
         //ofSetLineWidth(2);
         //m_simpleModel.drawWireframe();
-    
         this->drawWireframe();
     m_cam.end();
     m_fboWireframe.end();
@@ -314,13 +320,13 @@ void  ModelManager::drawModel(const ofFbo& tex)
     
     m_dirLight.enable();
     m_spotLight.enable();
-    //m_material.begin();
+    m_material.begin();
     
     m_fboTexture.getTexture().bind();
         m_model.drawFaces();
     m_fboTexture.getTexture().unbind();
     
-   // m_material.end();
+    m_material.end();
     
     // turn off lighting //
     ofDisableLighting();

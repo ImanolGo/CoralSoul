@@ -11,7 +11,7 @@
 	
   <models>
 
-    <model name="Full" path="images/model/ROCA_MODELO_COMPLETO_VFX_222000_UV_1.obj"/>
+    <model name="Full" path="images/model/ROCA_MODELO_COMPLETO_VFX_49000_UV_1.obj"/>
     <model name="Simplified" path="images/model/ROCA_MODELO_COMPLETO_VFX_49000_UV_1_simple2.obj"/>
   
   </models>
@@ -38,6 +38,8 @@
     <texture name="Brush" path="images/general/brush2.png"/>  
     <texture name="NoiseMoon" path="images/textures/noiseMoon.png"/>  
     <texture name="NoiseSun" path="images/textures/noiseSun.png"/>  
+    <texture name="Coal" path="images/general/coalTexture.jpg"/>  
+    
 
   </textures>
 

@@ -23,6 +23,7 @@
 
 class SceneManager: public Manager
 {
+    
 public:
 
     //! Constructor
@@ -90,6 +91,8 @@ private:
     
     //! updates the fbo
     void updateAlpha();
+    
+    void sendSceneChange();
 
 private:
 
@@ -99,6 +102,8 @@ private:
     float                    m_alpha;
     
     vector<string>           m_sceneList;
+    string                   m_currentSceneName;
+    float                    m_transitionTime;
     
 };
 
