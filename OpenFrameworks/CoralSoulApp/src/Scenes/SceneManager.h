@@ -87,12 +87,16 @@ private:
     
     //! updates the fbo
     void updateFbo();
+    
+    //! updates the fbo
+    void updateAlpha();
 
 private:
 
     ofxSceneManager          m_mySceneManager;
     ofFbo                    m_fbo;
     ofxSimpleTimer           m_sceneTimer;
+    float                    m_alpha;
     
     vector<string>           m_sceneList;
     

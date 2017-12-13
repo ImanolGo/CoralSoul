@@ -47,6 +47,10 @@ private:
     
     void updateNoise();
     
+    void activateWaves();
+    
+    void deactivateWaves();
+    
 private:
     
     

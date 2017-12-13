@@ -83,14 +83,16 @@ void SeaScene::draw()
 void SeaScene::willFadeIn() {
     ofLogNotice("SeaScene::willFadeIn");
     
-    float amp = 0.2;
-    float speed = 0.2;
-    ofColor coral(255,127,80);
-
-    AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
-    AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
-    AppManager::getInstance().getModelManager().onWireFrameColorChange(coral);
+//    float amp = 0.2;
+//    float speed = 0.2;
+//    ofColor coral(255,127,80);
+//
+//    AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
+//    AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
+//    AppManager::getInstance().getModelManager().onWireFrameColorChange(coral);
     
+    AppManager::getInstance().getLayoutManager().onMaskChange(false);
+    this->activateWaves();
 }
 
 void SeaScene::willDraw() {
@@ -101,12 +103,58 @@ void SeaScene::willFadeOut() {
     ofLogNotice("SeaScene::willFadeOut");
 }
 
-void SeaScene::willExit() {
+void SeaScene::willExit()
+{
     ofLogNotice("SeaScene::willExit");
     
-    float amp = 0.0;
-    float speed = 0.0;
-    AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
-    AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
+     AppManager::getInstance().getLayoutManager().onMaskChange(true);
+     this->deactivateWaves();
+    
+//    float amp = 0.0;
+//    float speed = 0.0;
+//    AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
+//    AppManager::getInstance().getModelManager().onNoiseSpeedChange(speed);
+}
+
+
+void SeaScene::activateWaves()
+{
+    string address = "/activeclip/video/effect3/bypassed";
+    int value = 1;
+    
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addIntArg(value);
+    
+    AppManager::getInstance().getOscManager().sendMessage(m);
+    
+    address = "/activeclip/video/effect3/param4/values";
+    
+    auto weatherCond = AppManager::getInstance().getApiManager().getCurrentWeather();
+    
+    float fValue = ofMap(weatherCond.swellHeight, 0.0, 5.0, 0.0, 1.0, true);
+    
+    m.setAddress(address);
+    m.addFloatArg(value);
+    AppManager::getInstance().getOscManager().sendMessage(m);
+    
+    fValue = ofMap(weatherCond.swellHeight, 0.0, 20.0, 0.0, 1.0, true);
+    
+    m.setAddress(address);
+    m.addFloatArg(value);
+    AppManager::getInstance().getOscManager().sendMessage(m);
+    
+}
+
+void SeaScene::deactivateWaves()
+{
+    string address = "/activeclip/video/effect3/bypassed";
+    int value = 0;
+    
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addFloatArg(value);
+    
+    AppManager::getInstance().getOscManager().sendMessage(m);
 }
 

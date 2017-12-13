@@ -88,6 +88,10 @@ public:
     void onMaskChange(bool value) {m_useMask = value;}
     
     void toggleDrawMode(int mode) {m_drawMode = mode;}
+    
+    void toggleDrawMode();
+    
+    int getDrawMode() {return m_drawMode;}
 
 private:
 

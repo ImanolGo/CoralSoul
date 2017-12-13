@@ -423,4 +423,16 @@ void LayoutManager::onBlurScaleChange(float& value)
      m_blur.setScale(ofClamp(value, 0, 10));
 }
 
+void LayoutManager::toggleDrawMode()
+{
+    if(m_drawMode == 0)
+    {
+        m_drawMode = 1;
+    }
+    else{
+        m_drawMode = 0;
+    }
+    
+}
+
 

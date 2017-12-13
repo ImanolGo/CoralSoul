@@ -15,7 +15,7 @@
 
 #include "AppManager.h"
 
-SceneManager::SceneManager(): Manager()
+SceneManager::SceneManager(): Manager(), m_alpha(-1)
 {
 	//Intentionally left empty
 }
@@ -95,8 +95,6 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new BlankScene());
     m_mySceneManager.addScene(scene);
     
-    
-    
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
 
@@ -151,6 +149,7 @@ void SceneManager::update()
     this->updateScenes();
     this->updateFbo();
     this->updateTimer();
+    this->updateAlpha();
 }
 
 void SceneManager::updateFbo()
@@ -164,6 +163,24 @@ void SceneManager::updateFbo()
         ofDisableAlphaBlending();
         ofPopStyle();
     m_fbo.end();
+}
+
+void SceneManager::updateAlpha()
+{    
+    if(m_alpha!=m_mySceneManager.getCurrentAlpha())
+    {
+        m_alpha=m_mySceneManager.getCurrentAlpha();
+        //ofLogNotice() <<"SceneManager::updateAlpha << Alpha = " << m_alpha;
+        
+        string address = "/CoralSoul/Ableton/Fade";
+        float value = m_alpha/255.0;
+        
+        ofxOscMessage m;
+        m.setAddress(address);
+        m.addFloatArg(value);
+        
+        AppManager::getInstance().getOscManager().sendMessage(m);
+    }
 }
 
 void SceneManager::updateScenes()
