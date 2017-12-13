@@ -99,6 +99,8 @@ void ofxSceneManager::draw() {
         _nextFbo.draw(0, 0);
         ofPopStyle();
     }
+    
+    currentAlpha = _currentScene->getSceneAlpha();
 }
 
 void ofxSceneManager::changeScene() {

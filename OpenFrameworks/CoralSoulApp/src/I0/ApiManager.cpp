@@ -279,20 +279,25 @@ void ApiManager::parseWeather(string xml)
     path = "//current/city/sun";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.sunrise = this->parseTime(attributes["rise"]);
-    m_weatherConditions.sunset = this->parseTime(attributes["set"]);
+    m_weatherConditions.sunrise = this->getFormatTime(attributes["rise"]);
+    m_weatherConditions.sunset = this->getFormatTime(attributes["set"]);
     
     path = "//current/city";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
     m_weatherConditions.city = attributes["name"];
     
+    m_weatherConditions.moonPhase = (float)m_moonCalculator.getCurrentMoonPhase();
+    
+    m_weatherConditions.sunPosition = this->getSunPosition();
+    
     ofLogNotice() <<"ApiManager::parseWeather << parseWeather -> city = " << m_weatherConditions.city <<", temp = " <<  m_weatherConditions.temp
     << ", humidity = " << m_weatherConditions.humidity
     << ", wind speed = " << m_weatherConditions.windSpeed << ", wind direction = " << m_weatherConditions.windDirection
     << ", clouds = " << m_weatherConditions.clouds
     << ", precipitation mode = " << m_weatherConditions.precipitationMode  << ", precipitation value = " << m_weatherConditions.precipitationValue
-    << ", sunrise = " << m_weatherConditions.sunrise  << ", sunset = " << m_weatherConditions.sunset ;
+    << ", sunrise = " << m_weatherConditions.sunrise  << ", sunset = " << m_weatherConditions.sunset
+    << ", moon phase = " << m_weatherConditions.moonPhase << ", sun position = " << m_weatherConditions.sunPosition;
     
 }
 
@@ -315,13 +320,18 @@ void ApiManager::surfTimerCompleteHandler( int &args )
     ofLoadURLAsync(m_surfUrl, "surf");
 }
 
-float ApiManager::parseTime(string timeString)
+string ApiManager::getFormatTime(string timeString)
 {
     auto split_string = ofSplitString(timeString, "T");
     
     if(split_string.size()>1){
-        split_string = ofSplitString(split_string[1], ":");
+        return split_string[1];
     }
+}
+
+float ApiManager::parseTime(string timeString)
+{
+    auto split_string = ofSplitString(timeString, ":");
     
     float time = 0;
     
@@ -343,8 +353,11 @@ float ApiManager::parseTime(string timeString)
 void ApiManager::checkDayNight()
 {
     float currentTime = 10000*ofGetHours() + 100*ofGetMinutes() + ofGetSeconds();
-    ofLogNotice() <<"ApiManager::checkDayNight -> current time : "<< currentTime;
-    if(currentTime>m_weatherConditions.sunrise && currentTime<m_weatherConditions.sunset){
+    float sunrise = this->parseTime(m_weatherConditions.sunrise );
+    float sunset = this->parseTime(m_weatherConditions.sunset );
+    ofLogNotice() <<"ApiManager::checkDayNight -> current time : "<< currentTime
+    << ", sunrise = " << sunrise << ", sunset = " << sunset;
+    if(currentTime> sunrise && currentTime< sunset){
         ofLogNotice() <<"ApiManager::checkDayNight -> It's day time";
         m_isDayTime = true;
     }
@@ -352,6 +365,15 @@ void ApiManager::checkDayNight()
         ofLogNotice() <<"ApiManager::checkDayNight -> It's night time";
         m_isDayTime = false;
     }
+}
+
+float ApiManager::getSunPosition()
+{
+    float currentTime = 10000*ofGetHours() + 100*ofGetMinutes() + ofGetSeconds();
+    float sunrise = this->parseTime(m_weatherConditions.sunrise );
+    float sunset = this->parseTime(m_weatherConditions.sunset );
+    
+    return ofMap(currentTime, sunrise, sunset, 0.0,1.0, true);
 }
 
 

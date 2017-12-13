@@ -92,6 +92,7 @@ void WindScene::drawVectorField()
 
 void WindScene::willFadeIn() {
     ofLogNotice("WindScene::willFadeIn");
+    this->activateParticles();
 
 }
 
@@ -105,4 +106,29 @@ void WindScene::willFadeOut() {
 
 void WindScene::willExit() {
      ofLogNotice("WindScene::willExit");
+    this->deactivateParticles();
+}
+
+void WindScene::activateParticles()
+{
+    string address = "/activeclip/video/effect4/bypassed";
+    int value = 0;
+    
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addFloatArg(value);
+    
+    AppManager::getInstance().getOscManager().sendMessage(m);
+}
+
+void WindScene::deactivateParticles()
+{
+    string address = "/activeclip/video/effect4/bypassed";
+    int value = 1;
+    
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addFloatArg(value);
+    
+    AppManager::getInstance().getOscManager().sendMessage(m);
 }

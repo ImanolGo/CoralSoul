@@ -54,6 +54,10 @@ private:
     
     void drawVectorField();
     
+    void activateParticles();
+    
+    void deactivateParticles();
+    
 private:
     
     VectorFieldVisual       m_vectorField;

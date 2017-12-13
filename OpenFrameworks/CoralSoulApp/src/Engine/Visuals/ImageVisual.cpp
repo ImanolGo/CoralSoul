@@ -58,14 +58,20 @@ void ImageVisual::draw()
         if(m_centred){
             ofTranslate(-m_width*0.5,-m_height*0.5);
         }
+    
+        ofPushMatrix();
+        ofTranslate(m_width*0.5,m_height*0.5, 0);//move pivot to centre
+            ofRotateX(m_rotation.x);
+            ofRotateY(m_rotation.y);
+            ofRotateZ(m_rotation.z);//rotate from centre
+        ofPushMatrix();
+        ofTranslate(-m_width*0.5,-m_height*0.5,0);//move back by the centre offset
+            ofScale(m_resizer.x,m_resizer.y);
+            ofSetColor(m_color);
+            m_texture->draw(0,0);
+        ofPopMatrix();
+        ofPopMatrix();
 
-        ofRotateX(m_rotation.x);
-        ofRotateY(m_rotation.y);
-
-        ofScale(m_resizer.x,m_resizer.y);
-
-        ofSetColor(m_color);
-        m_texture->draw(0,0);
 
     ofPopStyle();
     ofPopMatrix();

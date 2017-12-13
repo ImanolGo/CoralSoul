@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "Manager.h"
 #include "ofxSimpleTimer.h"
+#include "MoonCalculator.h"
 
 
 struct api_settings
@@ -31,8 +32,10 @@ struct weather_conditions
     float humidity{0.0};
     float windSpeed{0.0};
     float windDirection{0.0};
-    float sunrise{0.0};
-    float sunset{0.0};
+    string sunrise{"07:00"};
+    string sunset{"20:00"};
+    float sunPosition{0.0};
+    float moonPhase{0.0};
     float clouds{0.0};
     string  precipitationMode{"no"};
     float  precipitationValue{0.0};
@@ -92,12 +95,15 @@ public:
     
     void onCloudsChange(float& value){m_weatherConditions.clouds = value;}
     
+    void onMoonChange(float& value){m_weatherConditions.moonPhase = value;}
+    
+    void onSunChange(float& value){m_weatherConditions.sunPosition = value;}
+    
     void onSwellHeightChange(float& value){m_weatherConditions.swellHeight = value;}
     
     void onSwellPeriodChange(float& value){m_weatherConditions.swellPeriod = value;}
     
     bool isDayTime() const {return m_isDayTime;}
-    
     
 private:
     
@@ -130,6 +136,10 @@ private:
     void parsesurf(string response);
     
     float parseTime(string timeString);
+    
+    string getFormatTime(string timeString);
+    
+    float getSunPosition();
 
 private:
     
@@ -143,6 +153,6 @@ private:
     ofImage                 m_nasaImage;
     ofImage                 m_defaultImage;
     bool                    m_isDayTime;
-    
+    MoonCalculator          m_moonCalculator;
 };
 

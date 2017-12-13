@@ -59,7 +59,7 @@ public:
     string getSceneName(int sceneIndex);
     
     //! Returns the index a scene given a name. It returns -1 if it doesn't find any
-    int getIndex(const string& sceneName);
+    int getIndex(string& sceneName);
     
     const ofFbo& getFbo() {return m_fbo;}
     
@@ -87,12 +87,16 @@ private:
     
     //! updates the fbo
     void updateFbo();
+    
+    //! updates the fbo
+    void updateAlpha();
 
 private:
 
     ofxSceneManager          m_mySceneManager;
     ofFbo                    m_fbo;
     ofxSimpleTimer           m_sceneTimer;
+    float                    m_alpha;
     
     vector<string>           m_sceneList;
     

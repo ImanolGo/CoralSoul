@@ -9,9 +9,12 @@
 #pragma once
 
 #include "ofxScene.h"
+#include "ImageVisual.h"
 
 
 class NightScene : public ofxScene {
+    
+    static const int NUM_CLOUDS;
     
 public:
     
@@ -44,21 +47,19 @@ public:
     
 private:
     
-    void setupImage();
+    void setupCloudShader();
     
-    void setupPlane();
+    void setupMoonShader();
     
-    void setupFbo();
+    void setupStars();
     
-    void updateSun();
+    void updateStars();
     
-    void updatePlane();
+    void drawStars();
     
-    void drawPlane();
+    void drawClouds();
     
-    void updateFbo();
-    
-    void drawDay();
+    void drawMoon();
     
     void drawNight();
     
@@ -66,16 +67,19 @@ private:
     
 private:
     
-    ofPtr<ofTexture> m_texture;
-    ofTexture        m_starryNightTex;
+    ImageVisual    m_starsImage;
     
     ofColor         m_color;
-    ofFbo           m_fbo;
+    ofShader        m_cloudsShader;
     
-    ofPlanePrimitive    m_plane;
-    ofVec2f             m_nightPosition;
+    ofShader        m_moonShader;
+    
+    ofFbo               m_fboStars;
+    ofFbo               m_fboMoon;
     float               m_starsSpeed;
-        
+
+    
+    float oldPhase;
 };
 
 

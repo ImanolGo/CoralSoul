@@ -85,7 +85,7 @@ private:
     
     ofFbo       m_fbo;
     ofxBlur     m_blur;
-    ofxPostProcessing m_post;
+   // ofxPostProcessing m_post;
     
     
 };

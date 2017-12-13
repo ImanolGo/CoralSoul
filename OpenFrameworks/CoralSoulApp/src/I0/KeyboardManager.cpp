@@ -64,8 +64,13 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
     }
     
     if(key == ' ') {
-        //AppManager::getInstance().toggleDebugMode();
-        //AppManager::getInstance().getLightSculptureManager().onToggleShowIds();
+        AppManager::getInstance().getLayoutManager().toggleDrawMode();
+        if(AppManager::getInstance().getLayoutManager().getDrawMode() == 0){
+             AppManager::getInstance().getGuiManager().showGui(true);
+        }
+        else{
+            AppManager::getInstance().getGuiManager().showGui(false);
+        }
     }
     
 }

@@ -43,6 +43,8 @@ public:
     void setTransitionDissolve();
     
     void setAlpha(float _alpha){alpha = _alpha;}
+    
+    float getCurrentAlpha(){return currentAlpha;}
 
     vector<ofPtr<ofxScene> > scenes;
 
@@ -76,6 +78,7 @@ public:
     void _gotMessage(ofMessage & msg);
     
     float alpha;
+    float currentAlpha;
 };
 
 #endif /* defined(__KokiNomura__ofxSceneManager__) */

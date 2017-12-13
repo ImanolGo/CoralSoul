@@ -3,14 +3,16 @@
 	<LightX>167.87</LightX>
 	<LightY>9.58</LightY>
 	<LightZ>10.11</LightZ>
-	<Temp_>16.27</Temp_>
-	<Humidity>68</Humidity>
-	<Wind_Speed>9.3</Wind_Speed>
+	<Temp_>18.89</Temp_>
+	<Humidity>35</Humidity>
+	<Wind_Speed>13.4</Wind_Speed>
 	<Wind_Dir>60</Wind_Dir>
-	<Prec_>8.68</Prec_>
-	<Clouds_>0</Clouds_>
-	<Swell_Height>1.9</Swell_Height>
-	<Swell_Period>7</Swell_Period>
+	<Prec_>0</Prec_>
+	<Clouds>74.72</Clouds>
+	<Moon_Phase>0.181595</Moon_Phase>
+	<Sun_Position>0</Sun_Position>
+	<Swell_Height>2.9</Swell_Height>
+	<Swell_Period>13</Swell_Period>
 	<Distance>617.98</Distance>
 	<X>64.43</X>
 	<Y>305.32</Y>
