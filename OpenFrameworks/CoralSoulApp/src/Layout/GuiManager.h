@@ -135,6 +135,8 @@ private:
     ofParameter<float>      m_weatherWindDirection;
     ofParameter<float>      m_weatherPrecipitation;
     ofParameter<float>      m_weatherClouds;
+    ofParameter<float>      m_weatherMoon;
+    ofParameter<float>      m_weatherSun;
     
     ofParameter<float>      m_swellHeight;
     ofParameter<float>      m_swellPeriod;

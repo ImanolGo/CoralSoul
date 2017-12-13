@@ -34,6 +34,7 @@ struct weather_conditions
     float windDirection{0.0};
     string sunrise{"07:00"};
     string sunset{"20:00"};
+    float sunPosition{0.0};
     float moonPhase{0.0};
     float clouds{0.0};
     string  precipitationMode{"no"};
@@ -94,6 +95,10 @@ public:
     
     void onCloudsChange(float& value){m_weatherConditions.clouds = value;}
     
+    void onMoonChange(float& value){m_weatherConditions.moonPhase = value;}
+    
+    void onSunChange(float& value){m_weatherConditions.sunPosition = value;}
+    
     void onSwellHeightChange(float& value){m_weatherConditions.swellHeight = value;}
     
     void onSwellPeriodChange(float& value){m_weatherConditions.swellPeriod = value;}
@@ -133,7 +138,8 @@ private:
     float parseTime(string timeString);
     
     string getFormatTime(string timeString);
-
+    
+    float getSunPosition();
 
 private:
     

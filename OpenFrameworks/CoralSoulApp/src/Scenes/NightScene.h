@@ -75,9 +75,11 @@ private:
     ofShader        m_moonShader;
     
     ofFbo               m_fboStars;
+    ofFbo               m_fboMoon;
     float               m_starsSpeed;
-    ofImage             m_color_noise;
-        
+
+    
+    float oldPhase;
 };
 
 

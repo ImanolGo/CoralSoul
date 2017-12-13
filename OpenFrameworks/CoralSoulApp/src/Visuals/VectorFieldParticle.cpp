@@ -10,7 +10,7 @@
 
 #include "VectorFieldParticle.h"
 
-VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(5)
+VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(10)
 {
     this->setup();
 }

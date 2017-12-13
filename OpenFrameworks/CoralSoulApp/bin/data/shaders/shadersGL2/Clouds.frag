@@ -17,7 +17,7 @@ uniform float speed;
 
 // ---> Shadertoy uniforms
 uniform vec3 iResolution;
-uniform float iGlobalTime;
+uniform float iTime;
 
 vec2 hash( vec2 p ) {
 	p = vec2(dot(p,vec2(127.1,311.7)), dot(p,vec2(269.5,183.3)));
@@ -65,7 +65,7 @@ void main(void)
 
 	vec2 p = gl_FragCoord.xy / iResolution.xy;
 	vec2 uv = p*vec2(iResolution.x/iResolution.y,1.0);    
-    float time = iGlobalTime * speed;
+    float time = iTime * speed;
     float q = fbm(uv * cloudscale * 0.5);
     
     //ridged noise shape
@@ -95,7 +95,7 @@ void main(void)
     
     //noise colour
     float c = 0.0;
-    time = iGlobalTime * speed * 2.0;
+    time = iTime * speed * 2.0;
     uv = p*vec2(iResolution.x/iResolution.y,1.0);
 	uv *= cloudscale*2.0;
     uv -= q - time;
@@ -108,7 +108,7 @@ void main(void)
     
     //noise ridge colour
     float c1 = 0.0;
-    time = iGlobalTime * speed * 3.0;
+    time = iTime * speed * 3.0;
     uv = p*vec2(iResolution.x/iResolution.y,1.0);
 	uv *= cloudscale*3.0;
     uv -= q - time;
@@ -128,5 +128,5 @@ void main(void)
     
     vec3 result = mix(skycolour, clamp(skytint * skycolour + cloudcolour, 0.0, 1.0), clamp(cloudcover*(f + c), 0.0, 1.0));
 
-	gl_FragColor =  vec4(result,1.0);
+	gl_FragColor =  vec4(1,1,1,result.x);
 }

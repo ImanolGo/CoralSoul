@@ -292,9 +292,17 @@ void GuiManager::setupWeatherGui()
     m_weatherPrecipitation.addListener(apiManager, &ApiManager::onPrecipitationChange);
     m_parameters.add(m_weatherPrecipitation);
     
-    m_weatherClouds.set("Clouds.", 0.0, 0.0, 100);
+    m_weatherClouds.set("Clouds", 0.0, 0.0, 100);
     m_weatherClouds.addListener(apiManager, &ApiManager::onCloudsChange);
     m_parameters.add(m_weatherClouds);
+    
+    m_weatherMoon.set("Moon Phase", 0.0, 0.0, 1.0);
+    m_weatherMoon.addListener(apiManager, &ApiManager::onMoonChange);
+    m_parameters.add(m_weatherMoon);
+    
+    m_weatherSun.set("Sun Position", 0.0, 0.0, 1.0);
+    m_weatherSun.addListener(apiManager, &ApiManager::onSunChange);
+    m_parameters.add(m_weatherSun);
     
     m_swellHeight.set("Swell Height", 0.0, 0.0, 10);
     m_swellHeight.addListener(apiManager, &ApiManager::onSwellHeightChange);
@@ -313,6 +321,8 @@ void GuiManager::setupWeatherGui()
     folder->addSlider(m_weatherWindDirection);
     folder->addSlider(m_weatherPrecipitation);
     folder->addSlider(m_weatherClouds);
+    folder->addSlider(m_weatherMoon);
+    folder->addSlider(m_weatherSun);
     folder->addSlider(m_swellHeight);
     folder->addSlider(m_swellPeriod);
     //folder->expand();
@@ -448,6 +458,7 @@ void GuiManager::onWeatherChange(const weather_conditions& value)
     m_weatherWindSpeed = value.windSpeed;
     m_weatherWindDirection = value.windDirection;
     m_weatherPrecipitation = value.precipitationValue;
+    m_weatherMoon = value.moonPhase;
     
     m_swellHeight = value.swellHeight;
     m_swellPeriod = value.swellPeriod;

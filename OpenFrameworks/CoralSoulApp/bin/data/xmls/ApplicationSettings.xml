@@ -34,13 +34,10 @@
     <texture name="Coral" path="images/model/coralTexture3.jpg"/>
     <texture name="Layout" path="images/model/LAYOUT_2017_11_23.jpg"/>
     <texture name="StarryNight" path="images/environment/2048px-Night-sky-milky-way-galaxy-astrophotography_-_West_Virginia_-_ForestWander.jpg"/>
-    <texture name="ForegroundStars" path="images/environment/ForegroundStars2.png"/>
-    <texture name="Cloud1" path="images/environment/Cloud1.png"/>
-    <texture name="Cloud2" path="images/environment/Cloud2.png"/>
-    <texture name="Cloud3" path="images/environment/Cloud3.png"/>
-    <texture name="Cloud4" path="images/environment/Cloud4.png"/>
+    <texture name="ForegroundStars" path="images/environment/ForegroundStars.png"/>
     <texture name="Brush" path="images/general/brush2.png"/>  
-    <texture name="ColorNoise" path="images/textures/noise.png"/>  
+    <texture name="NoiseMoon" path="images/textures/noiseMoon.png"/>  
+    <texture name="NoiseSun" path="images/textures/noiseSun.png"/>  
 
   </textures>
 

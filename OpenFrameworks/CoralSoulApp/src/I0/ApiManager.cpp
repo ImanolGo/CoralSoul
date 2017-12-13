@@ -287,7 +287,9 @@ void ApiManager::parseWeather(string xml)
     attributes = weatherXml.getAttributes();
     m_weatherConditions.city = attributes["name"];
     
-     m_weatherConditions.moonPhase = (float)m_moonCalculator.getCurrentMoonPhase();
+    m_weatherConditions.moonPhase = (float)m_moonCalculator.getCurrentMoonPhase();
+    
+    m_weatherConditions.sunPosition = this->getSunPosition();
     
     ofLogNotice() <<"ApiManager::parseWeather << parseWeather -> city = " << m_weatherConditions.city <<", temp = " <<  m_weatherConditions.temp
     << ", humidity = " << m_weatherConditions.humidity
@@ -295,7 +297,7 @@ void ApiManager::parseWeather(string xml)
     << ", clouds = " << m_weatherConditions.clouds
     << ", precipitation mode = " << m_weatherConditions.precipitationMode  << ", precipitation value = " << m_weatherConditions.precipitationValue
     << ", sunrise = " << m_weatherConditions.sunrise  << ", sunset = " << m_weatherConditions.sunset
-    << ", moon phase = " << m_weatherConditions.moonPhase;
+    << ", moon phase = " << m_weatherConditions.moonPhase << ", sun position = " << m_weatherConditions.sunPosition;
     
 }
 
@@ -363,6 +365,15 @@ void ApiManager::checkDayNight()
         ofLogNotice() <<"ApiManager::checkDayNight -> It's night time";
         m_isDayTime = false;
     }
+}
+
+float ApiManager::getSunPosition()
+{
+    float currentTime = 10000*ofGetHours() + 100*ofGetMinutes() + ofGetSeconds();
+    float sunrise = this->parseTime(m_weatherConditions.sunrise );
+    float sunset = this->parseTime(m_weatherConditions.sunset );
+    
+    return ofMap(currentTime, sunrise, sunset, 0.0,1.0, true);
 }
 
 

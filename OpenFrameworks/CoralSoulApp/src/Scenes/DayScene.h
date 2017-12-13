@@ -46,6 +46,8 @@ private:
     
     void setupImage();
     
+    void setupDayShader();
+    
     void setupFbo();
     
     void updateSun();
@@ -62,6 +64,9 @@ private:
     
     ofColor         m_color;
     ofFbo           m_fbo;
+    
+    ofShader       m_dayShader;
+    ofImage        m_noise;
     
 };
 

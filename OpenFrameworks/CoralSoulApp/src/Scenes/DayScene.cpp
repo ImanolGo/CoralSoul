@@ -25,11 +25,13 @@ void DayScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupImage();
     this->setupFbo();
+    this->setupDayShader();
 }
 
 void DayScene::setupImage()
 {
     m_texture = AppManager::getInstance().getResourceManager().getTexture("RockTexture");
+    m_noise.load("images/textures/noiseSun.png");
 }
 
 void DayScene::setupFbo()
@@ -41,12 +43,24 @@ void DayScene::setupFbo()
     m_fbo.begin(); ofClear(0); m_fbo.end();
 }
 
-
+void DayScene::setupDayShader()
+{
+    ofDisableArbTex();
+    
+    if(ofIsGLProgrammableRenderer()){
+        m_dayShader.load("shaders/shadersGL3/Sun");
+    }
+    else{
+        m_dayShader.load("shaders/shadersGL2/Sun");
+    }
+    
+    ofEnableArbTex();
+}
 
 void DayScene::update()
 {
-    this->updateSun();
-    this->updateFbo();
+    //this->updateSun();
+   // this->updateFbo();
 }
 
 
@@ -75,18 +89,41 @@ void DayScene::draw()
 {
     ofClear(0);
 	ofBackground(0);
-    AppManager::getInstance().getModelManager().drawModel(m_fbo);
+    this->drawDay();
+    //AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 
 void DayScene::drawDay()
 {
+//    ofPushStyle();
+//    ofSetColor(m_color);
+//        m_texture->draw(0,0, width, height);
+//    ofPopStyle();
+    
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-
-    ofPushStyle();
-    ofSetColor(m_color);
-        m_texture->draw(0,0, width, height);
-    ofPopStyle();
+    float sunPosition = AppManager::getInstance().getApiManager().getCurrentWeather().sunPosition;
+    sunPosition = ofMap(sunPosition,0.0,1.0,PI/2 -PI/10,3*PI/2+PI/10,true);
+    
+    float speed = AppManager::getInstance().getApiManager().getCurrentWeather().windSpeed;
+    speed  = ofMap(speed,0,100,0.1,2.0,true);
+    
+    
+    auto tex = AppManager::getInstance().getResourceManager().getTexture("NoiseSun");
+    
+    float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().clouds;
+    cloudcover  = ofMap(cloudcover, 0,100,0.0,1.0,true);
+    
+    m_dayShader.begin();
+    m_dayShader.setUniform3f("iResolution", width, height, 0.0);
+    m_dayShader.setUniform1f("iTime", ofGetElapsedTimef());
+    m_dayShader.setUniformTexture("iChannel0", m_noise.getTexture(), 1);
+    m_dayShader.setUniform1f("sunPosition", sunPosition);
+    m_dayShader.setUniform1f("speed", speed);
+    m_dayShader.setUniform1f("cloudcover", cloudcover);
+    ofDrawRectangle(0, 0, width, height);
+    m_dayShader.end();
+    
 }
 
 
