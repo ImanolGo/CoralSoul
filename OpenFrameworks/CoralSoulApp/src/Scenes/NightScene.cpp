@@ -26,25 +26,8 @@ NightScene::~NightScene()
 void NightScene::setup() {
     ofLogNotice(getName() + "::setup");
     this->setupStars();
-    this->setupClouds();
-    this->setupShader();
-}
-
-
-void NightScene::setupClouds()
-{
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    
-    for(int i = 0; i<NUM_CLOUDS; i++)
-    {
-        string resourceName = "Cloud" + ofToString(i);
-        ofPoint pos(ofRandom(width*0.3, width*0.7), ofRandom(height*0.2, height*0.3));
-        ImageVisual cloud(pos,resourceName,true);
-        m_clouds.push_back(cloud);
-    }
-    
     this->setupCloudShader();
+    this->setupMoonShader();
 }
 
 void NightScene::setupCloudShader()
@@ -61,6 +44,24 @@ void NightScene::setupCloudShader()
      ofEnableArbTex();
 }
 
+void NightScene::setupMoonShader()
+{
+    ofDisableArbTex();
+    
+    if(ofIsGLProgrammableRenderer()){
+        m_moonShader.load("shaders/shadersGL3/Moon");
+    }
+    else{
+        m_moonShader.load("shaders/shadersGL2/Moon");
+    }
+    
+    ofEnableArbTex();
+    
+    auto resources = AppManager::getInstance().getSettingsManager().getTextureResourcesPath();
+    string name = resources["ColorNoise"];
+    m_color_noise.load(name);
+}
+
 void NightScene::setupStars()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
@@ -69,44 +70,18 @@ void NightScene::setupStars()
     m_starsImage.setResource("StarryNight");
     m_starsImage.setCentred(true);
     m_starsImage.setPosition(ofPoint(width*0.5,height*0.5));
+    m_starsImage.setHeight(width,true);
     
     m_fboStars.allocate(width, height);
     m_fboStars.begin(); ofClear(0); m_fboStars.end();
 }
 
-void NightScene::setupShader()
-{
-    if(ofIsGLProgrammableRenderer()){
-        m_shader.load("shaders/shadersGL3/LiquifyShader");
-    }
-    else{
-        m_shader.load("shaders/shadersGL2/LiquifyShader");
-        
-    }
-}
+
 
 void NightScene::update()
 {
    this->updateStars();
-   this->updateClouds();
 }
-
-
-void NightScene::updateClouds()
-{
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    
-    for(auto& cloud: m_clouds){
-        auto pos = cloud.getPosition();
-        pos.x+= m_starsSpeed*10;
-        if(pos.x>(width + cloud.getWidth()*0.5 )){
-            pos.x = -cloud.getWidth()*0.5;
-        }
-        cloud.setPosition(pos);
-    }
-}
-
 
 void NightScene::updateStars()
 {
@@ -126,8 +101,21 @@ void NightScene::draw()
 
 void NightScene::drawNight()
 {
-     this->drawStars();
-     this->drawClouds();
+    ofClear(0, 0, 0);
+    ofPushStyle();
+    ofEnableBlendMode(OF_BLENDMODE_DISABLED);
+    
+        this->drawStars();
+    
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+        this->drawClouds();
+        this->drawMoon();
+    
+    ofPopStyle();
+    
+    
+    
      AppManager::getInstance().getResourceManager().getTexture("ForegroundStars")->draw(0,0);
 }
 
@@ -154,30 +142,37 @@ void NightScene::drawStars()
 
 void NightScene::drawClouds()
 {
-//    m_shader.begin();        //Enable the shader
-//
-//    m_shader.setUniform1f("time", ofGetElapsedTimef());
-//    // m_shader.setUniformTexture("tex", m_fbo.getTextureReference(), 0);
-//    m_shader.setUniform1f("frequency", 0.6);
-//    m_shader.setUniform1f("amplitude", 0.2);
-//    m_shader.setUniform1f("speed", 0.4);
-//
-//
-//    for(auto& cloud: m_clouds){
-//        cloud.draw();x
-//    }
-//
-//    m_shader.end();        //Disable the shader
-    
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().clouds;
+    cloudcover  = ofMap(cloudcover, 0,100,0.0,1.0,true);
+    
+    float speed = AppManager::getInstance().getApiManager().getCurrentWeather().windSpeed;
+    speed  = ofMap(speed,0,100,0.005,0.4,true);
     
     
     m_cloudsShader.begin();
     m_cloudsShader.setUniform3f("iResolution", width, height, 0.0);
     m_cloudsShader.setUniform1f("iGlobalTime", ofGetElapsedTimef());
+    m_cloudsShader.setUniform1f("cloudcover", cloudcover);
+    m_cloudsShader.setUniform1f("speed", speed);
         ofDrawRectangle(0, 0, width, height);
     m_cloudsShader.end();
+}
+
+void NightScene::drawMoon()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth()*0.5;
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight()*0.5;
+    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().moonPhase;
+    moonPhase  = ofMap(moonPhase, 0,1.0,0.0,1.0,true);
+
+    m_moonShader.begin();
+    m_moonShader.setUniform3f("iResolution", width, height, 0.0);
+    m_moonShader.setUniform1f("iTime", ofGetElapsedTimef());
+    m_moonShader.setUniformTexture("iChannel0", m_color_noise.getTexture(), 1);
+    ofDrawRectangle(0,0, width, height);
+    m_moonShader.end();
 }
 
 void NightScene::willFadeIn() {

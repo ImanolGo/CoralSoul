@@ -47,21 +47,19 @@ public:
     
 private:
     
-    void setupClouds();
-    
-    void setupShader();
-    
     void setupCloudShader();
+    
+    void setupMoonShader();
     
     void setupStars();
     
     void updateStars();
     
-    void updateClouds();
-    
     void drawStars();
     
     void drawClouds();
+    
+    void drawMoon();
     
     void drawNight();
     
@@ -69,19 +67,16 @@ private:
     
 private:
     
-    typedef vector<ImageVisual>  ImageVector;
-    
     ImageVisual    m_starsImage;
     
     ofColor         m_color;
-    ofShader        m_shader;
     ofShader        m_cloudsShader;
     
-    
-    ImageVector         m_clouds;
+    ofShader        m_moonShader;
     
     ofFbo               m_fboStars;
     float               m_starsSpeed;
+    ofImage             m_color_noise;
         
 };
 
