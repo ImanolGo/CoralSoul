@@ -69,9 +69,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 249.0, 424.0, 68.0, 22.0 ],
+					"patching_rect" : [ 249.0, 424.0, 61.0, 22.0 ],
 					"style" : "",
-					"text" : "port 90001"
+					"text" : "port 9001"
 				}
 
 			}
@@ -94,9 +94,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 259.0, 475.0, 106.0, 22.0 ],
+					"patching_rect" : [ 259.0, 475.0, 99.0, 22.0 ],
 					"style" : "",
-					"text" : "udpreceive 90002"
+					"text" : "udpreceive 9002"
 				}
 
 			}

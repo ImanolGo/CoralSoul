@@ -72,7 +72,7 @@ void AppManager::setupManagers()
     m_layoutManager.setup();
     m_apiManager.setup();
     m_keyboardManager.setup();
-    m_noiseManager.setup();
+    //m_noiseManager.setup();
     m_sceneManager.setup();
     m_modelManager.setup();
     m_oscManager.setup();
@@ -89,7 +89,7 @@ void AppManager::update()
     m_viewManager.update();
     m_apiManager.update();
     m_modelManager.update();
-    m_noiseManager.update();
+    //m_noiseManager.update();
     m_sceneManager.update();
     m_guiManager.update();
     m_layoutManager.update();
@@ -102,6 +102,8 @@ void AppManager::draw()
     
     if(!m_initialized)
         return;
+    
+    return;
     
     ofBackground(55,55,55);
     m_layoutManager.draw();

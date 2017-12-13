@@ -108,7 +108,6 @@ void ApiManager::setupWeatherApi()
     
     ofLoadURLAsync(m_weatherUrl, "weather");
     
-    this->initializeNasaImage();
 }
 
 void ApiManager::initializeNasaImage()
@@ -167,6 +166,7 @@ void ApiManager::urlResponse(ofHttpResponse & response)
 {
     //ofLogNotice() <<"ApiManager::urlResponse -> " << response.request.name << ", " << response.status;
     
+
     if(response.status==200)
     {
         if(response.request.name == "weather")
