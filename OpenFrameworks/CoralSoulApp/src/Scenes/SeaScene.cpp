@@ -51,9 +51,9 @@ void SeaScene::updateNoise()
 {
     auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
     float speed = 0.2;
-    float f = 1.0/weatherConditions.swellPeriod;
+    float f = 1.0/weatherConditions.m_swellPeriod;
     float sine = sin(TWO_PI*f*ofGetElapsedTimef());
-    float amp = ofMap(sine, -1, 1, 0.07,  weatherConditions.swellHeight/9);
+    float amp = ofMap(sine, -1, 1, 0.07,  weatherConditions.m_swellHeight/9);
     //float speed = ofMap(sine, -1, 1, 0.1,  0.2);
     
     AppManager::getInstance().getModelManager().onNoiseAmplitudeChange(amp);
@@ -130,14 +130,15 @@ void SeaScene::activateWaves()
     
     address = "/activeclip/video/effect3/param4/values";
     
-    auto weatherCond = AppManager::getInstance().getApiManager().getCurrentWeather();
-    float fValue = ofMap(weatherCond.swellHeight, 0.0, 10.0, 0.0, 1.0, true);
+    auto fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellHeightNorm();
+    //float fValue = ofMap(weatherCond.m_swellHeight, 0.0, 10.0, 0.0, 1.0, true);
     
     m.setAddress(address);
     m.addFloatArg(fValue);
     AppManager::getInstance().getOscManager().sendMessage(m);
     
-    fValue = ofMap(weatherCond.swellPeriod, 0.5, 20.0, 1.0, 0.0, true);
+    
+    fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellPeriodNorm();
     
 	address = "/activeclip/video/effect3/param5/values";
     m.setAddress(address);
@@ -157,4 +158,5 @@ void SeaScene::deactivateWaves()
     
     AppManager::getInstance().getOscManager().sendMessage(m);
 }
+
 

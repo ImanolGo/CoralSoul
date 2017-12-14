@@ -150,11 +150,10 @@ void NightScene::drawClouds()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().clouds;
-    cloudcover  = ofMap(cloudcover, 0,100,0.0,1.0,true);
+    float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().getCloudinessNorm();
     
-    float speed = AppManager::getInstance().getApiManager().getCurrentWeather().windSpeed;
-    speed  = ofMap(speed,0,100,0.005,0.4,true);
+    float speed = AppManager::getInstance().getApiManager().getCurrentWeather().getWindSpeedNorm();
+    speed  = ofMap(speed,0.0,1.0,0.005,0.4,true);
     
     
     m_cloudsShader.begin();
@@ -173,8 +172,8 @@ void NightScene::drawMoon()
     float w = m_fboMoon.getWidth();
     float h = m_fboMoon.getHeight();
     
-    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().moonPhase;
-    moonPhase  = ofMap(moonPhase, 0,1.0,0.0,15.0,true);
+    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
+    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
     
     if(oldPhase!=moonPhase){
         oldPhase=moonPhase;

@@ -37,7 +37,7 @@
     <texture name="ForegroundStars" path="images/environment/ForegroundStars.png"/>
     <texture name="Brush" path="images/general/brush2.png"/>  
     <texture name="NoiseMoon" path="images/textures/noiseMoon.png"/>  
-    <texture name="NoiseSun" path="images/textures/noiseSun.png"/>  
+    <texture name="NoiseSun" path="images/textures/noiseSun1.png"/>  
     <texture name="Coal" path="images/general/coalTexture.jpg"/>  
     
 

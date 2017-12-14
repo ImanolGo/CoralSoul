@@ -102,17 +102,16 @@ void DayScene::drawDay()
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    float sunPosition = AppManager::getInstance().getApiManager().getCurrentWeather().sunPosition;
+    float sunPosition = AppManager::getInstance().getApiManager().getCurrentWeather().m_sunPosition;
     sunPosition = ofMap(sunPosition,0.0,1.0,PI/2 -PI/10,3*PI/2+PI/10,true);
     
-    float speed = AppManager::getInstance().getApiManager().getCurrentWeather().windSpeed;
-    speed  = ofMap(speed,0,100,0.1,2.0,true);
+    float speed = AppManager::getInstance().getApiManager().getCurrentWeather().getWindSpeedNorm();
+    speed  = ofMap(speed,0.0,1.0,0.1,2.0,true);
     
     
     auto tex = AppManager::getInstance().getResourceManager().getTexture("NoiseSun");
     
-    float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().clouds;
-    cloudcover  = ofMap(cloudcover, 0,100,0.0,1.0,true);
+    float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().getCloudinessNorm();
     
     m_dayShader.begin();
     m_dayShader.setUniform3f("iResolution", width, height, 0.0);

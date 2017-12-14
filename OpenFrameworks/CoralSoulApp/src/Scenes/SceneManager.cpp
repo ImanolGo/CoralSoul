@@ -135,7 +135,7 @@ void SceneManager::initializeSceneList()
     m_sceneList.clear();
     m_sceneList  = { "LIFE", "SEA","WIND"};
     
-    auto isRaining = AppManager::getInstance().getApiManager().getCurrentWeather().precipitationValue > 0;
+    auto isRaining = AppManager::getInstance().getApiManager().getCurrentWeather().m_precipitationValue > 0;
     if(isRaining){m_sceneList.push_back("RAIN");}
     
     auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();

@@ -14,6 +14,7 @@
 #include "TextVisual.h"
 #include "RectangleVisual.h"
 #include "ApiManager.h"
+#include "WeatherConditions.h"
 
 //========================== class OscManager =======================================
 //==============================================================================
@@ -53,7 +54,7 @@ public:
      // Send aritrary osc message
     void sendMessage(ofxOscMessage& message);
     
-    void sendOscWeather(const weather_conditions& weather);
+    void sendOscWeather();
     
 private:
     

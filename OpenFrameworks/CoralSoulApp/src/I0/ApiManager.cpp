@@ -12,7 +12,7 @@
 #include "ofxJSON.h"
 
 
-ApiManager::ApiManager(): Manager(), m_isDayTime(true)
+ApiManager::ApiManager(): Manager()
 {
     //Intentionally left empty
 }
@@ -172,9 +172,8 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         if(response.request.name == "weather")
         {
             this->parseWeather(response.data);
-            this->checkDayNight();
-            AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
-            AppManager::getInstance().getOscManager ().sendOscWeather(m_weatherConditions);
+            AppManager::getInstance().getGuiManager().onWeatherChange();
+            AppManager::getInstance().getOscManager ().sendOscWeather();
         }
         
         else if(response.request.name == "nasa")
@@ -191,8 +190,8 @@ void ApiManager::urlResponse(ofHttpResponse & response)
         else if(response.request.name == "surf")
         {
             this->parsesurf(response.data);
-            AppManager::getInstance().getGuiManager().onWeatherChange(m_weatherConditions);
-            AppManager::getInstance().getOscManager().sendOscWeather(m_weatherConditions);
+            AppManager::getInstance().getGuiManager().onWeatherChange();
+            AppManager::getInstance().getOscManager().sendOscWeather();
         }
     }
 }
@@ -229,10 +228,10 @@ void ApiManager::parsesurf(string response)
     
     ofxJSONElement json(response);
 
-    m_weatherConditions.swellHeight = json[0]["swell"]["components"]["combined"]["height"].asFloat();
-    m_weatherConditions.swellPeriod = json[0]["swell"]["components"]["combined"]["period"].asFloat();
+    m_weatherConditions.m_swellHeight = json[0]["swell"]["components"]["combined"]["height"].asFloat();
+    m_weatherConditions.m_swellPeriod = json[0]["swell"]["components"]["combined"]["period"].asFloat();
 
-    ofLogNotice() <<"ApiManager::parsesurf << swell height = " <<  m_weatherConditions.swellHeight << ", swell period -> " <<m_weatherConditions.swellPeriod;
+    ofLogNotice() <<"ApiManager::parsesurf << swell height = " <<  m_weatherConditions.m_swellHeight << ", swell period -> " <<m_weatherConditions.m_swellPeriod;
 }
 
 
@@ -245,59 +244,59 @@ void ApiManager::parseWeather(string xml)
     string path = "//current/temperature";
     weatherXml.setTo(path);
     auto attributes = weatherXml.getAttributes();
-    m_weatherConditions.temp = ofToFloat(attributes["value"]);
+    m_weatherConditions.m_temp = ofToFloat(attributes["value"]);
     
     path = "//current/humidity";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.humidity = ofToFloat(attributes["value"]);
+    m_weatherConditions.m_humidity = ofToFloat(attributes["value"]);
     
     path = "//current/wind/speed";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.windSpeed = ofToFloat(attributes["value"]);
+    m_weatherConditions.m_windSpeed = ofToFloat(attributes["value"]);
     
     path = "//current/wind/direction";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.windDirection = ofToFloat(attributes["value"]);
+    m_weatherConditions.m_windDirection = ofToFloat(attributes["value"]);
     
     path = "//current/clouds";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.clouds = ofToFloat(attributes["value"]);
+    m_weatherConditions.m_clouds = ofToFloat(attributes["value"]);
     
     path = "//current/precipitation";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.precipitationValue = ofToFloat(attributes["value"]);
-    m_weatherConditions.precipitationMode = attributes["mode"];
+    m_weatherConditions.m_precipitationValue = ofToFloat(attributes["value"]);
+    m_weatherConditions.m_precipitationMode = attributes["mode"];
     if(attributes["mode"] == "no"){
-        m_weatherConditions.precipitationValue = 0;
+        m_weatherConditions.m_precipitationValue = 0;
     }
     
     path = "//current/city/sun";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.sunrise = this->getFormatTime(attributes["rise"]);
-    m_weatherConditions.sunset = this->getFormatTime(attributes["set"]);
+    m_weatherConditions.m_sunrise = m_weatherConditions.getFormatTime(attributes["rise"]);
+    m_weatherConditions.m_sunset = m_weatherConditions.getFormatTime(attributes["set"]);
     
     path = "//current/city";
     weatherXml.setTo(path);
     attributes = weatherXml.getAttributes();
-    m_weatherConditions.city = attributes["name"];
+    m_weatherConditions.m_city = attributes["name"];
     
-    m_weatherConditions.moonPhase = (float)m_moonCalculator.getCurrentMoonPhase();
+    m_weatherConditions.m_moonPhase = m_weatherConditions.getCurrentMoonPhase();
     
-    m_weatherConditions.sunPosition = this->getSunPosition();
+    m_weatherConditions.m_sunPosition = m_weatherConditions.calculatePosition();
     
-    ofLogNotice() <<"ApiManager::parseWeather << parseWeather -> city = " << m_weatherConditions.city <<", temp = " <<  m_weatherConditions.temp
-    << ", humidity = " << m_weatherConditions.humidity
-    << ", wind speed = " << m_weatherConditions.windSpeed << ", wind direction = " << m_weatherConditions.windDirection
-    << ", clouds = " << m_weatherConditions.clouds
-    << ", precipitation mode = " << m_weatherConditions.precipitationMode  << ", precipitation value = " << m_weatherConditions.precipitationValue
-    << ", sunrise = " << m_weatherConditions.sunrise  << ", sunset = " << m_weatherConditions.sunset
-    << ", moon phase = " << m_weatherConditions.moonPhase << ", sun position = " << m_weatherConditions.sunPosition;
+    ofLogNotice() <<"ApiManager::parseWeather << parseWeather -> city = " << m_weatherConditions.m_city <<", temp = " <<  m_weatherConditions.m_temp
+    << ", humidity = " << m_weatherConditions.m_humidity
+    << ", wind speed = " << m_weatherConditions.m_windSpeed << ", wind direction = " << m_weatherConditions.m_windDirection
+    << ", clouds = " << m_weatherConditions.m_clouds
+    << ", precipitation mode = " << m_weatherConditions.m_precipitationMode  << ", precipitation value = " << m_weatherConditions.m_precipitationValue
+    << ", sunrise = " << m_weatherConditions.m_sunrise  << ", sunset = " << m_weatherConditions.m_sunset
+    << ", moon phase = " << m_weatherConditions.m_moonPhase << ", sun position = " << m_weatherConditions.m_sunPosition;
     
 }
 
@@ -320,61 +319,8 @@ void ApiManager::surfTimerCompleteHandler( int &args )
     ofLoadURLAsync(m_surfUrl, "surf");
 }
 
-string ApiManager::getFormatTime(string timeString)
-{
-    auto split_string = ofSplitString(timeString, "T");
-    
-    if(split_string.size()>1){
-        return split_string[1];
-    }
-}
 
-float ApiManager::parseTime(string timeString)
-{
-    auto split_string = ofSplitString(timeString, ":");
-    
-    float time = 0;
-    
-    if(split_string.size()>0){
-        time = time + 10000* ofToFloat(split_string[0]);
-    }
-    
-    if(split_string.size()>1){
-        time = time + 100*ofToFloat(split_string[2]);
-    }
-    
-    if(split_string.size()>2){
-        time = time +  ofToFloat(split_string[1]);
-    }
-    
-    return time;
-}
 
-void ApiManager::checkDayNight()
-{
-    float currentTime = 10000*ofGetHours() + 100*ofGetMinutes() + ofGetSeconds();
-    float sunrise = this->parseTime(m_weatherConditions.sunrise );
-    float sunset = this->parseTime(m_weatherConditions.sunset );
-    ofLogNotice() <<"ApiManager::checkDayNight -> current time : "<< currentTime
-    << ", sunrise = " << sunrise << ", sunset = " << sunset;
-    if(currentTime> sunrise && currentTime< sunset){
-        ofLogNotice() <<"ApiManager::checkDayNight -> It's day time";
-        m_isDayTime = true;
-    }
-    else{
-        ofLogNotice() <<"ApiManager::checkDayNight -> It's night time";
-        m_isDayTime = false;
-    }
-}
-
-float ApiManager::getSunPosition()
-{
-    float currentTime = 10000*ofGetHours() + 100*ofGetMinutes() + ofGetSeconds();
-    float sunrise = this->parseTime(m_weatherConditions.sunrise );
-    float sunset = this->parseTime(m_weatherConditions.sunset );
-    
-    return ofMap(currentTime, sunrise, sunset, 0.0,1.0, true);
-}
 
 
 

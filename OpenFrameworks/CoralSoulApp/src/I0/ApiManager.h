@@ -12,6 +12,7 @@
 #include "Manager.h"
 #include "ofxSimpleTimer.h"
 #include "MoonCalculator.h"
+#include "WeatherConditions.h"
 
 
 struct api_settings
@@ -26,24 +27,6 @@ struct api_settings
     string id{""};
 };
 
-struct weather_conditions
-{
-    float temp{0.0};
-    float humidity{0.0};
-    float windSpeed{0.0};
-    float windDirection{0.0};
-    string sunrise{"07:00"};
-    string sunset{"20:00"};
-    float sunPosition{0.0};
-    float moonPhase{0.0};
-    float clouds{0.0};
-    string  precipitationMode{"no"};
-    float  precipitationValue{0.0};
-    string city{""};
-    
-    float swellHeight{0.0};
-    float swellPeriod{0.0};
-};
 
 
 //========================== class ApiManager =======================================
@@ -81,29 +64,29 @@ public:
     
     const ofImage& getNasaImage() {return m_nasaImage;}
     
-    const weather_conditions& getCurrentWeather() {return m_weatherConditions;}
+    WeatherConditions& getCurrentWeather() {return m_weatherConditions;}
     
-    void onWindSpeedChange(float& value){m_weatherConditions.windSpeed = value;}
+    void onWindSpeedChange(float& value){m_weatherConditions.m_windSpeed = value;}
     
-    void onWindDirChange(float& value){m_weatherConditions.windDirection = value;}
+    void onWindDirChange(float& value){m_weatherConditions.m_windDirection = value;}
     
-    void onTemperatureChange(float& value){m_weatherConditions.temp = value;}
+    void onTemperatureChange(float& value){m_weatherConditions.m_temp = value;}
     
-    void onHumidityChange(float& value){m_weatherConditions.humidity = value;}
+    void onHumidityChange(float& value){m_weatherConditions.m_humidity = value;}
     
-    void onPrecipitationChange(float& value){m_weatherConditions.precipitationValue = value;}
+    void onPrecipitationChange(float& value){m_weatherConditions.m_precipitationValue = value;}
     
-    void onCloudsChange(float& value){m_weatherConditions.clouds = value;}
+    void onCloudsChange(float& value){m_weatherConditions.m_clouds = value;}
     
-    void onMoonChange(float& value){m_weatherConditions.moonPhase = value;}
+    void onMoonChange(float& value){m_weatherConditions.m_moonPhase = value;}
     
-    void onSunChange(float& value){m_weatherConditions.sunPosition = value;}
+    void onSunChange(float& value){m_weatherConditions.m_sunPosition = value;}
     
-    void onSwellHeightChange(float& value){m_weatherConditions.swellHeight = value;}
+    void onSwellHeightChange(float& value){m_weatherConditions.m_swellHeight = value;}
     
-    void onSwellPeriodChange(float& value){m_weatherConditions.swellPeriod = value;}
+    void onSwellPeriodChange(float& value){m_weatherConditions.m_swellPeriod = value;}
     
-    bool isDayTime() const {return m_isDayTime;}
+    bool isDayTime() {return m_weatherConditions.isDayTime();}
     
 private:
     
@@ -129,17 +112,10 @@ private:
     
     void parseWeather(string xml);
     
-    void checkDayNight();
-    
     void parseNasa(string response);
     
     void parsesurf(string response);
     
-    float parseTime(string timeString);
-    
-    string getFormatTime(string timeString);
-    
-    float getSunPosition();
 
 private:
     
@@ -149,10 +125,8 @@ private:
     string                  m_weatherUrl;
     string                  m_nasaUrl;
     string                  m_surfUrl;
-    weather_conditions      m_weatherConditions;
+    WeatherConditions       m_weatherConditions;
     ofImage                 m_nasaImage;
     ofImage                 m_defaultImage;
-    bool                    m_isDayTime;
-    MoonCalculator          m_moonCalculator;
 };
 

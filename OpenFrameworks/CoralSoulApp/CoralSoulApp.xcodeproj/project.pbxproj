@@ -46,6 +46,7 @@
 		089EB0471FE00425001CDA8F /* MoonCalculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089EB0451FE00425001CDA8F /* MoonCalculator.cpp */; };
 		08D2F2BC1FE1AA02000B49DF /* LifeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08D2F2BA1FE1AA02000B49DF /* LifeScene.cpp */; };
 		08D2F2C21FE1BEAE000B49DF /* ofxColorGradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08D2F2C11FE1BEAE000B49DF /* ofxColorGradient.cpp */; };
+		08D2F2C51FE1F102000B49DF /* WeatherConditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08D2F2C41FE1F102000B49DF /* WeatherConditions.cpp */; };
 		08E9D8C61FD219990043FF93 /* UniverseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E9D8C41FD219990043FF93 /* UniverseScene.cpp */; };
 		12451834526FB5CD4EA0D0DF /* ofxSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3B778D8F951EC700B066390 /* ofxSceneManager.cpp */; };
 		12A8C9C212129D904A9DB2C1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A555C6B34D5D8F88CBE349A8 /* OscPrintReceivedElements.cpp */; };
@@ -276,6 +277,8 @@
 		08D2F2BB1FE1AA02000B49DF /* LifeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeScene.h; path = Scenes/LifeScene.h; sourceTree = "<group>"; };
 		08D2F2C01FE1BEAE000B49DF /* ofxColorGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxColorGradient.h; path = Addons/ofxColorGradient/src/ofxColorGradient.h; sourceTree = "<group>"; };
 		08D2F2C11FE1BEAE000B49DF /* ofxColorGradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxColorGradient.cpp; path = Addons/ofxColorGradient/src/ofxColorGradient.cpp; sourceTree = "<group>"; };
+		08D2F2C31FE1F102000B49DF /* WeatherConditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherConditions.h; path = I0/WeatherConditions.h; sourceTree = "<group>"; };
+		08D2F2C41FE1F102000B49DF /* WeatherConditions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WeatherConditions.cpp; path = I0/WeatherConditions.cpp; sourceTree = "<group>"; };
 		08E9D8C41FD219990043FF93 /* UniverseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniverseScene.cpp; path = Scenes/UniverseScene.cpp; sourceTree = "<group>"; };
 		08E9D8C51FD219990043FF93 /* UniverseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniverseScene.h; path = src/Scenes/UniverseScene.h; sourceTree = "<group>"; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
@@ -676,6 +679,8 @@
 		0564C083037E0848473DDC94 /* I0 */ = {
 			isa = PBXGroup;
 			children = (
+				08D2F2C41FE1F102000B49DF /* WeatherConditions.cpp */,
+				08D2F2C31FE1F102000B49DF /* WeatherConditions.h */,
 				089EB0451FE00425001CDA8F /* MoonCalculator.cpp */,
 				089EB0461FE00425001CDA8F /* MoonCalculator.h */,
 				880CC7F71A4098DC1FA89B87 /* MidiManager.cpp */,
@@ -2139,6 +2144,7 @@
 				F7A839F9196EBBBCA98E0555 /* NoiseManager.cpp in Sources */,
 				D9DBA790271859B923A8AA4A /* ModelManager.cpp in Sources */,
 				1AF15FCF93D2DDD6D4285C8E /* AppManager.cpp in Sources */,
+				08D2F2C51FE1F102000B49DF /* WeatherConditions.cpp in Sources */,
 				082BD09A1FD4A60B0037B7C5 /* ofxVectorField.cpp in Sources */,
 				64E6B07C94DBB067C015EE69 /* CoralSoulApp.cpp in Sources */,
 				58BCEB4034B30CB4A3456FC7 /* SettingsManager.cpp in Sources */,

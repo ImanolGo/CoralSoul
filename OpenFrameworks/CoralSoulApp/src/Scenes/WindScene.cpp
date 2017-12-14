@@ -54,9 +54,10 @@ void WindScene::update()
 void WindScene::updateVectorField()
 {
     auto weatherConditions = AppManager::getInstance().getApiManager().getCurrentWeather();
-    float angleRadiands = degree2radian(weatherConditions.windDirection);
+    float angleRadiands = degree2radian(weatherConditions.m_windDirection);
     float mag = 1.0;
-    float speed = ofMap(weatherConditions.windSpeed, 0, 100, 1.0, 10, true);
+    
+    float speed = ofMap(weatherConditions.getWindSpeedNorm(), 0, 1.0, 1.0, 10, true);
     
     ofVec2f force;
     force.x = mag*sin(angleRadiands);
@@ -93,7 +94,6 @@ void WindScene::drawVectorField()
 void WindScene::willFadeIn() {
     ofLogNotice("WindScene::willFadeIn");
     this->activateParticles();
-
 }
 
 void WindScene::willDraw() {

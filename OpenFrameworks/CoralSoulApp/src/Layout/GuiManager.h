@@ -11,6 +11,7 @@
 #include "Manager.h"
 #include "ofxDatGui.h"
 #include "ApiManager.h"
+#include "WeatherConditions.h"
 
 //========================== class GuiManager ==============================
 //============================================================================
@@ -73,7 +74,7 @@ public:
     
     void onMatrixEvent(ofxDatGuiMatrixEvent e);
     
-    void onWeatherChange(const weather_conditions& value);
+    void onWeatherChange();
     
     void onSceneChange(string& sceneName);
     

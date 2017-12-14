@@ -39,6 +39,7 @@ void LifeScene::setupColorGradient()
     m_gradient.addColor( ofColor::blue );
     m_gradient.addColor( ofColor::cyan);
     m_gradient.addColor( ofColor::yellow);
+    m_gradient.addColor( ofColor::orange);
     m_gradient.addColor( ofColor::red);
 }
 
@@ -87,11 +88,11 @@ void LifeScene::willFadeIn() {
     ofLogNotice("LifeScene::willFadeIn");
     
     ofColor color(100);
-    auto temp = AppManager::getInstance().getApiManager().getCurrentWeather().temp;
+    auto tempNorm = AppManager::getInstance().getApiManager().getCurrentWeather().getTemperatureNorm();
 //    temp = ofMap(temp, 0, 35,5000, 2000,true);
 //    color =  colorTemperatureToRGB(temp);
-    temp = ofMap(temp, 0, 35, 0.0, 1.0,true);
-    color = m_gradient.getColorAtPercent(temp);
+    tempNorm = ofMap(tempNorm, 0.0, 1.0, 0.0, 1.0,true);
+    color = m_gradient.getColorAtPercent(tempNorm);
     AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
     
     color = ofColor(100);

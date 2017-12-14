@@ -96,7 +96,7 @@ void RainScene::updateRipples()
    // auto tex =  AppManager::getInstance().getModelManager().getModel().getTexture();
     
     //m_bounce.setTexture(tex, 1);
-    float precMM = AppManager::getInstance().getApiManager().getCurrentWeather().precipitationValue;
+    float precMM = AppManager::getInstance().getApiManager().getCurrentWeather().m_precipitationValue;
     int skip = (int) ofMap(precMM, 0.0, 10.0, 10, 1, true);
     
     m_bounce.setTexture(*m_texture.get(), 1);
