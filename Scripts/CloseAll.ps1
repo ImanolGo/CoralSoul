@@ -1,4 +1,18 @@
 
+# get RunAll process
+$runall = Get-Process RunAll -ErrorAction SilentlyContinue
+if ($runall) {
+  # try gracefully first
+  $runall.CloseMainWindow()
+  # kill after five seconds
+  Sleep 5
+  if (!$resrunallolume.HasExited) {
+    $runall | Stop-Process -resolume
+  }
+}
+Remove-Variable runall
+
+
 # get Resolume process
 $resolume = Get-Process resolume -ErrorAction SilentlyContinue
 if ($resolume) {
@@ -26,7 +40,7 @@ if ($ableton) {
 Remove-Variable ableton
 
 # get CoralSoulApp process
-$of = Get-Process of -ErrorAction SilentlyContinue
+$of = Get-Process CoralSoulApp -ErrorAction SilentlyContinue
 if ($of) {
   # try gracefully first
   $of.CloseMainWindow()
