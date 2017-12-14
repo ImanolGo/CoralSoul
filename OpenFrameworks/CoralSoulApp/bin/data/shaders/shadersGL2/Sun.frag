@@ -54,7 +54,7 @@ vec3 normal(vec3 p, float d)
 vec3 shadeBg(vec3 nml, vec2 fragCoord)
 {
     vec2 aspect = vec2(iResolution.x/iResolution.y, 1.0);
-    vec2 uv = (2.0 * fragCoord.xy / iResolution.xy - 1.0) * aspect;
+    vec2 uv = (2.0 * fragCoord / iResolution.xy - 1.0) * aspect;
     vec3 bgLight = normalize(vec3(
         sin(sunPosition)*1.2,
         cos(sunPosition)*0.6,

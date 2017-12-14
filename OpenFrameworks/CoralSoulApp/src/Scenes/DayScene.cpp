@@ -31,7 +31,7 @@ void DayScene::setup() {
 void DayScene::setupImage()
 {
     m_texture = AppManager::getInstance().getResourceManager().getTexture("RockTexture");
-    m_noise.load("images/textures/noiseSun.png");
+    m_noise.load("images/textures/noiseSun2.png");
 }
 
 void DayScene::setupFbo()

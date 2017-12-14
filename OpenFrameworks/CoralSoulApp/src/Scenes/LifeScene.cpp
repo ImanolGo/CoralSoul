@@ -95,7 +95,7 @@ void LifeScene::willFadeIn() {
     color = m_gradient.getColorAtPercent(tempNorm);
     AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
     
-    color = ofColor(100);
+    color = ofColor(200);
    
     AppManager::getInstance().getModelManager().setDirLightColorAnimation(color, 0.5);
     

@@ -156,7 +156,7 @@ void main(void)
     //fragColor = vec4(vec3(z_out_atm * diffuse_out),1.0);*/
 
     vec4 colorOut = vec4(vec3(n * diffuse + z_in_atm * diffuse + z_out_atm * diffuse_out),1.0);
-    if(colorOut.r == 0.0 &&  colorOut.g == 0.0 &&  colorOut.b == 0.0){
+    if(colorOut.r < 0.1 ){
         colorOut.a = 0.0;
     }
 

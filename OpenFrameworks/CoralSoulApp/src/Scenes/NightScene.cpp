@@ -176,10 +176,11 @@ void NightScene::drawMoon()
     float w = m_fboMoon.getWidth();
     float h = m_fboMoon.getHeight();
     
-//    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
-//    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
+    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
+    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
     
-    int moonPhaseIndex = AppManager::getInstance().getApiManager().getCurrentWeather().getMoonPhaseInt();
+    //int moonPhaseIndex = AppManager::getInstance().getApiManager().getCurrentWeather().getMoonPhaseInt();
+    //float moonPhase = m_moonPhases[moonPhaseIndex];
     
 //    if(oldPhase!=moonPhase){
 //        oldPhase=moonPhase;
@@ -190,7 +191,7 @@ void NightScene::drawMoon()
         ofClear(0);
         m_moonShader.begin();
         m_moonShader.setUniform3f("iResolution", w, h, 0.0);
-        m_moonShader.setUniform1f("iTime", m_moonPhases[moonPhaseIndex]);
+        m_moonShader.setUniform1f("iTime", moonPhase);
         //m_moonShader.setUniformTexture("iChannel0", m_noiseTexture.getTexture(), 1);
             ofDrawRectangle(0,0, w, h);
         m_moonShader.end();

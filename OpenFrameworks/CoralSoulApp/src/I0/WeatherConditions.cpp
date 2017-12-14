@@ -28,7 +28,7 @@ WeatherConditions::~WeatherConditions()
 
 void WeatherConditions::setupPatameters()
 {
-    m_temp.set("Temperature", 0.0, 0, 35.0);
+    m_temp.set("Temperature", 0.0, 10.0, 30.0);
     m_humidity.set("Humidity", 0.0, 0, 100.0);
     m_windSpeed.set("Wind Speed", 0.0, 0, 100.0);
     m_windDirection.set("Wind Direction", 0.0, 0, 360);
@@ -38,38 +38,38 @@ void WeatherConditions::setupPatameters()
     m_precipitationValue.set("Precipitation", 0.0, 0.0, 50.0);
     m_precipitationMode = "no";
     m_city = "La Caleta";
-    m_swellHeight.set("Swell Height", 0.0, 0.0, 8);
+    m_swellHeight.set("Swell Height", 0.0, 0.0, 4);
     m_swellPeriod.set("Swell Period", 0.0, 0.0, 20);
     
 }
 
 float WeatherConditions::getTemperatureNorm()
 {
-    return ofMap(m_temp, m_temp.getMin(), m_temp.getMax(), 0.0, 1.0);
+    return ofMap(m_temp, m_temp.getMin(), m_temp.getMax(), 0.0, 1.0,true);
 }
 
 float WeatherConditions::getCloudinessNorm()
 {
-    return ofMap(m_clouds, m_clouds.getMin(), m_clouds.getMax(), 0.0, 1.0);
+    return ofMap(m_clouds, m_clouds.getMin(), m_clouds.getMax(), 0.0, 1.0,true);
 }
 float WeatherConditions::getPrecipitationNorm()
 {
-    return ofMap(m_precipitationValue, m_precipitationValue.getMin(), m_precipitationValue.getMax(), 0.0, 1.0);
+    return ofMap(m_precipitationValue, m_precipitationValue.getMin(), m_precipitationValue.getMax(), 0.0, 1.0,true);
 }
 
 float WeatherConditions::getHumidityNorm()
 {
-    return ofMap(m_humidity, m_humidity.getMin(), m_humidity.getMax(), 0.0, 1.0);
+    return ofMap(m_humidity, m_humidity.getMin(), m_humidity.getMax(), 0.0, 1.0,true);
 }
 
 float WeatherConditions::getWindSpeedNorm()
 {
-    return ofMap(m_windSpeed, m_windSpeed.getMin(), m_windSpeed.getMax(), 0.0, 1.0);
+    return ofMap(m_windSpeed, m_windSpeed.getMin(), m_windSpeed.getMax(), 0.0, 1.0,true);
 }
 
 float WeatherConditions::getWindDirectionNorm()
 {
-     return ofMap(m_windDirection, m_windDirection.getMin(), m_windDirection.getMax(), 0.0, 1.0);
+     return ofMap(m_windDirection, m_windDirection.getMin(), m_windDirection.getMax(), 0.0, 1.0,true);
 }
 
 
@@ -84,11 +84,11 @@ float WeatherConditions::getMoonPhaseNorm()
 
 float WeatherConditions::getSwellHeightNorm()
 {
-    return ofMap(m_swellHeight, m_swellHeight.getMin(), m_swellHeight.getMax(), 0.0, 1.0);
+    return ofMap(m_swellHeight, m_swellHeight.getMin(), m_swellHeight.getMax(), 0.0, 1.0,true);
 }
 float WeatherConditions::getSwellPeriodNorm()
 {
-    return ofMap(m_swellPeriod, m_swellPeriod.getMin(), m_swellPeriod.getMax(), 0.0, 1.0);
+    return ofMap(m_swellPeriod, m_swellPeriod.getMin(), m_swellPeriod.getMax(), 0.0, 1.0,true);
 }
 
 bool WeatherConditions::isDayTime()

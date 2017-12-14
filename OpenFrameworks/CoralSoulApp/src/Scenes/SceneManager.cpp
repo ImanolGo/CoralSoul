@@ -220,6 +220,7 @@ void SceneManager::changeScene(string sceneName)
 
 void SceneManager::changeScene(int sceneIndex)
 {
+    
      m_mySceneManager.changeScene(sceneIndex);
      m_sceneTimer.start(false,true);
      m_currentSceneName = this->getSceneName(sceneIndex);
@@ -278,14 +279,19 @@ void SceneManager::sceneTimerCompleteHandler( int &args )
 
 void SceneManager::sendSceneChange()
 {
-    string address = "/CoralSoul/Ableton/Fade";
+    int sceneIndex = this->getIndex(m_currentSceneName);
+    
+    
+    string address = "/CoralSoul/Ableton/Clip";
     
     ofxOscMessage m;
     m.setAddress(address);
-    m.addStringArg(m_currentSceneName);
-    m.addFloatArg(m_transitionTime);
+    m.addIntArg(sceneIndex+1);
     
     AppManager::getInstance().getOscManager().sendMessage(m);
 }
+
+
+
 
 

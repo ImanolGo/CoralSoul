@@ -104,7 +104,7 @@ void MaskManager::beginMask(string& maskName)
         return;
     }
     
-    //ofEnableAlphaBlending();
+    ofEnableAlphaBlending();
     m_masks[maskName]->begin();
     ofClear(0);
 }
@@ -116,7 +116,7 @@ void MaskManager::endMask(string& maskName)
     }
     
     m_masks[maskName]->end();
-    // ofDisableAlphaBlending();
+    ofDisableAlphaBlending();
 }
 
 

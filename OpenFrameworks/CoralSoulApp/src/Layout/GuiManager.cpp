@@ -272,7 +272,7 @@ void GuiManager::setupWeatherGui()
 {
     auto apiManager = &AppManager::getInstance().getApiManager();
     
-    m_weatherTemperature.set("Temp.", 0.0, -20.0, 50.0);
+    m_weatherTemperature.set("Temp.", 20.0, 10, 30.0);
     m_weatherTemperature.addListener(apiManager, &ApiManager::onTemperatureChange);
     //m_parameters.add(m_weatherTemperature);
     
@@ -304,7 +304,7 @@ void GuiManager::setupWeatherGui()
     m_weatherSun.addListener(apiManager, &ApiManager::onSunChange);
     //m_parameters.add(m_weatherSun);
     
-    m_swellHeight.set("Swell Height", 0.0, 0.0, 10);
+    m_swellHeight.set("Swell Height", 0.0, 0.0, 4);
     m_swellHeight.addListener(apiManager, &ApiManager::onSwellHeightChange);
    // m_parameters.add(m_swellHeight);
     
