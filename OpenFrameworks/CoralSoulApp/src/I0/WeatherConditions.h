@@ -57,6 +57,8 @@ public:
     float getSwellHeightNorm();
     float getSwellPeriodNorm();
     
+    int getMoonPhaseInt(){ return m_moonCalculator.getMoonPhaseInt();}
+    
     bool isDayTime();
     
     string getFormatTime(string timeString);

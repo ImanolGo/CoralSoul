@@ -77,6 +77,7 @@ private:
     ofFbo               m_fboStars;
     ofFbo               m_fboMoon;
     float               m_starsSpeed;
+    vector<float>         m_moonPhases;
 
     
     float oldPhase;

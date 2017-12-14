@@ -66,8 +66,17 @@ void OscManager::readSenderInformation()
             
             attributes = xml.getAttributes();
             ofxOscSender  oscSender;
-            oscSender.setup(attributes["ipAddress"], ofToInt(attributes["port"]));
-            m_oscSenders[attributes["name"]] = oscSender ;
+            
+            try
+            {
+                oscSender.setup(attributes["ipAddress"], ofToInt(attributes["port"]));
+                m_oscSenders[attributes["name"]] = oscSender ;
+            }
+            catch ( int e)
+            {
+                ofLogNotice() <<"OscManager::oscSender:setup-> exception " << e ;
+            }
+            
             
             ofLogNotice() <<"OscManager::readSenderInformation->  name = " << attributes["name"]
             <<", ipAddress = "<< attributes["ipAddress"]  << ", port = " << attributes["port"];
@@ -104,7 +113,7 @@ void OscManager::update()
     {
         // get the next message
         ofxOscMessage m;
-        m_oscReceiver.getNextMessage(m);
+        m_oscReceiver.getNextMessage(&m);
         
         if(m.getAddress() == OSC_PARENT_ADDRESS + "/Scene")
         {

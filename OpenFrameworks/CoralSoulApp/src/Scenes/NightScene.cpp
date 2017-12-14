@@ -62,6 +62,9 @@ void NightScene::setupMoonShader()
     
     m_fboMoon.allocate(width, height);
     m_fboMoon.begin(); ofClear(0); m_fboMoon.end();
+    
+    
+    m_moonPhases = {3.15, 1.65, 1.2, 0.75, 6.3,5.4,4.95 ,4.5};
 }
 
 void NightScene::setupStars()
@@ -109,13 +112,14 @@ void NightScene::drawNight()
     
         this->drawStars();
     
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+   // ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     
-        this->drawMoon();
+       // this->drawMoon();
     
      ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
+         this->drawMoon();
         AppManager::getInstance().getResourceManager().getTexture("ForegroundStars")->draw(0,0);
     
      this->drawClouds();
@@ -172,19 +176,21 @@ void NightScene::drawMoon()
     float w = m_fboMoon.getWidth();
     float h = m_fboMoon.getHeight();
     
-    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
-    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
+//    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
+//    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
     
-    if(oldPhase!=moonPhase){
-        oldPhase=moonPhase;
-        ofLogNotice() << "Moon Phase: " << oldPhase;
-    }
+    int moonPhaseIndex = AppManager::getInstance().getApiManager().getCurrentWeather().getMoonPhaseInt();
+    
+//    if(oldPhase!=moonPhase){
+//        oldPhase=moonPhase;
+//        ofLogNotice() << "Moon Phase: " << oldPhase;
+//    }
     
     m_fboMoon.begin();
         ofClear(0);
         m_moonShader.begin();
         m_moonShader.setUniform3f("iResolution", w, h, 0.0);
-        m_moonShader.setUniform1f("iTime", moonPhase);
+        m_moonShader.setUniform1f("iTime", m_moonPhases[moonPhaseIndex]);
         //m_moonShader.setUniformTexture("iChannel0", m_noiseTexture.getTexture(), 1);
             ofDrawRectangle(0,0, w, h);
         m_moonShader.end();

@@ -35,6 +35,8 @@ public:
     
     int     getIp();
     
+   int  getMoonPhaseInt();
+    
 private:
     
     double moon_position(double j, double ls);
