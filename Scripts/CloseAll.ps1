@@ -6,7 +6,7 @@ if ($runall) {
   $runall.CloseMainWindow()
   # kill after five seconds
   Sleep 5
-  if (!$resrunallolume.HasExited) {
+  if (!$runall.HasExited) {
     $runall | Stop-Process -resolume
   }
 }
