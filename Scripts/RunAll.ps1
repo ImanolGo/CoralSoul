@@ -1,35 +1,60 @@
+echo "Run All Script "
+echo "Starting ... "
+
 
 while($true)
 {
     # get Resolume process
-    $resolume = Get-Process resolume -ErrorAction SilentlyContinue
+    $resolume = Get-Process Arena -ErrorAction SilentlyContinue
     if (-Not ($resolume)) {
-        Invoke-Item C:\Users\Public\CoralSoul\Resolume\*.avc
+        echo "Process Arena Not Found"
+        echo "Starting Resolume Arena ..."
+        Invoke-Item C:\Users\user\CoralSoul\Resolume\*.avc
         Start-Sleep -Seconds 5
     }
     Remove-Variable resolume
 
     # get Ableton process
     $ableton = Get-Process ableton -ErrorAction SilentlyContinue
-    if ($ableton) {
-      Invoke-Item C:\Users\Public\CoralSoul\Ableton\*.als
+    if (-Not ($ableton)) {
+      echo "Process Ableton Not Found"
+      echo "Starting Ableton ..."
+      Invoke-Item C:\Users\user\CoralSoul\Ableton\*.als
       Start-Sleep -Seconds 5
     }
     Remove-Variable ableton
 
-     # get CoralSoulApp process
-     $unity = Get-Process CoralSoulUnity.exe -ErrorAction SilentlyContinue
-     if ($unity) {
-       Invoke-Item C:\Users\Public\CoralSoul\Unity\CoralSoulUnity.exe
+     # get CoralSoulInteractive process
+     $interactive = Get-Process CoralSoulInteractive -ErrorAction SilentlyContinue
+     if (-Not ($interactive)) {
+      echo "Process Interactive Not Found ..."
+      echo "Starting Interactive ..."
+       Invoke-Item C:\Users\user\CoralSoul\Unity\CoralSoulInteractive.exe
        Start-Sleep -Seconds 5
      }
-     Remove-Variable unity
+     Remove-Variable interactive
+
+    # get CoralSoulMaster process
+    $master = Get-Process CoralSoulMaster -ErrorAction SilentlyContinue
+    if (-Not ($master)) {
+      echo "Process Unity Not Found ..."
+      echo "Starting Unity"
+      Invoke-Item C:\Users\user\CoralSoul\Master\CoralSoulMaster.exe
+      Start-Sleep -Seconds 5
+    }
+    Remove-Variable master
+  
 
     # get CoralSoulApp process
-    $of = Get-Process CoralSoulApp.exe -ErrorAction SilentlyContinue
-    if ($of) {
-      Invoke-Item C:\Users\Public\CoralSoul\OF\CoralSoulApp.exe
+    $of = Get-Process CoralSoulApp -ErrorAction SilentlyContinue
+    if (-Not ($of)) {
+      echo "Process OF Not Found"
+      echo "Starting OF ..."
+      Invoke-Item C:\Users\user\CoralSoul\OF\CoralSoulApp.exe
       Start-Sleep -Seconds 5
+    }
+    else{
+
     }
     Remove-Variable of
 

@@ -180,6 +180,7 @@ void LayoutManager::updateMask()
     
     AppManager::getInstance().getMaskManager().beginMask(name);
     m_blur.begin();
+       // ofClear(0);
         AppManager::getInstance().getModelManager().getMask().draw(0,0);
     m_blur.end();
     m_blur.draw();

@@ -10,7 +10,7 @@
 
 #include "VectorFieldParticle.h"
 
-VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(10)
+VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(8)
 {
     this->setup();
 }
@@ -29,6 +29,7 @@ void VectorFieldParticle::setup(){
     m_pos.x = ofRandom(0,width);
     m_pos.y = ofRandom(0,height);
     m_prevPos = m_pos;
+    m_color.setHsb(226, 255, 128);
     
     this->setupBrush();
 }
@@ -52,11 +53,13 @@ void VectorFieldParticle::update()
     m_vel+=m_acc;
     m_vel.limit(m_maxSpeed);
     m_prevPos = m_pos;
-    m_pos+= m_vel;
+    m_pos+= (m_vel + ofVec2f(ofRandom(-1,1),ofRandom(-1,1)));
     m_acc = ofVec2f(0);
     
-    float adj = ofMap(m_pos.y, 0, height, 255, 0);
-    m_color = ofColor(40, adj, 255);
+    float adj = ofMap(m_pos.y, 0, height, 1.0, 0);
+    
+    float hue = ofLerp(246,120,adj);
+    m_color.setHueAngle(hue);
     
     if(this->isOffScreen()){
         this->stayOnScreen();
@@ -86,10 +89,10 @@ void VectorFieldParticle::stayOnScreen()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-    if( m_pos.x < 0 ) m_pos.x = width - 2;
-    if( m_pos.x > width) m_pos.x = 2;
-    if( m_pos.y < 0 ) m_pos.y = height - 2;
-    if( m_pos.y > height ) m_pos.y = 2;
+    if( m_pos.x < 0 ) m_pos.x = width - 10;
+    if( m_pos.x > width) m_pos.x = 10;
+    if( m_pos.y < 0 ) m_pos.y = height - 10;
+    if( m_pos.y > height ) m_pos.y = 10;
 }
 
 bool VectorFieldParticle::isOffScreen(){

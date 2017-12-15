@@ -12,7 +12,7 @@
 
 const int NightScene::NUM_CLOUDS = 4;
 
-NightScene::NightScene(): ofxScene("NIGHT"), m_starsSpeed(0.05), oldPhase(0)
+NightScene::NightScene(): ofxScene("NIGHT"), m_starsSpeed(0.01), oldPhase(0)
 {
     //Intentionally left empty
 }
@@ -57,14 +57,19 @@ void NightScene::setupMoonShader()
     
     ofEnableArbTex();
     
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth()*0.3;
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight()*0.3;
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth()*0.15;
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight()*0.15;
     
     m_fboMoon.allocate(width, height);
     m_fboMoon.begin(); ofClear(0); m_fboMoon.end();
     
     
     m_moonPhases = {3.15, 1.65, 1.2, 0.75, 6.3,5.4,4.95 ,4.5};
+    
+    m_moonBlur.setup(width, height);
+    m_moonBlur.setScale(0.2);
+    //m_post.init(width, height);
+    //m_post.createPass<BloomPass>()->setEnabled(true);
 }
 
 void NightScene::setupStars()
@@ -157,7 +162,7 @@ void NightScene::drawClouds()
     float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().getCloudinessNorm();
     
     float speed = AppManager::getInstance().getApiManager().getCurrentWeather().getWindSpeedNorm();
-    speed  = ofMap(speed,0.0,1.0,0.005,0.4,true);
+    speed  = ofMap(speed,0.0,1.0,0.005,0.15,true);
     
     
     m_cloudsShader.begin();
@@ -189,12 +194,15 @@ void NightScene::drawMoon()
     
     m_fboMoon.begin();
         ofClear(0);
+        //m_post.begin();
         m_moonShader.begin();
         m_moonShader.setUniform3f("iResolution", w, h, 0.0);
         m_moonShader.setUniform1f("iTime", moonPhase);
         //m_moonShader.setUniformTexture("iChannel0", m_noiseTexture.getTexture(), 1);
             ofDrawRectangle(0,0, w, h);
         m_moonShader.end();
+        //m_post.end();
+        //m_moonBlur.draw();
      m_fboMoon.end();
     
     m_fboMoon.draw(width - w - width*0.2,height*0.15);

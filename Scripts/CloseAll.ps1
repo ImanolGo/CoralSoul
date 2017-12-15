@@ -1,20 +1,7 @@
 
-# get RunAll process
-$runall = Get-Process RunAll -ErrorAction SilentlyContinue
-if ($runall) {
-  # try gracefully first
-  $runall.CloseMainWindow()
-  # kill after five seconds
-  Sleep 5
-  if (!$runall.HasExited) {
-    $runall | Stop-Process -resolume
-  }
-}
-Remove-Variable runall
-
 
 # get Resolume process
-$resolume = Get-Process resolume -ErrorAction SilentlyContinue
+$resolume = Get-Process Arena -ErrorAction SilentlyContinue
 if ($resolume) {
   # try gracefully first
   $resolume.CloseMainWindow()
@@ -38,6 +25,33 @@ if ($ableton) {
   }
 }
 Remove-Variable ableton
+
+# get CoralSoulInteractive process
+$unity = Get-Process CoralSoulInteractive -ErrorAction SilentlyContinue
+if ($unity) {
+  # try gracefully first
+  $unity.CloseMainWindow()
+  # kill after five seconds
+  Sleep 5
+  if (!$unity.HasExited) {
+    $unity | Stop-Process -Force
+  }
+}
+Remove-Variable unity
+
+# get CoralSoulInteractive process
+$master = Get-Process CoralSoulMaster-ErrorAction SilentlyContinue
+if ($master) {
+  # try gracefully first
+  $master.CloseMainWindow()
+  # kill after five seconds
+  Sleep 5
+  if (!$master.HasExited) {
+    $master | Stop-Process -Force
+  }
+}
+Remove-Variable master
+
 
 # get CoralSoulApp process
 $of = Get-Process CoralSoulApp -ErrorAction SilentlyContinue

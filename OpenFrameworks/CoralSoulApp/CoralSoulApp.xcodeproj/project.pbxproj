@@ -1662,11 +1662,11 @@
 			children = (
 				231CBABD013CA50504B82828 /* NoiseManager.h */,
 				670CE8E5FACF3883E2F120DE /* FluidVisual.h */,
-				FBE3042DA0BE4BDA0A9D6384 /* VectorFieldParticle.cpp */,
-				41464A4354EB3FA247C475DD /* FluidVisual.cpp */,
 				90674964F311EA9EE1680EC6 /* NoiseManager.cpp */,
 				4B724B857051E38B02E1510E /* VectorFieldVisual.cpp */,
 				4D0E40B614F417455C983632 /* VectorFieldVisual.h */,
+				41464A4354EB3FA247C475DD /* FluidVisual.cpp */,
+				FBE3042DA0BE4BDA0A9D6384 /* VectorFieldParticle.cpp */,
 				5AE3E0BCBF85746BDE7E127E /* VectorFieldParticle.h */,
 				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 				957C36416A9426CD5147BDBE /* ModelManager.cpp */,
@@ -1685,7 +1685,6 @@
 		C9A8C2EA34B35E4BED69D33C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				B0732063E8459F09F43223D3 /* WindScene.cpp */,
 				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
 				8C488F38001D542DA27140DF /* scenes.h */,
@@ -1698,6 +1697,7 @@
 				39A5AE70FF83EB8D2DBA156A /* LifeScene.cpp */,
 				F79FD8ACD200E65C2E5AF42D /* ImageScene.h */,
 				014182AE53FF882FCEC0FDC4 /* DayScene.h */,
+				B0732063E8459F09F43223D3 /* WindScene.cpp */,
 				DF4B442B4124DBED0AE9B8F8 /* WindScene.h */,
 				15AE7B79BBACBC510C450229 /* VideoScene.h */,
 				1A14124BF720E4CA8987CC24 /* SceneManager.cpp */,
