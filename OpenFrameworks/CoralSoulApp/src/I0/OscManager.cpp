@@ -125,7 +125,7 @@ void OscManager::update()
         ofLogNotice() <<"OscManager::received -> " << this->getMessageAsString(m);
     }
 
-	this->sendOscWeather();
+	this->sendOscAll();
     
 }
 
@@ -192,81 +192,111 @@ string OscManager::getMessageAsString(const ofxOscMessage& m) const
     return msg_string;
 }
 
-
-void OscManager::sendOscWeather()
+void OscManager::sendOscAll()
 {
-    auto weather = AppManager::getInstance().getApiManager().getCurrentWeather();
-    
-    string message = "Weather/Temperature";
-    this->sendStringMessage(weather.getTemperature(), message);
-    
-    message = "Weather/TemperatureNorm";
-    this->sendFloatMessage(weather.getTemperatureNorm(), message);
-     
-    message = "Weather/Humidity";
-    this->sendStringMessage(weather.getHumidity(), message);
-    
-    message = "Weather/HumidityNorm";
-    this->sendFloatMessage(weather.getHumidityNorm(), message);
-    
-    message = "Weather/WindSpeed";
-    this->sendStringMessage(weather.getWindSpeed(), message);
-    
-    message = "Weather/WindSpeedNorm";
-    this->sendFloatMessage(weather.getWindSpeedNorm(), message);
-    
-    message = "Weather/WindDirection";
-    this->sendStringMessage(weather.getWindDirection(), message);
-    
-    message = "Weather/WindDirectionNorm";
-    this->sendFloatMessage(weather.getWindDirectionNorm(), message);
-    
-    message = "Weather/Cloudiness";
-    this->sendStringMessage(weather.getCloudiness(), message);
-    
-    message = "Weather/CloudinessNorm";
-    this->sendFloatMessage(weather.getCloudinessNorm(), message);
-    
-    message = "Weather/Precipitation";
-    this->sendStringMessage(weather.getPrecipitation(), message);
-    
-    message = "Weather/PrecipitationNorm";
-    this->sendFloatMessage(weather.getPrecipitationNorm(), message);
-    
-    message = "Weather/SwellHeight";
-    this->sendStringMessage(weather.getSwellHeight(), message);
-    
-    message = "Weather/SwellHeightNorm";
-    this->sendFloatMessage(weather.getSwellHeightNorm(), message);
-    
-    message = "Weather/SwellPeriod";
-    this->sendStringMessage(weather.getSwellPeriod(), message);
-    
-    message = "Weather/SwellPeriodNorm";
-    this->sendFloatMessage(weather.getSwellPeriodNorm(), message);
-    
-    message = "Weather/MoonPhase";
-    this->sendStringMessage(weather.getMoonPhase(), message);
-    
-    message = "Weather/MoonPhaseNorm";
-    this->sendFloatMessage(weather.getMoonPhaseNorm(), message);
-    
-    message = "Weather/SunPosition";
-    this->sendStringMessage(weather.getSunPosition(), message);
-    
-    message = "Weather/SunPositionNorm";
-    this->sendFloatMessage(weather.getSunPositionNorm(), message);
-    
-    message = "Weather/Sunrise";
-    this->sendStringMessage(weather.getSunrise(), message);
-    
-    message = "Weather/Sunset";
-    this->sendStringMessage(weather.getSunset(), message);
+	this->sendOscLive();
+	this->sendOscIpad();
+	this->sendOscResolume();
 }
 
+void OscManager::sendOscLive()
+{
+	auto weather = AppManager::getInstance().getApiManager().getCurrentWeather();
+
+	string message = "Weather/TemperatureNorm";
+	this->sendFloatMessage(weather.getTemperatureNorm(), message);
+
+	message = "Weather/HumidityNorm";
+	this->sendFloatMessage(weather.getHumidityNorm(), message);
+
+	message = "Weather/WindSpeedNorm";
+	this->sendFloatMessage(weather.getWindSpeedNorm(), message);
+
+	message = "Weather/WindDirectionNorm";
+	this->sendFloatMessage(weather.getWindDirectionNorm(), message);
+
+	message = "Weather/CloudinessNorm";
+	this->sendFloatMessage(weather.getCloudinessNorm(), message);
+
+	message = "Weather/PrecipitationNorm";
+	this->sendFloatMessage(weather.getPrecipitationNorm(), message);
+
+	message = "Weather/SwellHeightNorm";
+	this->sendFloatMessage(weather.getSwellHeightNorm(), message);
+
+	message = "Weather/SwellPeriodNorm";
+	this->sendFloatMessage(weather.getSwellPeriodNorm(), message);
+
+	message = "Weather/MoonPhaseNorm";
+	this->sendFloatMessage(weather.getMoonPhaseNorm(), message);
+
+	message = "Weather/SunPositionNorm";
+	this->sendFloatMessage(weather.getSunPositionNorm(), message);
+
+}
+
+void OscManager::sendOscResolume()
+{
+	auto fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellHeightNorm();
+	fValue = ofMap(fValue, 0.0, 1.0, 0.02, 0.18, true);
+	string address = "/layer3/video/effect3/param4/values";
+
+	ofxOscMessage m;
+	m.setAddress(address);
+	m.addFloatArg(fValue);
+	AppManager::getInstance().getOscManager().sendMessage(m);
 
 
+	fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellPeriodNorm();
+	fValue = ofMap(fValue, 0.0, 1.0, 0.00, 0.5, true);
+	address = "/layer3/video/effect3/param5/values";
+	m.setAddress(address);
+	m.addFloatArg(fValue);
+	AppManager::getInstance().getOscManager().sendMessage(m);
 
+
+}
+
+void OscManager::sendOscIpad()
+{
+	auto weather = AppManager::getInstance().getApiManager().getCurrentWeather();
+
+	string message = "Weather/Temperature";
+	this->sendStringMessage(weather.getTemperature(), message);
+
+	message = "Weather/Humidity";
+	this->sendStringMessage(weather.getHumidity(), message);
+
+	message = "Weather/WindSpeed";
+	this->sendStringMessage(weather.getWindSpeed(), message);
+
+	message = "Weather/WindDirection";
+	this->sendStringMessage(weather.getWindDirection(), message);
+
+	message = "Weather/Cloudiness";
+	this->sendStringMessage(weather.getCloudiness(), message);
+
+	message = "Weather/Precipitation";
+	this->sendStringMessage(weather.getPrecipitation(), message);
+
+	message = "Weather/SwellHeight";
+	this->sendStringMessage(weather.getSwellHeight(), message);
+
+	message = "Weather/SwellPeriod";
+	this->sendStringMessage(weather.getSwellPeriod(), message);
+
+	message = "Weather/MoonPhase";
+	this->sendStringMessage(weather.getMoonPhase(), message);
+
+	message = "Weather/SunPosition";
+	this->sendStringMessage(weather.getSunPosition(), message);
+
+	message = "Weather/Sunrise";
+	this->sendStringMessage(weather.getSunrise(), message);
+
+	message = "Weather/Sunset";
+	this->sendStringMessage(weather.getSunset(), message);
+}
 
 
 

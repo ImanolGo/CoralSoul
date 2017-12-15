@@ -54,7 +54,13 @@ public:
      // Send aritrary osc message
     void sendMessage(ofxOscMessage& message);
     
-    void sendOscWeather();
+	void sendOscAll();
+
+    void sendOscLive();
+
+	void sendOscResolume();
+
+	void sendOscIpad();
     
 private:
     

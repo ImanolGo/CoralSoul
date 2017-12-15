@@ -174,7 +174,7 @@ void ApiManager::urlResponse(ofHttpResponse & response)
             m_weatherTimer.start(false);
             this->parseWeather(response.data);
             AppManager::getInstance().getGuiManager().onWeatherChange();
-            AppManager::getInstance().getOscManager ().sendOscWeather();
+            AppManager::getInstance().getOscManager ().sendOscAll();
         }
         
 //        else if(response.request.name == "nasa")
@@ -193,7 +193,7 @@ void ApiManager::urlResponse(ofHttpResponse & response)
             m_surfTimer.start(false);
             this->parsesurf(response.data);
             AppManager::getInstance().getGuiManager().onWeatherChange();
-            AppManager::getInstance().getOscManager().sendOscWeather();
+            AppManager::getInstance().getOscManager().sendOscAll();
         }
     }
 }
