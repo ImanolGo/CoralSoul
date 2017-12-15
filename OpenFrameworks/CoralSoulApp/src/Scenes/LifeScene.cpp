@@ -40,6 +40,8 @@ void LifeScene::setupColorGradient()
     m_gradient.addColor( ofColor::cyan);
     m_gradient.addColor( ofColor::yellow);
     m_gradient.addColor( ofColor::orange);
+    m_gradient.addColor( ofColor::orange);
+    m_gradient.addColor( ofColor::red);
     m_gradient.addColor( ofColor::red);
 }
 
@@ -55,6 +57,12 @@ void LifeScene::setupFbo()
 void LifeScene::update()
 {
     this->updateFbo();
+    this->updateBreathing();
+    
+//    auto tempNorm = AppManager::getInstance().getApiManager().getCurrentWeather().getTemperatureNorm();
+//    tempNorm = ofMap(tempNorm, 0.0, 1.0, 0.0, 1.0,true);
+//    ofColor color = m_gradient.getColorAtPercent(tempNorm);
+//    AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
 }
 
 void LifeScene::updateFbo()
@@ -63,6 +71,26 @@ void LifeScene::updateFbo()
         ofClear(0);
         this->drawImage();
     m_fbo.end();
+}
+
+void LifeScene::updateBreathing()
+{
+    float value = ofMap(2.2*cos(ofGetElapsedTimef()*1.1f), -1, 1, -200, 200, true);
+    AppManager::getInstance().getModelManager().setSpotLightZ(value);
+    
+    value =  ofMap(value, -200, 200, 0.0, 1.0, true);
+    this->sendOscBreath(value);
+}
+
+void LifeScene::sendOscBreath(float value)
+{
+    string address = "/activeclip/video/effect5/value";
+    
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addFloatArg(value);
+    
+    AppManager::getInstance().getOscManager().sendMessage(m);
 }
 
 void LifeScene::draw()

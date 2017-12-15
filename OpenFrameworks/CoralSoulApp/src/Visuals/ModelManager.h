@@ -90,6 +90,8 @@ public:
 	void setSpotLightColorAnimation(ofColor& color, float duration);
     
     void setDirLightFadeAnimation(float fadeAmount, float duration);
+    
+    void setSpotLightZ(float posz);
 
 private:
 

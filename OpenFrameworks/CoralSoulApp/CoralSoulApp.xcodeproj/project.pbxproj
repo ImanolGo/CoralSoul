@@ -1668,8 +1668,8 @@
 				41464A4354EB3FA247C475DD /* FluidVisual.cpp */,
 				FBE3042DA0BE4BDA0A9D6384 /* VectorFieldParticle.cpp */,
 				5AE3E0BCBF85746BDE7E127E /* VectorFieldParticle.h */,
-				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 				957C36416A9426CD5147BDBE /* ModelManager.cpp */,
+				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 			);
 			name = Visuals;
 			sourceTree = "<group>";
@@ -1694,7 +1694,6 @@
 				3C4EA15C90BCFE1FFC1245B1 /* BlankScene.cpp */,
 				827F1D673C83C016E9C09CB3 /* DayScene.cpp */,
 				1D40AB48F6F739773BAB451A /* RainScene.cpp */,
-				39A5AE70FF83EB8D2DBA156A /* LifeScene.cpp */,
 				F79FD8ACD200E65C2E5AF42D /* ImageScene.h */,
 				014182AE53FF882FCEC0FDC4 /* DayScene.h */,
 				B0732063E8459F09F43223D3 /* WindScene.cpp */,
@@ -1706,6 +1705,7 @@
 				94B476E65081D2D5CE6D1228 /* BlankScene.h */,
 				2B9F1B8564F083FFCE4C466E /* FlowScene.cpp */,
 				F7ED767C98FF0789AC6DD474 /* SeaScene.h */,
+				39A5AE70FF83EB8D2DBA156A /* LifeScene.cpp */,
 				AB9511ADBFDF707D1CB9713C /* LifeScene.h */,
 				45E107EB0595AB8933B08023 /* CalibrationScene.h */,
 				57B5C05C9EE64383D475CD3C /* UniverseScene.cpp */,
