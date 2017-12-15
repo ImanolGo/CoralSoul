@@ -52,12 +52,6 @@ public:
     
     void showGui(bool show){m_showGui=show;}
     
-    void onSetVideoMode(bool& value);
-    
-    void onSetNoiseMode(bool& value);
-    
-    void onSetAudioMode(bool& value);
-    
     int getWidth() {return m_gui.getWidth();}
     
     int getHeight() {return m_gui.getHeight();}

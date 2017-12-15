@@ -28,18 +28,18 @@ WeatherConditions::~WeatherConditions()
 
 void WeatherConditions::setupPatameters()
 {
-    m_temp.set("Temperature", 0.0, 10.0, 30.0);
-    m_humidity.set("Humidity", 0.0, 0, 100.0);
-    m_windSpeed.set("Wind Speed", 0.0, 0, 100.0);
-    m_windDirection.set("Wind Direction", 0.0, 0, 360);
+    m_temp.set("Temperature", 20.0, 10.0, 30.0);
+    m_humidity.set("Humidity", 30.0, 0, 100.0);
+    m_windSpeed.set("Wind Speed", 10.0, 0, 100.0);
+    m_windDirection.set("Wind Direction", 10.0, 0, 360);
     m_sunPosition.set("Sun Position", 0.0, 0.0, 1.0);
     m_moonPhase.set("Moon Phase", 0.0, 0.0, 1.0);
     m_clouds.set("Clouds", 0.0, 0.0, 100.0);
     m_precipitationValue.set("Precipitation", 0.0, 0.0, 20.0);
     m_precipitationMode = "no";
     m_city = "La Caleta";
-    m_swellHeight.set("Swell Height", 0.0, 0.0, 4);
-    m_swellPeriod.set("Swell Period", 0.0, 0.0, 20);
+    m_swellHeight.set("Swell Height", 1.0, 0.0, 4);
+    m_swellPeriod.set("Swell Period", 15.0, 0.0, 20);
     
 }
 

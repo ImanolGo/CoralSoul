@@ -51,6 +51,7 @@ void GuiManager::setup()
     this->setupNoiseGui();
     this->setupGuiEvents();
     this->loadGuiValues();
+	this->onWeatherChange();
     
     ofLogNotice() <<"GuiManager::initialized";
     
