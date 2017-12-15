@@ -70,7 +70,7 @@ void AppManager::setupManagers()
     m_visualEffectsManager.setup();
     m_maskManager.setup();
     m_layoutManager.setup();
-    m_apiManager.setup();
+    //m_apiManager.setup();
     m_keyboardManager.setup();
     //m_noiseManager.setup();
     m_sceneManager.setup();
@@ -87,7 +87,7 @@ void AppManager::update()
     
     m_visualEffectsManager.update();
     m_viewManager.update();
-    m_apiManager.update();
+  //  m_apiManager.update();
     m_modelManager.update();
     //m_noiseManager.update();
     m_sceneManager.update();
