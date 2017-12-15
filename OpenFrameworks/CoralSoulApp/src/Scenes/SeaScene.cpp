@@ -68,12 +68,15 @@ void SeaScene::draw()
     
     // m_post.begin();
     
+	ofPushStyle();
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     
     auto tex = AppManager::getInstance().getResourceManager().getTexture("SEA");
+	ofSetColor(128);
     tex->draw(0,0,width, height);
     //AppManager::getInstance().getModelManager().drawWireframe(*tex.get());
+	ofPopStyle();
     
     //m_post.end();
 }
@@ -119,7 +122,7 @@ void SeaScene::willExit()
 
 void SeaScene::activateWaves()
 {
-    string address = "/activeclip/video/effect3/bypassed";
+    string address = "/layer3/video/effect3/bypassed";
     int value = 0;
     
     ofxOscMessage m;
@@ -128,10 +131,10 @@ void SeaScene::activateWaves()
     
     AppManager::getInstance().getOscManager().sendMessage(m);
     
-    address = "/activeclip/video/effect3/param4/values";
+    address = "/layer3/video/effect3/param4/values";
     
     auto fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellHeightNorm();
-    //float fValue = ofMap(weatherCond.m_swellHeight, 0.0, 10.0, 0.0, 1.0, true);
+    fValue = ofMap(fValue, 0.0, 10.0, 0.02, 0.18, true);
     
     m.setAddress(address);
     m.addFloatArg(fValue);
@@ -140,7 +143,7 @@ void SeaScene::activateWaves()
     
     fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellPeriodNorm();
     
-	address = "/activeclip/video/effect3/param5/values";
+	address = "/layer3/video/effect3/param5/values";
     m.setAddress(address);
     m.addFloatArg(fValue);
     AppManager::getInstance().getOscManager().sendMessage(m);
@@ -149,12 +152,12 @@ void SeaScene::activateWaves()
 
 void SeaScene::deactivateWaves()
 {
-    string address = "/activeclip/video/effect3/bypassed";
+    string address = "/layer3/video/effect3/bypassed";
     int value = 1;
     
     ofxOscMessage m;
     m.setAddress(address);
-    m.addFloatArg(value);
+    m.addIntArg(value);
     
     AppManager::getInstance().getOscManager().sendMessage(m);
 }

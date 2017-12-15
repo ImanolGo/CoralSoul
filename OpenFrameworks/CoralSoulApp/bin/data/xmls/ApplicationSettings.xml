@@ -28,12 +28,14 @@
     <texture name="Equalizer" path="images/general/equalizer.png"/>
     <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
     <texture name="RAIN" path="images/general/waterTexture1.jpg"/>
+    <texture name="RAIN_NIGHT" path="images/general/waterTexture1.jpg"/>
+    <texture name="RAIN_DAY" path="images/general/waterTexture.jpg"/>
     <texture name="SEA" path="images/general/waterTexture.jpg"/>
     <texture name="RockTexture" path="images/general/RockTexture.png"/>
     <texture name="Apod" path="images/apod/apod.jpg"/>
     <texture name="Coral" path="images/model/coralTexture3.jpg"/>
     <texture name="Layout" path="images/model/LAYOUT_2017_11_23.jpg"/>
-    <texture name="StarryNight" path="images/environment/2048px-Night-sky-milky-way-galaxy-astrophotography_-_West_Virginia_-_ForestWander.jpg"/>
+    <texture name="StarryNight" path="images/environment/6a0105371bb32c970b017616eeb1d7970c.png"/>
     <texture name="ForegroundStars" path="images/environment/ForegroundStars.png"/>
     <texture name="Brush" path="images/general/brush2.png"/>  
     <texture name="NoiseMoon" path="images/textures/noiseMoon.png"/>  

@@ -121,12 +121,19 @@ void GuiManager::setupPreviewGui()
 void GuiManager::setupLayoutGui()
 {
     auto layoutManager = &AppManager::getInstance().getLayoutManager();
+    auto sceneManager = &AppManager::getInstance().getSceneManager();
     
     m_layourBlurScale.set("Blur", 1.0, 0.0, 2.0);
     m_layourBlurScale.addListener(layoutManager, &LayoutManager::onBlurScaleChange);
     m_parameters.add(m_layourBlurScale);
     
-    ofxDatGuiFolder* folder = m_gui.addFolder("LAYOUT", ofColor::purple);
+    m_sceneDuration.set("Scene", 2.0, 0.0, 10.0);
+    m_sceneDuration.addListener(sceneManager, &SceneManager::onChangeSceneDuration);
+    m_parameters.add(m_sceneDuration);
+    
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
+    folder->addSlider(m_sceneDuration);
     folder->addSlider(m_layourBlurScale);
     folder->addToggle("Mask", true);
     //folder->expand();
@@ -274,43 +281,43 @@ void GuiManager::setupWeatherGui()
     
     m_weatherTemperature.set("Temp.", 20.0, 10, 30.0);
     m_weatherTemperature.addListener(apiManager, &ApiManager::onTemperatureChange);
-    //m_parameters.add(m_weatherTemperature);
+    m_parameters.add(m_weatherTemperature);
     
     m_weatherHumidity.set("Humidity", 0.0, 0.0, 100.0);
     m_weatherHumidity.addListener(apiManager, &ApiManager::onHumidityChange);
-    //m_parameters.add(m_weatherHumidity);
+    m_parameters.add(m_weatherHumidity);
     
     m_weatherWindSpeed.set("Wind Speed", 0.0, 0.0, 100.0);
     m_weatherWindSpeed.addListener(apiManager, &ApiManager::onWindSpeedChange);
-    //m_parameters.add(m_weatherWindSpeed);
+    m_parameters.add(m_weatherWindSpeed);
     
     m_weatherWindDirection.set("Wind Dir", 0.0, 0.0, 360.0);
     m_weatherWindDirection.addListener(apiManager, &ApiManager::onWindDirChange);
-    //m_parameters.add(m_weatherWindDirection);
+    m_parameters.add(m_weatherWindDirection);
     
-    m_weatherPrecipitation.set("Prec.", 0.0, 0.0, 50.0);
+    m_weatherPrecipitation.set("Prec.", 0.0, 0.0, 20.0);
     m_weatherPrecipitation.addListener(apiManager, &ApiManager::onPrecipitationChange);
-   // m_parameters.add(m_weatherPrecipitation);
+    m_parameters.add(m_weatherPrecipitation);
     
     m_weatherClouds.set("Clouds", 0.0, 0.0, 100);
     m_weatherClouds.addListener(apiManager, &ApiManager::onCloudsChange);
-  //  m_parameters.add(m_weatherClouds);
+    m_parameters.add(m_weatherClouds);
     
     m_weatherMoon.set("Moon Phase", 0.0, 0.0, 1.0);
     m_weatherMoon.addListener(apiManager, &ApiManager::onMoonChange);
-    //m_parameters.add(m_weatherMoon);
+    m_parameters.add(m_weatherMoon);
     
     m_weatherSun.set("Sun Position", 0.0, 0.0, 1.0);
     m_weatherSun.addListener(apiManager, &ApiManager::onSunChange);
-    //m_parameters.add(m_weatherSun);
+    m_parameters.add(m_weatherSun);
     
     m_swellHeight.set("Swell Height", 0.0, 0.0, 4);
     m_swellHeight.addListener(apiManager, &ApiManager::onSwellHeightChange);
-   // m_parameters.add(m_swellHeight);
+    m_parameters.add(m_swellHeight);
     
     m_swellPeriod.set("Swell Period", 0.0, 0.0, 20);
     m_swellPeriod.addListener(apiManager, &ApiManager::onSwellPeriodChange);
-    //m_parameters.add(m_swellPeriod);
+    m_parameters.add(m_swellPeriod);
     
     
     ofxDatGuiFolder* folder = m_gui.addFolder("WEATHER", ofColor::blue);

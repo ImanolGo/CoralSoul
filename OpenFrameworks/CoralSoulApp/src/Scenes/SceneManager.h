@@ -66,6 +66,8 @@ public:
     
     void sceneTimerCompleteHandler( int &args ) ;
     
+    void onChangeSceneDuration(float& value);
+    
 private:
     
     //! Create the scenes

@@ -10,7 +10,8 @@
 
 #include "ofxScene.h"
 #include "ImageVisual.h"
-
+#include "ofxBlur.h"
+#include "ofxPostProcessing.h"
 
 class NightScene : public ofxScene {
     
@@ -71,6 +72,8 @@ private:
     
     ofColor         m_color;
     ofShader        m_cloudsShader;
+    ofxBlur         m_moonBlur;
+    ofxPostProcessing   m_post;
     
     ofShader        m_moonShader;
     

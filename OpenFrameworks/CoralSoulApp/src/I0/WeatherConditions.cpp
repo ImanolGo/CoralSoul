@@ -35,7 +35,7 @@ void WeatherConditions::setupPatameters()
     m_sunPosition.set("Sun Position", 0.0, 0.0, 1.0);
     m_moonPhase.set("Moon Phase", 0.0, 0.0, 1.0);
     m_clouds.set("Clouds", 0.0, 0.0, 100.0);
-    m_precipitationValue.set("Precipitation", 0.0, 0.0, 50.0);
+    m_precipitationValue.set("Precipitation", 0.0, 0.0, 20.0);
     m_precipitationMode = "no";
     m_city = "La Caleta";
     m_swellHeight.set("Swell Height", 0.0, 0.0, 4);

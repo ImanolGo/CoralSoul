@@ -13,7 +13,7 @@
 const int VectorFieldVisual::NUM_PARTICLES = 1000;
 
 
-VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(3)
+VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(10)
 {
     //Intentionaly left empty
 }
@@ -103,7 +103,7 @@ void VectorFieldVisual::updateParticles()
 
 void VectorFieldVisual::updateFbo()
 {
-    float decrease = 3.0;
+    float decrease = 4.0;
     float framesToDie = 255.0/decrease;
     float dt = ofGetLastFrameTime();
     int numSkipFrames = m_fadeTime/(framesToDie*dt);

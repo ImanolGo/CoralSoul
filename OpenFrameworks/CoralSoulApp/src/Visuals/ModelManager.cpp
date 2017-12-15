@@ -212,13 +212,13 @@ void ModelManager::updateLight()
     //pos.z+=100;
     //ofPoint pos(ofGetMouseX(), -ofGetMouseY(), 500);
     
-    m_spotLight.setPosition(cos(ofGetElapsedTimef()*.6f) * 10 * 0 + pos.x,
-                           sin(ofGetElapsedTimef()*.8f) * 10 * 0 + pos.y,
-                           -cos(ofGetElapsedTimef()*3.8f) * 200 + pos.z + 700);
+//    m_spotLight.setPosition(cos(ofGetElapsedTimef()*.6f) * 10 * 0 + pos.x,
+//                           sin(ofGetElapsedTimef()*.8f) * 10 * 0 + pos.y,
+//                           -cos(ofGetElapsedTimef()*3.8f) * 200 + pos.z + 700);
     
     //m_spotLightVisual->setPosition(pos);
    // auto pos = m_spotLightVisual->getPosition();
-    pos.z += (50 + 10*cos(ofGetElapsedTimef()));
+    //pos.z += (50 + 10*cos(ofGetElapsedTimef()));
     //m_spotLight.lookAt(pos);
     //m_spotLight.setPosition(m_spotLightVisual->getPosition());
     //m_spotLight.setPosition(pos);
@@ -229,6 +229,15 @@ void ModelManager::updateLight()
     
 }
 
+
+void ModelManager::setSpotLightZ(float posz)
+{
+    auto pos = m_model.getPosition();
+    pos.x = 0;
+    pos.y = 0;
+    pos.z += (700  + posz);
+    m_spotLight.setPosition(pos);
+}
 void ModelManager::updateModel()
 {
     m_model.update();

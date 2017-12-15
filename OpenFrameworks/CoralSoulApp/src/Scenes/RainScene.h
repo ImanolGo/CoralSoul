@@ -60,9 +60,12 @@ private:
     
     void drawRipples();
     
+    ofPtr<ofTexture> getCurrentTexture();
+    
+    
 private:
     
-    ofPtr<ofTexture> m_texture;
+    ofPtr<ofTexture>    m_texture;
     
     ofxRipples  m_ripples;
     ofxBounce   m_bounce;

@@ -122,13 +122,18 @@ void SceneManager::setupTimer()
     auto time = AppManager::getInstance().getSettingsManager().getSceneTimer();
     
     m_sceneTimer.setup( time*1000 );
-    
     m_sceneTimer.start( false ) ;
     ofAddListener( m_sceneTimer.TIMER_COMPLETE , this, &SceneManager::sceneTimerCompleteHandler ) ;
     
     ofLogNotice() <<"SceneManager::setupTimer << Time = : " << time << "s";
 }
 
+void SceneManager::onChangeSceneDuration(float& value)
+{
+    m_sceneTimer.setup( value*1000*60 );
+    m_sceneTimer.start( false ) ;
+    ofLogNotice() <<"SceneManager::setupTimer << Time = : " << time << "s";
+}
 
 void SceneManager::initializeSceneList()
 {
@@ -280,8 +285,7 @@ void SceneManager::sceneTimerCompleteHandler( int &args )
 void SceneManager::sendSceneChange()
 {
     int sceneIndex = this->getIndex(m_currentSceneName);
-    
-    
+       
     string address = "/CoralSoul/Ableton/Clip";
     
     ofxOscMessage m;
@@ -289,6 +293,16 @@ void SceneManager::sendSceneChange()
     m.addIntArg(sceneIndex+1);
     
     AppManager::getInstance().getOscManager().sendMessage(m);
+
+
+	address = "/layer1/clip3" + ofToString(sceneIndex) + "/connect";
+	m.setAddress(address);
+	m.addIntArg(1);
+
+	AppManager::getInstance().getOscManager().sendMessage(m);
+
+
+
 }
 
 

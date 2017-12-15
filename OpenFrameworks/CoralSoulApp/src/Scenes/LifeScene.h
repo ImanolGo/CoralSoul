@@ -51,9 +51,17 @@ private:
     
     void updateFbo();
     
+    void updateBreathing();
+    
+    void sendOscBreath(float value);
+    
     void drawImage();
     
     ofColor colorTemperatureToRGB(float kelvin);
+
+	void activateEffect();
+
+	void deactivateEffect();
     
 private:
     

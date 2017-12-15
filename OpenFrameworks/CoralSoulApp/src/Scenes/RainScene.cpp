@@ -49,26 +49,18 @@ void RainScene::setupShader()
 
 void RainScene::setupImage()
 {
-    m_texture = AppManager::getInstance().getResourceManager().getTexture(getName());
+    m_texture = this->getCurrentTexture();
 }
 
 void RainScene::setupRipples()
 {
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
-    
-    //m_texture = AppManager::getInstance().getResourceManager().getTexture(getName());
-    
-    //auto tex =  AppManager::getInstance().getModelManager().getModel().getTexture();
-    
-   // m_ripples.allocate(width, height);
-   // m_bounce.allocate(width, height);
-    //m_bounce.setTexture(tex, 1);
-    
+    m_texture = this->getCurrentTexture();
+    m_ripples.clear();
+    m_bounce.clear();
     m_ripples.allocate(m_texture->getWidth(), m_texture->getHeight());
     m_bounce.allocate(m_texture->getWidth(),  m_texture->getHeight());
     m_bounce.setTexture(*m_texture.get(), 1);
-	m_ripples.damping = 0.999;
+	m_ripples.damping = 0.97;
    
 }
 
@@ -96,8 +88,9 @@ void RainScene::updateRipples()
    // auto tex =  AppManager::getInstance().getModelManager().getModel().getTexture();
     
     //m_bounce.setTexture(tex, 1);
+    //float precMM = AppManager::getInstance().getApiManager().getCurrentWeather().getPrecipitationNorm();
     float precMM = AppManager::getInstance().getApiManager().getCurrentWeather().m_precipitationValue;
-    int skip = (int) ofMap(precMM, 0.0, 10.0, 10, 1, true);
+    int skip = (int) ofMap(precMM, 0.0, 20.0, 6, 1, true);
     
     m_bounce.setTexture(*m_texture.get(), 1);
     
@@ -106,7 +99,7 @@ void RainScene::updateRipples()
         
         ofFill();
         ofSetColor(ofNoise( ofGetFrameNum() ) * 255*2, 255);
-        int dropsPerCycle = 2;
+        int dropsPerCycle = 5;
         for(int i=0; i<dropsPerCycle; i++){
              ofDrawEllipse(ofRandom(width),ofRandom(height), 3,3);
         }
@@ -120,7 +113,20 @@ void RainScene::updateRipples()
     
     m_bounce << m_ripples;
     
-    m_amplitude  = ofMap(precMM, 0.0, 10.0, 0, 0.4, true);
+    //m_amplitude  = ofMap(precMM, 0.0, 10.0, 0, 0.4, true);
+    //m_amplitude  = 0.1;
+}
+
+ofPtr<ofTexture> RainScene::getCurrentTexture()
+{
+    if(!AppManager::getInstance().getApiManager().getCurrentWeather().isDayTime()){
+         m_amplitude  = 0.2;
+        return  AppManager::getInstance().getResourceManager().getTexture("RAIN_DAY");
+    }
+    else{
+         m_amplitude  = 0.12;
+         return AppManager::getInstance().getResourceManager().getTexture("RAIN_NIGHT");
+    }
 }
 
 void RainScene::updateFbo()
@@ -159,6 +165,7 @@ void RainScene::drawRipples()
 }
 
 void RainScene::willFadeIn() {
+    this->setupRipples();
     ofLogNotice("RainScene::willFadeIn");
     
 }

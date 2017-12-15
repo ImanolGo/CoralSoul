@@ -57,11 +57,11 @@ void WindScene::updateVectorField()
     float angleRadiands = degree2radian(weatherConditions.m_windDirection);
     float mag = 1.0;
     
-    float speed = ofMap(weatherConditions.getWindSpeedNorm(), 0, 1.0, 1.0, 10, true);
+    float speed = ofMap(weatherConditions.getWindSpeedNorm(), 0, 1.0, 0.2, 3, true);
     
     ofVec2f force;
-    force.x = mag*sin(angleRadiands);
-    force.y = -mag*cos(angleRadiands);
+    force.x = -mag*sin(angleRadiands);
+    force.y = mag*cos(angleRadiands);
     
     m_vectorField.addForce(force);
     m_vectorField.setSpeed(speed);
@@ -111,7 +111,7 @@ void WindScene::willExit() {
 
 void WindScene::activateParticles()
 {
-    string address = "/activeclip/video/effect4/bypassed";
+    string address = "/layer3/video/effect4/bypassed";
     int value = 0;
     
     ofxOscMessage m;
@@ -123,12 +123,13 @@ void WindScene::activateParticles()
 
 void WindScene::deactivateParticles()
 {
-    string address = "/activeclip/video/effect4/bypassed";
+    string address = "/layer3/video/effect4/bypassed";
     int value = 1;
     
     ofxOscMessage m;
     m.setAddress(address);
-    m.addFloatArg(value);
+    m.addIntArg(value);
     
     AppManager::getInstance().getOscManager().sendMessage(m);
 }
+
