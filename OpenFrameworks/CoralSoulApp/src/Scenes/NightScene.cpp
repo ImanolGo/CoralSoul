@@ -68,8 +68,8 @@ void NightScene::setupMoonShader()
     
     m_moonBlur.setup(width, height);
     m_moonBlur.setScale(0.15);
-    m_post.init(width, height);
-    m_post.createPass<BloomPass>()->setEnabled(true);
+    //m_post.init(width, height);
+    //m_post.createPass<BloomPass>()->setEnabled(true);
 }
 
 void NightScene::setupStars()
@@ -194,15 +194,15 @@ void NightScene::drawMoon()
     
     m_fboMoon.begin();
         ofClear(0);
-        m_post.begin();
+        m_moonBlur.begin();
         m_moonShader.begin();
         m_moonShader.setUniform3f("iResolution", w, h, 0.0);
         m_moonShader.setUniform1f("iTime", moonPhase);
         //m_moonShader.setUniformTexture("iChannel0", m_noiseTexture.getTexture(), 1);
             ofDrawRectangle(0,0, w, h);
         m_moonShader.end();
-        m_post.end();
-        //m_moonBlur.draw();
+        m_moonBlur.end();
+        m_moonBlur.draw();
      m_fboMoon.end();
     
     m_fboMoon.draw(width - w - width*0.13,height*0.10);
