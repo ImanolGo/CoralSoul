@@ -125,7 +125,7 @@ void OscManager::update()
         ofLogNotice() <<"OscManager::received -> " << this->getMessageAsString(m);
     }
     
-    this->sendOscWeather();
+   // this->sendOscWeather();
 }
 
 

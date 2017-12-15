@@ -64,7 +64,7 @@ void NightScene::setupMoonShader()
     m_fboMoon.begin(); ofClear(0); m_fboMoon.end();
     
     
-    m_moonPhases = {3.15, 1.65, 1.2, 0.75, 6.3,5.4,4.95 ,4.5};
+    m_moonPhases = {3.15f, 1.65f, 1.2f, 0.75f, 6.3f,5.4f,4.95f ,4.5f};
 }
 
 void NightScene::setupStars()
