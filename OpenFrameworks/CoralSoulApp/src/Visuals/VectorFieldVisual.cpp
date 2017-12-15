@@ -10,10 +10,10 @@
 #include "AppManager.h"
 #include "VectorFieldVisual.h"
 
-const int VectorFieldVisual::NUM_PARTICLES = 1000;
+const int VectorFieldVisual::NUM_PARTICLES = 800;
 
 
-VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(10)
+VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(8)
 {
     //Intentionaly left empty
 }

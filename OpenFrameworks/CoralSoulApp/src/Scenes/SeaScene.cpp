@@ -134,7 +134,7 @@ void SeaScene::activateWaves()
     address = "/layer3/video/effect3/param4/values";
     
     auto fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellHeightNorm();
-    fValue = ofMap(fValue, 0.0, 10.0, 0.02, 0.18, true);
+    fValue = ofMap(fValue, 0.0, 1.0, 0.02, 0.18, true);
     
     m.setAddress(address);
     m.addFloatArg(fValue);
@@ -142,7 +142,7 @@ void SeaScene::activateWaves()
     
     
     fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellPeriodNorm();
-    
+	fValue = ofMap(fValue, 0.0, 1.0, 0.00, 0.5, true);
 	address = "/layer3/video/effect3/param5/values";
     m.setAddress(address);
     m.addFloatArg(fValue);

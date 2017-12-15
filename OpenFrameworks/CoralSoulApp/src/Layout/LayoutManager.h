@@ -84,6 +84,16 @@ public:
     void onSetPreviewMode(int mode) {m_previewMode = mode;}
     
     void onBlurScaleChange(float& value);
+
+	void onMoonPositionXChange(float& value) { m_moonPosition.x = value; }
+
+	void onMoonPositionYChange(float& value) { m_moonPosition.y = value; }
+
+	void onMoonSizeChange(float& value) { m_moonSize= value; }
+
+	const ofVec2f& getMoonPosition() { return m_moonPosition; }
+
+	const float& getMoonSize() { return m_moonSize; }
     
     void onMaskChange(bool value) {m_useMask = value;}
     
@@ -176,6 +186,8 @@ private:
     int                 m_previewMode;
     ofxBlur             m_blur;
     bool                m_useMask;
+	ofVec2f				m_moonPosition;
+	float				m_moonSize;
 	
     
     #if defined(TARGET_WIN32)

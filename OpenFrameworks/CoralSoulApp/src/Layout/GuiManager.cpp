@@ -130,11 +130,27 @@ void GuiManager::setupLayoutGui()
     m_sceneDuration.set("Scene", 2.0, 0.0, 10.0);
     m_sceneDuration.addListener(sceneManager, &SceneManager::onChangeSceneDuration);
     m_parameters.add(m_sceneDuration);
+
+	m_moonPositionX.set("Moon X", 0.5, 0.0, 1.0);
+	m_moonPositionX.addListener(layoutManager, &LayoutManager::onMoonPositionXChange);
+	m_parameters.add(m_moonPositionX);
+
+	m_moonPositionY.set("Moon Y", 0.5, 0.0, 1.0);
+	m_moonPositionY.addListener(layoutManager, &LayoutManager::onMoonPositionYChange);
+	m_parameters.add(m_moonPositionY);
+
+	m_moonSize.set("Moon Size", 0.5, 0.0, 1.0);
+	m_moonSize.addListener(layoutManager, &LayoutManager::onMoonSizeChange);
+	m_parameters.add(m_moonSize);
+
     
     
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
     folder->addSlider(m_sceneDuration);
     folder->addSlider(m_layourBlurScale);
+	folder->addSlider(m_moonPositionX);
+	folder->addSlider(m_moonPositionY);
+	folder->addSlider(m_moonSize);
     folder->addToggle("Mask", true);
     //folder->expand();
     m_gui.addBreak();

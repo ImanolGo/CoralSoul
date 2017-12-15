@@ -57,8 +57,8 @@ void NightScene::setupMoonShader()
     
     ofEnableArbTex();
     
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth()*0.15;
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight()*0.15;
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth()*0.4;
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight()*0.4;
     
     m_fboMoon.allocate(width, height);
     m_fboMoon.begin(); ofClear(0); m_fboMoon.end();
@@ -205,8 +205,11 @@ void NightScene::drawMoon()
         m_moonBlur.draw();
      m_fboMoon.end();
 	 ofEnableAlphaBlending();
+
+	 auto pos = AppManager::getInstance().getLayoutManager().getMoonPosition();
+	 auto size = AppManager::getInstance().getLayoutManager().getMoonSize();
     
-    m_fboMoon.draw(width - w - width*0.2, h + height*1.0);
+    m_fboMoon.draw(width*pos.x - w*0.5*size, height*pos.y - h*0.5*size, w*size, h*size);
 }
 
 void NightScene::willFadeIn() {

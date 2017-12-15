@@ -119,7 +119,7 @@ void RainScene::updateRipples()
 
 ofPtr<ofTexture> RainScene::getCurrentTexture()
 {
-    if(!AppManager::getInstance().getApiManager().getCurrentWeather().isDayTime()){
+    if(AppManager::getInstance().getApiManager().getCurrentWeather().isDayTime()){
          m_amplitude  = 0.2;
         return  AppManager::getInstance().getResourceManager().getTexture("RAIN_DAY");
     }

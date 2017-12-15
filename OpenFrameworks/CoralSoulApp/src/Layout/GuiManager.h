@@ -130,6 +130,9 @@ private:
     
     ofParameter<float>      m_layourBlurScale;
     ofParameter<float>      m_sceneDuration;
+	ofParameter<float>      m_moonPositionX;
+	ofParameter<float>      m_moonPositionY;
+	ofParameter<float>      m_moonSize;
     
     ofParameter<float>      m_weatherTemperature;
     ofParameter<float>      m_weatherHumidity;
