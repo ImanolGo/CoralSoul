@@ -171,24 +171,26 @@ void ApiManager::urlResponse(ofHttpResponse & response)
     {
         if(response.request.name == "weather")
         {
+            m_weatherTimer.start(false);
             this->parseWeather(response.data);
             AppManager::getInstance().getGuiManager().onWeatherChange();
             AppManager::getInstance().getOscManager ().sendOscWeather();
         }
         
-        else if(response.request.name == "nasa")
-        {
-            this->parseNasa(response.data);
-        }
-        
-        else if(response.request.name == "nasa_image")
-        {
-            ofLogNotice() <<"ApiManager::urlResponse -> NASA IMAGE ";
-            m_nasaImage.load(response.data);
-        }
+//        else if(response.request.name == "nasa")
+//        {
+//            this->parseNasa(response.data);
+//        }
+//
+//        else if(response.request.name == "nasa_image")
+//        {
+//            ofLogNotice() <<"ApiManager::urlResponse -> NASA IMAGE ";
+//            m_nasaImage.load(response.data);
+//        }
         
         else if(response.request.name == "surf")
         {
+            m_surfTimer.start(false);
             this->parsesurf(response.data);
             AppManager::getInstance().getGuiManager().onWeatherChange();
             AppManager::getInstance().getOscManager().sendOscWeather();
@@ -303,19 +305,19 @@ void ApiManager::parseWeather(string xml)
 void ApiManager::weatherTimerCompleteHandler( int &args )
 {
     //ofLogNotice() <<"ApiManager::weatherTimerCompleteHandler";
-    m_weatherTimer.start(false);
+    //m_weatherTimer.start(false);
     ofLoadURLAsync(m_weatherUrl, "weather");
 }
 
 void ApiManager::nasaTimerCompleteHandler( int &args )
 {
-    m_nasaTimer.start(false);
+   // m_nasaTimer.start(false);
     ofLoadURLAsync(m_nasaUrl, "nasa");
 }
 
 void ApiManager::surfTimerCompleteHandler( int &args )
 {
-    m_surfTimer.start(false);
+   // m_surfTimer.start(false);
     ofLoadURLAsync(m_surfUrl, "surf");
 }
 
