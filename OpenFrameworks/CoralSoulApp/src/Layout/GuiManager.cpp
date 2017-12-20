@@ -48,7 +48,7 @@ void GuiManager::setup()
     this->setupWeatherGui();
     this->setupCameraGui();
     this->setupModelGui();
-    this->setupNoiseGui();
+   // this->setupNoiseGui();
     this->setupGuiEvents();
     this->loadGuiValues();
 	this->onWeatherChange();
@@ -107,7 +107,7 @@ void GuiManager::setupPreviewGui()
     opts.push_back("MODEL");
     opts.push_back("WIREFRAME");
     opts.push_back("SCENE");
-    opts.push_back("NOISE");
+    //opts.push_back("NOISE");
     
     string label = "PREVIEW";
     

@@ -243,6 +243,7 @@ void ModelManager::updateModel()
     m_model.update();
     m_simpleModel.update();
     m_mesh = m_simpleModel.getMesh(0);
+    m_modelMesh = m_model.getMesh(0);
 }
 
 void ModelManager::updateFbos()
@@ -250,7 +251,10 @@ void ModelManager::updateFbos()
     m_fboMask.begin();
         ofClear(0, 0, 0);
         m_cam.begin();
-            m_model.drawFaces();
+              //ofEnableLighting();
+           // this->drawWireframe();
+             this->drawMask();
+            //m_model.drawFaces();
        m_cam.end();
     m_fboMask.end();
     
@@ -280,36 +284,57 @@ void ModelManager::draw()
 
 void ModelManager::drawMask()
 {
-    m_fboMask.draw(0,0);
+
+    ofEnableDepthTest();
+    
+    
+    ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
+    ofMaterial material = m_model.getMaterialForMesh(0);
+    ofMultMatrix(m_model.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
+    
+    m_modelMesh.drawFaces();
+    
+    
+    ofDisableDepthTest();
+    
+    
 }
 
 void ModelManager::drawModel()
 {
-//    m_fboTexture.begin();
-//    AppManager::getInstance().getSceneManager().draw();
-//    m_fboTexture.end();
+    ofPushStyle();
+    ofSetLineWidth(1.0);
     
     ofEnableDepthTest();
     
     // enable lighting //
     ofEnableLighting();
     
-    //m_dirLight.enable();
-    m_material.begin();
     
-    ofPushStyle();
-    ofSetColor(255);
+    
+    
+//    ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
+//    ofMaterial material = m_model.getMaterialForMesh(0);
+//    ofMultMatrix(m_model.getModelMatrix());
+//    ofMultMatrix(meshHelper.matrix);
+    
+    m_dirLight.enable();
+    m_spotLight.enable();
+    m_material.begin();
     
     m_model.drawFaces();
     
-    ofPopStyle();
     
-    //m_material.end();
+    m_material.end();
     
+    //material.end();
     // turn off lighting //
     ofDisableLighting();
     
     ofDisableDepthTest();
+    
+    ofPopStyle();
 
 }
 

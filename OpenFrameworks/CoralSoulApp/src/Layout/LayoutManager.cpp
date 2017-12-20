@@ -179,11 +179,11 @@ void LayoutManager::updateMask()
     string name = "output";
     
     AppManager::getInstance().getMaskManager().beginMask(name);
-    m_blur.begin();
+   // m_blur.begin();
        // ofClear(0);
         AppManager::getInstance().getModelManager().getMask().draw(0,0);
-    m_blur.end();
-    m_blur.draw();
+   // m_blur.end();
+   // m_blur.draw();
     AppManager::getInstance().getMaskManager().endMask(name);
    
     AppManager::getInstance().getMaskManager().begin(name);
@@ -233,6 +233,7 @@ void LayoutManager::updatePreviewFbo()
         if(m_previewMode == MASK){
             string name = "output";
             AppManager::getInstance().getMaskManager().drawMask(name);
+            //AppManager::getInstance().getModelManager().getMask().draw(0,0);
         }
         else if(m_previewMode == MODEL){
             AppManager::getInstance().getModelManager().getModel().draw(0,0);
