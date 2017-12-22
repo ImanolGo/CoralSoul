@@ -380,7 +380,7 @@ void ModelManager::updateNoise()
     float liquidness = 5;
     float amplitude = m_noiseAmplitude;
     float speedDampen = 1.0/m_noiseSpeed;
-    vector<ofVec3f>& verts = m_mesh.getVertices();
+    auto verts = m_mesh.getVertices();
     for(unsigned int i = 0; i < verts.size(); i++){
         verts[i].x += ofSignedNoise(verts[i].x/liquidness, verts[i].y/liquidness,verts[i].z/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
         verts[i].y += ofSignedNoise(verts[i].z/liquidness, verts[i].x/liquidness,verts[i].y/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;

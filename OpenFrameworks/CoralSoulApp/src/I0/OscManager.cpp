@@ -53,35 +53,22 @@ void OscManager::readSenderInformation()
     
     ofLogNotice() <<"OscManager::readSenderInformation->  successfully loaded " << fileName ;
     
-    
-    string path = "//networks";
-    if(xml.exists(path)) {
+    string path = "//networks/network";
+    auto xmlNetworks = xml.find(path);
+    if(!xmlNetworks.empty()) {
         
-        typedef   std::map<string, string>   AttributesMap;
-        AttributesMap attributes;
-        
-        path = "//networks/network[0]";
-        xml.setTo(path);
-        do {
-            
-            attributes = xml.getAttributes();
+        for(auto & xmlNetwork: xmlNetworks)
+        {
             ofxOscSender  oscSender;
-            
-            try
-            {
-                oscSender.setup(attributes["ipAddress"], ofToInt(attributes["port"]));
-                m_oscSenders[attributes["name"]] = oscSender ;
-            }
-            catch ( int e)
-            {
-                ofLogNotice() <<"OscManager::oscSender:setup-> exception " << e ;
-            }
-            
-            
-            ofLogNotice() <<"OscManager::readSenderInformation->  name = " << attributes["name"]
-            <<", ipAddress = "<< attributes["ipAddress"]  << ", port = " << attributes["port"];
+            auto ipAddress =  xmlNetwork.getAttribute("ipAddress").getValue();
+            auto port = xmlNetwork.getAttribute("port").getIntValue();
+            auto name =  xmlNetwork.getAttribute("name").getValue();
+            oscSender.setup(ipAddress, port);
+            m_oscSenders[name] = oscSender ;
+           
+            ofLogNotice() <<"OscManager::readSenderInformation->  name = " << name
+            <<", ipAddress = "<< ipAddress  << ", port = " <<port;
         }
-        while(xml.setToSibling()); // go to the next texture
         
         return;
     }

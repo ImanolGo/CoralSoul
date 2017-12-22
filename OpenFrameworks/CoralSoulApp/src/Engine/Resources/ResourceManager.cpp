@@ -40,7 +40,6 @@ void ResourceManager::setup()
 void ResourceManager::loadResources()
 {
     this->loadTextures();
-    this->loadSVGs();
 }
 
 void ResourceManager::loadTextures()
@@ -63,22 +62,6 @@ void ResourceManager::loadTextures()
             ofLogNotice() <<"ResourceManager::loadTextures-> unable to load texture " << textureName
             << " from path " << texturePath ;
         }
-    }
-}
-
-void ResourceManager::loadSVGs()
-{
-    ResourcesPathMap svgPathMap = AppManager::getInstance().getSettingsManager().getSvgResourcesPath();
-
-    for(ResourcesPathMap::iterator it = svgPathMap.begin(); it!= svgPathMap.end(); it++)
-    {
-        string svgName = it->first;
-        string svgPath = it->second;
-
-        ofPtr<ofxSVG> svg = ofPtr<ofxSVG>(new ofxSVG);
-        svg->load(svgPath);
-        m_SVGs[svgName] = svg;
-        ofLogNotice() <<"ResourceManager::loadSVGs-> allocated svg " << svgName ;
     }
 }
 
@@ -108,26 +91,6 @@ bool ResourceManager::containsTexture(const string& name) const
 	return true;
 }
 
-
-ofPtr<ofxSVG> ResourceManager::getSVG(const string& name)
-{
-    if(this->containsSvg(name)) {
-		return m_SVGs.at(name);
-	}
-
-    ofPtr<ofxSVG> svg = ofPtr<ofxSVG> (new ofxSVG);
-	return svg;
-}
-
-bool ResourceManager::containsSvg(const string& name) const
-{
-	if(m_SVGs.find(name) == m_SVGs.end()) {
-        ofLogNotice() <<"ResourceManager::containsSvg-> no resource with name " << name ;
-		return false; // no entries for the specified name
-	}
-
-	return true;
-}
 
 
 
