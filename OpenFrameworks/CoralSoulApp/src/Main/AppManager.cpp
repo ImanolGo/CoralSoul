@@ -46,8 +46,9 @@ void AppManager::setup()
 
 	Manager::setup();
     
-	this->setupManagers();
     this->setupOF();
+	this->setupManagers();
+    
     m_initialized = true;
     
     //setDebugMode(m_debugMode);

@@ -12,6 +12,7 @@
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
 		0881D3DC1FEAF5D3009E67C4 /* ofxTextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0881D3DB1FEAF5D3009E67C4 /* ofxTextBlock.cpp */; };
 		08C861DA4BC4A339352C813D /* WeatherConditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7C405E5789BF50EA9151A41 /* WeatherConditions.cpp */; };
+		08D2CAB31FEE8AE400BD1F04 /* ofxShadertoy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08D2CAB11FEE8AE400BD1F04 /* ofxShadertoy.cpp */; };
 		09FBD2423E5C4F370E7AF7CE /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6162CC3E3FCDDA87EC4556D /* ofxTCPManager.cpp */; };
 		100CBB783451714EF3ED3256 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3A339DF742CA0C4C73D9 /* ofxSlider.cpp */; };
 		106B97E658138710B59773AE /* GodRaysPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE19FA45FB564FF3B31F7717 /* GodRaysPass.cpp */; };
@@ -188,6 +189,8 @@
 		0881D3DA1FEAF5D3009E67C4 /* ofxTextSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxTextSuite.h; path = Addons/ofxTextSuite/src/ofxTextSuite.h; sourceTree = "<group>"; };
 		0881D3DB1FEAF5D3009E67C4 /* ofxTextBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTextBlock.cpp; path = Addons/ofxTextSuite/src/ofxTextBlock.cpp; sourceTree = "<group>"; };
 		08ACDD719CE65B3BF99CC2F4 /* glsl.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = glsl.cpp; path = src/Addons/ofxGLSLMaterial/src/glsl.cpp; sourceTree = SOURCE_ROOT; };
+		08D2CAB11FEE8AE400BD1F04 /* ofxShadertoy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxShadertoy.cpp; path = Addons/ofxShadertoy/src/ofxShadertoy.cpp; sourceTree = "<group>"; };
+		08D2CAB21FEE8AE400BD1F04 /* ofxShadertoy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxShadertoy.h; path = Addons/ofxShadertoy/src/ofxShadertoy.h; sourceTree = "<group>"; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
 		0A18FD7E595E1ABEF3EF5A33 /* jsoncpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = jsoncpp.cpp; path = src/Addons/ofxJSON/libs/jsoncpp/src/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
@@ -632,6 +635,23 @@
 				D9ABF3167944145DD0D21E67 /* MoonCalculator.h */,
 			);
 			name = I0;
+			sourceTree = "<group>";
+		};
+		08D2CAAF1FEE8ABE00BD1F04 /* ofxShadertoy */ = {
+			isa = PBXGroup;
+			children = (
+				08D2CAB01FEE8AC800BD1F04 /* src */,
+			);
+			name = ofxShadertoy;
+			sourceTree = "<group>";
+		};
+		08D2CAB01FEE8AC800BD1F04 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				08D2CAB11FEE8AE400BD1F04 /* ofxShadertoy.cpp */,
+				08D2CAB21FEE8AE400BD1F04 /* ofxShadertoy.h */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 		08E16ED5FD8D48C6776B1270 /* ofxEasing */ = {
@@ -1432,6 +1452,7 @@
 		AD642137CCDF61FB3E6CCEA2 /* Addons */ = {
 			isa = PBXGroup;
 			children = (
+				08D2CAAF1FEE8ABE00BD1F04 /* ofxShadertoy */,
 				F79FFC9032CC6E409159B3E3 /* ofxBlur */,
 				74A312B2568D421CAAEF740A /* ofxDatGui */,
 				4C607AEC13EE6913C48C302C /* ofxColorGradient */,
@@ -1453,8 +1474,8 @@
 		AF4FDCF7E02C59FCC5FE54A2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D26C09D837E4FD6CBDBE2B8C /* AppManager.h */,
 				5056FC61E30B9810903B814D /* AppManager.cpp */,
+				D26C09D837E4FD6CBDBE2B8C /* AppManager.h */,
 				8512B70A33C86533C9EADD77 /* CoralSoulApp.cpp */,
 				73D7AA4CF4895FC3DEEC2978 /* SettingsManager.cpp */,
 				F94F04C2A3BFBCB8D6F36DEB /* Manager.h */,
@@ -1517,8 +1538,8 @@
 				4B724B857051E38B02E1510E /* VectorFieldVisual.cpp */,
 				4D0E40B614F417455C983632 /* VectorFieldVisual.h */,
 				5AE3E0BCBF85746BDE7E127E /* VectorFieldParticle.h */,
-				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 				957C36416A9426CD5147BDBE /* ModelManager.cpp */,
+				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
 			);
 			name = Visuals;
 			sourceTree = "<group>";
@@ -1535,18 +1556,18 @@
 			isa = PBXGroup;
 			children = (
 				B0732063E8459F09F43223D3 /* WindScene.cpp */,
-				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
 				8C488F38001D542DA27140DF /* scenes.h */,
 				FA8E3A05AB6F359044205B92 /* SeaScene.cpp */,
-				F778E3AA4BAC51783AD5059E /* CalibrationScene.cpp */,
 				6A0E658D01C65694725198D4 /* UniverseScene.h */,
 				3C4EA15C90BCFE1FFC1245B1 /* BlankScene.cpp */,
-				827F1D673C83C016E9C09CB3 /* DayScene.cpp */,
 				1D40AB48F6F739773BAB451A /* RainScene.cpp */,
+				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				39A5AE70FF83EB8D2DBA156A /* LifeScene.cpp */,
 				F79FD8ACD200E65C2E5AF42D /* ImageScene.h */,
+				827F1D673C83C016E9C09CB3 /* DayScene.cpp */,
 				014182AE53FF882FCEC0FDC4 /* DayScene.h */,
+				2059F496CFCF4222A12F2393 /* NightScene.cpp */,
 				1325B1CEA2E33562EE68DF16 /* NightScene.h */,
 				DF4B442B4124DBED0AE9B8F8 /* WindScene.h */,
 				76C4479895B14357D331E849 /* SceneManager.h */,
@@ -1557,10 +1578,10 @@
 				2B9F1B8564F083FFCE4C466E /* FlowScene.cpp */,
 				F7ED767C98FF0789AC6DD474 /* SeaScene.h */,
 				AB9511ADBFDF707D1CB9713C /* LifeScene.h */,
+				F778E3AA4BAC51783AD5059E /* CalibrationScene.cpp */,
 				45E107EB0595AB8933B08023 /* CalibrationScene.h */,
 				57B5C05C9EE64383D475CD3C /* UniverseScene.cpp */,
 				60B34DDDC79DEB0226A04C93 /* VideoScene.cpp */,
-				2059F496CFCF4222A12F2393 /* NightScene.cpp */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1919,6 +1940,7 @@
 				AEEA65D8B5235753D25F3B81 /* RimHighlightingPass.cpp in Sources */,
 				F6400F5A83A5662D5CF069BE /* KaleidoscopePass.cpp in Sources */,
 				BA050F08F3511512F4DAAAF1 /* ToonPass.cpp in Sources */,
+				08D2CAB31FEE8AE400BD1F04 /* ofxShadertoy.cpp in Sources */,
 				C0BE98DAA1C7F09C90863281 /* LimbDarkeningPass.cpp in Sources */,
 				6286707BC126BC69BE17FB3A /* NoiseWarpPass.cpp in Sources */,
 				A6F9B2E3C2F68F92EDECB6E4 /* ContrastPass.cpp in Sources */,

@@ -59,6 +59,59 @@ void RainScene::setupRipples()
     m_bounce.clear();
     m_ripples.allocate(m_texture->getWidth(), m_texture->getHeight());
     m_bounce.allocate(m_texture->getWidth(),  m_texture->getHeight());
+    
+    if(ofIsGLProgrammableRenderer()){
+        string vertexShader = "#version 150\n";
+        vertexShader += STRINGIFY(
+                                  uniform mat4 modelViewProjectionMatrix;
+                                  in vec4 position;
+                                  void main(){
+                                      gl_Position = modelViewProjectionMatrix * position;
+                                  });
+        string fragmentShader = "#version 150\n";
+        fragmentShader += STRINGIFY(uniform sampler2DRect backbuffer;   // previus buffer
+                                   uniform sampler2DRect tex0;         // actual buffer
+                                   
+                                   uniform float damping;
+                                    
+                                    out vec4 outputColor;
+                                   
+                                    vec2 offset[4];
+                                   
+                                   void main(){
+                                       vec2 st = gl_TexCoord[0].st;
+                                       
+                                       offset[0] = vec2(-1.0, 0.0);
+                                       offset[1] = vec2(1.0, 0.0);
+                                       offset[2] = vec2(0.0, 1.0);
+                                       offset[3] = vec2(0.0, -1.0);
+                                       
+                                       //  Grab the information arround the active pixel
+                                       //
+                                       //      [3]
+                                       //
+                                       //  [0]  st  [1]
+                                       //
+                                       //      [2]
+                                       
+                                       vec3 sum = vec3(0.0, 0.0, 0.0);
+                                       
+                                       for (int i = 0; i < 4 ; i++){
+                                           sum += texture2DRect(tex0, st + offset[i]).rgb;
+                                       }
+                                       
+                                       //  make an average and substract the center value
+                                       //
+                                       sum = (sum / 2.0) - texture2DRect(backbuffer, st).rgb;
+                                       sum *= damping;
+                                       
+                                       outputColor = vec4(sum, 1.0);
+                                   } );
+        
+        m_ripples.setCode(fragmentShader, vertexShader);
+    }
+    
+   
     m_bounce.setTexture(*m_texture.get(), 1);
 	m_ripples.damping = 0.97;
    
