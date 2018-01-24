@@ -94,7 +94,7 @@ void ModelManager::setupDirectionalLight()
     m_dirLight.setDiffuseColor(ofColor(0));
     m_dirLight.setSpecularColor(ofColor(0));
     m_dirLight.setAmbientColor(ofColor(0));
-    m_dirLightVisual->setColor(ofColor(0));
+    m_dirLightVisual->setColor(ofColor(200));
     
     m_dirLightVisual->setPosition(ofPoint(ofGetWidth()*.5, ofGetHeight()*.5, 0));
     m_dirLight.setPosition(m_dirLightVisual->getPosition());

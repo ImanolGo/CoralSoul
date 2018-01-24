@@ -63,6 +63,8 @@ private:
 
 	void deactivateEffect();
     
+    ofColor getCurrentTempColor();
+    
 private:
     
     ofPtr<ofTexture> m_texture;

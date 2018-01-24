@@ -227,9 +227,9 @@ void RainScene::draw()
 {
     ofClear(0);
 	ofBackground(0);
-    //AppManager::getInstance().getModelManager().drawModel(m_fbo);
+    AppManager::getInstance().getModelManager().drawModel(m_fbo);
     
-    m_fbo.draw(0,0);
+    //m_fbo.draw(0,0);
 }
 
 void RainScene::drawRipples()
