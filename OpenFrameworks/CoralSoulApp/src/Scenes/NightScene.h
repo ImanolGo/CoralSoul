@@ -13,6 +13,8 @@
 #include "ofxBlur.h"
 #include "ofxPostProcessing.h"
 
+#include "ofxShadertoy.h"
+
 class NightScene : public ofxScene {
     
     static const int NUM_CLOUDS;
@@ -71,19 +73,23 @@ private:
     ImageVisual    m_starsImage;
     
     ofColor         m_color;
-    ofShader        m_cloudsShader;
+   
     ofxBlur         m_moonBlur;
     ofxPostProcessing   m_post;
-    
-    ofShader        m_moonShader;
     
     ofFbo               m_fboStars;
     ofFbo               m_fboMoon;
     float               m_starsSpeed;
     vector<float>         m_moonPhases;
 
-    
     float oldPhase;
+    
+    ofShader  m_moonShader;
+    ofShader  m_cloudsShader;
+    
+    ofxShadertoy  m_moonShaderToy;
+    ofxShadertoy  m_cloudsShaderToy;
+    
 };
 
 

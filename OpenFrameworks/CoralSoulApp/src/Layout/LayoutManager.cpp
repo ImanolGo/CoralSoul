@@ -47,7 +47,6 @@ void LayoutManager::setup()
     //ofEnableArbTex();
     
     this->createTextVisuals();
-    this->createSvgVisuals();
     this->createImageVisuals();
     
     this->setupBlur();
@@ -298,11 +297,6 @@ void LayoutManager::resetWindowTitles()
 }
 
 
-void LayoutManager::createSvgVisuals()
-{
-    ///To implement in case we have text visuals
-}
-
 
 void LayoutManager::createImageVisuals()
 {
@@ -316,10 +310,7 @@ void LayoutManager::createBackground()
 void LayoutManager::addVisuals()
 {
     int depthLevel = -1;
-    for(SvgMap::iterator it = m_svgVisuals.begin(); it!= m_svgVisuals.end(); ++it){
-        AppManager::getInstance().getViewManager().addOverlay(it->second,depthLevel);
-    }
-    
+
     for(TextMap::iterator it = m_textVisuals.begin(); it!= m_textVisuals.end(); ++it){
         AppManager::getInstance().getViewManager().addOverlay(it->second,depthLevel);
     }

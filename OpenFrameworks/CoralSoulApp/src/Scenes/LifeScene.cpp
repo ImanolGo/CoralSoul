@@ -117,14 +117,18 @@ void LifeScene::willFadeIn() {
     
     ofColor color(100);
     auto tempNorm = AppManager::getInstance().getApiManager().getCurrentWeather().getTemperatureNorm();
+    
+    ofLogNotice() << "LifeScene::willFadeIn -> Temp Norm: " << tempNorm;
 //    temp = ofMap(temp, 0, 35,5000, 2000,true);
 //    color =  colorTemperatureToRGB(temp);
-    tempNorm = ofMap(tempNorm, 0.0, 1.0, 0.0, 1.0,true);
-    color = m_gradient.getColorAtPercent(tempNorm);
+    //tempNorm = ofMap(tempNorm, 0.0, 1.0, 0.0, 1.0,true);
+    //color = m_gradient.getColorAtPercent(tempNorm);
+    color = getCurrentTempColor();
+    
+    ofLogNotice() << "LifeScene::willFadeIn -> Color: " << color;
     AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
     
     color = ofColor(200);
-   
     AppManager::getInstance().getModelManager().setDirLightColorAnimation(color, 0.5);
     
 }
@@ -147,6 +151,17 @@ void LifeScene::willExit() {
     AppManager::getInstance().getModelManager().setSpotLightColorAnimation(color, 0.5);
 }
 
+
+ofColor LifeScene::getCurrentTempColor()
+{
+    auto tempNorm = AppManager::getInstance().getApiManager().getCurrentWeather().getTemperatureNorm();
+    auto heatMap =  AppManager::getInstance().getResourceManager().getTexture("HeatMap");
+    ofPixels pixels;
+    heatMap->readToPixels(pixels);
+    int index = (int) ofMap(tempNorm, 0.0, 1.0, 0, heatMap->getWidth(), true);
+    ofColor c = pixels.getColor(index, 0.0);
+    return c;
+}
 
 ofColor LifeScene::colorTemperatureToRGB(float kelvin)
 {

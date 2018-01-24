@@ -391,14 +391,15 @@ void GuiManager::setupGuiEvents()
 void GuiManager::saveGuiValues()
 {
     ofXml xml;
-    xml.serialize(m_parameters);
+    ofSerialize(xml, m_parameters);
     xml.save(GUI_SETTINGS_FILE_NAME);
 }
 
 void GuiManager::loadGuiValues()
 {
-    ofXml xml(GUI_SETTINGS_FILE_NAME);
-    xml.deserialize(m_parameters);
+    ofXml xml;
+    xml.load(GUI_SETTINGS_FILE_NAME);
+    ofDeserialize(xml, m_parameters);
 }
 
 

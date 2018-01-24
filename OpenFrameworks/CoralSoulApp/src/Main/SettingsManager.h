@@ -40,8 +40,6 @@ public:
     
     const ResourcesPathMap& getTextureResourcesPath() const {return m_texturesPath;}
     
-    const ResourcesPathMap& getSvgResourcesPath() const {return m_svgResourcesPath;}
-    
     const ResourcesPathMap& getVideoResourcesPath() const {return m_videoResourcesPath;}
     
     const ResourcesPathMap& getModelResourcesPath() const {return m_modelResourcesPath;}
@@ -95,9 +93,6 @@ private:
     //! Loads all the textures settings
     void loadTextureSettings();
     
-    //! Loads all the svg images settings
-    void loadSvgSettings();
-    
     //! Loads all the video  settings
     void loadVideoSettings();
     
@@ -111,7 +106,6 @@ private:
     
     ofXml                    m_xml;                  ///< instance of the xml parser
     ResourcesPathMap        m_texturesPath;         ///< stores the texture paths
-    ResourcesPathMap        m_svgResourcesPath;     ///< stores the resources paths
     ResourcesPathMap        m_videoResourcesPath;   ///< stores the video paths
     ResourcesPathMap        m_modelResourcesPath;   ///< stores the model paths
     ColorMap                m_colors;               ///< stores all the application's colors

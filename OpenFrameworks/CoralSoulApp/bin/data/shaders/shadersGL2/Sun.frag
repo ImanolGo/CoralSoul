@@ -9,7 +9,7 @@ uniform float cloudcover;
 // ---> Shadertoy uniforms
 uniform vec3 iResolution;
 uniform float iTime;
-uniform sampler2DRect iChannel0;
+uniform sampler2D iChannel0;
 
 float noise( vec3 x )
 {
