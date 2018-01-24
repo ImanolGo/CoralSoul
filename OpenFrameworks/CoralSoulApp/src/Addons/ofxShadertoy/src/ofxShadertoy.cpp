@@ -158,6 +158,12 @@ void  ofxShadertoy::setUniform1f(string name, float value)
     shader.setUniform1f(name, value);
 }
 
+void  ofxShadertoy::setUniform1i(string name, float value)
+{
+    shader.setUniform1i(name, value);
+}
+
+
 void  ofxShadertoy::setUniform3f(string name, float value1, float value2, float value3)
 {
     shader.setUniform3f(name, value1,value2,value3);

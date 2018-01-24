@@ -42,6 +42,7 @@ public:
     virtual void setTexture(int index, const ofTexture& tex);
     
     virtual void setUniform1f(string name, float value);
+    virtual void setUniform1i(string name, float value);
     virtual void setUniform3f(string name, float value1, float value2, float value3);
     
     
