@@ -29,7 +29,8 @@ void VectorFieldParticle::setup(){
     m_pos.x = ofRandom(0,width);
     m_pos.y = ofRandom(0,height);
     m_prevPos = m_pos;
-    m_color.setHsb(226, 255, 128);
+    //m_color.setHsb(226, 255, 128);
+    m_color = ofColor(0, 0, 255);
     
     this->setupBrush();
 }
@@ -38,6 +39,13 @@ void VectorFieldParticle::setupBrush()
 {
     m_brush.setResource("Brush");
     m_brush.setWidth(m_height,true);
+}
+
+
+void VectorFieldParticle::setSize(float size)
+{
+     m_height = size;
+     m_brush.setWidth(m_height,true);
 }
 
 void VectorFieldParticle::addForce(const ofVec2f& dir)
@@ -56,10 +64,25 @@ void VectorFieldParticle::update()
     m_pos+= (m_vel + ofVec2f(ofRandom(-0.5,0.5),ofRandom(-0.5,0.5)));
     m_acc = ofVec2f(0);
     
-    float adj = ofMap(m_pos.y, 0, height, 1.0, 0);
     
-    float hue = ofLerp(246,120,adj);
-    m_color.setHueAngle(hue);
+    
+    //float adj = ofMap(m_pos.y, 0, height, 1.0, 0);
+    //float adj =  ofMap(abs(m_pos.x - m_prevPos.x), 0.0, 1.0,0.0,1.0,true);
+     float adj =  ofMap(abs(m_pos.x - m_prevPos.x), 0.3, 2.0,0.0,1.0,true);
+    
+    //ofColor c1 = ofColor(0,164,243);
+    //m_color = ofColor(120,255,214);
+    
+    ofColor r = ofColor(99,209,176);
+    ofColor b = ofColor(0,60,220);
+    m_color= b.getLerped(r, adj);
+    
+
+    //float hue = ofLerp(246,120,adj);
+    //int saturation = (int)  ofMap(abs(m_pos.x - m_prevPos.x), 0.0, 1.0,0.0,255,true);
+    //m_color = ofColor::blue;
+    //m_color.setSaturation(saturation);
+    //m_color = b;
     
     if(this->isOffScreen()){
         this->stayOnScreen();

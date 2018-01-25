@@ -49,6 +49,8 @@ public:
     
     void setSpeed(float value);
     
+    void setSize(float value);
+    
    
 private:
     

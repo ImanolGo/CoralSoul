@@ -14,7 +14,7 @@
 #include "TextVisual.h"
 #include "ImageVisual.h"
 #include "RectangleVisual.h"
-#include "ofxBlur.h"
+#include "ofxFboBlur.h"
 
 #if defined(TARGET_WIN32)
 #include "ofxSpout.h"
@@ -89,10 +89,16 @@ public:
 	void onMoonPositionYChange(float& value) { m_moonPosition.y = value; }
 
 	void onMoonSizeChange(float& value) { m_moonSize= value; }
+    
+    void onMoonSizeChange(float& value) { m_moonSize= value; }
+    
+    void onSeaOpacityChange(float& value) { m_seaOpacity= value; }
 
 	const ofVec2f& getMoonPosition() { return m_moonPosition; }
 
 	const float& getMoonSize() { return m_moonSize; }
+    
+    const float& getSeaOpacity() { return m_seaOpacity; }
     
     void onMaskChange(bool value) {m_useMask = value;}
     
@@ -178,10 +184,14 @@ private:
     ofColor             m_color;
     
     int                 m_previewMode;
-    ofxBlur             m_blur;
+    ofxFboBlur          m_blur;
     bool                m_useMask;
 	ofVec2f				m_moonPosition;
 	float				m_moonSize;
+    
+    float               m_seaOpacity;
+    int                 m_numWindParticles;
+    float               m_sizeWindParticles;
 	
     
     #if defined(TARGET_WIN32)

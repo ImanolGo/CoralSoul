@@ -131,6 +131,10 @@ void GuiManager::setupLayoutGui()
     m_sceneDuration.set("Scene", 2.0, 0.0, 10.0);
     m_sceneDuration.addListener(sceneManager, &SceneManager::onChangeSceneDuration);
     m_parameters.add(m_sceneDuration);
+    
+    m_seaOpacity.set("Sea Opac.", 0.5, 0.0, 1.0);
+    m_seaOpacity.addListener(layoutManager, &LayoutManager::onSeaOpacityChange);
+    m_parameters.add(m_seaOpacity);
 
 	m_moonPositionX.set("Moon X", 0.5, 0.0, 1.0);
 	m_moonPositionX.addListener(layoutManager, &LayoutManager::onMoonPositionXChange);
@@ -149,6 +153,7 @@ void GuiManager::setupLayoutGui()
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
     folder->addSlider(m_sceneDuration);
     folder->addSlider(m_layourBlurScale);
+    folder->addSlider(m_seaOpacity);
 	folder->addSlider(m_moonPositionX);
 	folder->addSlider(m_moonPositionY);
 	folder->addSlider(m_moonSize);

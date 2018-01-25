@@ -44,10 +44,11 @@ private:
     double sun_position(double j);
     
     double Julian(int year,int month,double day);
+    
+    void setupMoonPhases();
 
 private:
     
     int m_ip;
-
 };
 

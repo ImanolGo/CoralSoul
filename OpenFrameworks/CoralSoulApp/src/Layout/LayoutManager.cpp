@@ -23,7 +23,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0), m_useMask(true), m_moonSize(0)
+LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0), m_useMask(true), m_moonSize(0), m_seaOpacity(0), m_numWindParticles(800), m_sizeWindParticles(6.0)
 {
 	//Intentionally left empty
 }
@@ -62,7 +62,25 @@ void LayoutManager::setupBlur()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
-    m_blur.setup(width, height);
+    //m_blur.setup(width, height);
+    
+    
+    ofFbo::Settings s;
+    s.width = width;
+    s.height = height;
+    s.internalformat = GL_RGBA;
+    s.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
+    s.maxFilter = GL_LINEAR; GL_NEAREST;
+    s.numSamples = 0;
+    s.numColorbuffers = 1;
+    s.useDepth = false;
+    s.useStencil = false;
+    
+    m_blur.setup(s, false);
+    m_blur.blurPasses = 3;
+    m_blur.blurOffset = 0;
+    m_blur.numBlurOverlays = 1;
+    m_blur.blurOverlayGain = 255;
   
 }
 
@@ -178,11 +196,13 @@ void LayoutManager::updateMask()
     string name = "output";
     
     AppManager::getInstance().getMaskManager().beginMask(name);
-   // m_blur.begin();
+   // m_blur.beginDrawScene();
        // ofClear(0);
         AppManager::getInstance().getModelManager().getMask().draw(0,0);
-   // m_blur.end();
-   // m_blur.draw();
+    //m_blur.endDrawScene();
+    //m_blur.performBlur();
+    //m_blur.drawBlurFbo();
+    
     AppManager::getInstance().getMaskManager().endMask(name);
    
     AppManager::getInstance().getMaskManager().begin(name);
@@ -413,7 +433,7 @@ void LayoutManager::setFullScreen()
 
 void LayoutManager::onBlurScaleChange(float& value)
 {
-     m_blur.setScale(ofClamp(value, 0, 10));
+     m_blur.blurOffset = 4*value;
 }
 
 void LayoutManager::toggleDrawMode()

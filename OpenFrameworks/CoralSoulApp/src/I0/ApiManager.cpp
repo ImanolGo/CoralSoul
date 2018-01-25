@@ -297,7 +297,7 @@ void ApiManager::parseWeather(string xml)
     << ", clouds = " << m_weatherConditions.m_clouds
     << ", precipitation mode = " << m_weatherConditions.m_precipitationMode  << ", precipitation value = " << m_weatherConditions.m_precipitationValue
     << ", sunrise = " << m_weatherConditions.m_sunrise  << ", sunset = " << m_weatherConditions.m_sunset
-    << ", moon phase = " << m_weatherConditions.m_moonPhase << ", sun position = " << m_weatherConditions.m_sunPosition;
+    << ", moon phase  = " << m_weatherConditions.getMoonPhaseInt() << ", sun position = " << m_weatherConditions.m_sunPosition;
     
 }
 

@@ -10,6 +10,7 @@
 		02529B69D1A6A840B85D49DB /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CC4A89DD6D04F60C1EDF50 /* ofxOscParameterSync.cpp */; };
 		04DF616AA21AD331DF08C325 /* ftParticleFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D9822CFA7F77387B3BBDBC /* ftParticleFlow.cpp */; };
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
+		0833B0E1201A80D30006EAC1 /* ofxFboBlur.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0833B0E0201A80D30006EAC1 /* ofxFboBlur.cpp */; };
 		0881D3DC1FEAF5D3009E67C4 /* ofxTextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0881D3DB1FEAF5D3009E67C4 /* ofxTextBlock.cpp */; };
 		08C861DA4BC4A339352C813D /* WeatherConditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7C405E5789BF50EA9151A41 /* WeatherConditions.cpp */; };
 		08D2CAB31FEE8AE400BD1F04 /* ofxShadertoy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08D2CAB11FEE8AE400BD1F04 /* ofxShadertoy.cpp */; };
@@ -185,6 +186,8 @@
 		073C064FD97DDFA31702EB03 /* PacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PacketListener.h; path = ../../../../../addons/ofxOsc/libs/oscpack/src/ip/PacketListener.h; sourceTree = SOURCE_ROOT; };
 		0758DB960B9BE6F86F84AC84 /* ofxChromaGlitch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxChromaGlitch.h; path = src/Addons/ofxFX/src/filters/ofxChromaGlitch.h; sourceTree = SOURCE_ROOT; };
 		07C0BA32E8B9AA924CE7E719 /* cfileio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = cfileio.h; path = ../../../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp/cfileio.h; sourceTree = SOURCE_ROOT; };
+		0833B0DF201A80D30006EAC1 /* ofxFboBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxFboBlur.h; path = Addons/ofxFboBlur/src/ofxFboBlur.h; sourceTree = "<group>"; };
+		0833B0E0201A80D30006EAC1 /* ofxFboBlur.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxFboBlur.cpp; path = Addons/ofxFboBlur/src/ofxFboBlur.cpp; sourceTree = "<group>"; };
 		0881D3D91FEAF5D3009E67C4 /* ofxTextBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxTextBlock.h; path = Addons/ofxTextSuite/src/ofxTextBlock.h; sourceTree = "<group>"; };
 		0881D3DA1FEAF5D3009E67C4 /* ofxTextSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxTextSuite.h; path = Addons/ofxTextSuite/src/ofxTextSuite.h; sourceTree = "<group>"; };
 		0881D3DB1FEAF5D3009E67C4 /* ofxTextBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTextBlock.cpp; path = Addons/ofxTextSuite/src/ofxTextBlock.cpp; sourceTree = "<group>"; };
@@ -623,18 +626,35 @@
 			children = (
 				2F2D27527DD0B2B4E7A6B902 /* MidiManager.h */,
 				F7C405E5789BF50EA9151A41 /* WeatherConditions.cpp */,
+				D7AFA9EF4F53EC27DDF9747B /* WeatherConditions.h */,
 				700B390FA10750FDC7E30D97 /* ApiManager.h */,
 				4306ED236D73FBA8D086F85D /* ApiManager.cpp */,
 				D1C77A5B38BC862739AEC400 /* OscManager.h */,
-				D7AFA9EF4F53EC27DDF9747B /* WeatherConditions.h */,
 				3A260C79069FA7DEF9728CEC /* KeyboardManager.cpp */,
 				3AA1AC164C5A14E8FB05048E /* OscManager.cpp */,
 				F7BA6721E719A9D67396FE98 /* MoonCalculator.cpp */,
+				D9ABF3167944145DD0D21E67 /* MoonCalculator.h */,
 				09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */,
 				880CC7F71A4098DC1FA89B87 /* MidiManager.cpp */,
-				D9ABF3167944145DD0D21E67 /* MoonCalculator.h */,
 			);
 			name = I0;
+			sourceTree = "<group>";
+		};
+		0833B0DD201A80C60006EAC1 /* ofxFboBlur */ = {
+			isa = PBXGroup;
+			children = (
+				0833B0DE201A80CB0006EAC1 /* src */,
+			);
+			name = ofxFboBlur;
+			sourceTree = "<group>";
+		};
+		0833B0DE201A80CB0006EAC1 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0833B0E0201A80D30006EAC1 /* ofxFboBlur.cpp */,
+				0833B0DF201A80D30006EAC1 /* ofxFboBlur.h */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 		08D2CAAF1FEE8ABE00BD1F04 /* ofxShadertoy */ = {
@@ -899,11 +919,11 @@
 			isa = PBXGroup;
 			children = (
 				C1CCAA8796D39D9B1DEEEF93 /* MaskManager.h */,
-				FF71FE1412779C0AE111BC56 /* GuiManager.h */,
 				4907E8B0250B798D3E6F09A1 /* GuiManager.cpp */,
-				4229475864D5EBC7913C8351 /* LayoutManager.cpp */,
+				FF71FE1412779C0AE111BC56 /* GuiManager.h */,
 				2C4030DB557CBDCD31BDF418 /* GuiTheme.h */,
 				A2EA41BEA7E5A43E6C47D692 /* MaskManager.cpp */,
+				4229475864D5EBC7913C8351 /* LayoutManager.cpp */,
 				78E61E440A21EE9FC6156AAD /* LayoutManager.h */,
 			);
 			name = Layout;
@@ -1452,6 +1472,7 @@
 		AD642137CCDF61FB3E6CCEA2 /* Addons */ = {
 			isa = PBXGroup;
 			children = (
+				0833B0DD201A80C60006EAC1 /* ofxFboBlur */,
 				08D2CAAF1FEE8ABE00BD1F04 /* ofxShadertoy */,
 				F79FFC9032CC6E409159B3E3 /* ofxBlur */,
 				74A312B2568D421CAAEF740A /* ofxDatGui */,
@@ -1532,11 +1553,11 @@
 			children = (
 				231CBABD013CA50504B82828 /* NoiseManager.h */,
 				670CE8E5FACF3883E2F120DE /* FluidVisual.h */,
-				FBE3042DA0BE4BDA0A9D6384 /* VectorFieldParticle.cpp */,
 				41464A4354EB3FA247C475DD /* FluidVisual.cpp */,
 				90674964F311EA9EE1680EC6 /* NoiseManager.cpp */,
 				4B724B857051E38B02E1510E /* VectorFieldVisual.cpp */,
 				4D0E40B614F417455C983632 /* VectorFieldVisual.h */,
+				FBE3042DA0BE4BDA0A9D6384 /* VectorFieldParticle.cpp */,
 				5AE3E0BCBF85746BDE7E127E /* VectorFieldParticle.h */,
 				957C36416A9426CD5147BDBE /* ModelManager.cpp */,
 				DF38628580BD1AA2B71F4E5A /* ModelManager.h */,
@@ -1995,6 +2016,7 @@
 				E96A57C942E615DF12E8B928 /* ofxColorPicker.cpp in Sources */,
 				A26ADA838897BF14F1F0BD67 /* ofxSliderGroup.cpp in Sources */,
 				B56CE7B1A3CB5FB64214A757 /* ofxToggle.cpp in Sources */,
+				0833B0E1201A80D30006EAC1 /* ofxFboBlur.cpp in Sources */,
 				AAD0B7D9721F9438AF4D5507 /* ofxButton.cpp in Sources */,
 				514D7B3807939C810546389C /* ofxGuiGroup.cpp in Sources */,
 				78E35170723A5DA0F3FC94A1 /* ofxInputField.cpp in Sources */,

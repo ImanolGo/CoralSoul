@@ -194,16 +194,17 @@ void NightScene::drawMoon()
     float w = m_fboMoon.getWidth();
     float h = m_fboMoon.getHeight();
     
-    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
-    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
+//    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
+//    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
     
-   // int moonPhaseIndex = AppManager::getInstance().getApiManager().getCurrentWeather().getMoonPhaseInt();
-    //float moonPhase = m_moonPhases[moonPhaseIndex];
+    int moonPhaseIndex = AppManager::getInstance().getApiManager().getCurrentWeather().getMoonPhaseInt();
+    ofLogNotice() << "Moon Phase Int: " << moonPhaseIndex;
+    float moonPhase = m_moonPhases[moonPhaseIndex];
     
-//    if(oldPhase!=moonPhase){
-//        oldPhase=moonPhase;
-//        ofLogNotice() << "Moon Phase: " << oldPhase;
-//    }
+    if(oldPhase!=moonPhase){
+        oldPhase=moonPhase;
+        ofLogNotice() << "Moon Phase: " << oldPhase;
+    }
     
 	ofDisableAlphaBlending();
     m_fboMoon.begin();

@@ -30,7 +30,7 @@ void VectorFieldVisual::setup()
     this->setupFbo();
     this->setupVectorField();
     this->setupParticles();
-    this->setupBlur();
+    //this->setupBlur();
 }
 
 
@@ -167,3 +167,9 @@ void VectorFieldVisual::setSpeed(float value)
     }
 }
 
+void VectorFieldVisual::setSize(float value)
+{
+    for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].setSize(value);
+    }
+}
