@@ -8,6 +8,7 @@
 // http://www.pouet.net/prod.php?which=68483
 
 uniform float cloudscale = 1.1; // Cloud Scale, min=0., max=2.
+uniform float opacity = 1.0; // Cloud Opacity, min=0., max=1.0.
 uniform float speed = 0.03; // Speed, min=0., max=1.
 uniform float clouddark = 0.5; // Cloud Dark, min=0., max=1.
 uniform float cloudlight = 0.3; // Cloud Light, min=0., max=1.
@@ -116,5 +117,5 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
     vec3 result = mix(skycolour, clamp(skytint * skycolour + cloudcolour, 0.0, 1.0), clamp(cloudcover*(f + c), 0.0, 1.0));
     
     //fragColor = vec4( result, 1.0 );
-    fragColor = vec4( 1.0,1.0,1.0,result.r);
+    fragColor = vec4( opacity,opacity,opacity,result.r);
 }

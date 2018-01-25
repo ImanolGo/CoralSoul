@@ -135,7 +135,19 @@ void GuiManager::setupLayoutGui()
     m_seaOpacity.set("Sea Opac.", 0.5, 0.0, 1.0);
     m_seaOpacity.addListener(layoutManager, &LayoutManager::onSeaOpacityChange);
     m_parameters.add(m_seaOpacity);
-
+    
+    m_cloudsOpacity.set("Clouds Opac.", 0.5, 0.0, 1.0);
+    m_cloudsOpacity.addListener(layoutManager, &LayoutManager::onCloudsOpacityChange);
+    m_parameters.add(m_cloudsOpacity);
+    
+    m_numWindParticles.set("Num Wind", 800, 0.0, 800);
+    m_numWindParticles.addListener(layoutManager, &LayoutManager::onNumWindParticlesChange);
+    m_parameters.add(m_numWindParticles);
+    
+    m_sizeWindParticles.set("Size Wind", 6.0, 0.0, 10.0);
+    m_sizeWindParticles.addListener(layoutManager, &LayoutManager::onSizeWindParticlesChange);
+    m_parameters.add(m_sizeWindParticles);
+    
 	m_moonPositionX.set("Moon X", 0.5, 0.0, 1.0);
 	m_moonPositionX.addListener(layoutManager, &LayoutManager::onMoonPositionXChange);
 	m_parameters.add(m_moonPositionX);
@@ -154,6 +166,9 @@ void GuiManager::setupLayoutGui()
     folder->addSlider(m_sceneDuration);
     folder->addSlider(m_layourBlurScale);
     folder->addSlider(m_seaOpacity);
+    folder->addSlider(m_cloudsOpacity);
+    folder->addSlider(m_numWindParticles);
+    folder->addSlider(m_sizeWindParticles);
 	folder->addSlider(m_moonPositionX);
 	folder->addSlider(m_moonPositionY);
 	folder->addSlider(m_moonSize);

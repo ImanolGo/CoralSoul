@@ -90,15 +90,25 @@ public:
 
 	void onMoonSizeChange(float& value) { m_moonSize= value; }
     
-    void onMoonSizeChange(float& value) { m_moonSize= value; }
+    void onNumWindParticlesChange(int& value) { m_numWindParticles= value; }
+    
+    void onSizeWindParticlesChange(float& value) { m_sizeWindParticles= value; }
     
     void onSeaOpacityChange(float& value) { m_seaOpacity= value; }
+    
+    void onCloudsOpacityChange(float& value) { m_cloudsOpacity= value; }
 
 	const ofVec2f& getMoonPosition() { return m_moonPosition; }
 
 	const float& getMoonSize() { return m_moonSize; }
     
     const float& getSeaOpacity() { return m_seaOpacity; }
+    
+    const float& getCloudsOpacity() { return m_cloudsOpacity; }
+    
+    const float& getSizeWindParticles() { return m_sizeWindParticles; }
+    
+    const int& getNumWindParticles() { return m_numWindParticles; }
     
     void onMaskChange(bool value) {m_useMask = value;}
     
@@ -190,6 +200,7 @@ private:
 	float				m_moonSize;
     
     float               m_seaOpacity;
+    float               m_cloudsOpacity;
     int                 m_numWindParticles;
     float               m_sizeWindParticles;
 	

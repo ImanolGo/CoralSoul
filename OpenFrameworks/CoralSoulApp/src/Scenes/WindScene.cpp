@@ -66,6 +66,12 @@ void WindScene::updateVectorField()
     m_vectorField.addForce(force);
     m_vectorField.setSpeed(speed);
     
+    auto size =  AppManager::getInstance().getLayoutManager().getSizeWindParticles();
+    auto num =  AppManager::getInstance().getLayoutManager().getNumWindParticles();
+    
+    m_vectorField.setSize(size);
+    m_vectorField.setNumber(num);
+    
     m_vectorField.update();
 }
 
