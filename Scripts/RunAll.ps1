@@ -24,7 +24,7 @@ while($true)
 	  Remove-Item –path "c:\Users\user\AppData\Roaming\Ableton\Live 9.6.1\Preferences\Undo.cfg" –recurse
       echo "Starting Ableton"
       Invoke-Item C:\Users\user\CoralSoul\Ableton\CoralSoulAbleton\CoralSoulAbleton.als
-      Start-Sleep -Seconds 5
+      Start-Sleep -Seconds 10
     }
     Remove-Variable ableton
 

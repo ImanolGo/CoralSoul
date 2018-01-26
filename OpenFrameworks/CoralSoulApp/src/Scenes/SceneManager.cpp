@@ -147,6 +147,12 @@ void SceneManager::initializeSceneList()
     if(isDayTime){m_sceneList.push_back("DAY");}
     else{m_sceneList.push_back("NIGHT");}
 
+	//m_sceneList.clear();
+	//m_sceneList = { "LIFE", "WIND", "NIGHT" };
+
+	//auto isRaining = AppManager::getInstance().getApiManager().getCurrentWeather().m_precipitationValue > 0;
+	//if (isRaining) { m_sceneList.push_back("RAIN"); }
+
 }
 
 

@@ -103,7 +103,7 @@ void DayScene::drawDay()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     float sunPosition = AppManager::getInstance().getApiManager().getCurrentWeather().m_sunPosition;
-    sunPosition = ofMap(sunPosition,0.0,1.0,PI/2 -PI/10,3*PI/2+PI/10,true);
+    sunPosition = ofMap(sunPosition,0.0,1.0,PI/2,3*PI/2,true);
     
     float speed = AppManager::getInstance().getApiManager().getCurrentWeather().getWindSpeedNorm();
     speed  = ofMap(speed,0.0,1.0,0.1,2.0,true);

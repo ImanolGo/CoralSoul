@@ -486,9 +486,11 @@ void GuiManager::onWeatherChange()
     m_weatherPrecipitation = value.m_precipitationValue;
     m_weatherMoon = value.m_moonPhase;
     m_weatherClouds = value.m_clouds;
+	m_weatherSun = value.calculatePosition();
     
     m_swellHeight = value.m_swellHeight;
     m_swellPeriod = value.m_swellPeriod;
+
     
     if(m_cityLabel!=NULL){
         m_cityLabel->setLabel("CITY: " +  value.m_city);
