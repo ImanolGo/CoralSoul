@@ -49,19 +49,19 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../../Applications/of_v0.9.8_vs_release/of_v0.9.8_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="../../../../../Applications/of_v20170714_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../../Applications/of_v0.9.8_vs_release/of_v0.9.8_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="../../../../../Applications/of_v20170714_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../../Applications/of_v0.9.8_vs_release/of_v0.9.8_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="../../../../../Applications/of_v20170714_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../../Applications/of_v0.9.8_vs_release/of_v0.9.8_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="../../../../../Applications/of_v20170714_vs_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -95,15 +95,17 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxColorGradient\src;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxSvg\libs\svgTiny\src;src\Addons\ofxSvg\src;src\Addons\ofxTween\src;src\Addons\ofxTween\src\Easings;src\Addons\ofxUnicode\libs\utf8cpp\include;src\Addons\ofxUnicode\libs\utf8cpp\include\utf8;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8;src\Addons\ofxUnicode\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxColorGradient\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxEasing\src;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFboBlur\src;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxShadertoy\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxTextSuite\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -114,16 +116,18 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include\json;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxSvg\libs\svgTiny\src;src\Addons\ofxSvg\src;src\Addons\ofxTween\src;src\Addons\ofxTween\src\Easings;src\Addons\ofxUnicode\libs\utf8cpp\include;src\Addons\ofxUnicode\libs\utf8cpp\include\utf8;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8;src\Addons\ofxUnicode\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxColorGradient\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxEasing\src;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFboBlur\src;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include\json;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxShadertoy\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxTextSuite\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp64.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -133,9 +137,11 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxColorGradient\src;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxSvg\libs\svgTiny\src;src\Addons\ofxSvg\src;src\Addons\ofxTween\src;src\Addons\ofxTween\src\Easings;src\Addons\ofxUnicode\libs\utf8cpp\include;src\Addons\ofxUnicode\libs\utf8cpp\include\utf8;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8;src\Addons\ofxUnicode\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxColorGradient\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxEasing\src;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFboBlur\src;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxShadertoy\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxTextSuite\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -144,8 +150,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -155,8 +161,10 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include\json;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxSvg\libs\svgTiny\src;src\Addons\ofxSvg\src;src\Addons\ofxTween\src;src\Addons\ofxTween\src\Easings;src\Addons\ofxUnicode\libs\utf8cpp\include;src\Addons\ofxUnicode\libs\utf8cpp\include\utf8;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source;src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8;src\Addons\ofxUnicode\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src\Addons\ofxBlur\src;src\Addons\ofxColorGradient\src;src\Addons\ofxDatGui\src;src\Addons\ofxDatGui\src\components;src\Addons\ofxDatGui\src\core;src\Addons\ofxDatGui\src\libs\ofxSmartFont;src\Addons\ofxDatGui\src\themes;src\Addons\ofxEasing\src;src\Addons\ofxFX\src;src\Addons\ofxFX\src\composers;src\Addons\ofxFX\src\filters;src\Addons\ofxFX\src\generative;src\Addons\ofxFX\src\operations;src\Addons\ofxFboBlur\src;src\Addons\ofxFlowTools\src;src\Addons\ofxFlowTools\src\drawforces;src\Addons\ofxFlowTools\src\filters;src\Addons\ofxFlowTools\src\fluid;src\Addons\ofxFlowTools\src\mask;src\Addons\ofxFlowTools\src\opticalflow;src\Addons\ofxFlowTools\src\particles;src\Addons\ofxFlowTools\src\splitvelocity;src\Addons\ofxFlowTools\src\tools;src\Addons\ofxFlowTools\src\visualisation;src\Addons\ofxGLSLMaterial\src;src\Addons\ofxJSON\libs\jsoncpp\include\json;src\Addons\ofxJSON\libs\jsoncpp\src;src\Addons\ofxJSON\src;src\Addons\ofxMidi\libs\rtmidi;src\Addons\ofxMidi\src;src\Addons\ofxMidi\src\desktop;src\Addons\ofxPostProcessing\src;src\Addons\ofxSceneManager\src;src\Addons\ofxShadertoy\src;src\Addons\ofxSimpleTimer\src;src\Addons\ofxSpout\libs\SpoutSDK\src;src\Addons\ofxSpout\src;src\Addons\ofxSpout\src\ofxSpout;src\Addons\ofxTextSuite\src;src\Addons\ofxVectorField\src;src\Addons\ofxWMFVideoPlayer\src;src\Addons\ofxWMFVideoPlayer\src\presenter;src\Addons\ofxWMFVideoPlayer\src\presenter\common;src\Engine\3D;src\Engine\Resources;src\Engine\Tools;src\Engine\Visuals;src\I0;src\Layout;src\Main;src\Scenes;src\Visuals;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -165,8 +173,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp64.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -176,6 +184,7 @@
     <ClCompile Include="src\Addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp" />
     <ClCompile Include="src\Addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="src\Addons\ofxDatGui\src\ofxDatGui.cpp" />
+    <ClCompile Include="src\Addons\ofxFboBlur\src\ofxFboBlur.cpp" />
     <ClCompile Include="src\Addons\ofxFlowTools\src\drawforces\ftDrawForce.cpp" />
     <ClCompile Include="src\Addons\ofxFlowTools\src\drawforces\ftDrawMouseForces.cpp" />
     <ClCompile Include="src\Addons\ofxFlowTools\src\fluid\ftFluidSimulation.cpp" />
@@ -188,14 +197,6 @@
     <ClCompile Include="src\Addons\ofxGLSLMaterial\src\glsl.cpp" />
     <ClCompile Include="src\Addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
     <ClCompile Include="src\Addons\ofxJSON\src\ofxJSONElement.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\libs\rtmidi\RtMidi.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\src\desktop\ofxRtMidiOut.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\src\ofxBaseMidi.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\src\ofxMidi.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\src\ofxMidiIn.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\src\ofxMidiMessage.cpp" />
-    <ClCompile Include="src\Addons\ofxMidi\src\ofxMidiOut.cpp" />
     <ClCompile Include="src\Addons\ofxPostProcessing\src\BleachBypassPass.cpp" />
     <ClCompile Include="src\Addons\ofxPostProcessing\src\BloomPass.cpp" />
     <ClCompile Include="src\Addons\ofxPostProcessing\src\ContrastPass.cpp" />
@@ -222,6 +223,7 @@
     <ClCompile Include="src\Addons\ofxPostProcessing\src\VerticalTiltShifPass.cpp" />
     <ClCompile Include="src\Addons\ofxPostProcessing\src\ZoomBlurPass.cpp" />
     <ClCompile Include="src\Addons\ofxSceneManager\src\ofxSceneManager.cpp" />
+    <ClCompile Include="src\Addons\ofxShadertoy\src\ofxShadertoy.cpp" />
     <ClCompile Include="src\Addons\ofxSimpleTimer\src\ofxSimpleTimer.cpp" />
     <ClCompile Include="src\Addons\ofxSpout\libs\SpoutSDK\src\SpoutDirectX.cpp" />
     <ClCompile Include="src\Addons\ofxSpout\libs\SpoutSDK\src\SpoutGLDXinterop.cpp" />
@@ -235,34 +237,8 @@
     <ClCompile Include="src\Addons\ofxSpout\src\ofxSpout\Receiver.cpp" />
     <ClCompile Include="src\Addons\ofxSpout\src\ofxSpout\Sender.cpp" />
     <ClCompile Include="src\Addons\ofxSpout\src\ofxSpout\Utils.cpp" />
-    <ClCompile Include="src\Addons\ofxSvg\libs\svgTiny\src\src_colors.cpp" />
-    <ClCompile Include="src\Addons\ofxSvg\libs\svgTiny\src\svgtiny.cpp" />
-    <ClCompile Include="src\Addons\ofxSvg\libs\svgTiny\src\svgtiny_gradient.cpp" />
-    <ClCompile Include="src\Addons\ofxSvg\libs\svgTiny\src\svgtiny_list.cpp" />
-    <ClCompile Include="src\Addons\ofxSvg\src\ofxSvg.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasing.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingBack.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingBounce.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingCirc.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingCubic.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingElastic.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingExpo.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingLinear.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingQuad.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingQuart.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingQuint.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\Easings\ofxEasingSine.cpp" />
-    <ClCompile Include="src\Addons\ofxTween\src\ofxTween.cpp" />
-    <ClCompile Include="src\Addons\ofxUnicode\src\ofTextConverter.cpp" />
-    <ClCompile Include="src\Addons\ofxUnicode\src\ofUnicode.cpp" />
-    <ClCompile Include="src\Addons\ofxUnicode\src\ofUTF8.cpp" />
+    <ClCompile Include="src\Addons\ofxTextSuite\src\ofxTextBlock.cpp" />
     <ClCompile Include="src\Addons\ofxVectorField\src\ofxVectorField.cpp" />
-    <ClCompile Include="src\Addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.cpp" />
-    <ClCompile Include="src\Addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.cpp" />
-    <ClCompile Include="src\Addons\ofxWMFVideoPlayer\src\presenter\Helpers.cpp" />
-    <ClCompile Include="src\Addons\ofxWMFVideoPlayer\src\presenter\PresentEngine.cpp" />
-    <ClCompile Include="src\Addons\ofxWMFVideoPlayer\src\presenter\Presenter.cpp" />
-    <ClCompile Include="src\Addons\ofxWMFVideoPlayer\src\presenter\scheduler.cpp" />
     <ClCompile Include="src\Engine\3D\CameraAnimations.cpp" />
     <ClCompile Include="src\Engine\3D\CameraAnimationsManager.cpp" />
     <ClCompile Include="src\Engine\3D\CameraManager.cpp" />
@@ -272,7 +248,6 @@
     <ClCompile Include="src\Engine\Visuals\ImageVisual.cpp" />
     <ClCompile Include="src\Engine\Visuals\ImageVisual3D.cpp" />
     <ClCompile Include="src\Engine\Visuals\RectangleVisual.cpp" />
-    <ClCompile Include="src\Engine\Visuals\SvgVisual.cpp" />
     <ClCompile Include="src\Engine\Visuals\TextVisual.cpp" />
     <ClCompile Include="src\Engine\Visuals\VideoVisual.cpp" />
     <ClCompile Include="src\Engine\Visuals\ViewManager.cpp" />
@@ -280,7 +255,6 @@
     <ClCompile Include="src\Engine\Visuals\VisualEffectsManager.cpp" />
     <ClCompile Include="src\I0\ApiManager.cpp" />
     <ClCompile Include="src\I0\KeyboardManager.cpp" />
-    <ClCompile Include="src\I0\MidiManager.cpp" />
     <ClCompile Include="src\I0\MoonCalculator.cpp" />
     <ClCompile Include="src\I0\OscManager.cpp" />
     <ClCompile Include="src\I0\WeatherConditions.cpp" />
@@ -309,34 +283,36 @@
     <ClCompile Include="src\Visuals\NoiseManager.cpp" />
     <ClCompile Include="src\Visuals\VectorFieldParticle.cpp" />
     <ClCompile Include="src\Visuals\VectorFieldVisual.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxButton.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxGuiGroup.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxLabel.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxPanel.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxSlider.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxSliderGroup.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxToggle.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxTCPClient.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxTCPManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxTCPServer.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxUDPManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscBundle.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscMessage.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscReceiver.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscSender.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
-    <ClCompile Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxBaseGui.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxColorPicker.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxInputField.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxLabel.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxPanel.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxSlider.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxSliderGroup.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxTCPClient.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxTCPManager.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxTCPServer.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxUDPManager.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscSender.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Addons\ofxBlur\src\ofxBlur.h" />
@@ -362,6 +338,8 @@
     <ClInclude Include="src\Addons\ofxDatGui\src\ofxDatGui.h" />
     <ClInclude Include="src\Addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="src\Addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
+    <ClInclude Include="src\Addons\ofxEasing\src\ofxEasing.h" />
+    <ClInclude Include="src\Addons\ofxFboBlur\src\ofxFboBlur.h" />
     <ClInclude Include="src\Addons\ofxFlowTools\src\drawforces\ftDrawForce.h" />
     <ClInclude Include="src\Addons\ofxFlowTools\src\drawforces\ftDrawForceShader.h" />
     <ClInclude Include="src\Addons\ofxFlowTools\src\drawforces\ftDrawMouseForces.h" />
@@ -466,16 +444,6 @@
     <ClInclude Include="src\Addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
     <ClInclude Include="src\Addons\ofxJSON\src\ofxJSON.h" />
     <ClInclude Include="src\Addons\ofxJSON\src\ofxJSONElement.h" />
-    <ClInclude Include="src\Addons\ofxMidi\libs\rtmidi\RtMidi.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\desktop\ofxRtMidiIn.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\desktop\ofxRtMidiOut.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\ofxBaseMidi.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\ofxMidi.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\ofxMidiConstants.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\ofxMidiIn.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\ofxMidiMessage.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\ofxMidiOut.h" />
-    <ClInclude Include="src\Addons\ofxMidi\src\ofxMidiTypes.h" />
     <ClInclude Include="src\Addons\ofxPostProcessing\src\BleachBypassPass.h" />
     <ClInclude Include="src\Addons\ofxPostProcessing\src\BloomPass.h" />
     <ClInclude Include="src\Addons\ofxPostProcessing\src\ContrastPass.h" />
@@ -504,6 +472,7 @@
     <ClInclude Include="src\Addons\ofxPostProcessing\src\ZoomBlurPass.h" />
     <ClInclude Include="src\Addons\ofxSceneManager\src\ofxScene.h" />
     <ClInclude Include="src\Addons\ofxSceneManager\src\ofxSceneManager.h" />
+    <ClInclude Include="src\Addons\ofxShadertoy\src\ofxShadertoy.h" />
     <ClInclude Include="src\Addons\ofxSimpleTimer\src\ofxSimpleTimer.h" />
     <ClInclude Include="src\Addons\ofxSpout\libs\SpoutSDK\src\Spout.h" />
     <ClInclude Include="src\Addons\ofxSpout\libs\SpoutSDK\src\SpoutCommon.h" />
@@ -520,58 +489,9 @@
     <ClInclude Include="src\Addons\ofxSpout\src\ofxSpout\Sender.h" />
     <ClInclude Include="src\Addons\ofxSpout\src\ofxSpout\Utils.h" />
     <ClInclude Include="src\Addons\ofxSpout\src\ofxSpout.h" />
-    <ClInclude Include="src\Addons\ofxSvg\libs\svgTiny\src\svgtiny.h" />
-    <ClInclude Include="src\Addons\ofxSvg\libs\svgTiny\src\svgtiny_internal.h" />
-    <ClInclude Include="src\Addons\ofxSvg\src\ofxSvg.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\easing_terms_of_use.html" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasing.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingBack.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingBounce.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingCirc.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingCubic.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingElastic.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingExpo.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingLinear.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingQuad.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingQuart.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingQuint.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\Easings\ofxEasingSine.h" />
-    <ClInclude Include="src\Addons\ofxTween\src\ofxTween.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\include\utf8\checked.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\include\utf8\core.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\include\utf8\unchecked.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\include\utf8.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\checked.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\core.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\unchecked.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\src\ofTextConverter.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\src\ofUnicode.h" />
-    <ClInclude Include="src\Addons\ofxUnicode\src\ofUTF8.h" />
+    <ClInclude Include="src\Addons\ofxTextSuite\src\ofxTextBlock.h" />
+    <ClInclude Include="src\Addons\ofxTextSuite\src\ofxTextSuite.h" />
     <ClInclude Include="src\Addons\ofxVectorField\src\ofxVectorField.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\AsyncCB.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\BufferLock.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\ClassFactory.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\common.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\critsec.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\GrowArray.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\linklist.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\logging.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\logmediatype.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\mediatype.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\mfutils.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\PropVar.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\registry.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\TinyMap.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\common\trace.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\EVRPresenter.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\EVRPresenterUuid.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\Helpers.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\PresentEngine.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\Presenter.h" />
-    <ClInclude Include="src\Addons\ofxWMFVideoPlayer\src\presenter\scheduler.h" />
     <ClInclude Include="src\Engine\3D\CameraAnimations.h" />
     <ClInclude Include="src\Engine\3D\CameraAnimationsManager.h" />
     <ClInclude Include="src\Engine\3D\CameraManager.h" />
@@ -582,7 +502,6 @@
     <ClInclude Include="src\Engine\Visuals\ImageVisual.h" />
     <ClInclude Include="src\Engine\Visuals\ImageVisual3D.h" />
     <ClInclude Include="src\Engine\Visuals\RectangleVisual.h" />
-    <ClInclude Include="src\Engine\Visuals\SvgVisual.h" />
     <ClInclude Include="src\Engine\Visuals\TextVisual.h" />
     <ClInclude Include="src\Engine\Visuals\VideoVisual.h" />
     <ClInclude Include="src\Engine\Visuals\ViewManager.h" />
@@ -590,7 +509,6 @@
     <ClInclude Include="src\Engine\Visuals\VisualEffectsManager.h" />
     <ClInclude Include="src\I0\ApiManager.h" />
     <ClInclude Include="src\I0\KeyboardManager.h" />
-    <ClInclude Include="src\I0\MidiManager.h" />
     <ClInclude Include="src\I0\MoonCalculator.h" />
     <ClInclude Include="src\I0\OscManager.h" />
     <ClInclude Include="src\I0\WeatherConditions.h" />
@@ -622,82 +540,86 @@
     <ClInclude Include="src\Visuals\NoiseManager.h" />
     <ClInclude Include="src\Visuals\VectorFieldParticle.h" />
     <ClInclude Include="src\Visuals\VectorFieldVisual.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpUtils.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ai_assert.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\anim.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\camera.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cexport.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cfileio.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cimport.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\color4.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\poppack1.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\pstdint.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\pushpack1.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\config.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\DefaultLogger.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\defs.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Exporter.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Importer.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\importerdesc.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\IOStream.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\IOSystem.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\light.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Logger.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\LogStream.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\material.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\matrix3x3.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\matrix4x4.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\mesh.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\metadata.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\NullLogger.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\postprocess.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ProgressHandler.hpp" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\quaternion.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\scene.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\texture.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\types.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\vector2.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\vector3.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\version.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxButton.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxGui.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxGuiGroup.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxLabel.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxPanel.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxSlider.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxSliderGroup.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxGui\src\ofxToggle.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxNetwork.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxNetworkUtils.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxTCPClient.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxTCPManager.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxTCPServer.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxNetwork\src\ofxUDPManager.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOsc.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscArg.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscBundle.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscMessage.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscParameterSync.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscReceiver.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\src\ofxOscSender.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
-    <ClInclude Include="..\..\..\..\..\Applications\of_v0.9.8_vs_release\of_v0.9.8_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\src\ofxAssimpUtils.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ai_assert.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\anim.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\camera.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cexport.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cfileio.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cimport.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\color4.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\pstdint.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\config.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\defs.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Exporter.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Importer.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\importerdesc.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\IOStream.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\light.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Logger.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\LogStream.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\material.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\matrix3x3.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\matrix4x4.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\mesh.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\metadata.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\postprocess.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\quaternion.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\scene.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\texture.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\types.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\vector2.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\vector3.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\version.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxBaseGui.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxColorPicker.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxGui.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxInputField.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxLabel.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxPanel.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxSlider.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxSliderGroup.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxNetwork.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxNetworkUtils.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxTCPClient.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxTCPManager.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxTCPServer.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxTCPSettings.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxUDPManager.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxNetwork\src\ofxUDPSettings.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscParameterSync.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\src\ofxOscSender.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\..\..\Applications\of_v20170714_vs_release\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
