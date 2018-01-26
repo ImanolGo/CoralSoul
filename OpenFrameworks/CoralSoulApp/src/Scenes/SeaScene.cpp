@@ -73,7 +73,8 @@ void SeaScene::draw()
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     
     auto tex = AppManager::getInstance().getResourceManager().getTexture("SEA");
-	ofSetColor(128);
+    auto seaOp =  AppManager::getInstance().getLayoutManager().getSeaOpacity();
+	ofSetColor(seaOp*255);
     tex->draw(0,0,width, height);
     //AppManager::getInstance().getModelManager().drawWireframe(*tex.get());
 	ofPopStyle();

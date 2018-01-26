@@ -12,10 +12,9 @@
 
 #include "Manager.h"
 #include "TextVisual.h"
-#include "SvgVisual.h"
 #include "ImageVisual.h"
 #include "RectangleVisual.h"
-#include "ofxBlur.h"
+#include "ofxFboBlur.h"
 
 #if defined(TARGET_WIN32)
 #include "ofxSpout.h"
@@ -90,10 +89,26 @@ public:
 	void onMoonPositionYChange(float& value) { m_moonPosition.y = value; }
 
 	void onMoonSizeChange(float& value) { m_moonSize= value; }
+    
+    void onNumWindParticlesChange(int& value) { m_numWindParticles= value; }
+    
+    void onSizeWindParticlesChange(float& value) { m_sizeWindParticles= value; }
+    
+    void onSeaOpacityChange(float& value) { m_seaOpacity= value; }
+    
+    void onCloudsOpacityChange(float& value) { m_cloudsOpacity= value; }
 
 	const ofVec2f& getMoonPosition() { return m_moonPosition; }
 
 	const float& getMoonSize() { return m_moonSize; }
+    
+    const float& getSeaOpacity() { return m_seaOpacity; }
+    
+    const float& getCloudsOpacity() { return m_cloudsOpacity; }
+    
+    const float& getSizeWindParticles() { return m_sizeWindParticles; }
+    
+    const int& getNumWindParticles() { return m_numWindParticles; }
     
     void onMaskChange(bool value) {m_useMask = value;}
     
@@ -108,9 +123,6 @@ private:
 
     //! Create the text visuals
     void createTextVisuals();
-
-    //! Create the svg visuals
-    void createSvgVisuals();
 
     //! Create the image visuals
     void createImageVisuals();
@@ -165,11 +177,9 @@ private:
 
 
     typedef  map<string, ofPtr<TextVisual> >      TextMap;            ///< defines a map of Text attached to an identifier
-    typedef  map<string, ofPtr<SvgVisual>  >      SvgMap;             ///< defines a map of SvgVisual Map attached to an identifier
     typedef  map<string, ofPtr<ImageVisual>  >    ImageMap;           ///< defines a map of ImageVisual Map attached to an identifier
   
     TextMap             m_textVisuals;             ///< map storing the text visuals attached to a name
-    SvgMap              m_svgVisuals;              ///< map storing the svg visuals attached to a name
     ImageMap            m_imageVisuals;            ///< map storing the image visuals attached to a name
     
     ofRectangle         m_windowRect;
@@ -184,10 +194,15 @@ private:
     ofColor             m_color;
     
     int                 m_previewMode;
-    ofxBlur             m_blur;
+    ofxFboBlur          m_blur;
     bool                m_useMask;
 	ofVec2f				m_moonPosition;
 	float				m_moonSize;
+    
+    float               m_seaOpacity;
+    float               m_cloudsOpacity;
+    int                 m_numWindParticles;
+    float               m_sizeWindParticles;
 	
     
     #if defined(TARGET_WIN32)

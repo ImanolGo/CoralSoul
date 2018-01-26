@@ -240,53 +240,52 @@ void ApiManager::parsesurf(string response)
 void ApiManager::parseWeather(string xml)
 {
     ofXml weatherXml;
-    weatherXml.loadFromBuffer( xml ); // now get the buffer as a string and make XML
     
-    weatherXml.setTo("//");
+    if(!weatherXml.parse( xml )){
+        ofLogNotice() <<"ApiManager::parseWeather << Unable to parse weather: " << xml;
+        return;
+    }
+    
+     //ofLogNotice() <<"ApiManager::parseWeather << Parsing weather " << xml;
+    
+   // weatherXml.parse( xml ); // now get the buffer as a string and make XML
+    
     string path = "//current/temperature";
-    weatherXml.setTo(path);
-    auto attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_temp = ofToFloat(attributes["value"]);
+    auto xmlChild = weatherXml.findFirst(path);
+    m_weatherConditions.m_temp = xmlChild.getAttribute("value").getFloatValue();
     
     path = "//current/humidity";
-    weatherXml.setTo(path);
-    attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_humidity = ofToFloat(attributes["value"]);
+    xmlChild =weatherXml.findFirst(path);
+    m_weatherConditions.m_humidity = xmlChild.getAttribute("value").getFloatValue();
     
     path = "//current/wind/speed";
-    weatherXml.setTo(path);
-    attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_windSpeed = ofToFloat(attributes["value"]);
+    xmlChild =weatherXml.findFirst(path);
+    m_weatherConditions.m_windSpeed =  xmlChild.getAttribute("value").getFloatValue();
     
     path = "//current/wind/direction";
-    weatherXml.setTo(path);
-    attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_windDirection = ofToFloat(attributes["value"]);
+    xmlChild =weatherXml.findFirst(path);
+    m_weatherConditions.m_windDirection =  xmlChild.getAttribute("value").getFloatValue();
     
     path = "//current/clouds";
-    weatherXml.setTo(path);
-    attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_clouds = ofToFloat(attributes["value"]);
+    xmlChild =weatherXml.findFirst(path);
+    m_weatherConditions.m_clouds =  xmlChild.getAttribute("value").getFloatValue();
     
     path = "//current/precipitation";
-    weatherXml.setTo(path);
-    attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_precipitationValue = ofToFloat(attributes["value"]);
-    m_weatherConditions.m_precipitationMode = attributes["mode"];
-    if(attributes["mode"] == "no"){
+    xmlChild = weatherXml.findFirst(path);
+    m_weatherConditions.m_precipitationValue =  xmlChild.getAttribute("value").getFloatValue();
+    m_weatherConditions.m_precipitationMode =  xmlChild.getAttribute("mode").getValue();
+    if(m_weatherConditions.m_precipitationMode  == "no"){
         m_weatherConditions.m_precipitationValue = 0;
     }
     
     path = "//current/city/sun";
-    weatherXml.setTo(path);
-    attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_sunrise = m_weatherConditions.getFormatTime(attributes["rise"]);
-    m_weatherConditions.m_sunset = m_weatherConditions.getFormatTime(attributes["set"]);
+    xmlChild =weatherXml.findFirst(path);
+    m_weatherConditions.m_sunrise = m_weatherConditions.getFormatTime(xmlChild.getAttribute("rise").getValue());
+    m_weatherConditions.m_sunset = m_weatherConditions.getFormatTime(xmlChild.getAttribute("set").getValue());
     
     path = "//current/city";
-    weatherXml.setTo(path);
-    attributes = weatherXml.getAttributes();
-    m_weatherConditions.m_city = attributes["name"];
+    xmlChild = weatherXml.findFirst(path);
+    m_weatherConditions.m_city = xmlChild.getAttribute("name").getValue();
     
     m_weatherConditions.m_moonPhase = m_weatherConditions.getCurrentMoonPhase();
     
@@ -298,7 +297,7 @@ void ApiManager::parseWeather(string xml)
     << ", clouds = " << m_weatherConditions.m_clouds
     << ", precipitation mode = " << m_weatherConditions.m_precipitationMode  << ", precipitation value = " << m_weatherConditions.m_precipitationValue
     << ", sunrise = " << m_weatherConditions.m_sunrise  << ", sunset = " << m_weatherConditions.m_sunset
-    << ", moon phase = " << m_weatherConditions.m_moonPhase << ", sun position = " << m_weatherConditions.m_sunPosition;
+    << ", moon phase  = " << m_weatherConditions.getMoonPhaseInt() << ", sun position = " << m_weatherConditions.m_sunPosition;
     
 }
 

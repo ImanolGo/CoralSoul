@@ -31,7 +31,17 @@ void DayScene::setup() {
 void DayScene::setupImage()
 {
     m_texture = AppManager::getInstance().getResourceManager().getTexture("RockTexture");
-    m_noise.load("images/textures/noiseSun2.png");
+    
+    ofImage img;
+    img.load("images/textures/noiseSun2.png");
+    ///*
+    m_noise.allocate(img.getWidth(), img.getHeight(), GL_RGBA, false); // fourth parameter is false to avoid generation of a GL_TEXTURE_2D_RECTANGLE texture - we don't want this.
+    m_noise.loadData(img.getPixels());
+    m_noise.generateMipmap();
+    m_noise.setTextureWrap(GL_REPEAT, GL_REPEAT);
+    //shadertoy.setTexture(0, tex);
+    
+    //m_noise.load("images/textures/noiseSun2.png");
 }
 
 void DayScene::setupFbo()
@@ -45,16 +55,30 @@ void DayScene::setupFbo()
 
 void DayScene::setupDayShader()
 {
+//    ofImage img;
+//    img.load("images/textures/noiseSun2.png");
+//    ///*
+//    ofTexture tex;
+//    tex.allocate(img.getWidth(), img.getHeight(), GL_RGBA, false); // fourth parameter is false to avoid generation of a GL_TEXTURE_2D_RECTANGLE texture - we don't want this.
+//    tex.loadData(img.getPixels());
+//    tex.generateMipmap();
+//    tex.setTextureWrap(GL_REPEAT, GL_REPEAT);
+//    m_shadertoy.setTexture(0, tex);
+    
     ofDisableArbTex();
     
     if(ofIsGLProgrammableRenderer()){
-        m_dayShader.load("shaders/shadersGL3/Sun");
+        m_shadertoy.load("shaders/shadersGL3/Sun.frag");
+       // m_shadertoy.setTexture(0, m_noise.getTexture());
+        m_shadertoy.setTexture(0, m_noise);
     }
     else{
         m_dayShader.load("shaders/shadersGL2/Sun");
     }
     
     ofEnableArbTex();
+    
+    m_shadertoy.setAdvanceTime(true);
 }
 
 void DayScene::update()
@@ -95,34 +119,46 @@ void DayScene::draw()
 
 void DayScene::drawDay()
 {
-//    ofPushStyle();
-//    ofSetColor(m_color);
-//        m_texture->draw(0,0, width, height);
-//    ofPopStyle();
-    
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     float sunPosition = AppManager::getInstance().getApiManager().getCurrentWeather().m_sunPosition;
+<<<<<<< HEAD
     sunPosition = ofMap(sunPosition,0.0,1.0,PI/2,3*PI/2,true);
     
+=======
+    sunPosition = ofMap(sunPosition,0.0,1.0,PI/2 -PI/10,3*PI/2+PI/10,true);
+
+>>>>>>> d29f8f7ddfd341228caccab903b89e6a68831529
     float speed = AppManager::getInstance().getApiManager().getCurrentWeather().getWindSpeedNorm();
     speed  = ofMap(speed,0.0,1.0,0.1,2.0,true);
     
     
     auto tex = AppManager::getInstance().getResourceManager().getTexture("NoiseSun");
-    
+
     float cloudcover = AppManager::getInstance().getApiManager().getCurrentWeather().getCloudinessNorm();
     
-    m_dayShader.begin();
-    m_dayShader.setUniform3f("iResolution", width, height, 0.0);
-    m_dayShader.setUniform1f("iTime", ofGetElapsedTimef());
-    m_dayShader.setUniformTexture("iChannel0", m_noise.getTexture(), 1);
-    m_dayShader.setUniform1f("sunPosition", sunPosition);
-    m_dayShader.setUniform1f("speed", speed);
-    m_dayShader.setUniform1f("cloudcover", cloudcover);
-    ofDrawRectangle(0, 0, width, height);
-    m_dayShader.end();
-    
+    if(ofIsGLProgrammableRenderer()){
+        m_shadertoy.begin();
+        m_shadertoy.setUniform3f("iResolution", width, height, 0.0);
+        m_shadertoy.setUniform1f("sunPosition", sunPosition);
+        m_shadertoy.setUniform1f("speed", speed);
+        m_shadertoy.setUniform1f("cloudcover", cloudcover);
+            ofDrawRectangle(0, 0, width, height);
+        m_shadertoy.end();
+        
+        //m_shadertoy.draw(0, 0, width, height);
+    }
+    else{
+            m_dayShader.begin();
+            m_dayShader.setUniform3f("iResolution", width, height, 0.0);
+            m_dayShader.setUniform1f("iTime", ofGetElapsedTimef());
+            m_dayShader.setUniformTexture("iChannel0", m_noise, 1);
+            m_dayShader.setUniform1f("sunPosition", sunPosition);
+            m_dayShader.setUniform1f("speed", speed);
+            m_dayShader.setUniform1f("cloudcover", cloudcover);
+                ofDrawRectangle(0, 0, width, height);
+            m_dayShader.end();
+    }
 }
 
 

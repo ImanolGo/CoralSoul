@@ -38,6 +38,8 @@ public:
     
     void setMaxSpeed(float speed) {m_maxSpeed = speed;}
     
+    void setSize(float size);
+    
     ofVec2f getPos() const {return m_pos;}
     
 private:

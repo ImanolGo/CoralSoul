@@ -45,7 +45,7 @@ void ModelManager::setup()
 	this->loadModel();
     this->setupFbos();
     this->setupShaders();
-    
+
     //img.load("images/model/sonic_bricks_d.png");
     
      ofEnableArbTex();
@@ -91,20 +91,21 @@ void ModelManager::setupLight()
 void ModelManager::setupDirectionalLight()
 {
     m_dirLightVisual = ofPtr<BasicVisual>(new BasicVisual());
-    m_dirLight.setDiffuseColor(ofColor(255.0f, 255.0f, 255.0f));
-    m_dirLight.setSpecularColor(ofColor(255, 255, 255));
-    m_dirLight.setAmbientColor(ofColor(255));
+    m_dirLight.setDiffuseColor(ofColor(0));
+    m_dirLight.setSpecularColor(ofColor(0));
+    m_dirLight.setAmbientColor(ofColor(0));
+    m_dirLightVisual->setColor(ofColor(200));
     
     m_dirLightVisual->setPosition(ofPoint(ofGetWidth()*.5, ofGetHeight()*.5, 0));
     m_dirLight.setPosition(m_dirLightVisual->getPosition());
     
-    m_material.setAmbientColor(255);
-    m_material.setSpecularColor(255);
-    m_material.setShininess(244);
+    m_material.setAmbientColor(0);
+    m_material.setSpecularColor(0);
+    m_material.setShininess(0);
     //m_material.setSpecularColor(0);
     
     m_dirLight.setDirectional();
-
+    
     //m_dirLight.setAmbientColor(ofColor(200));
     //m_dirLight.setAttenuation();
     m_dirLightVisual->setRotation(ofVec3f(0, -90, 0));
@@ -122,7 +123,7 @@ void ModelManager::setupSpotLight()
     m_spotLight.setSpecularColor( ofColor(255.f, 255.f, 255.f));
     
     m_spotLight.setSpotlight();// turn the light into spotLight, emit a cone of light //
-   // m_spotLight.setPointLight();
+    // m_spotLight.setPointLight();
     
     // size of the cone of emitted light, angle between light axis and side of cone //
     // angle range between 0 - 90 in degrees //
@@ -131,7 +132,7 @@ void ModelManager::setupSpotLight()
     // rate of falloff, illumitation decreases as the angle from the cone axis increases //
     // range 0 - 128, zero is even illumination, 128 is max falloff //
     m_spotLight.setSpotConcentration( 50 );
-	m_spotLightVisual->setColor(ofColor(0));
+    m_spotLightVisual->setColor(ofColor(0));
     auto pos = m_spotLightVisual->getPosition();
     pos.z = 0;
     m_spotLight.lookAt(pos);
@@ -150,10 +151,10 @@ void ModelManager::setupShaders()
     }
     else{
         m_thickShader.load("shaders/shadersGL2/ThickLineShaderVert.glsl", "shaders/shadersGL2/ThickLineShaderFrag.glsl", "shaders/shadersGL2/ThickLineShaderGeom.glsl");
-            m_displacementShader.load("shaders/shadersGL2/DisplacementMap");
+        m_displacementShader.load("shaders/shadersGL2/DisplacementMap");
     }
-   
-
+    
+    
 }
 
 void ModelManager::loadModel()
@@ -176,7 +177,7 @@ void ModelManager::loadModel()
         path = modelResources[name];
     }
     
-    //load the model - the 3ds and the texture file need to be in the same folder
+    //load the model - the 3ds and the25 texture file need to be in the same folder
     m_simpleModel.loadModel(path);
     //m_model.loadModel("images/model/TexturedWall.obj");
    
@@ -195,6 +196,8 @@ void ModelManager::loadModel()
 
 void ModelManager::update()
 {
+    m_cam.disableMouseInput();
+   
    this->updateLight();
    this->updateModel();
    //this->updateNoise();
@@ -243,6 +246,7 @@ void ModelManager::updateModel()
     m_model.update();
     m_simpleModel.update();
     m_mesh = m_simpleModel.getMesh(0);
+    m_modelMesh = m_model.getMesh(0);
 }
 
 void ModelManager::updateFbos()
@@ -250,7 +254,10 @@ void ModelManager::updateFbos()
     m_fboMask.begin();
         ofClear(0, 0, 0);
         m_cam.begin();
-            m_model.drawFaces();
+              //ofEnableLighting();
+           // this->drawWireframe();
+             this->drawMask();
+            //m_model.drawFaces();
        m_cam.end();
     m_fboMask.end();
     
@@ -280,36 +287,57 @@ void ModelManager::draw()
 
 void ModelManager::drawMask()
 {
-    m_fboMask.draw(0,0);
+
+    ofEnableDepthTest();
+    
+    
+    ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
+    ofMaterial material = m_model.getMaterialForMesh(0);
+    ofMultMatrix(m_model.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
+    
+    m_modelMesh.drawFaces();
+    
+    
+    ofDisableDepthTest();
+    
+    
 }
 
 void ModelManager::drawModel()
 {
-//    m_fboTexture.begin();
-//    AppManager::getInstance().getSceneManager().draw();
-//    m_fboTexture.end();
+    ofPushStyle();
+    ofSetLineWidth(1.0);
     
     ofEnableDepthTest();
     
     // enable lighting //
     ofEnableLighting();
     
-    //m_dirLight.enable();
-    m_material.begin();
     
-    ofPushStyle();
-    ofSetColor(255);
+    
+    
+//    ofxAssimpMeshHelper & meshHelper = m_model.getMeshHelper(0);
+//    ofMaterial material = m_model.getMaterialForMesh(0);
+//    ofMultMatrix(m_model.getModelMatrix());
+//    ofMultMatrix(meshHelper.matrix);
+    
+    m_dirLight.enable();
+    m_spotLight.enable();
+    m_material.begin();
     
     m_model.drawFaces();
     
-    ofPopStyle();
     
-    //m_material.end();
+    m_material.end();
     
+    //material.end();
     // turn off lighting //
     ofDisableLighting();
     
     ofDisableDepthTest();
+    
+    ofPopStyle();
 
 }
 
@@ -335,7 +363,7 @@ void  ModelManager::drawModel(const ofFbo& tex)
         m_model.drawFaces();
     m_fboTexture.getTexture().unbind();
     
-    m_material.end();
+   m_material.end();
     
     // turn off lighting //
     ofDisableLighting();
@@ -355,7 +383,7 @@ void ModelManager::updateNoise()
     float liquidness = 5;
     float amplitude = m_noiseAmplitude;
     float speedDampen = 1.0/m_noiseSpeed;
-    vector<ofVec3f>& verts = m_mesh.getVertices();
+    auto verts = m_mesh.getVertices();
     for(unsigned int i = 0; i < verts.size(); i++){
         verts[i].x += ofSignedNoise(verts[i].x/liquidness, verts[i].y/liquidness,verts[i].z/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;
         verts[i].y += ofSignedNoise(verts[i].z/liquidness, verts[i].x/liquidness,verts[i].y/liquidness, ofGetElapsedTimef()/speedDampen)*amplitude;

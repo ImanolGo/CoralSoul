@@ -134,6 +134,7 @@ private:
     ofxAssimpModelLoader m_model;
     ofxAssimpModelLoader m_simpleModel;
     ofMesh               m_mesh;
+    ofMesh               m_modelMesh;
     ofLight              m_dirLight;
     ofLight              m_spotLight;
     ofEasyCam            m_cam;

@@ -30,7 +30,7 @@ void VectorFieldVisual::setup()
     this->setupFbo();
     this->setupVectorField();
     this->setupParticles();
-    this->setupBlur();
+    //this->setupBlur();
 }
 
 
@@ -145,7 +145,7 @@ void VectorFieldVisual::drawParticles()
 {
 	//ofEnableSmoothing();
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
-    for( int i=0; i<m_particles.size(); i++){
+    for( int i=0; i<m_numParticles; i++){
         m_particles[i].draw();
     }
 	ofDisableBlendMode();
@@ -165,5 +165,18 @@ void VectorFieldVisual::setSpeed(float value)
     for( int i=0; i<m_particles.size(); i++){
         m_particles[i].setMaxSpeed(value);
     }
+}
+
+void VectorFieldVisual::setSize(float value)
+{
+    for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].setSize(value);
+    }
+}
+
+void VectorFieldVisual::setNumber(int value)
+{
+    m_numParticles = min(value,(int)m_particles.size());
+    m_numParticles = max(m_numParticles,0);
 }
 

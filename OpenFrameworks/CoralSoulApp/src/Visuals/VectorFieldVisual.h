@@ -49,6 +49,10 @@ public:
     
     void setSpeed(float value);
     
+    void setSize(float value);
+    
+    void setNumber(int value);
+    
    
 private:
     
@@ -85,6 +89,7 @@ private:
     
     ofFbo       m_fbo;
     ofxBlur     m_blur;
+    int         m_numParticles;
    // ofxPostProcessing m_post;
     
     

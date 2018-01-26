@@ -11,8 +11,7 @@
 #define FONT_HEIGHT_MULT  0.8
 
 #include "ofMain.h"
-#include "ofUTF8.h"
-#include "ofTextConverter.h"
+#include "ofxTextSuite.h"
 
 
 class EngineFont{
@@ -45,14 +44,15 @@ class EngineFont{
     private:
 
         //fill in a string
-		string walkAndFill(ofUTF8Ptr being, ofUTF8Ptr & iter, ofUTF8Ptr end);
+		//string walkAndFill(ofUTF8Ptr being, ofUTF8Ptr & iter, ofUTF8Ptr end);
 
 	private:
 
-        ofTrueTypeFont		m_trueTypeFont;
+        ofxTextBlock		m_textSuite;
 		TextBlockAlignment  m_textBlockAlignment;
 
 		float				m_lineHeight; // as percent, 1.0 would be normal
 		bool				m_batchDrawing;
+        float               m_fontSize;
 
 };

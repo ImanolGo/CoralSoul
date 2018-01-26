@@ -25,6 +25,7 @@ NightScene::~NightScene()
 
 void NightScene::setup() {
     ofLogNotice(getName() + "::setup");
+    
     this->setupStars();
     this->setupCloudShader();
     this->setupMoonShader();
@@ -35,7 +36,7 @@ void NightScene::setupCloudShader()
     ofDisableArbTex();
     
     if(ofIsGLProgrammableRenderer()){
-        m_cloudsShader.load("shaders/shadersGL3/Clouds");
+        m_cloudsShaderToy.load("shaders/shadersGL3/Clouds.frag");
     }
     else{
         m_cloudsShader.load("shaders/shadersGL2/Clouds");
@@ -49,7 +50,7 @@ void NightScene::setupMoonShader()
     ofDisableArbTex();
     
     if(ofIsGLProgrammableRenderer()){
-        m_moonShader.load("shaders/shadersGL3/Moon");
+        m_moonShaderToy.load("shaders/shadersGL3/Moon.frag");
     }
     else{
         m_moonShader.load("shaders/shadersGL2/Moon");
@@ -103,34 +104,39 @@ void NightScene::draw()
 {
     ofEnableAlphaBlending();
     ofClear(0);
-    this->drawNight();
+        this->drawNight();
     ofDisableAlphaBlending();
    
 }
 
 void NightScene::drawNight()
 {
-    ofClear(0, 0, 0);
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
-    
+
         this->drawStars();
+
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+
+        this->drawMoon();
     
-   // ofEnableBlendMode(OF_BLENDMODE_ADD);
-    
-    
-       // this->drawMoon();
-    
-     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
-         this->drawMoon();
+      ofEnableBlendMode(OF_BLENDMODE_ADD);
+        this->drawClouds();
         AppManager::getInstance().getResourceManager().getTexture("ForegroundStars")->draw(0,-55);
-    
-     this->drawClouds();
-    
+
+
+
+//     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//
+//         this->drawMoon();
+//        AppManager::getInstance().getResourceManager().getTexture("ForegroundStars")->draw(0,-55);
+//
+//        ofEnableAlphaBlending();
+//        this->drawClouds();
+
     ofPopStyle();
-    
-    
+
+
 }
 
 void NightScene::drawStars()
@@ -163,14 +169,31 @@ void NightScene::drawClouds()
     float speed = AppManager::getInstance().getApiManager().getCurrentWeather().getWindSpeedNorm();
     speed  = ofMap(speed,0.0,1.0,0.005,0.15,true);
     
+    auto opacity = AppManager::getInstance().getLayoutManager().getCloudsOpacity();
     
-    m_cloudsShader.begin();
-    m_cloudsShader.setUniform3f("iResolution", width, height, 0.0);
-    m_cloudsShader.setUniform1f("iTime", ofGetElapsedTimef());
-    m_cloudsShader.setUniform1f("cloudcover", cloudcover);
-    m_cloudsShader.setUniform1f("speed", speed);
-        ofDrawRectangle(0, 0, width, height);
-    m_cloudsShader.end();
+    //ofLogNotice() << "brightness << " << brightness;
+   
+    
+    
+    if(ofIsGLProgrammableRenderer()){
+        m_cloudsShaderToy.begin();
+        m_cloudsShaderToy.setUniform3f("iResolution", width, height, 0.0);
+        m_cloudsShaderToy.setUniform1f("speed", speed);
+        m_cloudsShaderToy.setUniform1f("cloudcover", cloudcover);
+        m_cloudsShaderToy.setUniform1f("opacity", opacity);
+            ofDrawRectangle(0, 0, width, height);
+        m_cloudsShaderToy.end();
+    }
+    else{
+        m_cloudsShader.begin();
+        m_cloudsShader.setUniform3f("iResolution", width, height, 0.0);
+        m_cloudsShader.setUniform1f("iTime", ofGetElapsedTimef());
+        m_cloudsShader.setUniform1f("cloudcover", cloudcover);
+        m_cloudsShader.setUniform1f("speed", speed);
+            ofDrawRectangle(0, 0, width, height);
+        m_cloudsShader.end();
+    }
+    
 }
 
 void NightScene::drawMoon()
@@ -180,29 +203,43 @@ void NightScene::drawMoon()
     float w = m_fboMoon.getWidth();
     float h = m_fboMoon.getHeight();
     
-    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
-    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
+//    float moonPhase = AppManager::getInstance().getApiManager().getCurrentWeather().m_moonPhase;
+//    moonPhase  = ofMap(moonPhase,0.0,1.0,0.0,15.0,true);
     
-   // int moonPhaseIndex = AppManager::getInstance().getApiManager().getCurrentWeather().getMoonPhaseInt();
-    //float moonPhase = m_moonPhases[moonPhaseIndex];
+    int moonPhaseIndex = AppManager::getInstance().getApiManager().getCurrentWeather().getMoonPhaseInt();
+    //ofLogNotice() << "Moon Phase Int: " << moonPhaseIndex;
+    float moonPhase = m_moonPhases[moonPhaseIndex];
     
-//    if(oldPhase!=moonPhase){
-//        oldPhase=moonPhase;
-//        ofLogNotice() << "Moon Phase: " << oldPhase;
-//    }
+    if(oldPhase!=moonPhase){
+        oldPhase=moonPhase;
+        ofLogNotice() << "Moon Phase: " << oldPhase;
+    }
     
 	ofDisableAlphaBlending();
     m_fboMoon.begin();
         ofClear(0);
-        m_moonBlur.begin();
-        m_moonShader.begin();
-        m_moonShader.setUniform3f("iResolution", w, h, 0.0);
-        m_moonShader.setUniform1f("iTime", moonPhase);
-        //m_moonShader.setUniformTexture("iChannel0", m_noiseTexture.getTexture(), 1);
-            ofDrawRectangle(0,0, w, h);
-        m_moonShader.end();
-        m_moonBlur.end();
-        m_moonBlur.draw();
+        //m_moonBlur.begin();
+    
+            if(ofIsGLProgrammableRenderer()){
+                m_moonShaderToy.begin();
+                m_moonShaderToy.setUniform3f("iResolution", w, h, 0.0);
+                m_moonShaderToy.setUniform1f("iTime", moonPhase);
+                ofDrawRectangle(0, 0,  w, h);
+                m_moonShaderToy.end();
+                
+                //m_moonShaderToy.draw(0, 0, width, height);
+            }
+            else{
+                m_moonShader.begin();
+                m_moonShader.setUniform3f("iResolution", w, h, 0.0);
+                m_moonShader.setUniform1f("iTime", moonPhase);
+                ofDrawRectangle(0, 0, w, h);
+                m_moonShader.end();
+            }
+    
+    
+        //m_moonBlur.end();
+        //m_moonBlur.draw();
      m_fboMoon.end();
 	 ofEnableAlphaBlending();
 

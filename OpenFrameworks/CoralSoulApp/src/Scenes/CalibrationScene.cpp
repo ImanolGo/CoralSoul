@@ -39,15 +39,20 @@ void CalibrationScene::update()
 
 void CalibrationScene::draw()
 {
-    ofClear(0);
+     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    ofClear(0);;
 	ofBackground(0);
     ofPushStyle();
-  
+    ofPushMatrix();
+    ofScale(1,-1, 1); // Invert Y axis so increasing Y goes down
+    ofTranslate(0, -height, 0); // shift origin up to upper left corner
         this->drawImage();
     
         ofSetColor(255, 255, 255,150);
         AppManager::getInstance().getModelManager().getModel().draw(0,0);
     
+    ofPopMatrix();
     ofPopStyle();
 }
 

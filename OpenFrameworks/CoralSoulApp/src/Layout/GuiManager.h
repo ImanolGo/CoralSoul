@@ -127,6 +127,10 @@ private:
 	ofParameter<float>      m_moonPositionX;
 	ofParameter<float>      m_moonPositionY;
 	ofParameter<float>      m_moonSize;
+    ofParameter<float>      m_seaOpacity;
+    ofParameter<float>      m_cloudsOpacity;
+    ofParameter<int>        m_numWindParticles;
+    ofParameter<float>      m_sizeWindParticles;
     
     ofParameter<float>      m_weatherTemperature;
     ofParameter<float>      m_weatherHumidity;

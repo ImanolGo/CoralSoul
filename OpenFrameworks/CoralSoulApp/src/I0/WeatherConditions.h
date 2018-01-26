@@ -35,7 +35,7 @@ public:
     string getHumidity() const { return ofToString(m_humidity) + "%";}
     string getWindSpeed()  const {return ofToString(m_windSpeed) + " kmh";}
     string getWindDirection() const { return ofToString(m_windDirection) + "°";}
-    string getCloudiness() const { return ofToString(m_clouds);}
+    string getCloudiness() const { return ofToString(m_clouds) + "%";}
     string getSunrise() const {return m_sunrise;}
     string getSunset()  const {return m_sunset;}
     string getSunPosition() const { return ofToString(100*m_sunPosition) + "%";}

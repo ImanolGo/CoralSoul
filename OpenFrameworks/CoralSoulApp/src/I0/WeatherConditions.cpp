@@ -140,11 +140,22 @@ float WeatherConditions::calculatePosition()
 
 string WeatherConditions::getFormatTime(string timeString)
 {
+    if(timeString.empty()){
+        return "";
+    }
+    
+    
     auto split_string = ofSplitString(timeString, "T");
+    
+    if(split_string.empty()){
+        return "";
+    }
     
     if(split_string.size()>1){
         return split_string[1];
     }
+    
+    return "";
 }
 
 

@@ -61,6 +61,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new SeaScene());
     m_mySceneManager.addScene(scene);
     
+    //Create Life Scene
+    scene = ofPtr<ofxScene> (new LifeScene());
+    m_mySceneManager.addScene(scene);
+    
     //Create Day Scene
     scene = ofPtr<ofxScene> (new DayScene());
     m_mySceneManager.addScene(scene);
@@ -75,10 +79,6 @@ void SceneManager::createScenes()
     
     //Create Rain Scene
     scene = ofPtr<ofxScene> (new RainScene());
-    m_mySceneManager.addScene(scene);
-    
-    //Create Life Scene
-    scene = ofPtr<ofxScene> (new LifeScene());
     m_mySceneManager.addScene(scene);
     
     //Create Flow Scene

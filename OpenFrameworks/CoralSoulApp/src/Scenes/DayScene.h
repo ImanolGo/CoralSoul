@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ofxScene.h"
-
+#include "ofxShadertoy.h"
 
 class DayScene : public ofxScene {
     
@@ -66,7 +66,8 @@ private:
     ofFbo           m_fbo;
     
     ofShader       m_dayShader;
-    ofImage        m_noise;
+    ofTexture     m_noise;
+    ofxShadertoy  m_shadertoy;
     
 };
 

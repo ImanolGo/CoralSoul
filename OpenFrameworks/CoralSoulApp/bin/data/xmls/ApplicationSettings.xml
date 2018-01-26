@@ -40,7 +40,11 @@
     <texture name="Brush" path="images/general/brush2.png"/>  
     <texture name="NoiseMoon" path="images/textures/noiseMoon.png"/>  
     <texture name="NoiseSun" path="images/textures/tex2.png"/>  
+    <texture name="NoiseRain" path="images/textures/noiseRain.png"/> 
+    <texture name="Sky" path="images/textures/sky.jpg"/> 
+    <texture name="Light" path="images/textures/light.jpg"/> 
     <texture name="Coal" path="images/general/coalTexture.jpg"/>  
+    <texture name="HeatMap" path="images/layout/Heatmap.png"/>  
     
 
   </textures>

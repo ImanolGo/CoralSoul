@@ -13,6 +13,8 @@
 #include "ofxRipples.h"
 #include "ofxBounce.h"
 
+#include "ofxShadertoy.h"
+
 class RainScene : public ofxScene {
     
 public:
@@ -46,7 +48,7 @@ public:
     
 private:
     
-    void setupImage();
+    void setupImages();
     
     void setupFbo();
     
@@ -70,8 +72,16 @@ private:
     ofxRipples  m_ripples;
     ofxBounce   m_bounce;
     
-    ofFbo      m_fbo;
-    ofShader   m_shader;
+    ofFbo               m_fbo;
+    ofShader            m_shader;
+    ofxShadertoy        m_rainShaderToy;
+    
+    ofTexture           m_rainTexture;
+    ofTexture           m_noiseTexture;
+    ofTexture           m_skyTexture;
+    
+    int                 m_amount;
+    
     float                  m_frequency, m_amplitude, m_speed; //shader parameters
     
 };
