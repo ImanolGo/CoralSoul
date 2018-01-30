@@ -138,14 +138,28 @@ void SceneManager::onChangeSceneDuration(float& value)
 void SceneManager::initializeSceneList()
 {
     m_sceneList.clear();
-    m_sceneList  = { "LIFE", "SEA","WIND"};
+    //m_sceneList  = { "LIFE", "SEA","WIND"};
+    
+    vector<string> initSceneList = { "LIFE", "SEA","WIND"};
+    for(auto& sceneName: initSceneList){
+        auto isSceneActive = AppManager::getInstance().getGuiManager().isSceneActive(sceneName);
+        if(isSceneActive){
+            m_sceneList.push_back(sceneName);
+        }
+    }
     
     auto isRaining = AppManager::getInstance().getApiManager().getCurrentWeather().m_precipitationValue > 0;
-    if(isRaining){m_sceneList.push_back("RAIN");}
+    string sceneName = "RAIN";
+    auto isSceneActive = AppManager::getInstance().getGuiManager().isSceneActive(sceneName);
+    if(isRaining && isSceneActive){m_sceneList.push_back(sceneName);}
     
     auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
-    if(isDayTime){m_sceneList.push_back("DAY");}
-    else{m_sceneList.push_back("NIGHT");}
+    if(isDayTime){sceneName = "DAY";}
+    else{sceneName = "NIGHT";}
+    
+    isSceneActive = AppManager::getInstance().getGuiManager().isSceneActive(sceneName);
+    if(isSceneActive){m_sceneList.push_back(sceneName);}
+
 
 	//m_sceneList.clear();
 	//m_sceneList = { "LIFE", "WIND", "NIGHT" };

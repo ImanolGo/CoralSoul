@@ -74,6 +74,8 @@ public:
     
     void onSceneChange(int sceneIndex);
     
+    bool isSceneActive(string name);
+    
 private:
     
     void setupGuiParameters();
@@ -81,6 +83,8 @@ private:
     void setupLayoutGui();
     
     void setupScenesGui();
+    
+    void setupScenesToggleGui();
     
     void setupPreviewGui();
     
@@ -100,6 +104,10 @@ private:
     
     void setupGuiEvents();
     
+    void setSceneToggle(string name, bool value);
+    
+    void loadSceneToggles();
+    
 private:
     
     ofxDatGui            m_gui;
@@ -108,6 +116,13 @@ private:
     
     
     ofParameterGroup      m_parameters;
+    
+    ofParameter<bool>      m_lifeScene;
+    ofParameter<bool>      m_seaScene;
+    ofParameter<bool>      m_windScene;
+    ofParameter<bool>      m_rainScene;
+    ofParameter<bool>      m_dayScene;
+    ofParameter<bool>      m_nightScene;
     
     ofParameter<float>      m_cameraDistance;
     ofParameter<float>      m_cameraX;

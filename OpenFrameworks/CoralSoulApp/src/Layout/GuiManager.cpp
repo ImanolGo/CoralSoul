@@ -42,6 +42,7 @@ void GuiManager::setup()
     
     this->setupGuiParameters();
     this->setupScenesGui();
+    this->setupScenesToggleGui();
     this->setupPreviewGui();
     this->setupLayoutGui();
     this->setupLightGui();
@@ -98,6 +99,37 @@ void GuiManager::setupScenesGui()
     for (int i=0; i<menu->size(); i++) menu->getChildAt(i)->setStripeColor(ofColor::pink);
     m_gui.addBreak();
     
+}
+
+void GuiManager::setupScenesToggleGui()
+{
+    m_lifeScene.set("LIFE", true);
+    m_parameters.add(m_lifeScene);
+    
+    m_seaScene.set("SEA", true);
+    m_parameters.add(m_seaScene);
+    
+    m_windScene.set("WIND", true);
+    m_parameters.add(m_windScene);
+    
+    m_rainScene.set("RAIN", true);
+    m_parameters.add(m_rainScene);
+    
+    m_dayScene.set("DAY", true);
+    m_parameters.add(m_dayScene);
+    
+    m_nightScene.set("NIGHT", true);
+    m_parameters.add(m_nightScene);
+   
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("ACTIVATE SCENES", ofColor::deepPink);
+    folder->addToggle("LIFE", true);
+    folder->addToggle("SEA", true);
+    folder->addToggle("WIND", true);
+    folder->addToggle("RAIN", true);
+    folder->addToggle("DAY", true);
+    folder->addToggle("NIGHT", true);
+
 }
 
 void GuiManager::setupPreviewGui()
@@ -420,8 +452,27 @@ void GuiManager::loadGuiValues()
     ofXml xml;
     xml.load(GUI_SETTINGS_FILE_NAME);
     ofDeserialize(xml, m_parameters);
+    
+    this->loadSceneToggles();
 }
 
+
+void GuiManager::loadSceneToggles()
+{
+    auto folder = m_gui.getFolder("ACTIVATE SCENES");
+    
+    vector<string>  sceneList= {"LIFE", "SEA","WIND","RAIN","DAY","NIGHT"};
+    for(auto& scene: sceneList){
+         ofxDatGuiComponent*  guiComponent = folder->getComponent(ofxDatGuiType::TOGGLE, scene);
+        if(guiComponent!=NULL && m_parameters.contains(scene)){
+            ofxDatGuiToggle *toggle = static_cast<ofxDatGuiToggle *>(guiComponent);
+            auto& param = m_parameters.getBool(scene);
+            toggle->setChecked(param.get());
+        }
+    }
+    
+   
+}
 
 void GuiManager::toggleGui()
 {
@@ -489,11 +540,33 @@ void GuiManager::onToggleEvent(ofxDatGuiToggleEvent e)
     {
         AppManager::getInstance().getLayoutManager().onMaskChange(e.target->getChecked());
     }
+    
+    this->setSceneToggle(e.target->getName(), e.target->getChecked());
 }
 
 void GuiManager::onMatrixEvent(ofxDatGuiMatrixEvent e)
 {
     cout << "onMatrixEvent " << e.child << " : " << e.enabled << endl;
+}
+
+void GuiManager::setSceneToggle(string name, bool value)
+{
+    if(m_parameters.contains(name)){
+        auto& toggle = m_parameters.getBool(name);
+        toggle = value;
+        ofLogNotice() << "GuiManager::setSceneToggle -> set toogle " << toggle.getName() << " to " << toggle.get();
+    }
+}
+
+
+bool GuiManager::isSceneActive(string name)
+{
+    if(m_parameters.contains(name)){
+        auto& toggle = m_parameters.getBool(name);
+        return toggle.get();
+    }
+    
+    return false;
 }
 
 void GuiManager::onWeatherChange()
