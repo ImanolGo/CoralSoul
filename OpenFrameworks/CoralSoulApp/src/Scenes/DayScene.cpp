@@ -112,9 +112,21 @@ void DayScene::updateFbo()
 
 void DayScene::draw()
 {
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    ofPushStyle();
+    ofEnableAlphaBlending();
     ofClear(0);
 	ofBackground(0);
+    auto dayOp =  AppManager::getInstance().getLayoutManager().getDayOpacity();
+    ofSetColor(0,0,0,dayOp*255);
+    ofDrawRectangle(0, 0, width, height);
     this->drawDay();
+    ofDisableAlphaBlending();
+    ofPopStyle();
+    
+    // ofLogNotice() << getName() + "::draw-> " << dayOp*255;
     //AppManager::getInstance().getModelManager().drawModel(m_fbo);
 }
 

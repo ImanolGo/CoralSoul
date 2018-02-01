@@ -98,6 +98,8 @@ public:
     
     void onSeaOpacityChange(float& value) { m_seaOpacity= value; }
     
+    void onDayOpacityChange(float& value) { m_dayOpacity= value; }
+
     void onCloudsOpacityChange(float& value) { m_cloudsOpacity= value; }
 
 	const ofVec2f& getMoonPosition() { return m_moonPosition; }
@@ -105,6 +107,8 @@ public:
 	const float& getMoonSize() { return m_moonSize; }
     
     const float& getSeaOpacity() { return m_seaOpacity; }
+    
+    const float& getDayOpacity() { return m_dayOpacity; }
     
     const float& getCloudsOpacity() { return m_cloudsOpacity; }
     
@@ -206,6 +210,7 @@ private:
 	float				m_moonSize;
     
     float               m_seaOpacity;
+    float               m_dayOpacity;
     float               m_cloudsOpacity;
     int                 m_numWindParticles;
     float               m_sizeWindParticles;

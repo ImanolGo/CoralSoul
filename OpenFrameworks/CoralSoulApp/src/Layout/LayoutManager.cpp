@@ -23,7 +23,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0), m_useMask(true), m_moonSize(0), m_seaOpacity(0), m_numWindParticles(800), m_sizeWindParticles(6.0), m_cloudsOpacity(1.0), m_blurValue(0.0), m_fadeTimeWindParticles(8)
+LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0), m_useMask(true), m_moonSize(0), m_seaOpacity(1.0),m_dayOpacity(1.0), m_numWindParticles(800), m_sizeWindParticles(6.0), m_cloudsOpacity(1.0), m_blurValue(0.0), m_fadeTimeWindParticles(8)
 {
 	//Intentionally left empty
 }
