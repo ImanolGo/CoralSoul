@@ -312,23 +312,84 @@ void SceneManager::sendSceneChange()
     m.setAddress(address);
     m.addIntArg(sceneIndex+1);
     AppManager::getInstance().getOscManager().sendMessage(m);
-    
-	address = "/layer7/clip3" + ofToString(sceneIndex) + "/connect";
+
+	auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
+
+	if (isDayTime) {
+		address = "/layer7/clip3" + ofToString(sceneIndex) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(1);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+
+		address = "/layer6/clip3" + ofToString(sceneIndex) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(1);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+
+		address = "/layer7/clip2" + ofToString(sceneIndex + 4) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(0);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+
+		address = "/layer6/clip2" + ofToString(sceneIndex + 4) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(0);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+	}
+	else {
+
+		address = "/layer7/clip2" + ofToString(sceneIndex+4) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(1);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+
+		address = "/layer6/clip2" + ofToString(sceneIndex+4) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(1);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+
+		address = "/layer7/clip3" + ofToString(sceneIndex) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(0);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+
+		address = "/layer6/clip3" + ofToString(sceneIndex) + "/connect";
+		m.setAddress(address);
+		m.addIntArg(0);
+		AppManager::getInstance().getOscManager().sendMessage(m);
+
+	}
+
+
+	address = "/layer2/clip3" + ofToString(sceneIndex) + "/connect";
 	m.setAddress(address);
 	m.addIntArg(1);
-    AppManager::getInstance().getOscManager().sendMessage(m);
+
+	AppManager::getInstance().getOscManager().sendMessage(m);
     
-    address = "/layer6/clip3" + ofToString(sceneIndex) + "/connect";
-    m.setAddress(address);
-    m.addIntArg(1);
-    
-    address = "/layer2/clip3" + ofToString(sceneIndex) + "/connect";
-    m.setAddress(address);
-    m.addIntArg(1);
+	int effectValue = 1;
+	if (isDayTime) 
+	{
+		effectValue = 0;
+	}
+	
+	address = "/composition/video/effect1/bypassed";
+	m.setAddress(address);
+	m.addIntArg(effectValue);
 
 	AppManager::getInstance().getOscManager().sendMessage(m);
 
+	address = "/composition/video/effect2/bypassed";
+	m.setAddress(address);
+	m.addIntArg(effectValue);
 
+	AppManager::getInstance().getOscManager().sendMessage(m);
+
+	address = "/composition/video/effect3/bypassed";
+	m.setAddress(address);
+	m.addIntArg(effectValue);
+
+	AppManager::getInstance().getOscManager().sendMessage(m);
 
 }
 

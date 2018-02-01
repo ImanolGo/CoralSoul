@@ -120,7 +120,7 @@ void DayScene::draw()
     ofClear(0);
 	ofBackground(0);
     auto dayOp =  AppManager::getInstance().getLayoutManager().getDayOpacity();
-    ofSetColor(0,0,0,dayOp*255);
+    ofSetColor(dayOp*255);
     ofDrawRectangle(0, 0, width, height);
     this->drawDay();
     ofDisableAlphaBlending();
