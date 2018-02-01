@@ -123,7 +123,7 @@ void SeaScene::willExit()
 
 void SeaScene::activateWaves()
 {
-    string address = "/layer3/video/effect3/bypassed";
+    string address = "/layer8/video/effect3/bypassed";
     int value = 0;
     
     ofxOscMessage m;
@@ -132,7 +132,7 @@ void SeaScene::activateWaves()
     
     AppManager::getInstance().getOscManager().sendMessage(m);
     
-    address = "/layer3/video/effect3/param4/values";
+    address = "/layer8/video/effect3/param4/values";
     
     auto fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellHeightNorm();
     fValue = ofMap(fValue, 0.0, 1.0, 0.02, 0.18, true);
@@ -144,7 +144,7 @@ void SeaScene::activateWaves()
     
     fValue = AppManager::getInstance().getApiManager().getCurrentWeather().getSwellPeriodNorm();
 	fValue = ofMap(fValue, 0.0, 1.0, 0.00, 0.5, true);
-	address = "/layer3/video/effect3/param5/values";
+	address = "/layer8/video/effect3/param5/values";
     m.setAddress(address);
     m.addFloatArg(fValue);
     AppManager::getInstance().getOscManager().sendMessage(m);
@@ -153,7 +153,7 @@ void SeaScene::activateWaves()
 
 void SeaScene::deactivateWaves()
 {
-    string address = "/layer3/video/effect3/bypassed";
+    string address = "/layer8/video/effect3/bypassed";
     int value = 1;
     
     ofxOscMessage m;

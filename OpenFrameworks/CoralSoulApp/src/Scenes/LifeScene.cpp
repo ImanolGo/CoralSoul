@@ -212,7 +212,7 @@ ofColor LifeScene::colorTemperatureToRGB(float kelvin)
 
 void LifeScene::activateEffect()
 {
-	string address = "/layer3/video/effect5/bypassed";
+	string address = "/layer8/video/effect5/bypassed";
 	int value = 0;
 
 	ofxOscMessage m;
@@ -224,7 +224,7 @@ void LifeScene::activateEffect()
 
 void LifeScene::deactivateEffect()
 {
-	string address = "/layer3/video/effect5/bypassed";
+	string address = "/layer8/video/effect5/bypassed";
 	int value = 1;
 
 	ofxOscMessage m;

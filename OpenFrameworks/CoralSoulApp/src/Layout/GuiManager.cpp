@@ -195,8 +195,6 @@ void GuiManager::setupLayoutGui()
 	m_moonSize.set("Moon Size", 0.5, 0.0, 1.0);
 	m_moonSize.addListener(layoutManager, &LayoutManager::onMoonSizeChange);
 	m_parameters.add(m_moonSize);
-
-    
     
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
     folder->addSlider(m_sceneDuration);

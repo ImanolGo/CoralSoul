@@ -117,7 +117,7 @@ void WindScene::willExit() {
 
 void WindScene::activateParticles()
 {
-    string address = "/layer3/video/effect4/bypassed";
+    string address = "/layer8/video/effect4/bypassed";
     int value = 0;
     
     ofxOscMessage m;
@@ -129,7 +129,7 @@ void WindScene::activateParticles()
 
 void WindScene::deactivateParticles()
 {
-    string address = "/layer3/video/effect4/bypassed";
+    string address = "/layer8/video/effect4/bypassed";
     int value = 1;
     
     ofxOscMessage m;

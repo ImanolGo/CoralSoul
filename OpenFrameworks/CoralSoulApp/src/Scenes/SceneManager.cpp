@@ -311,13 +311,20 @@ void SceneManager::sendSceneChange()
     ofxOscMessage m;
     m.setAddress(address);
     m.addIntArg(sceneIndex+1);
-    
     AppManager::getInstance().getOscManager().sendMessage(m);
-
-
-	address = "/layer1/clip3" + ofToString(sceneIndex) + "/connect";
+    
+	address = "/layer7/clip3" + ofToString(sceneIndex) + "/connect";
 	m.setAddress(address);
 	m.addIntArg(1);
+    AppManager::getInstance().getOscManager().sendMessage(m);
+    
+    address = "/layer6/clip3" + ofToString(sceneIndex) + "/connect";
+    m.setAddress(address);
+    m.addIntArg(1);
+    
+    address = "/layer2/clip3" + ofToString(sceneIndex) + "/connect";
+    m.setAddress(address);
+    m.addIntArg(1);
 
 	AppManager::getInstance().getOscManager().sendMessage(m);
 
