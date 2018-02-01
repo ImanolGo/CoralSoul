@@ -106,7 +106,8 @@ void VectorFieldVisual::updateFbo()
     float decrease = 4.0;
     float framesToDie = 255.0/decrease;
     float dt = ofGetLastFrameTime();
-    int numSkipFrames = m_fadeTime/(framesToDie*dt);
+    float fadeTime = AppManager::getInstance().getLayoutManager().getWindFadeTime();
+    int numSkipFrames = fadeTime/(framesToDie*dt);
     m_skipFrames++;
     
     ofEnableAlphaBlending();

@@ -180,6 +180,10 @@ void GuiManager::setupLayoutGui()
     m_sizeWindParticles.addListener(layoutManager, &LayoutManager::onSizeWindParticlesChange);
     m_parameters.add(m_sizeWindParticles);
     
+    m_windFadeTime.set("Trail Wind", 8.0, 0.0, 15.0);
+    m_windFadeTime.addListener(layoutManager, &LayoutManager::onFadeTimeWindParticlesChange);
+    m_parameters.add(m_windFadeTime);
+    
 	m_moonPositionX.set("Moon X", 0.5, 0.0, 1.0);
 	m_moonPositionX.addListener(layoutManager, &LayoutManager::onMoonPositionXChange);
 	m_parameters.add(m_moonPositionX);
@@ -201,6 +205,7 @@ void GuiManager::setupLayoutGui()
     folder->addSlider(m_cloudsOpacity);
     folder->addSlider(m_numWindParticles);
     folder->addSlider(m_sizeWindParticles);
+    folder->addSlider(m_windFadeTime);
 	folder->addSlider(m_moonPositionX);
 	folder->addSlider(m_moonPositionY);
 	folder->addSlider(m_moonSize);

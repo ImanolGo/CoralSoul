@@ -1524,7 +1524,6 @@
 		C9A8C2EA34B35E4BED69D33C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				B0732063E8459F09F43223D3 /* WindScene.cpp */,
 				CD2E4C5B8C38C576142E3131 /* RainScene.h */,
 				F96277230D0D59A6D3865477 /* FlowScene.h */,
 				8C488F38001D542DA27140DF /* scenes.h */,
@@ -1539,6 +1538,7 @@
 				014182AE53FF882FCEC0FDC4 /* DayScene.h */,
 				2059F496CFCF4222A12F2393 /* NightScene.cpp */,
 				1325B1CEA2E33562EE68DF16 /* NightScene.h */,
+				B0732063E8459F09F43223D3 /* WindScene.cpp */,
 				DF4B442B4124DBED0AE9B8F8 /* WindScene.h */,
 				1A14124BF720E4CA8987CC24 /* SceneManager.cpp */,
 				76C4479895B14357D331E849 /* SceneManager.h */,

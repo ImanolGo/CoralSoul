@@ -94,6 +94,8 @@ public:
     
     void onSizeWindParticlesChange(float& value) { m_sizeWindParticles= value; }
     
+    void onFadeTimeWindParticlesChange(float& value) { m_fadeTimeWindParticles= value; }
+    
     void onSeaOpacityChange(float& value) { m_seaOpacity= value; }
     
     void onCloudsOpacityChange(float& value) { m_cloudsOpacity= value; }
@@ -107,6 +109,8 @@ public:
     const float& getCloudsOpacity() { return m_cloudsOpacity; }
     
     const float& getSizeWindParticles() { return m_sizeWindParticles; }
+    
+    const float& getWindFadeTime() { return m_fadeTimeWindParticles; }
     
     const int& getNumWindParticles() { return m_numWindParticles; }
     
@@ -205,6 +209,7 @@ private:
     float               m_cloudsOpacity;
     int                 m_numWindParticles;
     float               m_sizeWindParticles;
+    float               m_fadeTimeWindParticles;
     float               m_blurValue;
 	
     
