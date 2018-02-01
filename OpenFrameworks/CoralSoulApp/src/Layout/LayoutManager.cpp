@@ -23,7 +23,7 @@ const int LayoutManager::FRAME_MARGIN = 2;
 const string LayoutManager::LAYOUT_FONT =  "fonts/open-sans/OpenSans-Semibold.ttf";
 const string LayoutManager::LAYOUT_FONT_LIGHT =  "fonts/open-sans/OpenSans-Light.ttf";
 
-LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0), m_useMask(true), m_moonSize(0), m_seaOpacity(0), m_numWindParticles(800), m_sizeWindParticles(6.0), m_cloudsOpacity(1.0)
+LayoutManager::LayoutManager(): Manager(), m_previewMode(0), m_drawMode(0), m_useMask(true), m_moonSize(0), m_seaOpacity(0), m_numWindParticles(800), m_sizeWindParticles(6.0), m_cloudsOpacity(1.0), m_blurValue(0.0)
 {
 	//Intentionally left empty
 }
@@ -433,7 +433,8 @@ void LayoutManager::setFullScreen()
 
 void LayoutManager::onBlurScaleChange(float& value)
 {
-     m_blur.blurOffset = 4*value;
+    m_blurValue = 4*value;
+    m_blur.blurOffset = m_blurValue;
 }
 
 void LayoutManager::toggleDrawMode()

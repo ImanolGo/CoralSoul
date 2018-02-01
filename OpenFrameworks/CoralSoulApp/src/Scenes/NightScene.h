@@ -10,7 +10,7 @@
 
 #include "ofxScene.h"
 #include "ImageVisual.h"
-#include "ofxBlur.h"
+#include "ofxFboBlur.h"
 #include "ofxPostProcessing.h"
 
 #include "ofxShadertoy.h"
@@ -74,17 +74,20 @@ private:
     
     ofColor         m_color;
    
-    ofxBlur         m_moonBlur;
+    ofxFboBlur         m_moonBlur;
     ofxPostProcessing   m_post;
     
     ofFbo               m_fboStars;
     ofFbo               m_fboMoon;
+    ofFbo               m_fboMoon2;
     float               m_starsSpeed;
     vector<float>         m_moonPhases;
 
     float oldPhase;
     
     ofShader  m_moonShader;
+    ofShader  m_blackAlphaShader;
+    
     ofShader  m_cloudsShader;
     
     ofxShadertoy  m_moonShaderToy;

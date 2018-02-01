@@ -56,6 +56,15 @@ void NightScene::setupMoonShader()
         m_moonShader.load("shaders/shadersGL2/Moon");
     }
     
+    if(ofIsGLProgrammableRenderer()){
+        m_blackAlphaShader.load("shaders/shadersGL3/BlackToAlpha");
+    }
+    else{
+        m_blackAlphaShader.load("shaders/shadersGL2/BlackToAlpha");
+    }
+    
+    
+    
     ofEnableArbTex();
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth()*0.4;
@@ -64,10 +73,31 @@ void NightScene::setupMoonShader()
     m_fboMoon.allocate(width, height);
     m_fboMoon.begin(); ofClear(0); m_fboMoon.end();
     
+    m_fboMoon2.allocate(width, height);
+    m_fboMoon2.begin(); ofClear(0); m_fboMoon2.end();
+    
     
     m_moonPhases = {3.15f, 1.65f, 1.2f, 0.75f, 6.3f,5.4f,4.95f ,4.5f};
-    m_moonBlur.setup(width, height);
-    m_moonBlur.setScale(0.15);
+    
+    
+    ofFbo::Settings s;
+    s.width = width;
+    s.height = height;
+    s.internalformat = GL_RGBA;
+    s.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
+    s.maxFilter = GL_LINEAR; GL_NEAREST;
+    s.numSamples = 0;
+    s.numColorbuffers = 1;
+    s.useDepth = false;
+    s.useStencil = false;
+    
+    m_moonBlur.setup(s, false);
+    m_moonBlur.blurOffset = 1.44;
+    m_moonBlur.blurPasses = 5;
+    
+//    m_moonBlur.
+//    m_moonBlur.setup(width, height);
+//    m_moonBlur.setScale(0.15);
     //m_post.init(width, height);
     //m_post.createPass<BloomPass>()->setEnabled(true);
 }
@@ -116,11 +146,12 @@ void NightScene::drawNight()
 
         this->drawStars();
 
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 
-        this->drawMoon();
+         this->drawMoon();
     
       ofEnableBlendMode(OF_BLENDMODE_ADD);
+        //this->drawMoon();
         this->drawClouds();
         AppManager::getInstance().getResourceManager().getTexture("ForegroundStars")->draw(0,-55);
 
@@ -198,6 +229,8 @@ void NightScene::drawClouds()
 
 void NightScene::drawMoon()
 {
+    
+    //m_moonBlur.blurOffset = AppManager::getInstance().getLayoutManager().getBlurValue();
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
     float w = m_fboMoon.getWidth();
@@ -216,9 +249,9 @@ void NightScene::drawMoon()
     }
     
 	ofDisableAlphaBlending();
-    m_fboMoon.begin();
+    m_fboMoon2.begin();
         ofClear(0);
-        //m_moonBlur.begin();
+        m_moonBlur.beginDrawScene();
     
             if(ofIsGLProgrammableRenderer()){
                 m_moonShaderToy.begin();
@@ -238,9 +271,18 @@ void NightScene::drawMoon()
             }
     
     
-        //m_moonBlur.end();
-        //m_moonBlur.draw();
-     m_fboMoon.end();
+        m_moonBlur.endDrawScene();
+        m_moonBlur.performBlur();
+        m_moonBlur.drawBlurFbo();
+     m_fboMoon2.end();
+    
+      m_fboMoon.begin();
+        ofClear(0);
+         m_blackAlphaShader.begin();
+            m_fboMoon2.draw(0,0);
+         m_blackAlphaShader.end();
+      m_fboMoon.end();
+    
 	 ofEnableAlphaBlending();
 
 	 auto pos = AppManager::getInstance().getLayoutManager().getMoonPosition();

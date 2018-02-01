@@ -856,9 +856,9 @@
 				C1CCAA8796D39D9B1DEEEF93 /* MaskManager.h */,
 				4907E8B0250B798D3E6F09A1 /* GuiManager.cpp */,
 				FF71FE1412779C0AE111BC56 /* GuiManager.h */,
-				4229475864D5EBC7913C8351 /* LayoutManager.cpp */,
 				2C4030DB557CBDCD31BDF418 /* GuiTheme.h */,
 				A2EA41BEA7E5A43E6C47D692 /* MaskManager.cpp */,
+				4229475864D5EBC7913C8351 /* LayoutManager.cpp */,
 				78E61E440A21EE9FC6156AAD /* LayoutManager.h */,
 			);
 			name = Layout;
@@ -1537,6 +1537,7 @@
 				F79FD8ACD200E65C2E5AF42D /* ImageScene.h */,
 				827F1D673C83C016E9C09CB3 /* DayScene.cpp */,
 				014182AE53FF882FCEC0FDC4 /* DayScene.h */,
+				2059F496CFCF4222A12F2393 /* NightScene.cpp */,
 				1325B1CEA2E33562EE68DF16 /* NightScene.h */,
 				DF4B442B4124DBED0AE9B8F8 /* WindScene.h */,
 				1A14124BF720E4CA8987CC24 /* SceneManager.cpp */,
@@ -1550,7 +1551,6 @@
 				45E107EB0595AB8933B08023 /* CalibrationScene.h */,
 				57B5C05C9EE64383D475CD3C /* UniverseScene.cpp */,
 				60B34DDDC79DEB0226A04C93 /* VideoScene.cpp */,
-				2059F496CFCF4222A12F2393 /* NightScene.cpp */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";

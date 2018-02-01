@@ -117,6 +117,8 @@ public:
     void toggleDrawMode();
     
     int getDrawMode() {return m_drawMode;}
+    
+    float getBlurValue() {return m_blurValue;}
 
 private:
 
@@ -203,6 +205,7 @@ private:
     float               m_cloudsOpacity;
     int                 m_numWindParticles;
     float               m_sizeWindParticles;
+    float               m_blurValue;
 	
     
     #if defined(TARGET_WIN32)

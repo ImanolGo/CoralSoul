@@ -152,9 +152,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
     vec4 colorOut = vec4(vec3(n * diffuse + z_in_atm * diffuse + z_out_atm * diffuse_out),1.0);
 
-    if(colorOut.r < 0.05 ){
-        colorOut.a = 0.0;
-    }
+    // if(colorOut.r < 0.1 ){
+    //     colorOut.a = 0.0;
+    // }
     
   
     fragColor = colorOut;
