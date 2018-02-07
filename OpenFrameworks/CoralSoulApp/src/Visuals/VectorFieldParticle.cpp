@@ -35,6 +35,19 @@ void VectorFieldParticle::setup(){
     this->setupBrush();
 }
 
+void VectorFieldParticle::reset()
+{
+	float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+	float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+
+	m_pos.x = ofRandom(0, width);
+	m_pos.y = ofRandom(0, height);
+	m_prevPos = m_pos;
+	m_vel = ofVec2f(0);
+	m_acc = ofVec2f(0);
+
+}
+
 void VectorFieldParticle::setupBrush()
 {
     m_brush.setResource("Brush");
@@ -52,6 +65,7 @@ void VectorFieldParticle::addForce(const ofVec2f& dir)
 {
     m_acc += dir;
 }
+
 
 
 void VectorFieldParticle::update()

@@ -52,6 +52,8 @@ public:
     void setSize(float value);
     
     void setNumber(int value);
+
+	void resetParticles();
     
    
 private:

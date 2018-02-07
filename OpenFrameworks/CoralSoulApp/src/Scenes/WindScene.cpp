@@ -100,6 +100,7 @@ void WindScene::drawVectorField()
 void WindScene::willFadeIn() {
     ofLogNotice("WindScene::willFadeIn");
     this->activateParticles();
+	m_vectorField.resetParticles();
 }
 
 void WindScene::willDraw() {

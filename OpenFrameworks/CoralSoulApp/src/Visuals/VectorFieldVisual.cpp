@@ -68,6 +68,13 @@ void VectorFieldVisual::setupParticles()
     }
 }
 
+void VectorFieldVisual::resetParticles()
+{
+	for (int i = 0; i<m_particles.size(); i++)
+	{
+		m_particles[i].reset();
+	}
+}
 void VectorFieldVisual::setupBlur()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();

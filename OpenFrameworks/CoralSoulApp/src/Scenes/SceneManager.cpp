@@ -315,7 +315,7 @@ void SceneManager::sendSceneChange()
 
 	auto isDayTime = AppManager::getInstance().getApiManager().isDayTime();
 
-	if (isDayTime) {
+	if (!isDayTime) {
 		address = "/layer7/clip3" + ofToString(sceneIndex) + "/connect";
 		m.setAddress(address);
 		m.addIntArg(1);
@@ -326,15 +326,7 @@ void SceneManager::sendSceneChange()
 		m.addIntArg(1);
 		AppManager::getInstance().getOscManager().sendMessage(m);
 
-		address = "/layer7/clip2" + ofToString(sceneIndex + 4) + "/connect";
-		m.setAddress(address);
-		m.addIntArg(0);
-		AppManager::getInstance().getOscManager().sendMessage(m);
 
-		address = "/layer6/clip2" + ofToString(sceneIndex + 4) + "/connect";
-		m.setAddress(address);
-		m.addIntArg(0);
-		AppManager::getInstance().getOscManager().sendMessage(m);
 	}
 	else {
 
@@ -346,16 +338,6 @@ void SceneManager::sendSceneChange()
 		address = "/layer6/clip2" + ofToString(sceneIndex+4) + "/connect";
 		m.setAddress(address);
 		m.addIntArg(1);
-		AppManager::getInstance().getOscManager().sendMessage(m);
-
-		address = "/layer7/clip3" + ofToString(sceneIndex) + "/connect";
-		m.setAddress(address);
-		m.addIntArg(0);
-		AppManager::getInstance().getOscManager().sendMessage(m);
-
-		address = "/layer6/clip3" + ofToString(sceneIndex) + "/connect";
-		m.setAddress(address);
-		m.addIntArg(0);
 		AppManager::getInstance().getOscManager().sendMessage(m);
 
 	}

@@ -41,6 +41,8 @@ public:
     void setSize(float size);
     
     ofVec2f getPos() const {return m_pos;}
+
+	void reset();
     
 private:
     
