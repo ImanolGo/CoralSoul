@@ -27,7 +27,7 @@ if ($ableton) {
 Remove-Variable ableton
 
 # get CoralSoulInteractive process
-$unity = Get-Process CoralSoulInteractive -ErrorAction SilentlyContinue
+$unity = Get-Process Interactive_Waterfall_020218Interactive -ErrorAction SilentlyContinue
 if ($unity) {
   # try gracefully first
   $unity.CloseMainWindow()
@@ -40,7 +40,7 @@ if ($unity) {
 Remove-Variable unity
 
 # get CoralSoulInteractive process
-$master = Get-Process CoralSoulMaster-ErrorAction SilentlyContinue
+$master = Get-Process StateMachine -ErrorAction SilentlyContinue
 if ($master) {
   # try gracefully first
   $master.CloseMainWindow()
