@@ -72,6 +72,8 @@ public:
     
     void onSceneChange(string& sceneName);
     
+    void onEnableSceneChange(string& sceneName, bool enable);
+    
     void onSceneChange(int sceneIndex);
     
     bool isSceneActive(string name);

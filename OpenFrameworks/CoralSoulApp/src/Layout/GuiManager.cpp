@@ -606,6 +606,17 @@ void GuiManager::onSceneChange(string &sceneName)
     this->onSceneChange(index);
 }
 
+void GuiManager::onEnableSceneChange(string &sceneName, bool enable)
+{
+    ofxDatGuiComponent* component = m_gui.getFolder("ACTIVATE SCENES")->getComponent(ofxDatGuiType::TOGGLE, sceneName);
+    ofxDatGuiToggle* toggle = dynamic_cast<ofxDatGuiToggle*>(component);
+    this->setSceneToggle(sceneName, enable);
+    
+    toggle->setChecked(enable);
+    
+    ofLogNotice() << "GuiManager::onEnableSceneChange -> set enable " << toggle->getName() << " to " << this->isSceneActive(sceneName);
+}
+
 void GuiManager::onSceneChange(int sceneIndex)
 {
     string dropBoxName = "SCENES";

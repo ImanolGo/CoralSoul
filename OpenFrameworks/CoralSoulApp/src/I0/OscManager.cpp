@@ -108,6 +108,13 @@ void OscManager::update()
             AppManager::getInstance().getGuiManager().onSceneChange(sceneName);
         }
         
+        if(m.getAddress() == OSC_PARENT_ADDRESS + "/EnableScene")
+        {
+            string sceneName = m.getArgAsString(0);
+            bool sceneEnable = m.getArgAsInt(1)>0;
+            AppManager::getInstance().getGuiManager().onEnableSceneChange(sceneName,sceneEnable);
+        }
+        
         
         ofLogNotice() <<"OscManager::received -> " << this->getMessageAsString(m);
     }
